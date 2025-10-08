@@ -1,0 +1,95 @@
+/**
+ *
+ */
+public class Product {
+    private int productID;
+    private String productName;
+    private double productPrice;
+    private int productQuantity;
+    private String productCategory;
+    private String brand;
+    private String variant;
+
+    /**
+     *
+     * @param productID
+     * @param productName
+     * @param productPrice
+     * @param productQuantity
+     * @param productCategory
+     * @param brand
+     * @param variant
+     */
+    public Product(int productID, String productName, double productPrice, int productQuantity, String productCategory, String brand, String variant)
+    {
+        this.productID = productID;
+        this.productName = productName;
+        this.productPrice = productPrice;
+        this.productQuantity = productQuantity;
+        this.productCategory = productCategory;
+        this.brand = brand;
+        this.variant = variant;
+    }
+
+    /**
+     *
+     * @return productID
+     */
+    public int getProductID() {
+        return productID;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public String getProductName() {
+        return productName;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public double getProductPrice() {
+        return productPrice;
+    }
+
+    public int getProductQuantity() {
+        return productQuantity;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public String getProductCategory() {
+        return productCategory;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public String getBrand() {
+        return brand;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public String getVariant() {
+        return variant;
+    }
+
+    /**
+     *
+     * @param restockQuantity
+     */
+    public void updateStock(int restockQuantity)
+    {
+        this.productQuantity = productQuantity + restockQuantity;
+    }
+
+}
