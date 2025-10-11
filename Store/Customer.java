@@ -1,30 +1,51 @@
-
 public class Customer extends User {
-    private boolean memberShipCard;
+    private MembershipCard memberShipCard;
     private boolean isSenior;
     private Cart cart;
 
-    public Customer(String uniqueID, String name, String email, String password, boolean memberShipCard, boolean isSenior) {
+    public Customer(String uniqueID, String name, String email, String password, MembershipCard memberShipCard, boolean isSenior) {
         super(uniqueID, name, email, password);
         this.memberShipCard = memberShipCard;
         this.isSenior = isSenior;
         Cart cart = new Cart();
     }
 
-    /**
-     *
-     * @return
-     */
-    public boolean isMemberShipCard() {
-        return memberShipCard;
-    }
+    // public boolean hasMembership()
+    // {
+
+    // }
 
     /**
      *
      * @return
      */
-    public boolean isSenior() {
-        return isSenior;
+    public boolean isSenior()
+    {
+        return this.isSenior;
     }
 
+    // public boolean saveCustomerDataToFile()
+    // {
+
+    // }
+
+    // public loadCustomerDataFromFile()
+    // {
+
+    // }
+
+    // Getters and setters
+    /**
+     *
+     * @return
+     */
+    public MembershipCard getMembershipCard() 
+    {
+        return this.memberShipCard;
+    }
+
+    public Cart getCart() 
+    {
+        return this.cart;
+    }
 }
