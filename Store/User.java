@@ -7,6 +7,14 @@ public class User {
     private String email;
     private String password;
 
+    public User() 
+    {
+        this.uniqueID = "N/A";
+        this.name = "N/A";
+        this.email = "N/A";
+        this.password = "N/A";
+    }
+
     public User(String uniqueID, String name, String email, String password)
     {
         this.uniqueID = uniqueID;
@@ -25,6 +33,40 @@ public class User {
         return false;
     }
 
+    // public boolean logout()
+    // {
 
+    // }
+
+    // Getters and Setters
+    public String getUniqueID()
+    {
+        return this.uniqueID;
+    }
+
+    public String getName()
+    {
+        return this.name;
+    }
+
+    public String getEmail()
+    {
+        return this.email;
+    }
+
+    public void setName(String name)
+    {
+        this.name = name;
+    }
+
+    public void setEmail(String name)
+    {
+        this.name = name;
+    }
+
+    public void setUniqueID(String id)
+    {
+        this.uniqueID = id;
+    }
 }
 
