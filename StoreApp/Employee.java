@@ -1,4 +1,5 @@
 package StoreApp;
+
 public class Employee extends User {
     private String role;
 
@@ -21,10 +22,5 @@ public class Employee extends User {
     public void setRole(String newRole)
     {
         this.role = newRole;
-    }
-
-    public String transformToString()
-    {
-        return String.format("Name = %s, Role = %s]", getName(), role);
     }
 }
