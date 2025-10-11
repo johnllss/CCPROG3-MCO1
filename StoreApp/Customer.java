@@ -1,3 +1,5 @@
+package StoreApp;
+
 public class Customer extends User {
     private MembershipCard memberShipCard;
     private boolean isSenior;

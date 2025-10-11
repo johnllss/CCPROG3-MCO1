@@ -1,3 +1,4 @@
+package StoreApp;
 public class Employee extends User {
     private String role;
 
