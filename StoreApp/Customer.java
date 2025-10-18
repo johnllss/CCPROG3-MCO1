@@ -43,11 +43,11 @@ public class Customer extends User {
      */
     public MembershipCard getMembershipCard() 
     {
-        return this.memberShipCard;
+        return memberShipCard;
     }
 
     public Cart getCart() 
     {
-        return this.cart;
+        return cart;
     }
 }

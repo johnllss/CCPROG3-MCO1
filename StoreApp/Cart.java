@@ -2,7 +2,7 @@ package StoreApp;
 import java.util.ArrayList;
 
 public class Cart {
-    private ArrayList<Items> items ;
+    private ArrayList<Item> items ;
 
     public Cart() {
         this.items = new ArrayList<>();
@@ -16,14 +16,14 @@ public class Cart {
         }
         else
         {
-            items.add(new Items(product, quantity));
+            items.add(new Item(product, quantity));
             return true;
         }
     }
 
     public boolean removeItem(Product product)
     {
-       for(Items i : items)
+       for(Item i : items)
        {
            if(i.getProduct().equals(product)){
                items.remove(i);
@@ -32,19 +32,16 @@ public class Cart {
        }
        return false;
     }
-    public Items findItem(String id)
+    public Item findItem(String id)
     {
-        for(Items i : items) {
+        for(Item i : items) {
             if (i.equals(id)) {
                 return i;
             }
         }
     }
-    public ArrayList<Items> getItems()
+    public ArrayList<Item> getItems()
     {
         return items;
     }
-    
-
-
 }

@@ -50,7 +50,7 @@ public class Product {
 
     /**
      *
-     * @return
+     * @return productPrice
      */
     public double getProductPrice() {
         return productPrice;
@@ -58,7 +58,7 @@ public class Product {
 
     /**
      *
-     * @return
+     * @return productQuantity
      */
     public int getProductQuantity() {
         return productQuantity;
@@ -66,7 +66,7 @@ public class Product {
 
     /**
      *
-     * @return
+     * @return productCategory
      */
     public String getProductCategory() {
         return productCategory;
@@ -74,7 +74,7 @@ public class Product {
 
     /**
      *
-     * @return
+     * @return brand
      */
     public String getBrand() {
         return brand;
@@ -82,7 +82,7 @@ public class Product {
 
     /**
      *
-     * @return
+     * @return variant
      */
     public String getVariant() {
         return variant;
@@ -96,5 +96,4 @@ public class Product {
     {
         this.productQuantity = productQuantity + restockQuantity;
     }
-
 }

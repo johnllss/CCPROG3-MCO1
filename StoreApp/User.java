@@ -42,17 +42,17 @@ public class User {
     // Getters and Setters
     public String getUniqueID()
     {
-        return this.uniqueID;
+        return uniqueID;
     }
 
     public String getName()
     {
-        return this.name;
+        return name;
     }
 
     public String getEmail()
     {
-        return this.email;
+        return email;
     }
 
     public void setName(String name)

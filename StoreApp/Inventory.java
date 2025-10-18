@@ -219,7 +219,7 @@ public class Inventory {
 
     public boolean loadInventoryFromFile(String fileName)
     {
-        // TODO: SAVING TO FILE
+        // TODO: LOADING FROM FILE
 
         System.out.println("Loading inventory from " + fileName);
     }
@@ -250,6 +250,6 @@ public class Inventory {
 
     public ArrayList<Shelf> getShelves()
     {
-        return this.shelves;
+        return shelves;
     }
 }

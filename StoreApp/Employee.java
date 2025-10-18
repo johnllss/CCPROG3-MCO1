@@ -16,7 +16,7 @@ public class Employee extends User {
 
     public String getRole()
     {
-        return this.role;
+        return role;
     }
 
     public void setRole(String newRole)

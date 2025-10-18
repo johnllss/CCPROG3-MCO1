@@ -73,7 +73,7 @@ public class Shelf {
     public void displayShelf()
     {
         // "%-10s" and others: '-' means left align, 10 means 10 spaces
-        System.out.printf("\n>>> SHELF: %-10s | CATEGORY: %-20s | CAPACITY: %2d/%d <<<\n", this.shelfID, this.category, this.products.size(), this.maxCapacity);
+        System.out.printf("\n>>> SHELF: %-10s | CATEGORY: %-20s | CAPACITY: %2d/%d <<<\n", shelfID, category, products.size(), maxCapacity);
 
         if (products.isEmpty())
         {
@@ -102,27 +102,27 @@ public class Shelf {
 
     public String getShelfID()
     {
-        return this.shelfID;
+        return shelfID;
     }
 
     public String getShelfCategory(String id)
     {
-        return this.category;
+        return category;
     }
 
     public ArrayList<Product> getProductsOnShelf()
     {
-        return this.products;
+        return products;
     }
 
     public int getMaxCapacity()
     {
-        return this.maxCapacity;
+        return maxCapacity;
     }
 
     public int getCurrentCapacity()
     {
-        return this.currentCapacity;
+        return currentCapacity;
     }
 
     public void setShelfCategory(String newCategory)
