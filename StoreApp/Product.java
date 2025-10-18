@@ -10,6 +10,7 @@ public class Product {
     private String productCategory;
     private String brand;
     private String variant;
+    private String expirationDate;
 
     /**
      *
@@ -20,8 +21,9 @@ public class Product {
      * @param productCategory
      * @param brand
      * @param variant
+     * @param expirationDate
      */
-    public Product(int productID, String productName, double productPrice, int productQuantity, String productCategory, String brand, String variant)
+    public Product(int productID, String productName, double productPrice, int productQuantity, String productCategory, String brand, String variant, String expirationDate)
     {
         this.productID = productID;
         this.productName = productName;
@@ -30,8 +32,36 @@ public class Product {
         this.productCategory = productCategory;
         this.brand = brand;
         this.variant = variant;
+        this.expirationDate = expirationDate;
     }
 
+    public boolean isExpired()
+    {
+
+    }
+
+    public boolean isPerishable()
+    {
+
+    }
+
+    /**
+     *
+     * @param restockQuantity
+     */
+    public void updateStock(int restockQuantity)
+    {
+        this.productQuantity = productQuantity + restockQuantity;
+    }
+
+    public boolean isProductLowStock(String productID)
+    {
+
+    }
+
+
+
+    // GETTERS AND SETTERS
     /**
      *
      * @return productID
@@ -88,12 +118,48 @@ public class Product {
         return variant;
     }
 
-    /**
-     *
-     * @param restockQuantity
-     */
-    public void updateStock(int restockQuantity)
+    public String getExpirationDate()
     {
-        this.productQuantity = productQuantity + restockQuantity;
+        return expirationDate;
+    }
+
+    public void setProductID(String productID)
+    {
+        this.productID = productID;
+    }
+
+    public void setProductName(String productName)
+    {
+        this.productName = productName;
+    }
+
+    public void setProductPrice(double productPrice)
+    {
+        this.productPrice = productPrice;
+    }
+
+    public void setProductQuantity(int productQuantity)
+    {
+        this.productQuantity= productQuantity;
+    }
+
+    public void setProductCategory(String productCategory)
+    {
+        this.productCategory = productCategory;
+    }
+
+    public void setbrand(String brand)
+    {
+        this.brand = brand;
+    }
+
+    public void setVariant(String variant)
+    {
+        this.variant = variant;
+    }
+
+    public void setExpirationDate(String expirationDate)
+    {
+        this.expirationDate = expirationDate;
     }
 }

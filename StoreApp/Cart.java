@@ -2,7 +2,7 @@ package StoreApp;
 import java.util.ArrayList;
 
 public class Cart {
-    private ArrayList<Item> items ;
+    private ArrayList<Item> items;
 
     public Cart() {
         this.items = new ArrayList<>();
