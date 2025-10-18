@@ -42,7 +42,7 @@ public class Product {
 
     /**
      *
-     * @return
+     * @return productName
      */
     public String getProductName() {
         return productName;
@@ -56,6 +56,10 @@ public class Product {
         return productPrice;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getProductQuantity() {
         return productQuantity;
     }

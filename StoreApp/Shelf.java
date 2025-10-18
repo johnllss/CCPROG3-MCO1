@@ -1,5 +1,8 @@
 package StoreApp;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Shelf {
     private String shelfID:
     private String category;
@@ -7,40 +10,94 @@ public class Shelf {
     private int maxCapacity;
     private ArrayList<Product> products;
 
-    public Shelf(String id, String category)
+    public Shelf(String id, String category, int maxCapacity)
     {
         this.shelfID = id;
         this.category = category;
+        this.maxCapacity = maxCapacity;
         this.products = new ArrayList<Product>();
     }
 
     public boolean addProductToShelf(Product product)
     {
+        if (isShelfFull())
+        {
+            System.out.println("Oops! Shelf is full.");
+            return false;
+        } else if (p.getShelfCategory() != this.category)
+        {
+            System.out.println("The product's category does not match this shelf's category!");
+            return false;
+        } else 
+        {
+            products.add(p);
+            return true;
+        }
+    }
+
+    public boolean isShelfFull()
+    {
+        return products.size() >= maxCapacity;
+    }
+
+    public Product removeProductFromShelf(String productID)
+    {
+        // check each product in ArrayList<Product> products
         for (Product productOnShelf: products)
         {
-            if (productOnSheld.getProductID() != product.getProductID() && this.currentCapacity < this.maxCapacity)
+            // if productOnShelf's productID == productID
+            if (String.valueOf(productOnShelf.getProductID()).equals(productID))
             {
-                products = product;
+                // remove the specified product by accessing the index where the for loop is at
+                products.remove(products.indexOf(productOnShelf));
+                return productOnShelf;
             }
         }
+
+        return null;
     }
 
-    public boolean removeProductFromShelf(String ShelfID)
+    public Product findProductOnShelf(String productID)
     {
         for (Product productOnShelf: products)
         {
-            
+            if (String.valueOf(productOnShelf.getProductID()).equals(productID))
+            {
+                return productOnShelf;
+            }
         }
-    }
 
-    public boolean findProductOnShelf()
-    {
-
+        return null;
     }
 
     public void displayShelf()
     {
+        // "%-10s" and others: '-' means left align, 10 means 10 spaces
+        System.out.printf("\n>>> SHELF: %-10s | CATEGORY: %-20s | CAPACITY: %2d/%d <<<\n", this.shelfID, this.category, this.products.size(), this.maxCapacity);
 
+        if (products.isEmpty())
+        {
+            System.out.println("Currently empty.");
+        } else
+        {
+            System.out.printf("\n\n%-12s %-25s %-12s %-8s %-8s%n", "Product ID", "Name", "Brand", "Price", "Stock");
+            System.out.println("-----");
+
+            for (Product productOnShelf: products)
+            {
+                String stockStatus = "";
+
+                // checks for product's stock quantity
+                if (productOnShelf.getProductQuantity() < 3)
+                {
+                    // and sets to "Low stock" if below set threshold
+                    stockStatus = "Low stock.";
+                }
+
+                System.out.printf("%-12d %-25s %-12s PHP %-8.2f %-8d%s%n", 
+                    productOnShelf.getProductID(), productOnShelf.getProductName(), productOnShelf.getBrand(), productOnShelf.getProductPrice(), productOnShelf.getProductQuantity(), stockStatus);
+            }
+        }
     }
 
     public String getShelfID()
@@ -55,7 +112,17 @@ public class Shelf {
 
     public ArrayList<Product> getProductsOnShelf()
     {
+        return this.products;
+    }
 
+    public int getMaxCapacity()
+    {
+        return this.maxCapacity;
+    }
+
+    public int getCurrentCapacity()
+    {
+        return this.currentCapacity;
     }
 
     public void setShelfCategory(String newCategory)
