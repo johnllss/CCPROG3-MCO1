@@ -27,7 +27,10 @@ public class Shelf {
 
     public boolean removeProductFromShelf(String ShelfID)
     {
-        for (Product productOnShelf: prodycts
+        for (Product productOnShelf: products)
+        {
+            
+        }
     }
 
     public boolean findProductOnShelf()
