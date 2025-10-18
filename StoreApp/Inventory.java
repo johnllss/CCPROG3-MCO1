@@ -210,11 +210,31 @@ public class Inventory {
         return new ArrayList<>();
     }
 
+    public ArrayList<Product> getExpiredProducts()
+    {
+        ArrayList<Product> expiredProducts = new ArrayList<Product>();
+
+        for (Shelf shelf: shelves)
+        {
+            for (Product product: shelf.getProducts())
+            {
+                if (product.isExpired())
+                {
+                    expiredProducts.add(product);
+                }
+            }
+        }
+
+        return expiredProducts;
+    }
+
     public boolean saveInventoryToFile(String fileName)
     {
         // TODO: SAVING TO FILE
 
         System.out.println("Saving inventory to " + fileName);
+
+        return false;
     }
 
     public boolean loadInventoryFromFile(String fileName)
@@ -222,6 +242,8 @@ public class Inventory {
         // TODO: LOADING FROM FILE
 
         System.out.println("Loading inventory from " + fileName);
+
+        return false;
     }
 
     public void displayInventory()
