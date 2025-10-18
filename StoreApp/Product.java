@@ -37,12 +37,29 @@ public class Product {
 
     public boolean isExpired()
     {
+        if (isPerishable())
+        {
+            // TODO: implement date comparison
+            // might need Date class if there is one for dates
+        }
 
+        return false;
     }
 
     public boolean isPerishable()
     {
+        return !expirationDate.equalsIgnoreCase("N/A");
+    }
 
+    public boolean reduceStock(int amount)
+    {
+        if (amount <= productQuantity)
+        {
+            productQuantity -= amount;
+            return true;
+        }
+
+        return false;
     }
 
     /**
@@ -56,7 +73,12 @@ public class Product {
 
     public boolean isProductLowStock(String productID)
     {
+        if (productQuantity < 3)
+        {
+            return true;
+        }
 
+        return false
     }
 
 

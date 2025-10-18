@@ -1,7 +1,6 @@
 package StoreApp;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Shelf {
     private String shelfID:
