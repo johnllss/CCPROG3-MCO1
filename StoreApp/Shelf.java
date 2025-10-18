@@ -29,7 +29,7 @@ public class Shelf {
             return false;
         } else 
         {
-            products.add(p);
+            products.add(product);
             return true;
         }
     }
