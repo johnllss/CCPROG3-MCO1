@@ -3,7 +3,7 @@ package StoreApp;
 import java.util.ArrayList;
 
 public class Shelf {
-    private String shelfID:
+    private String shelfID;
     private String category;
     private int currentCapacity;
     private int maxCapacity;
@@ -23,7 +23,7 @@ public class Shelf {
         {
             System.out.println("Oops! Shelf is full.");
             return false;
-        } else if (p.getShelfCategory() != this.category)
+        } else if (product.getProductCategory() != this.category)
         {
             System.out.println("The product's category does not match this shelf's category!");
             return false;

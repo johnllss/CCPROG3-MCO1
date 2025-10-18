@@ -145,7 +145,7 @@ public class Product {
         return expirationDate;
     }
 
-    public void setProductID(String productID)
+    public void setProductID(int productID)
     {
         this.productID = productID;
     }
