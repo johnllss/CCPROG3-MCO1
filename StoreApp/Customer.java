@@ -1,15 +1,15 @@
 package StoreApp;
 
 public class Customer extends User {
-    private MembershipCard memberShipCard;
+    private MembershipCard membershipCard;
     private boolean isSenior;
     private Cart cart;
 
-    public Customer(String name, String email, String password, MembershipCard memberShipCard, boolean isSenior) {
-        super(name, email, password);
-        this.memberShipCard = memberShipCard;
+    public Customer(String name, String email, String password, MembershipCard membershipCard, int uniqueID,boolean isSenior) {
+        super(name, email, password, uniqueID);
+        this.membershipCard = membershipCard;
         this.isSenior = isSenior;
-        Cart cart = new Cart();
+        this.cart = new Cart();
     }
 
     // public boolean hasMembership()
@@ -41,9 +41,9 @@ public class Customer extends User {
      *
      * @return
      */
-    public MembershipCard getMembershipCard() 
+    public MembershipCard getMembershipCard()
     {
-        return memberShipCard;
+        return membershipCard;
     }
 
     public Cart getCart() 
