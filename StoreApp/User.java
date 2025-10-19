@@ -3,7 +3,7 @@ package StoreApp;
  *
  */
 public class User {
-    private String uniqueID;
+    private int uniqueID;
     private String name;
     private String email;
     private String password;
