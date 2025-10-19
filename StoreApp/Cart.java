@@ -55,13 +55,13 @@ public class Cart {
         return false;
     }
 
-    public double calculateCartSubTotal(){
+    public double calculateSubTotal(){
         double subTotal = 0;
         for(Item i : items){
-            subTotal += i.getProduct().getProductPrice();
-            return subTotal;
+            subTotal += i.calculateItemSubtotal();
+
         }
-        return 0;
+        return subTotal;
     }
 
     public boolean isEmpty()
