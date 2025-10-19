@@ -18,12 +18,12 @@ public class Inventory {
         // Need to know if Shelves should have capacity and have only one Category of food to showcase
     }
 
-    public Product findProduct(String id)
+    public Product findProduct(int productID)
     {
         // for each shelves available, find product id and return if not null
         for (Shelf shelf: shelves)
         {
-            Product product = shelf.getProductsOnShelf();
+            Product product = shelf.findProductOnShelf(productID);
 
             if (product != null)
             {
@@ -40,7 +40,7 @@ public class Inventory {
         for (Shelf shelf: shelves)
         {
             // check if category matches 
-            if (product.getProductCategory() == shelf.getShelfCategory(shelf))
+            if (product.getProductCategory() == shelf.getShelfCategory())
             {
                 // add product
                 boolean isAdded = shelf.addProductToShelf(product);
@@ -57,14 +57,14 @@ public class Inventory {
         return false;
     }
 
-    public boolean restockProduct(String id, int amount)
+    public boolean restockProduct(int productID, int amount)
     {
-        Product product = findProduct(id);
+        Product product = findProduct(productID);
 
         // If not nonexistent, restock
         if (product != null)
         {
-            product.addStock(amount);
+            product.updateStock(amount);
 
             System.out.println("Product successfully restocked.");
 

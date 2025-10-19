@@ -57,11 +57,11 @@ public class Shelf {
         return null;
     }
 
-    public Product findProductOnShelf(String productID)
+    public Product findProductOnShelf(int productID)
     {
         for (Product productOnShelf: products)
         {
-            if (String.valueOf(productOnShelf.getProductID()).equals(productID))
+            if (productOnShelf.getProductID() == productID)
             {
                 return productOnShelf;
             }
@@ -108,7 +108,7 @@ public class Shelf {
         return shelfID;
     }
 
-    public String getShelfCategory(String id)
+    public String getShelfCategory()
     {
         return category;
     }
