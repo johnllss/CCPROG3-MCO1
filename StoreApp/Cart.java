@@ -39,9 +39,52 @@ public class Cart {
                 return i;
             }
         }
+        return null;
     }
     public ArrayList<Item> getItems()
     {
         return items;
     }
+    public boolean updateQuantity(String id, int amount){
+        for(Item i : items){
+            if(i.equals(id) && i.getProduct().getProductQuantity() <= amount){
+                i.setQuantity(amount);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public double calculateSubTotal(){
+        double subTotal = 0;
+        for(Item i : items){
+            subTotal += i.getProduct().getProductPrice();
+            return subTotal;
+        }
+        return 0;
+    }
+
+    public boolean isEmpty()
+    {
+        if(items.isEmpty())
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public void clearCart()
+    {
+        items.clear();
+    }
+    public void displayCart()
+    {
+        for(Item i : items)
+        {
+            System.out.println(i.getProduct().getProductName());
+            System.out.println(i.getProduct().getProductPrice());
+            System.out.println(i.getProduct().getProductQuantity());
+        }
+    }
 }
+
