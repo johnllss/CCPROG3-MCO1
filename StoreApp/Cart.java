@@ -25,29 +25,32 @@ public class Cart {
     {
        for(Item i : items)
        {
-           if(i.getProduct().equals(product)){
+           if(i.getProduct().equals(product)) {
                items.remove(i);
                return true;
            }
        }
        return false;
     }
+
     public Item findItem(String id)
     {
         for(Item i : items) {
-            if (i.getProduct().getProductID().equals(id)) {
+            if (i.getProduct().getProductName().equals(id)) {
                 return i;
             }
         }
         return null;
     }
+
     public ArrayList<Item> getItems()
     {
         return items;
     }
+
     public boolean updateQuantity(String id, int amount){
         for(Item i : items){
-            if(i.getProduct().getProductName().equals(id) && i.getProduct().getProductQuantity() >= amount){
+            if(i.getProduct().getProductName().equals(id) && i.getProduct().getProductQuantity() <= amount) {
                 i.setQuantity(amount);
                 return true;
             }
@@ -55,11 +58,10 @@ public class Cart {
         return false;
     }
 
-    public double calculateSubTotal(){
+    public double calculateCartSubTotal(){
         double subTotal = 0;
         for(Item i : items){
             subTotal += i.calculateItemSubtotal();
-
         }
         return subTotal;
     }
@@ -77,6 +79,7 @@ public class Cart {
     {
         items.clear();
     }
+
     public void displayCart()
     {
         for(Item i : items)

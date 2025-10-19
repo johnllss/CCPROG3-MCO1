@@ -9,14 +9,6 @@ public class MembershipCard {
         this.points = 0;
     }
 
-    public String getCardNumber() {
-        return cardNumber;
-    }
-
-    public int getPoints() {
-        return points;
-    }
-
     public boolean addPoints(int points) {
         this.points += points;
         return true;
@@ -31,7 +23,13 @@ public class MembershipCard {
             return true;
         }
     }
+    
+    public String getCardNumber() {
+        return cardNumber;
+    }
 
-
+    public int getPoints() {
+        return points;
+    }
 
 }
