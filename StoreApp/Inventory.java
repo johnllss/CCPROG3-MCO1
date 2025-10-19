@@ -92,13 +92,13 @@ public class Inventory {
         return false;
     }
 
-    public boolean updateProductName(String id, String newName)
+    public boolean updateProductName(int productID, String newName)
     {
-        Product product = findProduct(id);
+        Product product = findProduct(productID);
 
         if (product != null)
         {
-            product.setName(newName);
+            product.setProductName(newName);
 
             System.out.println("Product name successfully updated.");
 
@@ -108,13 +108,13 @@ public class Inventory {
         return false;
     }
 
-    public boolean updateProductPrice(String id, double newPrice)
+    public boolean updateProductPrice(int productID, double newPrice)
     {
-        Product product = findProduct(id);
+        Product product = findProduct(productID);
 
         if (product != null)
         {
-            product.setPrice(newPrice);
+            product.setProductPrice(newPrice);
 
             System.out.println("Product price successfully updated.");
 
@@ -124,9 +124,9 @@ public class Inventory {
         return false;
     }
 
-    public boolean updateProductBrand(String id, String newBrand)
+    public boolean updateProductBrand(int productID, String newBrand)
     {
-        Product product = findProduct(id);
+        Product product = findProduct(productID);
 
         if (product != null)
         {
@@ -140,9 +140,9 @@ public class Inventory {
         return false;
     }
 
-    public boolean updateProductVariant(String id, String newVariant)
+    public boolean updateProductVariant(int productID, String newVariant)
     {
-        Product product = findProduct(id);
+        Product product = findProduct(productID);
 
         if (product != null)
         {
@@ -156,9 +156,9 @@ public class Inventory {
         return false;
     }
 
-    public boolean updateProductExpirationDate(String id, String newExpirationDate)
+    public boolean updateProductExpirationDate(int productID, String newExpirationDate)
     {
-        Product product = findProduct(id);
+        Product product = findProduct(productID);
 
         if (product != null)
         {
@@ -184,7 +184,7 @@ public class Inventory {
             for (Product product: shelf.getProductsOnShelf())
             {
                 // then, check if lower than threshold
-                if (product.getProductQuantity() < quantitylevel)
+                if (product.getProductQuantity() < quantityLevel)
                 {
                     lowStockProducts.add(product);
                 }
@@ -216,7 +216,7 @@ public class Inventory {
 
         for (Shelf shelf: shelves)
         {
-            for (Product product: shelf.getProducts())
+            for (Product product: shelf.getProductsOnShelf())
             {
                 if (product.isExpired())
                 {

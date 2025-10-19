@@ -169,7 +169,7 @@ public class Product {
         this.productCategory = productCategory;
     }
 
-    public void setbrand(String brand)
+    public void setBrand(String brand)
     {
         this.brand = brand;
     }
