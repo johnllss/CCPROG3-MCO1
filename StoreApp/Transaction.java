@@ -58,6 +58,59 @@ public class Transaction {
 
     public boolean isDiscountable(String cardNumber, boolean isSenior)
     {
-        
+
+    }
+
+
+
+    // GETTERS
+    public Cart getCart()
+    {
+        return cart;
+    }
+
+    public Customer getCustomer()
+    {
+        return customer;
+    }
+
+    public double getSubtotal()
+    {
+        return subtotal;
+    }
+
+    public double getDiscount()
+    {
+        return discount;
+    }
+
+    public double getTax()
+    {
+        return tax;
+    }
+
+    public double getTotal()
+    {
+        return total;
+    }
+
+    public double getAmountReceived()
+    {
+        return amountReceived;
+    }
+
+    public double getChange()
+    {
+        return change;
+    }
+
+    public String getPaymentMethod()
+    {
+        return paymentMethod;
+    }
+
+    public String getTimeStamp()
+    {
+        return timestamp;
     }
 }
