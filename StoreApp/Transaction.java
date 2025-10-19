@@ -150,6 +150,8 @@ public class Transaction {
     public String generateTimeStamp()
     {
         // TODO: research on how to create a timestamp
+
+        return "";
     }
 
 
