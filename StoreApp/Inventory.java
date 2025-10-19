@@ -258,6 +258,55 @@ public class Inventory {
         System.out.printf("Total Products: %d%n", getTotalProductCount());
     }
 
+    public boolean verifyCartStock(Cart cart)
+    {
+        ArrayList<Item> itemsInCart = cart.getItems();
+
+        for (Item item: itemsInCart)
+        {
+            Product productItem = item.getProduct();
+            int userDesiredQty = item.getQuantity();
+
+            // find the product in inventory
+            Product productItemInInventory = findProduct(productItem.getProductID());
+
+            // check if product exists in inventory
+            if (productItemInInventory == null)
+            {
+                System.out.println("Uh-oh! " +productItem.getProductName()+ " no longer available.");
+                return false;
+            }
+
+            // check if product has sufficient stock
+            if (productItemInInventory.getProductQuantity() < userDesiredQty)
+            {
+                System.out.println("Sadly, " +productItem.getProductName()+ " has an insufficient stock.");
+                System.out.println("Your desired quantity: " +userDesiredQty);
+                System.out.println("Available quantity: " +productItem.getProductQuantity());
+
+                return false;
+            }
+        }
+
+        // all items have sufficient stock
+        return true;
+    }
+
+    public boolean operateCartPurchase(Cart cart)
+    {
+        ArrayList<Item> itemsInCart = cart.getItems();
+
+        for (Item item: itemsInCart)
+        {
+            Product itemInInventory = findProduct(item.getProduct().getProductID());
+
+            itemInInventory.reduceStock(item.getQuantity());
+        }
+
+        return true;
+    }
+
+    // GETTERS
     private int getTotalProductCount()
     {
         int count = 0;
