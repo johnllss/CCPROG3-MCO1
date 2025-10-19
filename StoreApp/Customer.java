@@ -5,8 +5,8 @@ public class Customer extends User {
     private boolean isSenior;
     private Cart cart;
 
-    public Customer(String name, String email, String password, MembershipCard membershipCard, int uniqueID,boolean isSenior) {
-        super(name, email, password, uniqueID);
+    public Customer(String name, String email, String password, MembershipCard membershipCard, boolean isSenior) {
+        super(name, email, password);
         this.membershipCard = membershipCard;
         this.isSenior = isSenior;
         this.cart = new Cart();
