@@ -23,17 +23,29 @@ public class Transaction {
         this.amountReceived = 0.0;
         this.change = 0.0;
         this.paymentMethod = "";
-        this.timestamp = "";
+        this.timestamp = generateTimeStamp();
     }
 
     public double calculateSubtotal()
     {
-        
+        subtotal = cart.calculateCartSubTotal();
+        return subtotal;
     }
 
     public double calculateDiscount()
     {
+        if (customer.isSenior())
+        {
+            discount += subtotal * 0.20;
+        }
 
+        if (customer.hasMembership())
+        {
+            MembershipCard card = customer.getMembershipCard();
+            int currentPoints = card.getPointsBalance();
+
+            
+        }
     }
 
     public double calculateTax()
@@ -57,6 +69,11 @@ public class Transaction {
     }
 
     public boolean isDiscountable(String cardNumber, boolean isSenior)
+    {
+
+    }
+
+    public String generateTimeStamp()
     {
 
     }
