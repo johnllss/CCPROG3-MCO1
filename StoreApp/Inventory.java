@@ -300,6 +300,7 @@ public class Inventory {
         {
             Product itemInInventory = findProduct(item.getProduct().getProductID());
 
+            // reduce stock of the product item by quantity amount
             itemInInventory.reduceStock(item.getQuantity());
         }
 
