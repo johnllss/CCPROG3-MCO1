@@ -3,15 +3,16 @@ package StoreApp;
 import java.util.ArrayList;
 
 public class Shelf {
-    private String shelfID;
+    private int shelfID;
+    private static int shelfIDCounter = 0;
     private String category;
     private int currentCapacity;
     private int maxCapacity;
     private ArrayList<Product> products;
 
-    public Shelf(String id, String category, int maxCapacity)
+    public Shelf(String category, int maxCapacity)
     {
-        this.shelfID = id;
+        this.shelfID = ++shelfIDCounter;
         this.category = category;
         this.maxCapacity = maxCapacity;
         this.products = new ArrayList<Product>();
@@ -71,6 +72,7 @@ public class Shelf {
 
     public void displayShelf()
     {
+        // SHELF INFORMATION
         // "%-10s" and others: '-' means left align, 10 means 10 spaces
         System.out.printf("\n>>> SHELF: %-10s | CATEGORY: %-20s | CAPACITY: %2d/%d <<<\n", shelfID, category, products.size(), maxCapacity);
 
@@ -79,9 +81,11 @@ public class Shelf {
             System.out.println("Currently empty.");
         } else
         {
+            // DISPLAY HEADERS FOR PRODUCTS
             System.out.printf("\n\n%-12s %-25s %-12s %-8s %-8s%n", "Product ID", "Name", "Brand", "Price", "Stock");
             System.out.println("-----");
 
+            // ACTUAL PRODUCT INFORMATION
             for (Product productOnShelf: products)
             {
                 String stockStatus = "";
@@ -99,7 +103,7 @@ public class Shelf {
         }
     }
 
-    public String getShelfID()
+    public int getShelfID()
     {
         return shelfID;
     }
