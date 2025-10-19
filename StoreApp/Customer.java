@@ -12,10 +12,15 @@ public class Customer extends User {
         this.cart = new Cart();
     }
 
-    // public boolean hasMembership()
-    // {
+    public boolean hasMembership()
+    {
+        if (membershipCard == null)
+        {
+            return false;
+        }
 
-    // }
+        return true;
+    }
 
     /**
      *
@@ -26,15 +31,17 @@ public class Customer extends User {
         return this.isSenior;
     }
 
-    // public boolean saveCustomerDataToFile()
-    // {
+    public boolean saveCustomerDataToFile()
+    {
+        // TODO implement
+        return false;
+    }
 
-    // }
-
-    // public loadCustomerDataFromFile()
-    // {
-
-    // }
+    public boolean loadCustomerDataFromFile()
+    {
+        // TODO implement
+        return false;
+    }
 
     // Getters and setters
     /**
