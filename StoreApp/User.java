@@ -11,7 +11,9 @@ public class User {
 
     public User() 
     {
-        this.uniqueID = ++uniqueIDCounter; // pre-increment so first instance is int 1
+        // pre-increment so first instance is int 1
+        this.uniqueID = ++uniqueIDCounter;
+        
         this.name = "N/A";
         this.email = "N/A";
         this.password = "N/A";
@@ -34,11 +36,6 @@ public class User {
 
         return false;
     }
-
-    // public boolean logout()
-    // {
-
-    // }
 
     // Getters and Setters
     public int getUniqueID()
