@@ -9,8 +9,8 @@ public class Employee extends User {
         this.role = "N/A";
     }
 
-    public Employee(String uniqueID, String name, String email, String password, String role) {
-        super(uniqueID, name, email, password);
+    public Employee(String name, String email, String password, String role) {
+        super(name, email, password);
         this.role = role;
     }
 

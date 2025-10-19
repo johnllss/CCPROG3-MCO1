@@ -23,7 +23,7 @@ public class Inventory {
         // for each shelves available, find product id and return if not null
         for (Shelf shelf: shelves)
         {
-            Product product = shelf.findProductInShelf(id);
+            Product product = shelf.getProductsOnShelf();
 
             if (product != null)
             {
