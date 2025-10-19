@@ -58,7 +58,7 @@ public class Cart {
     public double calculateCartSubTotal(){
         double subTotal = 0;
         for(Item i : items){
-            subTotal += i.getProduct().getProductPrice();
+            subTotal += i.calculateItemSubtotal();
             return subTotal;
         }
         return 0;
