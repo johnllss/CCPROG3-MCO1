@@ -41,7 +41,7 @@ public class User {
     // }
 
     // Getters and Setters
-    public String getUniqueID()
+    public int getUniqueID()
     {
         return uniqueID;
     }
@@ -66,7 +66,7 @@ public class User {
         this.name = name;
     }
 
-    public void setUniqueID(String id)
+    public void setUniqueID(int id)
     {
         this.uniqueID = id;
     }
