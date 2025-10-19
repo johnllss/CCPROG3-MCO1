@@ -4,6 +4,7 @@ package StoreApp;
  */
 public class Product {
     private int productID;
+    private static int productIDCounter = 0;
     private String productName;
     private double productPrice;
     private int productQuantity;
@@ -13,8 +14,6 @@ public class Product {
     private String expirationDate;
 
     /**
-     *
-     * @param productID
      * @param productName
      * @param productPrice
      * @param productQuantity
@@ -23,9 +22,9 @@ public class Product {
      * @param variant
      * @param expirationDate
      */
-    public Product(int productID, String productName, double productPrice, int productQuantity, String productCategory, String brand, String variant, String expirationDate)
+    public Product(String productName, double productPrice, int productQuantity, String productCategory, String brand, String variant, String expirationDate)
     {
-        this.productID = productID;
+        this.productID = ++productIDCounter;
         this.productName = productName;
         this.productPrice = productPrice;
         this.productQuantity = productQuantity;
@@ -71,7 +70,7 @@ public class Product {
         this.productQuantity = productQuantity + restockQuantity;
     }
 
-    public boolean isProductLowStock(String productID)
+    public boolean isProductLowStock()
     {
         if (productQuantity < 3)
         {
