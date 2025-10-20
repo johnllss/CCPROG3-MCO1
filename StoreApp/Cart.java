@@ -8,6 +8,12 @@ public class Cart {
         this.items = new ArrayList<>();
     }
 
+    /***
+     * Is a method which checks the if the desired product has enough stock/quantity in order to fulfill the customer's request.
+     * @param product is the product that wants to be added to the cart
+     * @param quantity is the number of products desired to be added to cart
+     * @return a boolean to signify succes / failure
+     */
     public boolean addItem(Product product, int quantity)
     {
         if(product.getProductQuantity() < quantity)
@@ -21,6 +27,11 @@ public class Cart {
         }
     }
 
+    /***
+     * Method which iterates through all items in cart and checks if product that wants to be removed is part of the cart
+     * @param product
+     * @return boolean indicating success/failure of search
+     */
     public boolean removeItem(Product product)
     {
        for(Item i : items)
@@ -33,6 +44,11 @@ public class Cart {
        return false;
     }
 
+    /***
+     * Method which iterates through all the items in the cart to find the item being searched
+     * @param id
+     * @return Item that is searched
+     */
     public Item findItem(String id)
     {
         for(Item i : items) {
@@ -43,11 +59,21 @@ public class Cart {
         return null;
     }
 
+    /***
+     *
+     * @return
+     */
     public ArrayList<Item> getItems()
     {
         return items;
     }
 
+    /***
+     *
+     * @param id
+     * @param amount
+     * @return
+     */
     public boolean updateQuantity(String id, int amount){
         for(Item i : items){
             if(i.getProduct().getProductID().equals(id) && i.getProduct().getProductQuantity() >= amount) {
@@ -58,6 +84,10 @@ public class Cart {
         return false;
     }
 
+    /***
+     *
+     * @return
+     */
     public double calculateCartSubTotal(){
         double subTotal = 0;
         for(Item i : items){
@@ -66,6 +96,10 @@ public class Cart {
         return subTotal;
     }
 
+    /***
+     *
+     * @return
+     */
     public boolean isEmpty()
     {
         if(items.isEmpty())
@@ -75,11 +109,17 @@ public class Cart {
         return false;
     }
 
+    /***
+     *
+     */
     public void clearCart()
     {
         items.clear();
     }
 
+    /***
+     *
+     */
     public void displayCart()
     {
         for(Item i : items)

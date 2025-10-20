@@ -1,4 +1,6 @@
 package StoreApp;
+import java.io.File;
+import java.io.IOexecption;
 
 public class Customer extends User {
     private MembershipCard membershipCard;
@@ -12,6 +14,10 @@ public class Customer extends User {
         this.cart = new Cart();
     }
 
+    /***
+     *
+     * @return
+     */
     public boolean hasMembership()
     {
         if (membershipCard == null)
