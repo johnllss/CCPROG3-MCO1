@@ -24,7 +24,7 @@ public class Shelf {
         {
             System.out.println("Oops! Shelf is full.");
             return false;
-        } else if (product.getProductCategory() != this.category)
+        } else if (!product.getProductCategory().equalsthis.category)
         {
             System.out.println("The product's category does not match this shelf's category!");
             return false;

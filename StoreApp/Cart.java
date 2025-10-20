@@ -36,7 +36,7 @@ public class Cart {
     public Item findItem(String id)
     {
         for(Item i : items) {
-            if (i.getProduct().getProductName().equals(id)) {
+            if (i.getProduct().getProductID().equals(id)) {
                 return i;
             }
         }
@@ -50,7 +50,7 @@ public class Cart {
 
     public boolean updateQuantity(String id, int amount){
         for(Item i : items){
-            if(i.getProduct().getProductName().equals(id) && i.getProduct().getProductQuantity() <= amount) {
+            if(i.getProduct().getProductID().equals(id) && i.getProduct().getProductQuantity() >= amount) {
                 i.setQuantity(amount);
                 return true;
             }
