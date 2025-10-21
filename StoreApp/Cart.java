@@ -60,8 +60,8 @@ public class Cart {
     }
 
     /***
-     *
-     * @return
+     * getter for all the items in the array list
+     * @return ArrayList of Items
      */
     public ArrayList<Item> getItems()
     {
@@ -69,10 +69,10 @@ public class Cart {
     }
 
     /***
-     *
+     * Updates the quantity of the product in cart
      * @param id
      * @param amount
-     * @return
+     * @return boolean, shows success or failure of the process
      */
     public boolean updateQuantity(String id, int amount){
         for(Item i : items){
@@ -85,8 +85,8 @@ public class Cart {
     }
 
     /***
-     *
-     * @return
+     * Iterates and calculates the total price for every item in the cart.
+     * @return double (total price)
      */
     public double calculateCartSubTotal(){
         double subTotal = 0;
@@ -97,8 +97,8 @@ public class Cart {
     }
 
     /***
-     *
-     * @return
+     * method that checks if the cart is empty
+     * @return boleaan to show if empty = true or not empty = false
      */
     public boolean isEmpty()
     {
@@ -110,7 +110,7 @@ public class Cart {
     }
 
     /***
-     *
+     * method that removes every item in the cart
      */
     public void clearCart()
     {
@@ -118,7 +118,7 @@ public class Cart {
     }
 
     /***
-     *
+     * iterates through every item and displays product name, product price, product quantity
      */
     public void displayCart()
     {
