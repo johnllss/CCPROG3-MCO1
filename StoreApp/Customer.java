@@ -1,12 +1,21 @@
 package StoreApp;
 import java.io.File;
-import java.io.IOexecption;
+import java.io.IOExecption;
 
 public class Customer extends User {
     private MembershipCard membershipCard;
     private boolean isSenior;
+    private int age;
     private Cart cart;
 
+    /***
+     * Class Constructor
+     * @param name
+     * @param email
+     * @param password
+     * @param membershipCard
+     * @param isSenior
+     */
     public Customer(String name, String email, String password, MembershipCard membershipCard, boolean isSenior) {
         super(name, email, password);
         this.membershipCard = membershipCard;
@@ -15,8 +24,8 @@ public class Customer extends User {
     }
 
     /***
-     *
-     * @return
+     * method that checks if the saved customer has a membership card
+     * @return boolean has membership = true null membership = false
      */
     public boolean hasMembership()
     {
@@ -29,18 +38,36 @@ public class Customer extends User {
     }
 
     /**
-     *
-     * @return
+     * method that checks if the age inputted by customer is available for senior discount
+     * @return boolean for success/failure
      */
-    public boolean isSenior()
+    public boolean isSenior(int age)
     {
-        return this.isSenior;
+        if(age >= 60)
+        {
+            setSenior(true);
+            return true;
+        }
+        return false;
     }
 
+    /***
+     * Method that saves the current customer's data to a file
+     * @return boolean to show if customer's data is saved to file
+     */
     public boolean saveCustomerDataToFile()
     {
         // TODO implement
         return false;
+    }
+
+    /**
+     * Setter for attribute senior
+     * @param isSenior
+     */
+    public void setSenior(boolean isSenior)
+    {
+        this.isSenior = isSenior;
     }
 
     public boolean loadCustomerDataFromFile()
@@ -51,14 +78,18 @@ public class Customer extends User {
 
     // Getters and setters
     /**
-     *
-     * @return
+     * Getter for membership card
+     * @return membershipcard details for customer
      */
     public MembershipCard getMembershipCard()
     {
         return membershipCard;
     }
 
+    /***
+     * Getter for cart
+     * @return cart details for customer
+     */
     public Cart getCart() 
     {
         return cart;

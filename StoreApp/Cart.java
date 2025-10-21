@@ -49,10 +49,10 @@ public class Cart {
      * @param id
      * @return Item that is searched
      */
-    public Item findItem(String id)
+    public Item findItem(int id)
     {
         for(Item i : items) {
-            if (i.getProduct().getProductID().equals(id)) {
+            if (i.getProduct().getProductID() == id) {
                 return i;
             }
         }
@@ -74,9 +74,9 @@ public class Cart {
      * @param amount
      * @return boolean, shows success or failure of the process
      */
-    public boolean updateQuantity(String id, int amount){
+    public boolean updateQuantity(int id, int amount){
         for(Item i : items){
-            if(i.getProduct().getProductID().equals(id) && i.getProduct().getProductQuantity() >= amount) {
+            if(i.getProduct().getProductID() == id && i.getProduct().getProductQuantity() >= amount) {
                 i.setQuantity(amount);
                 return true;
             }
