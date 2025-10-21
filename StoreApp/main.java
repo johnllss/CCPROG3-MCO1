@@ -1,11 +1,15 @@
 import java.util.Scanner;
+package StoreApp;
 
 public class Main{
     public static void main(String[] args){
         Scanner input = new Scanner(System.in);
-        Employee[] employees;
-        while(true){
-            System.out.println("==Welcome to the Conveinience Store==");
+        Employee[] employees = {new Employee("Bob","Bob1234@gmail.com", "password123", "Manager"),
+                        new Employee("Sam", "Sam1234@gmail.com", "password421", "Restocker"),
+                        new Employee("Max", "Max1234@gmail.com", "password987", "Restocker")};
+        boolean MainLoop = true;
+        while(MainLoop == true){
+            System.out.println("==Welcome to the Convenience Store==");
             System.out.println("1. Manage Inventory");
             System.out.println("2. Customer View");
             System.out.println("3. Exit");
@@ -42,7 +46,7 @@ public class Main{
                     String var1 = input.nextLine();
                     if(var1.equals("1") || var1.equalsIgnoreCase("Restock Shelf")){
                         if(currentEmployee.getRole().equals("Restocker") || currentEmployee.getRole().equals("Manager")){
-                            System.out.println("Enter restock quantity: ")
+                            System.out.print("Enter restock quantity: ");
                             int quantity = input.nextInt();
                             System.out.println("Enter ID: ");
                             String id = input.nextLine();
@@ -54,9 +58,12 @@ public class Main{
 
                 }
             }
+            //To-do Customer View//
             if(input.nextLine().equals("2")||input.nextLine().equalsignorecase("Customer View")){
 
             }
+            if(input.nextLine().equals("3")||input.nextLine().equalsignorecase("Exit)){
+                MainLoop = false;
         }
     }
 }
