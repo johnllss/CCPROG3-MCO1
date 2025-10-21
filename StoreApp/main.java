@@ -1,8 +1,8 @@
 import java.util.Scanner;
 package StoreApp;
 
-public class Main{
-    public static void main(String[] args){
+public class Main {
+    public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         Employee[] employees = {new Employee("Bob","Bob1234@gmail.com", "password123", "Manager"),
                         new Employee("Sam", "Sam1234@gmail.com", "password421", "Restocker"),
