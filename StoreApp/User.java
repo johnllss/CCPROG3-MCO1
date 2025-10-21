@@ -27,16 +27,6 @@ public class User {
         this.password = password;
     }
 
-    public boolean login(String email, String password)
-    {
-        if(email.equals(this.email) && password.equals(this.password))
-        {
-            return true;
-        }
-
-        return false;
-    }
-
     // Getters and Setters
     public int getUniqueID()
     {
