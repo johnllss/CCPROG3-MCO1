@@ -3,7 +3,7 @@ package StoreApp;
 
 public class Customer extends User {
     private MembershipCard membershipCard;
-    private boolean Senior;
+    private boolean isSenior;
     private int age;
     private Cart cart;
 
@@ -18,7 +18,7 @@ public class Customer extends User {
     public Customer(String name, String email, String password, MembershipCard membershipCard, boolean isSenior) {
         super(name, email, password);
         this.membershipCard = membershipCard;
-        this.Senior = Senior;
+        this.isSenior = isSenior;
         this.cart = new Cart();
     }
 
@@ -42,7 +42,7 @@ public class Customer extends User {
      */
     public boolean isSenior()
     {
-        if(Senior == true)
+        if(isSenior == true)
             {
             return true;
             }
@@ -65,7 +65,7 @@ public class Customer extends User {
      */
     public void setSenior(boolean isSenior)
     {
-        this.Senior = isSenior;
+        this.isSenior = isSenior;
     }
 
     public boolean loadCustomerDataFromFile()
