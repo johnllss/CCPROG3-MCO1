@@ -3,9 +3,6 @@ package StoreApp;
 import java.util.Scanner;
 
 public class StoreDriver {
-    private Inventory inventory;
-    private Customer customer;
-
     public static void main(String args[]) {
         Scanner input = new Scanner(System.in);
         Inventory inventory = new Inventory();
