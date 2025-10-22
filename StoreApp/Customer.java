@@ -76,7 +76,7 @@ public class Customer extends User {
      */
     public int getAge()
     {
-        return this.age;
+        return age;
     }
 
     /**
@@ -85,7 +85,7 @@ public class Customer extends User {
      */
     public MembershipCard getMembershipCard()
     {
-        return this.membershipCard;
+        return membershipCard;
     }
     
     /***
@@ -94,7 +94,7 @@ public class Customer extends User {
      */
     public Cart getCart() 
     {
-        return this.cart;
+        return cart;
     }
 
     /**

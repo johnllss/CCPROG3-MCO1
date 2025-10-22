@@ -30,7 +30,7 @@ public class Item {
      */
     public Product getProduct()
     {
-        return this.product;
+        return product;
     }
 
     /**
@@ -39,7 +39,7 @@ public class Item {
      */
     public int getQuantity()
     {
-        return this.quantity;
+        return quantity;
     }
 
     /**
