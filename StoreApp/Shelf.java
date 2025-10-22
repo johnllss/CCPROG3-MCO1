@@ -10,6 +10,11 @@ public class Shelf {
     private int maxCapacity;
     private ArrayList<Product> products;
 
+    /**
+     * Class Shelf parameterized constructor
+     * @param category is the category for the Shelf
+     * @param maxCapacity is the max number of Products in the Shelf
+     */
     public Shelf(String category, int maxCapacity)
     {
         this.shelfID = ++shelfIDCounter;
@@ -18,6 +23,11 @@ public class Shelf {
         this.products = new ArrayList<Product>();
     }
 
+    /**
+     * This method adds a product to the Shelf.
+     * @param product is the product to be added.
+     * @return boolean for success/failure
+     */
     public boolean addProductToShelf(Product product)
     {
         if (isShelfFull())
@@ -35,11 +45,20 @@ public class Shelf {
         }
     }
 
+    /**
+     * This method checks if the Shelf is full or not.
+     * @return boolean for success/failure
+     */
     public boolean isShelfFull()
     {
         return products.size() >= maxCapacity;
     }
 
+    /**
+     * This method removes a product from the Shelf based on the productID.
+     * @param productID is the product's ID to use for finding the product.
+     * @return Product is the product removed and its details.
+     */
     public Product removeProductFromShelf(int productID)
     {
         // check each product in ArrayList<Product> products
@@ -57,6 +76,11 @@ public class Shelf {
         return null;
     }
 
+    /**
+     * This method finds a product on the Shelf based on the productID.
+     * @param productID is the product's ID to use for finding the product.
+     * @return Product is the Product found and its details.
+     */
     public Product findProductOnShelf(int productID)
     {
         for (Product productOnShelf: products)
@@ -70,6 +94,10 @@ public class Shelf {
         return null;
     }
 
+    /**
+     * This method displays the Products stored in a Shelf.
+     * @return void
+     */
     public void displayShelf()
     {
         // SHELF INFORMATION
@@ -103,31 +131,56 @@ public class Shelf {
         }
     }
 
+    /**
+     * This is a getter method to get the Shelf's shelfID.
+     * @return int for shelfID.
+     */
     public int getShelfID()
     {
         return shelfID;
     }
 
+    /**
+     * This is a getter method to get the Shelf's category.
+     * @return int for category.
+     */
     public String getShelfCategory()
     {
         return category;
     }
 
+    /**
+     * This is a getter method to get the Shelf's products.
+     * @return ArrayList<Product> - All Shelf's Products
+     */
     public ArrayList<Product> getProductsOnShelf()
     {
         return products;
     }
 
+    /**
+     * This is a getter method to get the Shelf's maxCapacity.
+     * @return int for maxCapacity.
+     */
     public int getMaxCapacity()
     {
         return maxCapacity;
     }
 
+    /**
+     * This is a getter method to get the Shelf's currentCapacity.
+     * @return int for currentCapacity.
+     */
     public int getCurrentCapacity()
     {
         return currentCapacity;
     }
 
+    /**
+     * This method sets the Shelf's category.
+     * @param newCategory is the new category to be used.
+     * @return void
+     */
     public void setShelfCategory(String newCategory)
     {
         this.category = newCategory;
