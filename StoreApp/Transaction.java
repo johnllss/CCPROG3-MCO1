@@ -14,6 +14,11 @@ public class Transaction {
     private String paymentMethod;
     private String timestamp;
 
+    /**
+     * Class Transaction parameterized constructor.
+     * @param customer is the referenced customer.
+     * @param cart is the referenced cart.
+     */
     public Transaction(Customer customer, Cart cart)
     {
         this.cart = cart;
@@ -28,12 +33,20 @@ public class Transaction {
         this.timestamp = generateTimeStamp();
     }
 
+    /**
+     * This method calculates the whole Cart's subtotal.
+     * @return double for the subtotal.
+     */
     public double calculateSubtotal()
     {
         subtotal = cart.calculateCartSubTotal();
         return subtotal;
     }
 
+    /**
+     * This method calculates the discount to be applied.
+     * @return double for the discount.
+     */
     public double calculateDiscount()
     {
         Scanner scan = new Scanner(System.in);
@@ -86,6 +99,10 @@ public class Transaction {
         return discount;
     }
 
+    /**
+     * This method calculates the tax to be applied on the subtotal.
+     * @return double for the tax.
+     */
     public double calculateTax()
     {
         double taxableSubtotal = subtotal - discount;
@@ -103,6 +120,10 @@ public class Transaction {
         return tax;
     }
 
+    /**
+     * This method calculates the Cart's total price.
+     * @return double for the total.
+     */
     public double calculateTotal()
     {
         calculateSubtotal();
@@ -113,6 +134,10 @@ public class Transaction {
         return total;
     }
 
+    /**
+     * This method calculates the change to be given to the Customer
+     * @return double for the change.
+     */
     public double calculateChange()
     {
         if (amountReceived >= total)
@@ -126,6 +151,10 @@ public class Transaction {
         }
     }
 
+    /**
+     * This method calculates the membership points that the Customer earned from a transaction.
+     * @return int for the points earned.
+     */
     public int calculateMembershipPoints()
     {
         if (!customer.hasMembership())
@@ -140,6 +169,12 @@ public class Transaction {
         return pointsEarnedFromTXN;
     }
 
+    /**
+     * This method checks if the purchase is discountable based on both the membership card and seniority condition.
+     * @param cardNumber is the Customer's membership card number.
+     * @param isSenior is the Customer's status on whether they are a senior or not.
+     * @return boolean for success/failure.
+     */
     public boolean isDiscountable(String cardNumber, boolean isSenior)
     {
         // TODO: determine if this method is usable
@@ -147,6 +182,10 @@ public class Transaction {
         return false;
     }
 
+    /**
+     * This method generates the time stamp for the processed transaction.
+     * @return String for the time stamp.
+     */
     public String generateTimeStamp()
     {
         // TODO: research on how to create a timestamp
@@ -157,56 +196,101 @@ public class Transaction {
 
 
     // GETTERS
+    /**
+     * This is a getter method to get Transaction's cart.
+     * @return Cart
+     */
     public Cart getCart()
     {
         return cart;
     }
 
+    /**
+     * This is a getter method to get Transaction's associated Customer.
+     * @return Customer
+     */
     public Customer getCustomer()
     {
         return customer;
     }
 
+    /**
+     * This is a getter method to get Transaction's subtotal.
+     * @return double for subtotal.
+     */
     public double getSubtotal()
     {
         return subtotal;
     }
 
+    /**
+     * This is a getter method to get Transaction's discount.
+     * @return double for discount.
+     */
     public double getDiscount()
     {
         return discount;
     }
 
+    /**
+     * This is a getter method to get Transaction's tax.
+     * @return double for tax.
+     */
     public double getTax()
     {
         return tax;
     }
 
+    /**
+     * This is a getter method to get Transaction's total.
+     * @return double for total.
+     */
     public double getTotal()
     {
         return total;
     }
 
+    /**
+     * This is a getter method to get Transaction's amountReceived.
+     * @return double for amountReceived.
+     */
     public double getAmountReceived()
     {
         return amountReceived;
     }
 
+    /**
+     * This is a getter method to get Transaction's change.
+     * @return double for change.
+     */
     public double getChange()
     {
         return change;
     }
 
+    /**
+     * This is a getter method to get Transaction's paymentMethod.
+     * @return double for paymentMethod.
+     */
     public String getPaymentMethod()
     {
         return paymentMethod;
     }
 
+    /**
+     * This is a getter method to get Transaction's timestamp.
+     * @return double for timestamp.
+     */
     public String getTimeStamp()
     {
         return timestamp;
     }
 
+    /**
+     * This method sets the Transaction's amountReceived.
+     * @param amount is the amount to be used to assign to amountRecieved.
+     * @return void
+     */
     public void setAmountReceived(double amount)
     {
         this.amountReceived = amount;
