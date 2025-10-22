@@ -59,6 +59,44 @@ public class Customer extends User {
         return false;
     }
 
+    /***
+     * Method that loads the current customer's data to a file
+     * @return boolean to show if loading is successful or not
+     */
+    public boolean loadCustomerDataFromFile()
+    {
+        // TODO implement
+        return false;
+    }
+    
+    // GETTERS AND SETTERS
+    /**
+     * Getter for membership card
+     * @return membershipcard details for customer
+     */
+    public int getAge()
+    {
+        return this.age;
+    }
+
+    /**
+     * Getter for membership card
+     * @return membershipcard details for customer
+     */
+    public MembershipCard getMembershipCard()
+    {
+        return this.membershipCard;
+    }
+    
+    /***
+     * Getter for cart
+     * @return cart details for customer
+     */
+    public Cart getCart() 
+    {
+        return this.cart;
+    }
+
     /**
      * Setter for attribute senior
      * @param isSenior
@@ -66,30 +104,5 @@ public class Customer extends User {
     public void setSenior(boolean isSenior)
     {
         this.isSenior = isSenior;
-    }
-
-    public boolean loadCustomerDataFromFile()
-    {
-        // TODO implement
-        return false;
-    }
-
-    // Getters and setters
-    /**
-     * Getter for membership card
-     * @return membershipcard details for customer
-     */
-    public MembershipCard getMembershipCard()
-    {
-        return membershipCard;
-    }
-
-    /***
-     * Getter for cart
-     * @return cart details for customer
-     */
-    public Cart getCart() 
-    {
-        return cart;
     }
 }
