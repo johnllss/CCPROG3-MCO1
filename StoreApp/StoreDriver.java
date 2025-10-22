@@ -7,24 +7,32 @@ public class StoreDriver {
         Scanner input = new Scanner(System.in);
         Inventory inventory = new Inventory();
         Employee[] employees = {new Employee("Bob","Bob1234@gmail.com", "password123", "Manager"),
-                        new Employee("Sam", "Sam1234@gmail.com", "password421", "Restocker"),
-                        new Employee("Max", "Max1234@gmail.com", "password987", "Restocker")};
+                                new Employee("Sam", "Sam1234@gmail.com", "password421", "Restocker"),
+                                new Employee("Max", "Max1234@gmail.com", "password987", "Restocker")};
+
         boolean MainLoop = true;
-        while(MainLoop == true){
+
+        while (MainLoop == true)
+        {
             System.out.println("==Welcome to the Convenience Store==");
             System.out.println("1. Manage Inventory");
             System.out.println("2. Customer View");
             System.out.println("3. Exit");
+
             System.out.print("Enter your choice: ");
             String choice = input.nextLine();
-            if(choice.equals("1")||choice.equalsIgnoreCase("Manage Inventory")){
+
+            if (choice.equals("1") | choice.equalsIgnoreCase("Manage Inventory"))
+            {
                 System.out.println("Enter email: ");
                 String email = input.nextLine();
                 System.out.println("Enter password: ");
                 String password = input.nextLine();
                 boolean success = false;
                 Employee currentEmployee = null;
-                for(Employee employee: employees){
+
+                for (Employee employee: employees)
+                {
                     if(employee.login(email, password))
                     {
                         success = true;
@@ -33,16 +41,18 @@ public class StoreDriver {
                     }
                 }
 
-                if(!success){
+                if(!success)
+                {
                     System.out.println("Invalid email or password");
                 }
-                else {
+                else 
+                {
                     System.out.println("Successfully logged in");
                     System.out.println("==Inventory Management==");
                     System.out.println("1. Restock Shelf");
-                    //To-do//
+                    // TODO
                     System.out.println("2. Add Product");
-                    //To-do//
+                    // TODO
                     System.out.println("3. Remove Product");
                     System.out.print("Enter your choice: ");
                     String var1 = input.nextLine();
@@ -57,17 +67,19 @@ public class StoreDriver {
                         }
                     }
 
-                    //To-do//
+                    // TODO
 
                 }
             }
 
-            //To-do Customer View//
-            if(input.nextLine().equals("2")||input.nextLine().equalsIgnoreCase("Customer View")){
+            //TODO Customer View//
+            if (input.nextLine().equals("2") || input.nextLine().equalsIgnoreCase("Customer View"))
+            {
 
             }
 
-            if(input.nextLine().equals("3") || input.nextLine().equalsIgnoreCase("Exit")) {
+            if (input.nextLine().equals("3") || input.nextLine().equalsIgnoreCase("Exit")) 
+            {
                 MainLoop = false;
             }
         }
