@@ -11,6 +11,10 @@ public class Inventory {
         initializeShelves();
     }
 
+    /**
+     * This method initializes each shelf of the Inventory
+     * @return void
+     */
     public void initializeShelves()
     {
         // TODO: Shelves initialization
@@ -18,6 +22,11 @@ public class Inventory {
         // Need to know if Shelves should have capacity and have only one Category of food to showcase
     }
 
+    /**
+     * This method finds the product based from the product ID.
+     * @param productID is the product's ID
+     * @return Product - All of the Product's details
+     */
     public Product findProduct(int productID)
     {
         // for each shelves available, find product id and return if not null
@@ -34,6 +43,11 @@ public class Inventory {
         return null;
     }
 
+    /**
+     * This method adds a new product to the Inventory catalogue.
+     * @param product is the new product and all its details
+     * @return boolean for success/failure
+     */
     public boolean addProduct(Product product)
     {
         // check each of the shelves
@@ -57,6 +71,12 @@ public class Inventory {
         return false;
     }
 
+    /**
+     * This method restocks the product's quantity based on the productID.
+     * @param productID is the product's ID
+     * @param amount is the amount to be added
+     * @return boolean for success/failure
+     */
     public boolean restockProduct(int productID, int amount)
     {
         Product product = findProduct(productID);
@@ -74,13 +94,18 @@ public class Inventory {
         return false;
     }
 
-    public boolean removeProduct(String id)
+    /**
+     * This method removes a product from Inventory based on the productID.
+     * @param productID is the product's ID
+     * @return boolean for success/failure
+     */
+    public boolean removeProduct(int productID)
     {
         // Check each shelf
         for (Shelf shelf: shelves)
         {
             // Remove the product from the shelf
-            Product isRemoved = shelf.removeProductFromShelf(id);
+            Product isRemoved = shelf.removeProductFromShelf(productID);
 
             if (isRemoved != null)
             {
@@ -92,6 +117,12 @@ public class Inventory {
         return false;
     }
 
+    /**
+     * This product updates the name of the product.
+     * @param productID is the product's ID
+     * @param newName is the new name of the product
+     * @return boolean for success/failure
+     */
     public boolean updateProductName(int productID, String newName)
     {
         Product product = findProduct(productID);
@@ -108,6 +139,12 @@ public class Inventory {
         return false;
     }
 
+    /**
+     * This method finds the product that matches the productID provided and updates its price.
+     * @param productID is the product's ID
+     * @param newPrice is the new price to be assigned
+     * @return boolean for success/failure
+     */
     public boolean updateProductPrice(int productID, double newPrice)
     {
         Product product = findProduct(productID);
@@ -124,6 +161,12 @@ public class Inventory {
         return false;
     }
 
+    /**
+     * This method finds the product that matches the productID provided and updates its brand.
+     * @param productID is the product's ID
+     * @param newBrand is the new brand to be assigned
+     * @return boolean for success/failure
+     */
     public boolean updateProductBrand(int productID, String newBrand)
     {
         Product product = findProduct(productID);
@@ -140,6 +183,12 @@ public class Inventory {
         return false;
     }
 
+    /**
+     * This method finds the product that matches the productID provided and updates its variant.
+     * @param productID is the product's ID
+     * @param newVariant is the new variant to be assigned
+     * @return boolean for success/failure
+     */
     public boolean updateProductVariant(int productID, String newVariant)
     {
         Product product = findProduct(productID);
@@ -156,6 +205,12 @@ public class Inventory {
         return false;
     }
 
+    /**
+     * This method finds the product that matches the productID provided and updates its expiration date.
+     * @param productID is the product's ID
+     * @param newExpirationDate is new expiration date to be assigned
+     * @return boolean for success/failure
+     */
     public boolean updateProductExpirationDate(int productID, String newExpirationDate)
     {
         Product product = findProduct(productID);
@@ -172,6 +227,11 @@ public class Inventory {
         return false;
     }
 
+    /**
+     * This product returns all products that are low on stock.
+     * @param quantityLevel is the quantity threshold level to determine low stock status.
+     * @return ArrayList<Product> - All products that are low on stock.
+     */
     public ArrayList<Product> getLowStockProducts(int quantityLevel)
     {
         // declare this to store the products with low stocks
@@ -194,6 +254,11 @@ public class Inventory {
         return lowStockProducts;
     }
 
+    /**
+     * This method gets all products that are based on the provided category.
+     * @param category is the category of the products to look for.
+     * @return ArrayList<Product> - All products that are under the specified category.
+     */
     public ArrayList<Product> getProductsByCategory(String category)
     {
         // check each shelf
@@ -210,6 +275,10 @@ public class Inventory {
         return new ArrayList<>();
     }
 
+    /**
+     * This method gets all products that are already expired.
+     * @return ArrayList<Product> - All products that are already expired.
+     */
     public ArrayList<Product> getExpiredProducts()
     {
         ArrayList<Product> expiredProducts = new ArrayList<Product>();
@@ -228,6 +297,11 @@ public class Inventory {
         return expiredProducts;
     }
 
+    /**
+     * This method saves the Inventory's data to a file
+     * @param fileName is the file name of the file
+     * @return boolean for success/failure
+     */
     public boolean saveInventoryToFile(String fileName)
     {
         // TODO: SAVING TO FILE
@@ -237,6 +311,11 @@ public class Inventory {
         return false;
     }
 
+    /**
+     * This method loads the saved Inventory data from a file
+     * @param fileName is the file name of the file
+     * @return boolean for success/failure
+     */
     public boolean loadInventoryFromFile(String fileName)
     {
         // TODO: LOADING FROM FILE
@@ -246,6 +325,10 @@ public class Inventory {
         return false;
     }
 
+    /**
+     * This method displays the products in the inventory in a per Shelf basis.
+     * @return void
+     */
     public void displayInventory()
     {
         System.out.println(">>> INVENTORY OVERVIEW <<<");
@@ -258,6 +341,11 @@ public class Inventory {
         System.out.printf("Total Products: %d%n", getTotalProductCount());
     }
 
+    /**
+     * This method verifies the stocks of the Customer's items placed inside their cart.
+     * @param cart is the customer's cart.
+     * @return boolean for success/failure
+     */
     public boolean verifyCartStock(Cart cart)
     {
         ArrayList<Item> itemsInCart = cart.getItems();
@@ -292,6 +380,11 @@ public class Inventory {
         return true;
     }
 
+    /**
+     * This method processes the Customer's purchase after being verified. This mainly reduces the stocks of the items checked out.
+     * @param cart is the Customer's cart.
+     * @return boolean for success/failure
+     */
     public boolean operateCartPurchase(Cart cart)
     {
         ArrayList<Item> itemsInCart = cart.getItems();
@@ -308,6 +401,10 @@ public class Inventory {
     }
 
     // GETTERS
+    /**
+     * This gets the total number of products in the Inventory.
+     * @return int for the product count.
+     */
     private int getTotalProductCount()
     {
         int count = 0;
@@ -320,6 +417,10 @@ public class Inventory {
         return count;
     }
 
+    /**
+     * This is a getter method to return the shelves of the Inventory.
+     * @return ArrayList<Shelf> - All shelves in Inventory.
+     */
     public ArrayList<Shelf> getShelves()
     {
         return shelves;

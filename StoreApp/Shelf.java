@@ -40,13 +40,13 @@ public class Shelf {
         return products.size() >= maxCapacity;
     }
 
-    public Product removeProductFromShelf(String productID)
+    public Product removeProductFromShelf(int productID)
     {
         // check each product in ArrayList<Product> products
         for (Product productOnShelf: products)
         {
             // if productOnShelf's productID == productID
-            if (String.valueOf(productOnShelf.getProductID()).equals(productID))
+            if (productOnShelf.getProductID() == productID)
             {
                 // remove the specified product by accessing the index where the for loop is at
                 products.remove(products.indexOf(productOnShelf));
