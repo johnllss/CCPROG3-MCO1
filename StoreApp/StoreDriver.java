@@ -8,6 +8,7 @@ public class StoreDriver {
 
     public static void main(String args[]) {
         Scanner input = new Scanner(System.in);
+        Inventory inventory = new Inventory();
         Employee[] employees = {new Employee("Bob","Bob1234@gmail.com", "password123", "Manager"),
                         new Employee("Sam", "Sam1234@gmail.com", "password421", "Restocker"),
                         new Employee("Max", "Max1234@gmail.com", "password987", "Restocker")};
@@ -53,8 +54,9 @@ public class StoreDriver {
                             System.out.print("Enter restock quantity: ");
                             int quantity = input.nextInt();
                             System.out.println("Enter ID: ");
-                            String id = input.nextLine();
-                            restock(id, quantity);
+                            int id = input.nextInt();
+                            input.nextLine();
+                            currentEmployee.restock(inventory, id, quantity);
                         }
                     }
 
@@ -64,11 +66,11 @@ public class StoreDriver {
             }
 
             //To-do Customer View//
-            if(input.nextLine().equals("2")||input.nextLine().equalsignorecase("Customer View")){
+            if(input.nextLine().equals("2")||input.nextLine().equalsIgnoreCase("Customer View")){
 
             }
 
-            if(input.nextLine().equals("3") || input.nextLine().equalsignorecase("Exit")) {
+            if(input.nextLine().equals("3") || input.nextLine().equalsIgnoreCase("Exit")) {
                 MainLoop = false;
             }
         }

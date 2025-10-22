@@ -1,10 +1,9 @@
 package StoreApp;
-import java.io.File;
-import java.io.IOExecption;
+
 
 public class Customer extends User {
     private MembershipCard membershipCard;
-    private boolean isSenior;
+    private boolean Senior;
     private int age;
     private Cart cart;
 
@@ -19,7 +18,7 @@ public class Customer extends User {
     public Customer(String name, String email, String password, MembershipCard membershipCard, boolean isSenior) {
         super(name, email, password);
         this.membershipCard = membershipCard;
-        this.isSenior = isSenior;
+        this.Senior = Senior;
         this.cart = new Cart();
     }
 
@@ -41,13 +40,12 @@ public class Customer extends User {
      * method that checks if the age inputted by customer is available for senior discount
      * @return boolean for success/failure
      */
-    public boolean isSenior(int age)
+    public boolean isSenior()
     {
-        if(age >= 60)
-        {
-            setSenior(true);
+        if(Senior == true)
+            {
             return true;
-        }
+            }
         return false;
     }
 
@@ -67,7 +65,7 @@ public class Customer extends User {
      */
     public void setSenior(boolean isSenior)
     {
-        this.isSenior = isSenior;
+        this.Senior = isSenior;
     }
 
     public boolean loadCustomerDataFromFile()

@@ -24,10 +24,10 @@ public class Employee extends User {
     }
 
     //To-do//
-    public void restock(String id, int quantity)
+    public void restock(Inventory inventory,int id, int quantity)
     {
 
-        restockProduct(id, quantity);
+        inventory.restockProduct(id, quantity);
     }
 
     public String getRole()
