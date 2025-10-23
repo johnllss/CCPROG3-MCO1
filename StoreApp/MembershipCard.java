@@ -37,6 +37,15 @@ public class MembershipCard {
             return true;
         }
     }
+
+    public String generateCardNumber()
+    {
+        String generatedCardNumber = "";
+        
+        // TODO generation
+
+        return generatedCardNumber;
+    }
     
     /**
      * This is a getter method to get the cardNumber.
