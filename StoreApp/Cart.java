@@ -29,7 +29,7 @@ public class Cart {
 
     /***
      * Method which iterates through all items in cart and checks if product that wants to be removed is part of the cart
-     * @param product
+     * @param productID is the ID of the product being removed
      * @return boolean indicating success/failure of search
      */
     public boolean removeItem(int productID)
@@ -46,7 +46,7 @@ public class Cart {
 
     /***
      * Method which iterates through all the items in the cart to find the item being searched
-     * @param id
+     * @param id is the id of the product that wants to be found
      * @return Item that is searched
      */
     public Item findItem(int id)
@@ -70,8 +70,8 @@ public class Cart {
 
     /***
      * Updates the quantity of the product in cart
-     * @param id
-     * @param amount
+     * @param id id of the product that wants to be updated
+     * @param amount quantity of the product
      * @return boolean, shows success or failure of the process
      */
     public boolean updateQuantity(int id, int amount){

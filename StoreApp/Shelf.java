@@ -78,8 +78,8 @@ public class Shelf {
 
     /***
      * Method returns product from given productName and productBrand
-     * @param productName
-     * @param productBrand
+     * @param productName name of the product that wants to be found
+     * @param productBrand brand of the product that wants to be found
      * @return product object
      */
     public Product findProductOnShelf(String productName, String productBrand)
@@ -95,6 +95,12 @@ public class Shelf {
         return null;
 
     }
+
+    /***
+     * Method to find product in shelf using product id
+     * @param productID ID of the product wanting to be found
+     * @return product object that is being found
+     */
     public Product findProductOnShelf(int productID)
     {
         for(Product product: this.getProductsOnShelf()){
@@ -147,7 +153,7 @@ public class Shelf {
     }
 
     /***
-     *
+     * Displays a modified view for customers for better UI
      */
     public void displayShelfCustomerView()
     {
@@ -165,7 +171,7 @@ public class Shelf {
             int count = 1;
             for (Product productOnShelf: products)
             {
-                String stockStatus = "";
+                String stockStatus = "In-Stock";
 
                 // checks for product's stock quantity
                 if (productOnShelf.getProductQuantity() < 3)
