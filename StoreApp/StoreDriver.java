@@ -48,6 +48,8 @@ public class StoreDriver {
         inventory.addProduct(new Product("Anesthetics", 125.0, 10, "Medications", "Diprivan", "Propofol", null));
         inventory.addProduct(new Product("Paracetamol", 55.0, 10, "Medications", "Biogesic", "500mg", "2028-08-15"));
 
+        System.out.println("\nInitialization of inventory complete.\n");
+
         boolean MainLoop = true;
         while (MainLoop)
         {
