@@ -8,18 +8,18 @@ public class Customer extends User {
     private Cart cart;
 
     /***
-     * Class Constructor
+     * Class Customer parameterized constructor
      * @param name
      * @param email
      * @param password
      * @param membershipCard
      * @param isSenior
      */
-    public Customer(String name, String email, String password, MembershipCard membershipCard, boolean isSenior) {
+    public Customer(String name, String email, String password, MembershipCard membershipCard, boolean isSenior, Cart cart) {
         super(name, email, password);
         this.membershipCard = membershipCard;
         this.isSenior = isSenior;
-        this.cart = new Cart();
+        this.cart = cart;
     }
 
     /***
@@ -43,9 +43,9 @@ public class Customer extends User {
     public boolean isSenior()
     {
         if(isSenior == true)
-            {
+        {
             return true;
-            }
+        }
         return false;
     }
 
