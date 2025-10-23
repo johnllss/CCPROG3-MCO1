@@ -1,5 +1,6 @@
 package StoreApp;
 
+import java.lang.reflect.Member;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -148,14 +149,13 @@ public class StoreDriver {
                 }
             }
 
-            //TODO Customer View//
             else if (choice.equals("2") || choice.equalsIgnoreCase("Customer View"))
             {
-                Cart  cart = new Cart();
+                Cart cart = new Cart();
                 System.out.println("\nCustomer View\n");
 
                 boolean customerView = true;
-                while (customerView) 
+                while (customerView)
                 {
                     int currentIndex = 0;
 
@@ -238,18 +238,39 @@ public class StoreDriver {
                             }
                             else
                             {
-                                // NOTE: customer details input
+                                System.out.println("\nChecking out\n");
 
-                                Transaction transaction = new Transaction(null, cart);
+                                System.out.println("Enter your name: ");
+                                String name = input.nextLine();
+
+                                System.out.println("Enter your email address: ");
+                                String email = input.nextLine();
+
+                                System.out.println("Do you possess a membership card? (Yes/No)");
+                                boolean hasMembership = input.nextLine().equalsIgnoreCase("yes");
+
+                                MembershipCard membCard = null;
+                                if (hasMembership)
+                                {
+                                    System.out.println("Enter your membership card number: ");
+                                    String membCardNum = input.nextLine();
+                                    membCard = new MembershipCard(membCardNum);
+                                }
+
+                                System.out.println("Are you a senior citizen? (Yes/No)");
+                                boolean isSenior = input.nextLine().equalsIgnoreCase("yes");
+
+                                Customer currentCustomer = new Customer(name, email, "", membCard, isSenior, cart);
+
+                                Transaction transaction = new Transaction(currentCustomer, currentCustomer.getCart());
 
                                 System.out.println("\nYour purchase for today:");
-                                customer.getCart().viewCart();
+                                currentCustomer.getCart().displayCart();
                                 System.out.printf("Subtotal: PHP%.2f\n", transaction.calculateSubtotal());
                                 System.out.printf("Discount: PHP%.2f\n", transaction.calculateDiscount());
                                 System.out.printf("Tax: PHP%.2f\n", transaction.calculateTax());
                                 System.out.printf("TOTAL: PHP%.2f\n", transaction.calculateTotal());
 
-                                // TODO actual payment + change + giving receipt
                                 System.out.println("\nEnter amount received: PHP ");
                                 double amountReceived = input.nextDouble();
                                 transaction.setAmountReceived(amountReceived);
@@ -260,19 +281,27 @@ public class StoreDriver {
                                     return;
                                 }
 
-                                if (inventory.operateCartPurchase(cart))
+                                if (inventory.operateCartPurchase(currentCustomer.getCart()))
                                 {
                                     System.out.printf("Change: PHP%.2f\n", transaction.calculateChange());
 
-                                    if (customer.hasMembership())
+                                    if (currentCustomer.hasMembership())
                                     {
                                         int pointsEarned = transaction.calculateMembershipPoints();
 
                                         System.out.println("Points you earned: " +pointsEarned);
-                                        System.out.println("Your total points: " + customer.getMembershipCard().getPoints());
+                                        System.out.println("Your total points: " + currentCustomer.getMembershipCard().getPoints());
                                     }
 
-                                    // TODO give receipt
+                                    Receipt receipt = new Receipt(transaction);
+                                    receipt.displayReceiptDetails();
+
+                                    currentCustomer.getCart().clearCart();
+                                    System.out.println("Thank you for shopping here! See you soon!");
+                                }
+                                else
+                                {
+                                    System.out.println("Your purchase failed to push through.");
                                 }
                             }
                         }
