@@ -88,36 +88,39 @@ public class StoreDriver {
                         }
                         else if (var1.equals("2") || var1.equalsIgnoreCase("Add Product"))
                         {
-                            System.out.println("\nAdding New Product\n");
-
-                            System.out.println("Enter Product Name: ");
-                            String name = input.nextLine();
-                            System.out.println("Enter Product Price: ");
-                            double price = input.nextDouble();
-                            System.out.println("Enter Product Quantity: ");
-                            int quantity = input.nextInt();
-                            System.out.println("Enter Product Category: ");
-                            String category = input.nextLine();
-                            System.out.println("Enter Product Brand: ");
-                            String brand = input.nextLine();
-                            System.out.println("Enter Product Variant: ");
-                            String variant = input.nextLine();
-                            System.out.println("Enter Product Expiration Date (Type '0' for none): ");
-                            String expirationDate = input.nextLine();
-                            if (expirationDate.equalsIgnoreCase("0"))
+                            if (currentEmployee.getRole().equals("Manager"))
                             {
-                                expirationDate = null;
-                            }
-
-                            Product product = new Product(name, price, quantity, category, brand, variant, expirationDate);
-
-                            if (inventory.addProduct(product))
-                            {
-                                System.out.println("Product has been added.");
-                            }
-                            else
-                            {
-                                System.out.println("Failed to add the product.");
+                                System.out.println("\nAdding New Product\n");
+    
+                                System.out.println("Enter Product Name: ");
+                                String name = input.nextLine();
+                                System.out.println("Enter Product Price: ");
+                                double price = input.nextDouble();
+                                System.out.println("Enter Product Quantity: ");
+                                int quantity = input.nextInt();
+                                System.out.println("Enter Product Category: ");
+                                String category = input.nextLine();
+                                System.out.println("Enter Product Brand: ");
+                                String brand = input.nextLine();
+                                System.out.println("Enter Product Variant: ");
+                                String variant = input.nextLine();
+                                System.out.println("Enter Product Expiration Date (Type '0' for none): ");
+                                String expirationDate = input.nextLine();
+                                if (expirationDate.equalsIgnoreCase("0"))
+                                {
+                                    expirationDate = null;
+                                }
+    
+                                Product product = new Product(name, price, quantity, category, brand, variant, expirationDate);
+    
+                                if (inventory.addProduct(product))
+                                {
+                                    System.out.println("Product has been added.");
+                                }
+                                else
+                                {
+                                    System.out.println("Failed to add the product.");
+                                }
                             }
                         }
                         else if (var1.equals("3") || var1.equalsIgnoreCase("Remove Product"))
@@ -235,6 +238,8 @@ public class StoreDriver {
                             }
                             else
                             {
+                                // NOTE: customer details input
+
                                 Transaction transaction = new Transaction(null, cart);
 
                                 System.out.println("\nYour purchase for today:");
@@ -276,7 +281,6 @@ public class StoreDriver {
                             System.out.println("Thank you for checking out the convenience store!");
                             customerView = false;
                         }
-
                     }
                 }
 
