@@ -17,10 +17,6 @@ public class Inventory {
      */
     public void initializeShelves()
     {
-        // TODO: Shelves initialization
-        // Might need to discuss on Category being a class or not
-        // Need to know if Shelves should have capacity and have only one Category of food to showcase
-
         Shelf FoodShelf = new Shelf("Food", 20);
         Shelf BeveragesShelf = new Shelf("Beverages", 20);
         Shelf ToiletriesShelf = new Shelf("Toiletries", 20);
