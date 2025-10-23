@@ -20,6 +20,18 @@ public class Inventory {
         // TODO: Shelves initialization
         // Might need to discuss on Category being a class or not
         // Need to know if Shelves should have capacity and have only one Category of food to showcase
+
+        Shelf FoodShelf = new Shelf("Food", 20);
+        Shelf BeveragesShelf = new Shelf("Beverages", 20);
+        Shelf ToiletriesShelf = new Shelf("Toiletries", 20);
+        Shelf CleaningProductsShelf = new Shelf("Cleaning Products", 20);
+        Shelf MedicationsShelf = new Shelf("Medications", 20);
+
+        shelves.add(FoodShelf);
+        shelves.add(BeveragesShelf);
+        shelves.add(ToiletriesShelf);
+        shelves.add(CleaningProductsShelf);
+        shelves.add(MedicationsShelf);
     }
 
     /**

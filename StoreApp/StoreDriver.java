@@ -1,9 +1,7 @@
 package StoreApp;
 
-import java.lang.reflect.Member;
 import java.util.ArrayList;
 import java.util.Scanner;
-
 
 public class StoreDriver {
     private static Scanner input;
@@ -20,7 +18,6 @@ public class StoreDriver {
                                     new Employee("Max", "Max1234@gmail.com", "password987", "Restocker")};
 
         boolean MainLoop = true;
-
         while (MainLoop)
         {
             System.out.println("==Welcome to the Convenience Store==");
@@ -340,5 +337,6 @@ public class StoreDriver {
                 MainLoop = false;
             }
         }
+        input.close();
     }
 }
