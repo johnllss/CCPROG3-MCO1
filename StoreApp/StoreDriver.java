@@ -215,9 +215,9 @@ public class StoreDriver {
                         {
                             System.out.print("Enter Product Name: ");
                             String productName = input.nextLine();
-                            System.out.println("Enter Product Brand: ");
+                            System.out.print("Enter Product Brand: ");
                             String productBrand = input.nextLine();
-                            System.out.println("Enter Quantity: ");
+                            System.out.print("Enter Quantity: ");
                             int qty = input.nextInt();
                             input.nextLine();
 
@@ -328,7 +328,7 @@ public class StoreDriver {
                                 System.out.printf("Tax: PHP%.2f\n", transaction.calculateTax());
                                 System.out.printf("TOTAL: PHP%.2f\n", transaction.calculateTotal());
 
-                                System.out.println("\nEnter amount received: PHP ");
+                                System.out.print("\nEnter amount received: PHP ");
                                 double amountReceived = input.nextDouble();
                                 input.nextLine();
                                 transaction.setAmountReceived(amountReceived);
@@ -336,7 +336,7 @@ public class StoreDriver {
                                 if (amountReceived < transaction.calculateTotal())
                                 {
                                     System.out.println("Insufficient amount.");
-                                    return;
+                                    break;
                                 }
 
                                 if (inventory.operateCartPurchase(currentCustomer.getCart()))
