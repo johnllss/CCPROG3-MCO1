@@ -358,9 +358,11 @@ public class StoreDriver {
                         else if (var1.equals("7") || var1.equalsIgnoreCase("Exit"))
                         {
                             System.out.println("Thank you for checking out the convenience store!");
-                            customerView = false;
+                            currentIndex = shelves.size();
                         }
                     }
+
+                        customerView = false;
                 }
 
             }
