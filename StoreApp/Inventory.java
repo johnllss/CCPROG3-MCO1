@@ -17,7 +17,7 @@ public class Inventory {
      */
     public void initializeShelves()
     {
-        String[] categories = ["Food", "Beverages", "Toiletries", "Cleaning Products", "Medications"];
+        String[] categories = {"Food", "Beverages", "Toiletries", "Cleaning Products", "Medications"};
 
         for (String c: categories)
         {
