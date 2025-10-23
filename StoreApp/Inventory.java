@@ -17,17 +17,12 @@ public class Inventory {
      */
     public void initializeShelves()
     {
-        Shelf FoodShelf = new Shelf("Food", 20);
-        Shelf BeveragesShelf = new Shelf("Beverages", 20);
-        Shelf ToiletriesShelf = new Shelf("Toiletries", 20);
-        Shelf CleaningProductsShelf = new Shelf("Cleaning Products", 20);
-        Shelf MedicationsShelf = new Shelf("Medications", 20);
+        String[] categories = ["Food", "Beverages", "Toiletries", "Cleaning Products", "Medications"];
 
-        shelves.add(FoodShelf);
-        shelves.add(BeveragesShelf);
-        shelves.add(ToiletriesShelf);
-        shelves.add(CleaningProductsShelf);
-        shelves.add(MedicationsShelf);
+        for (String c: categories)
+        {
+            shelves.add(new Shelf(c, 20));
+        }
     }
 
     /**
@@ -91,6 +86,7 @@ public class Inventory {
             }
         }
 
+        System.out.println("Failed to add the product.");
         return false;
     }
 
