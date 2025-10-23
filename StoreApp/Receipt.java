@@ -35,7 +35,7 @@ public class Receipt {
         System.out.println(">>> YOUR RECEIPT <<<");
         System.out.println("Receipt #: " +receiptNumber);
         System.out.println("Date: " +transaction.getTimeStamp());
-        System.out.printf("\n\n\n");
+        System.out.print("\n\n");
 
         // display each item and their details
         System.out.println("Your Orders:");
@@ -48,11 +48,11 @@ public class Receipt {
             double productPrice = productItem.getProductPrice();
             double itemTotalPrice = item.calculateItemSubtotal();
 
-            System.out.printf("%-20s x%-2d @PHP%6.2f = PHP$7.2f\n", productName, productQty, productPrice, itemTotalPrice);
+            System.out.printf("%-20s x%-2d @PHP%6.2f = PHP%7.2f\n", productName, productQty, productPrice, itemTotalPrice);
         }
 
         // display transaction details
-        System.out.printf("\n\n\n");
+        System.out.print("\n\n");
         System.out.printf("Subtotal:        PHP%10.2f\n", transaction.calculateSubtotal());
         System.out.printf("Discount:        PHP%10.2f\n", transaction.calculateDiscount());
         System.out.printf("Tax (VAT 12%%):  PHP%10.2f\n", transaction.calculateTax());
