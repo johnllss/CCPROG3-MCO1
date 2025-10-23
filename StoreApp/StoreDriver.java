@@ -5,17 +5,22 @@ import java.util.Scanner;
 
 
 public class StoreDriver {
+    private static Scanner input;
+    private static Inventory inventory;
+    private static ArrayList<Shelf> shelves = inventory.getShelves();
+    private static Employee[] employees;
+
     public static void main(String args[]) {
-        Scanner input = new Scanner(System.in);
-        Inventory inventory = new Inventory();
-        ArrayList<Shelf> shelves = inventory.getShelves();
-        Employee[] employees = {new Employee("Bob","Bob1234@gmail.com", "password123", "Manager"),
-                                new Employee("Sam", "Sam1234@gmail.com", "password421", "Restocker"),
-                                new Employee("Max", "Max1234@gmail.com", "password987", "Restocker")};
+        input = new Scanner(System.in);
+        inventory = new Inventory();
+        shelves = inventory.getShelves();
+        employees = new Employee[] {new Employee("Bob","Bob1234@gmail.com", "password123", "Manager"),
+                                    new Employee("Sam", "Sam1234@gmail.com", "password421", "Restocker"),
+                                    new Employee("Max", "Max1234@gmail.com", "password987", "Restocker")};
 
         boolean MainLoop = true;
 
-        while (MainLoop == true)
+        while (MainLoop)
         {
             System.out.println("==Welcome to the Convenience Store==");
             System.out.println("1. Manage Inventory");
@@ -25,12 +30,14 @@ public class StoreDriver {
             System.out.print("Enter your choice: ");
             String choice = input.nextLine();
 
-            if (choice.equals("1") | choice.equalsIgnoreCase("Manage Inventory"))
+            if (choice.equals("1") || choice.equalsIgnoreCase("Manage Inventory"))
             {
-                System.out.println("Enter email: ");
+                System.out.println("\n==Manage Inventory==\n");
+                System.out.println("Enter employee email: ");
                 String email = input.nextLine();
-                System.out.println("Enter password: ");
+                System.out.println("Enter employee password: ");
                 String password = input.nextLine();
+
                 boolean success = false;
                 Employee currentEmployee = null;
 
@@ -50,23 +57,32 @@ public class StoreDriver {
                 }
                 else 
                 {
-                    System.out.println("Successfully logged in");
-                    System.out.println("==Inventory Management==");
-                    System.out.println("1. Restock Shelf");
-                    // TODO
-                    System.out.println("2. Add Product");
-                    // TODO
-                    System.out.println("3. Remove Product");
-                    System.out.print("Enter your choice: ");
-                    String var1 = input.nextLine();
-                    if(var1.equals("1") || var1.equalsIgnoreCase("Restock Shelf")){
-                        if(currentEmployee.getRole().equals("Restocker") || currentEmployee.getRole().equals("Manager")){
-                            System.out.print("Enter restock quantity: ");
-                            int quantity = input.nextInt();
-                            System.out.println("Enter ID: ");
-                            int id = input.nextInt();
-                            input.nextLine();
-                            currentEmployee.restock(inventory, id, quantity);
+                    System.out.println("\nSuccessfully logged in!\n");
+
+                    boolean employeeManaging = true;
+
+                    while (employeeManaging)
+                    {
+                        System.out.println("==Inventory Management==");
+                        System.out.println("1. Restock Shelf");
+                        // TODO
+                        System.out.println("2. Add Product");
+                        // TODO
+                        System.out.println("3. Remove Product");
+                        System.out.print("Enter your choice: ");
+                        String var1 = input.nextLine();
+
+                        if (var1.equals("1") || var1.equalsIgnoreCase("Restock Shelf"))
+                        {
+                            if (currentEmployee.getRole().equals("Restocker") || currentEmployee.getRole().equals("Manager"))
+                            {
+                                System.out.println("Enter Product ID: ");
+                                int id = input.nextInt();
+                                System.out.print("Enter restock quantity: ");
+                                int quantity = input.nextInt();
+                                input.nextLine();
+                                currentEmployee.restock(inventory, id, quantity);
+                            }
                         }
                     }
 
@@ -149,47 +165,5 @@ public class StoreDriver {
                 MainLoop = false;
             }
         }
-    }
-
-
-
-    public void openConvenienceStore()
-    {
-
-    }
-
-    public void handleCustomer()
-    {
-
-    }
-
-    public void handleInventoryManagement()
-    {
-
-    }
-
-    private void addProduct()
-    {
-
-    }
-
-    private void restockProduct()
-    {
-
-    }
-
-    private void removeProduct()
-    {
-
-    }
-
-    private void updateProduct()
-    {
-
-    }
-
-    private void displayExpiredProducts()
-    {
-        
     }
 }
