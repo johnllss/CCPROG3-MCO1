@@ -119,16 +119,18 @@ public class StoreDriver {
                         }
                         else if (var1.equals("2") || var1.equalsIgnoreCase("Add Product"))
                         {
-                            if (currentEmployee.getRole().equals("Manager"))
-                            {
+//                            if (currentEmployee.getRole().equals("Manager"))
+//                            {
                                 System.out.println("\nAdding New Product\n");
     
                                 System.out.println("Enter Product Name: ");
                                 String name = input.nextLine();
                                 System.out.println("Enter Product Price: ");
                                 double price = input.nextDouble();
+                                input.nextLine();
                                 System.out.println("Enter Product Quantity: ");
                                 int quantity = input.nextInt();
+                                input.nextLine();
                                 System.out.println("Enter Product Category: ");
                                 String category = input.nextLine();
                                 System.out.println("Enter Product Brand: ");
@@ -152,7 +154,7 @@ public class StoreDriver {
                                 {
                                     System.out.println("Failed to add the product.");
                                 }
-                            }
+//                            }
                         }
                         else if (var1.equals("3") || var1.equalsIgnoreCase("Remove Product"))
                         {
@@ -160,6 +162,7 @@ public class StoreDriver {
 
                             System.out.println("Enter Product ID:");
                             int productID = input.nextInt();
+                            input.nextLine();
 
                             if (inventory.removeProduct(productID))
                             {
@@ -217,13 +220,33 @@ public class StoreDriver {
                             System.out.println("Enter Quantity: ");
                             int qty = input.nextInt();
                             input.nextLine();
-                            for(Shelf shelf: shelves){
-                                if(shelf.findProductOnShelf(productName, productBrand)!=null){
-                                    cart.addItem(shelf.findProductOnShelf(productName, productBrand), qty);
+
+                            Product productBeingAdded = null;
+
+                            for(Shelf shelf: shelves)
+                            {
+                                productBeingAdded = shelf.findProductOnShelf(productName, productBrand);
+
+                                if (productBeingAdded != null)
+                                {
+                                    break;
                                 }
-                                else{
-                                    System.out.println("Product not found");
+                            }
+
+                            if (productBeingAdded != null)
+                            {
+                                if (cart.addItem(productBeingAdded, qty))
+                                {
+                                    System.out.println("Product has been added to your cart!");
                                 }
+                                else
+                                {
+                                    System.out.println("Product has insufficient stock.");
+                                }
+                            }
+                            else
+                            {
+                                System.out.println("Product is not in any shelf.");
                             }
                         }
                         else if (var1.equals("2") || var1.equalsIgnoreCase("Next Shelf"))
@@ -244,6 +267,7 @@ public class StoreDriver {
 
                             System.out.println("Enter item's product ID: ");
                             int itemProductID = input.nextInt();
+                            input.nextLine();
 
                             if (cart.removeItem(itemProductID))
                             {
@@ -303,6 +327,7 @@ public class StoreDriver {
 
                                 System.out.println("\nEnter amount received: PHP ");
                                 double amountReceived = input.nextDouble();
+                                input.nextLine();
                                 transaction.setAmountReceived(amountReceived);
 
                                 if (amountReceived < transaction.calculateTotal())
