@@ -76,22 +76,24 @@ public class Shelf {
         return null;
     }
 
-    /**
-     * This method finds a product on the Shelf based on the productID.
-     * @param productID is the product's ID to use for finding the product.
-     * @return Product is the Product found and its details.
+    /***
+     * Method returns product from given productName and productBrand
+     * @param productName
+     * @param productBrand
+     * @return product object
      */
-    public Product findProductOnShelf(int productID)
+    public Product findProductOnShelf(String productName, String productBrand)
     {
-        for (Product productOnShelf: products)
-        {
-            if (productOnShelf.getProductID() == productID)
+        for(Product product: this.getProductsOnShelf()){
+            if(product.getProductName().equalsIgnoreCase(productName) && product.getBrand().equalsIgnoreCase(productBrand))
             {
-                return productOnShelf;
+                return product;
             }
+
         }
 
         return null;
+
     }
 
     /**

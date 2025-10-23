@@ -3,6 +3,7 @@ package StoreApp;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+
 public class StoreDriver {
     public static void main(String args[]) {
         Scanner input = new Scanner(System.in);
@@ -96,6 +97,21 @@ public class StoreDriver {
                         System.out.print("Enter your choice: ");
                         String var1 = input.nextLine();
                         if(var1.equals("1") || var1.equalsIgnoreCase("Add Product to Cart")){
+                            System.out.print("Enter Product Name: ");
+                            String productName = input.nextLine();
+                            System.out.println("Enter Product Brand: ");
+                            String productBrand = input.nextLine();
+                            System.out.println("Enter Quantity: ");
+                            int qty = input.nextInt();
+                            input.nextLine();
+                            for(Shelf shelf: shelves){
+                                if(shelf.findProductOnShelf(productName, productBrand)!=null){
+                                    cart.addItem(shelf.findProductOnShelf(productName, productBrand), qty);
+                                }
+                                else{
+                                    System.out.println("Product not found");
+                                }
+                            }
 
                         }
                         else if(var1.equals("2") || var1.equalsIgnoreCase("Next Shelf")){
@@ -105,6 +121,11 @@ public class StoreDriver {
                             cart.displayCart();
                         }
                         else if(var1.equals("4") || var1.equalsIgnoreCase("Remove Product From Cart")){
+                            System.out.println("Enter Product Name:");
+                            String productName = input.nextLine();
+                            System.out.println("Enter Product Brand:");
+                            String productBrand = input.nextLine();
+
 
                         }
                         else if(var1.equals("5") || var1.equalsIgnoreCase("Clear Cart")){
@@ -129,6 +150,8 @@ public class StoreDriver {
             }
         }
     }
+
+
 
     public void openConvenienceStore()
     {
