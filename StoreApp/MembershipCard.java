@@ -6,7 +6,7 @@ public class MembershipCard {
 
     /**
      * Class MembershipCard parameterized constructor
-     * @param cardNumber
+     * @param cardNumber is the membership card number of the Customer
      */
     public MembershipCard(String cardNumber) {
         this.cardNumber = cardNumber;
@@ -38,13 +38,15 @@ public class MembershipCard {
         }
     }
 
+    /**
+     * This method generates the card number of the customer.
+     * @return String for the generatedCardNumber.
+     */
     public String generateCardNumber()
     {
-        String generatedCardNumber = "";
-        
         // TODO generation
 
-        return generatedCardNumber;
+        return "";
     }
     
     /**
@@ -55,6 +57,7 @@ public class MembershipCard {
         return cardNumber;
     }
 
+
     /**
      * This is a getter method to get the points of the customer.
      * @return int for the points.
@@ -63,4 +66,8 @@ public class MembershipCard {
         return points;
     }
 
+    public void setCardNumber(String newCardNumber)
+    {
+        this.cardNumber = newCardNumber;
+    }
 }
