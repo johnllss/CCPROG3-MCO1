@@ -32,15 +32,16 @@ public class Cart {
      * @param product
      * @return boolean indicating success/failure of search
      */
-    public boolean removeItem(Product product)
+    public boolean removeItem(int productID)
     {
-       for(Item i : items)
+       for(Item i: items)
        {
-           if(i.getProduct().equals(product)) {
+           if(i.getProduct().getProductID() == productID) {
                items.remove(i);
                return true;
            }
        }
+       
        return false;
     }
 
