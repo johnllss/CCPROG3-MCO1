@@ -367,7 +367,7 @@ public class StoreDriver {
 
             }
 
-            else if (input.nextLine().equals("3") || input.nextLine().equalsIgnoreCase("Exit"))
+            else if (choice.equals("3") || choice.equalsIgnoreCase("Exit"))
             {
                 System.out.println("Closing the convenience store...");
                 MainLoop = false;
