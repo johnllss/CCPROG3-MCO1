@@ -223,18 +223,21 @@ public class StoreDriver {
 
                             Product productBeingAdded = null;
 
-                            for(Shelf shelf: shelves)
+                            // search through each shelf in shelves
+                            for (Shelf shelf: shelves)
                             {
                                 productBeingAdded = shelf.findProductOnShelf(productName, productBrand);
 
+                                // if not null, then product is found
                                 if (productBeingAdded != null)
                                 {
-                                    break;
+                                    break; // break to not waste time searching in the following shelves
                                 }
                             }
 
                             if (productBeingAdded != null)
                             {
+                                // add product to cart
                                 if (cart.addItem(productBeingAdded, qty))
                                 {
                                     System.out.println("Product has been added to your cart!");
@@ -244,7 +247,7 @@ public class StoreDriver {
                                     System.out.println("Product has insufficient stock.");
                                 }
                             }
-                            else
+                            else // display for product not being found
                             {
                                 System.out.println("Product is not in any shelf.");
                             }
