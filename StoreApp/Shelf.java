@@ -131,6 +131,41 @@ public class Shelf {
         }
     }
 
+    /***
+     *
+     */
+    public void displayShelfCustomerView()
+    {
+        System.out.println("\n== " + this.category + "==\n");
+        if (products.isEmpty())
+        {
+            System.out.println("Currently empty.");
+        } else
+        {
+            // DISPLAY HEADERS FOR PRODUCTS
+            System.out.printf("%-4s %-30s %-15s %-12s %-15s%n", "#", "Product Name", "Brand", "Price", "Availability");
+            System.out.println("-----");
+
+            // ACTUAL PRODUCT INFORMATION
+            int count = 1;
+            for (Product productOnShelf: products)
+            {
+                String stockStatus = "";
+
+                // checks for product's stock quantity
+                if (productOnShelf.getProductQuantity() < 3)
+                {
+                    // and sets to "Low stock" if below set threshold
+                    stockStatus = "Low stock.";
+                }
+
+                System.out.printf("%-4d %-30s %-15s PHP %-9.2f %-15s%n",
+                        count++, productOnShelf.getProductName(), productOnShelf.getBrand(), productOnShelf.getProductPrice(), stockStatus);
+            }
+        }
+
+    }
+
     /**
      * This is a getter method to get the Shelf's shelfID.
      * @return int for shelfID.

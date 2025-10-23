@@ -1,11 +1,13 @@
 package StoreApp;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class StoreDriver {
     public static void main(String args[]) {
         Scanner input = new Scanner(System.in);
         Inventory inventory = new Inventory();
+        ArrayList<Shelf> shelves = inventory.getShelves();
         Employee[] employees = {new Employee("Bob","Bob1234@gmail.com", "password123", "Manager"),
                                 new Employee("Sam", "Sam1234@gmail.com", "password421", "Restocker"),
                                 new Employee("Max", "Max1234@gmail.com", "password987", "Restocker")};
@@ -73,12 +75,55 @@ public class StoreDriver {
             }
 
             //TODO Customer View//
-            if (input.nextLine().equals("2") || input.nextLine().equalsIgnoreCase("Customer View"))
+            else if (choice.equals("2") || choice.equalsIgnoreCase("Customer View"))
             {
+                Cart  cart = new Cart();
+                boolean customerView = true;
+                System.out.println("Welcome to the Convenience Store!");
+                while(customerView) {
+                    int currentIndex = 0;
+                    while (currentIndex < shelves.size()) {
+                        Shelf currentShelf = shelves.get(currentIndex);
+                        System.out.println("== Category ==" + currentShelf.getShelfCategory() + "Shelf: " + currentIndex + 1);
+                        currentShelf.displayShelfCustomerView();
+                        System.out.println("1. Add Product to Cart");
+                        System.out.println("2. Next Shelf");
+                        System.out.println("3. View Cart");
+                        System.out.println("4. Remove Product From Cart");
+                        System.out.println("5. Clear Cart");
+                        System.out.println("6. Checkout Cart");
+                        System.out.println("7. Exit");
+                        System.out.print("Enter your choice: ");
+                        String var1 = input.nextLine();
+                        if(var1.equals("1") || var1.equalsIgnoreCase("Add Product to Cart")){
+
+                        }
+                        else if(var1.equals("2") || var1.equalsIgnoreCase("Next Shelf")){
+                            currentIndex++;
+                        }
+                        else if(var1.equals("3") || var1.equalsIgnoreCase("View Cart")){
+                            cart.displayCart();
+                        }
+                        else if(var1.equals("4") || var1.equalsIgnoreCase("Remove Product From Cart")){
+
+                        }
+                        else if(var1.equals("5") || var1.equalsIgnoreCase("Clear Cart")){
+                            cart.clearCart();
+                        }
+                        else if(var1.equals("6") || var1.equalsIgnoreCase("Checkout Cart")){
+
+                        }
+
+                        else if(var1.equals("7") || var1.equalsIgnoreCase("Exit")){
+                            customerView = false;
+                        }
+
+                    }
+                }
 
             }
 
-            if (input.nextLine().equals("3") || input.nextLine().equalsIgnoreCase("Exit")) 
+            else if (input.nextLine().equals("3") || input.nextLine().equalsIgnoreCase("Exit"))
             {
                 MainLoop = false;
             }
