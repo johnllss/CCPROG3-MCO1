@@ -163,7 +163,7 @@ public class Shelf {
         } else
         {
             // DISPLAY HEADERS FOR PRODUCTS
-            System.out.printf("%-4s %-30s %-15s %-12s %-15s%n", "#", "Product Name", "Brand", "Price", "Availability");
+            System.out.printf("%-4s %-30s %-30s %-12s %-15s %-15s%n", "#", "Product Name", "Brand", "Price", "Stock", "Availability");
             System.out.println("-----");
 
             // ACTUAL PRODUCT INFORMATION
@@ -179,8 +179,8 @@ public class Shelf {
                     stockStatus = "Low stock.";
                 }
 
-                System.out.printf("%-4d %-30s %-15s PHP %-9.2f %-15s%n",
-                        count++, productOnShelf.getProductName(), productOnShelf.getBrand(), productOnShelf.getProductPrice(), stockStatus);
+                System.out.printf("%-4d %-30s %-30s PHP %-9.2f %-15d %-15s%n",
+                        count++, productOnShelf.getProductName(), productOnShelf.getBrand(), productOnShelf.getProductPrice(), productOnShelf.getProductQuantity(), stockStatus);
             }
         }
 
