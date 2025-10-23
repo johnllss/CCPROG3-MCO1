@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class StoreDriver {
     private static Scanner input;
     private static Inventory inventory;
-    private static ArrayList<Shelf> shelves = inventory.getShelves();
+    private static ArrayList<Shelf> shelves;
     private static Employee[] employees;
 
     public static void main(String args[]) {
