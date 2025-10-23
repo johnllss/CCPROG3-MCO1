@@ -17,6 +17,42 @@ public class StoreDriver {
                                     new Employee("Sam", "Sam1234@gmail.com", "password421", "Restocker"),
                                     new Employee("Max", "Max1234@gmail.com", "password987", "Restocker")};
 
+        // INITIALIZATION OF INVENTORY'S PRODUCTS
+        // Food
+        inventory.addProduct(new Product("Sandwich", 30.0, 10, "Food", "Subway", "Cheese", "2025-10-27"));
+        inventory.addProduct(new Product("Pastries", 45.0, 10, "Food", "Subway", "Cheese", "2025-10-26"));
+        inventory.addProduct(new Product("Fried Chicken", 50.0, 10, "Food", "Subway", "Cheese", "2026-01-15"));
+        inventory.addProduct(new Product("Sushi", 120.0, 10, "Food", "Makimura Ramen Bar", "Raw", "2027-03-10"));
+        inventory.addProduct(new Product("Yogurt", 215.0, 10, "Food", "Chobani", "Vanilla", "2025-10-27"));
+        
+        // Beverages
+        inventory.addProduct(new Product("Dairy", 100.0, 10, "Beverages", "Selecta", "Milk", "2025-11-30"));
+        inventory.addProduct(new Product("Coffee", 220.0, 10, "Beverages", "Starbucks", "Iced", "2025-02-02"));
+        inventory.addProduct(new Product("Tea", 115.0, 10, "Beverages", "Honest Tea", "Green Tea", "2026-02-14"));
+        inventory.addProduct(new Product("Energy Drink", 159.0, 10, "Beverages", "Red Bull", "The Summer Edition", "2027-10-11"));
+        inventory.addProduct(new Product("Beer", 90.0, 10, "Beverages", "Stella Artois", "Stella 0.0", "2028-08-15"));
+        
+        // Toiletries
+        inventory.addProduct(new Product("Soap", 50.0, 10, "Toiletries", "Safeguard", "Pink", null));
+        inventory.addProduct(new Product("Shampoo", 99.0, 10, "Toiletries", "Head & Shoulders", "Classic Clean", null));
+        inventory.addProduct(new Product("Airy Matte Tint", 30.0, 10, "Toiletries", "BLK Cosmetics", "Dearest Rose Pink", null));
+        inventory.addProduct(new Product("Toothbrush", 135.0, 10, "Toiletries", "Oral-B", "Electric Toothbrush", null));
+        inventory.addProduct(new Product("Deodorant", 199.0, 10, "Toiletries", "Old Spice", "Wolfthorne", null));
+        
+        // Cleaning Products
+        inventory.addProduct(new Product("Detergent", 55.0, 10, "Cleaning Products", "Tide", "Powder", "2027-01-02"));
+        inventory.addProduct(new Product("Tissue", 69.0, 10, "Cleaning Products", "Femme", "Interfolded Paper Towel", "2027-03-25"));
+        inventory.addProduct(new Product("Hand Sanitizer", 95.0, 10, "Cleaning Products", "Purell", "Bottled", "2029-09-23"));
+        inventory.addProduct(new Product("Degreaser", 215.0, 10, "Cleaning Products", "Lysol", "Multi-Purpose", "2028-11-11"));
+        inventory.addProduct(new Product("Bleach", 150.0, 10, "Cleaning Products", "Zonrox", "Original", "2023-11-05"));
+        
+        // Medications
+        inventory.addProduct(new Product("Adhesive Bandage", 25.0, 10, "Medications", "Band-Aid", "Waterproof", "2026-05-17"));
+        inventory.addProduct(new Product("Antibiotic", 30.0, 10, "Medications", "Amoxil", "Amoxicillin", "2026-01-23"));
+        inventory.addProduct(new Product("Antihistamine", 80.0, 10, "Medications", "Claritin", "Standard Tablet", null));
+        inventory.addProduct(new Product("Anesthetics", 125.0, 10, "Medications", "Diprivan", "Propofol", null));
+        inventory.addProduct(new Product("Paracetamol", 55.0, 10, "Medications", "Biogesic", "500mg", "2028-08-15"));
+
         boolean MainLoop = true;
         while (MainLoop)
         {
