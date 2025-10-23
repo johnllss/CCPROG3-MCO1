@@ -78,9 +78,9 @@ public class Shelf {
 
     /***
      * Method returns product from given productName and productBrand
-     * @param productName
-     * @param productBrand
-     * @return product object
+     * @param productName is the referenced product name.
+     * @param productBrand is the referenced product brand.
+     * @return Product for the product being searched for.
      */
     public Product findProductOnShelf(String productName, String productBrand)
     {
@@ -89,12 +89,17 @@ public class Shelf {
             {
                 return product;
             }
-
         }
 
         return null;
 
     }
+
+    /**
+     * Method returns product from given productID
+     * @param productID is the referenced productID.
+     * @return Product for the product being searched for.
+     */
     public Product findProductOnShelf(int productID)
     {
         for(Product product: this.getProductsOnShelf()){
