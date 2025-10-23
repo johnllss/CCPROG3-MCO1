@@ -289,10 +289,29 @@ public class StoreDriver {
                                     {
                                         int pointsEarned = transaction.calculateMembershipPoints();
 
-                                        System.out.println("Points you earned: " +pointsEarned);
+                                        System.out.println("Points you earned: " + pointsEarned);
                                         System.out.println("Your total points: " + currentCustomer.getMembershipCard().getPoints());
                                     }
+                                    else
+                                    {
+                                        if (!hasMembership)
+                                        {
+                                            System.out.println("Do you want to avail of our membership? (Yes/No)");
+                                            boolean membChoice = input.nextLine().equalsIgnoreCase("yes");
+    
+                                            if (membChoice)
+                                            {
+                                                String cardNumber = membCard.generateCardNumber();
+                                                membCard = new MembershipCard(cardNumber);
+                                            }
+                                            else
+                                            {
+                                                System.out.println("Alright! Maybe try it next time?");
+                                            }
+                                        }
+                                    }
 
+                                    System.out.println("\nHere are your receipt details:\n");
                                     Receipt receipt = new Receipt(transaction);
                                     receipt.displayReceiptDetails();
 
