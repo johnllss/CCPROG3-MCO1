@@ -245,6 +245,30 @@ public class StoreDriver {
                                 System.out.printf("TOTAL: PHP%.2f\n", transaction.calculateTotal());
 
                                 // TODO actual payment + change + giving receipt
+                                System.out.println("\nEnter amount received: PHP ");
+                                double amountReceived = input.nextDouble();
+                                transaction.setAmountReceived(amountReceived);
+
+                                if (amountReceived < transaction.calculateTotal())
+                                {
+                                    System.out.println("Insufficient amount.");
+                                    return;
+                                }
+
+                                if (inventory.operateCartPurchase(cart))
+                                {
+                                    System.out.printf("Change: PHP%.2f\n", transaction.calculateChange());
+
+                                    if (customer.hasMembership())
+                                    {
+                                        int pointsEarned = transaction.calculateMembershipPoints();
+
+                                        System.out.println("Points you earned: " +pointsEarned);
+                                        System.out.println("Your total points: " + customer.getMembershipCard().getPoints());
+                                    }
+
+                                    // TODO give receipt
+                                }
                             }
                         }
                         else if (var1.equals("7") || var1.equalsIgnoreCase("Exit"))
