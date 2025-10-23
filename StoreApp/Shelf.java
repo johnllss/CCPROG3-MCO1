@@ -95,6 +95,19 @@ public class Shelf {
         return null;
 
     }
+    public Product findProductOnShelf(int productID)
+    {
+        for(Product product: this.getProductsOnShelf()){
+            if(product.getProductID() == productID)
+            {
+                return product;
+            }
+
+        }
+
+        return null;
+
+    }
 
     /**
      * This method displays the Products stored in a Shelf.

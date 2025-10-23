@@ -42,6 +42,21 @@ public class Inventory {
 
         return null;
     }
+    public Product findProduct(String productName, String productBrand)
+    {
+        // for each shelves available, find product id and return if not null
+        for (Shelf shelf: shelves)
+        {
+            Product product = shelf.findProductOnShelf(productName, productBrand);
+
+            if (product != null)
+            {
+                return product;
+            }
+        }
+
+        return null;
+    }
 
     /**
      * This method adds a new product to the Inventory catalogue.
