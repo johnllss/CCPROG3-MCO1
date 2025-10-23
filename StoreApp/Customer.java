@@ -105,4 +105,9 @@ public class Customer extends User {
     {
         this.isSenior = isSenior;
     }
+
+    public void setMembershipCard(MembershipCard membershipCard)
+    {
+        this.membershipCard = membershipCard;
+    }
 }
