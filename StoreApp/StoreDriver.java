@@ -119,16 +119,18 @@ public class StoreDriver {
                         }
                         else if (var1.equals("2") || var1.equalsIgnoreCase("Add Product"))
                         {
-                            if (currentEmployee.getRole().equals("Manager"))
-                            {
+//                            if (currentEmployee.getRole().equals("Manager"))
+//                            {
                                 System.out.println("\nAdding New Product\n");
     
                                 System.out.println("Enter Product Name: ");
                                 String name = input.nextLine();
                                 System.out.println("Enter Product Price: ");
                                 double price = input.nextDouble();
+                                input.nextLine();
                                 System.out.println("Enter Product Quantity: ");
                                 int quantity = input.nextInt();
+                                input.nextLine();
                                 System.out.println("Enter Product Category: ");
                                 String category = input.nextLine();
                                 System.out.println("Enter Product Brand: ");
@@ -152,7 +154,7 @@ public class StoreDriver {
                                 {
                                     System.out.println("Failed to add the product.");
                                 }
-                            }
+//                            }
                         }
                         else if (var1.equals("3") || var1.equalsIgnoreCase("Remove Product"))
                         {
@@ -160,6 +162,7 @@ public class StoreDriver {
 
                             System.out.println("Enter Product ID:");
                             int productID = input.nextInt();
+                            input.nextLine();
 
                             if (inventory.removeProduct(productID))
                             {
@@ -212,18 +215,41 @@ public class StoreDriver {
                         {
                             System.out.print("Enter Product Name: ");
                             String productName = input.nextLine();
-                            System.out.println("Enter Product Brand: ");
+                            System.out.print("Enter Product Brand: ");
                             String productBrand = input.nextLine();
-                            System.out.println("Enter Quantity: ");
+                            System.out.print("Enter Quantity: ");
                             int qty = input.nextInt();
                             input.nextLine();
-                            for(Shelf shelf: shelves){
-                                if(shelf.findProductOnShelf(productName, productBrand)!=null){
-                                    cart.addItem(shelf.findProductOnShelf(productName, productBrand), qty);
+
+                            Product productBeingAdded = null;
+
+                            // search through each shelf in shelves
+                            for (Shelf shelf: shelves)
+                            {
+                                productBeingAdded = shelf.findProductOnShelf(productName, productBrand);
+
+                                // if not null, then product is found
+                                if (productBeingAdded != null)
+                                {
+                                    break; // break to not waste time searching in the following shelves
                                 }
-                                else{
-                                    System.out.println("Product not found");
+                            }
+
+                            if (productBeingAdded != null)
+                            {
+                                // add product to cart
+                                if (cart.addItem(productBeingAdded, qty))
+                                {
+                                    System.out.println("Product has been added to your cart!");
                                 }
+                                else
+                                {
+                                    System.out.println("Product has insufficient stock.");
+                                }
+                            }
+                            else // display for product not being found
+                            {
+                                System.out.println("Product is not in any shelf.");
                             }
                         }
                         else if (var1.equals("2") || var1.equalsIgnoreCase("Next Shelf"))
@@ -244,6 +270,7 @@ public class StoreDriver {
 
                             System.out.println("Enter item's product ID: ");
                             int itemProductID = input.nextInt();
+                            input.nextLine();
 
                             if (cart.removeItem(itemProductID))
                             {
@@ -301,14 +328,15 @@ public class StoreDriver {
                                 System.out.printf("Tax: PHP%.2f\n", transaction.calculateTax());
                                 System.out.printf("TOTAL: PHP%.2f\n", transaction.calculateTotal());
 
-                                System.out.println("\nEnter amount received: PHP ");
+                                System.out.print("\nEnter amount received: PHP ");
                                 double amountReceived = input.nextDouble();
+                                input.nextLine();
                                 transaction.setAmountReceived(amountReceived);
 
                                 if (amountReceived < transaction.calculateTotal())
                                 {
                                     System.out.println("Insufficient amount.");
-                                    return;
+                                    break;
                                 }
 
                                 if (inventory.operateCartPurchase(currentCustomer.getCart()))
@@ -358,14 +386,16 @@ public class StoreDriver {
                         else if (var1.equals("7") || var1.equalsIgnoreCase("Exit"))
                         {
                             System.out.println("Thank you for checking out the convenience store!");
-                            customerView = false;
+                            currentIndex = shelves.size();
                         }
                     }
+
+                        customerView = false;
                 }
 
             }
 
-            else if (input.nextLine().equals("3") || input.nextLine().equalsIgnoreCase("Exit"))
+            else if (choice.equals("3") || choice.equalsIgnoreCase("Exit"))
             {
                 System.out.println("Closing the convenience store...");
                 MainLoop = false;

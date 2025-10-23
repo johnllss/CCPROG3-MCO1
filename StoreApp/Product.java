@@ -13,13 +13,13 @@ public class Product {
 
     /**
      * Class Product parameterized constructor
-     * @param productName
-     * @param productPrice
-     * @param productQuantity
-     * @param productCategory
-     * @param brand
-     * @param variant
-     * @param expirationDate
+     * @param productName is the product name.
+     * @param productPrice is the product price.
+     * @param productQuantity is the product quantity.
+     * @param productCategory is the product category.
+     * @param brand is product brand.
+     * @param variant is the product variant
+     * @param expirationDate is the product's expiration date.
      */
     public Product(String productName, double productPrice, int productQuantity, String productCategory, String brand, String variant, String expirationDate)
     {
