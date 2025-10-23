@@ -192,7 +192,6 @@ public class StoreDriver {
                                     System.out.println("Product not found");
                                 }
                             }
-
                         }
                         else if (var1.equals("2") || var1.equalsIgnoreCase("Next Shelf"))
                         {
@@ -238,7 +237,14 @@ public class StoreDriver {
                             {
                                 Transaction transaction = new Transaction(null, cart);
 
-                                
+                                System.out.println("\nYour purchase for today:");
+                                customer.getCart().viewCart();
+                                System.out.printf("Subtotal: PHP%.2f\n", transaction.calculateSubtotal());
+                                System.out.printf("Discount: PHP%.2f\n", transaction.calculateDiscount());
+                                System.out.printf("Tax: PHP%.2f\n", transaction.calculateTax());
+                                System.out.printf("TOTAL: PHP%.2f\n", transaction.calculateTotal());
+
+                                // TODO actual payment + change + giving receipt
                             }
                         }
                         else if (var1.equals("7") || var1.equalsIgnoreCase("Exit"))
