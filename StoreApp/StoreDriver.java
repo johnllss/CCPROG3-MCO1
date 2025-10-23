@@ -4,18 +4,13 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class StoreDriver {
-    private static Scanner input;
-    private static Inventory inventory;
-    private static ArrayList<Shelf> shelves;
-    private static Employee[] employees;
-
-    public static void main(String args[]) {
-        input = new Scanner(System.in);
-        inventory = new Inventory();
-        shelves = inventory.getShelves();
-        employees = new Employee[] {new Employee("Bob","Bob1234@gmail.com", "password123", "Manager"),
-                                    new Employee("Sam", "Sam1234@gmail.com", "password421", "Restocker"),
-                                    new Employee("Max", "Max1234@gmail.com", "password987", "Restocker")};
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        Inventory inventory = new Inventory();
+        ArrayList<Shelf> shelves = inventory.getShelves();
+        Employee[] employees = {new Employee("Bob","Bob1234@gmail.com", "password123", "Manager"),
+                                new Employee("Sam", "Sam1234@gmail.com", "password421", "Restocker"),
+                                new Employee("Max", "Max1234@gmail.com", "password987", "Restocker")};
 
         // INITIALIZATION OF INVENTORY'S PRODUCTS
         // Food
@@ -334,8 +329,9 @@ public class StoreDriver {
     
                                             if (membChoice)
                                             {
-                                                String cardNumber = membCard.generateCardNumber();
+                                                String cardNumber = membCard.generateCardNumber(); // NOTE: method not yet done
                                                 membCard = new MembershipCard(cardNumber);
+                                                currentCustomer.setMembershipCard(membCard);
                                             }
                                             else
                                             {
