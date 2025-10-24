@@ -122,11 +122,18 @@ public class Cart {
      */
     public void displayCart()
     {
+        System.out.printf("%-20s %-20s %-15s %-10s%n",
+                "Product Name", "Product Brand", "Product Price", "Quantity");
+        System.out.println("--------------------------------------------------------------------------");
         for(Item i : items)
         {
-            System.out.println(i.getProduct().getProductName());
-            System.out.println(i.getProduct().getProductPrice());
-            System.out.println(i.getProduct().getProductQuantity());
+            System.out.printf("%-20s %-20s %-15.2f %-10d%n",
+                    i.getProduct().getProductName(),
+                    i.getProduct().getBrand(),
+                    i.getProduct().getProductPrice(),
+                    i.getQuantity());
+
+            System.out.println(" ");
         }
     }
 
