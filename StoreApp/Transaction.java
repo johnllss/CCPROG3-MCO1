@@ -2,6 +2,9 @@ package StoreApp;
 
 import java.util.Scanner;
 
+/**
+ * where the cart is checked out. It handles all the computation and discounts
+ */
 public class Transaction {
     private Cart cart;
     private Customer customer;
@@ -198,7 +201,7 @@ public class Transaction {
     // GETTERS
     /**
      * This is a getter method to get Transaction's cart.
-     * @return Cart
+     * @return Cart is the cart used in the transaction
      */
     public Cart getCart()
     {
@@ -207,7 +210,7 @@ public class Transaction {
 
     /**
      * This is a getter method to get Transaction's associated Customer.
-     * @return Customer
+     * @return Customer that did the transaction
      */
     public Customer getCustomer()
     {
@@ -289,7 +292,7 @@ public class Transaction {
     /**
      * This method sets the Transaction's amountReceived.
      * @param amount is the amount to be used to assign to amountRecieved.
-     * @return void
+     *
      */
     public void setAmountReceived(double amount)
     {

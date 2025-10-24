@@ -2,9 +2,15 @@ package StoreApp;
 
 import java.util.ArrayList;
 
+/***
+ * This is the storage for all shelves where they employees may edit or restock
+ */
 public class Inventory {
     private ArrayList<Shelf> shelves;
 
+    /**
+     * Default Constructor for inventory
+     */
     public Inventory()
     {
         this.shelves = new ArrayList<Shelf>();
@@ -13,7 +19,7 @@ public class Inventory {
 
     /**
      * This method initializes each shelf of the Inventory
-     * @return void
+     *
      */
     public void initializeShelves()
     {
@@ -45,6 +51,13 @@ public class Inventory {
 
         return null;
     }
+
+    /***
+     * This method iterates all the shelf to find product using product name and product brand
+     * @param productName name of product wanting to be found
+     * @param productBrand brand of product wanting to be found
+     * @return product object that wants to be found can be null if not found
+     */
     public Product findProduct(String productName, String productBrand)
     {
         // for each shelves available, find product id and return if not null
@@ -162,7 +175,7 @@ public class Inventory {
      * This method finds the product that matches the productID provided and updates its price.
      * @param productID is the product's ID
      * @param newPrice is the new price to be assigned
-     * @return boolean for success/failure
+     * @return boolean for success/failure of updating product price
      */
     public boolean updateProductPrice(int productID, double newPrice)
     {
@@ -184,7 +197,7 @@ public class Inventory {
      * This method finds the product that matches the productID provided and updates its brand.
      * @param productID is the product's ID
      * @param newBrand is the new brand to be assigned
-     * @return boolean for success/failure
+     * @return boolean for success/failure for updating product brand
      */
     public boolean updateProductBrand(int productID, String newBrand)
     {
@@ -206,7 +219,7 @@ public class Inventory {
      * This method finds the product that matches the productID provided and updates its variant.
      * @param productID is the product's ID
      * @param newVariant is the new variant to be assigned
-     * @return boolean for success/failure
+     * @return boolean for success/failure updating product variant
      */
     public boolean updateProductVariant(int productID, String newVariant)
     {
@@ -228,7 +241,7 @@ public class Inventory {
      * This method finds the product that matches the productID provided and updates its expiration date.
      * @param productID is the product's ID
      * @param newExpirationDate is new expiration date to be assigned
-     * @return boolean for success/failure
+     * @return boolean for success/failure updating product expiration date
      */
     public boolean updateProductExpirationDate(int productID, String newExpirationDate)
     {
@@ -249,7 +262,7 @@ public class Inventory {
     /**
      * This product returns all products that are low on stock.
      * @param quantityLevel is the quantity threshold level to determine low stock status.
-     * @return ArrayList<Product> - All products that are low on stock.
+     * @return ArrayList Product - All products that are low on stock.
      */
     public ArrayList<Product> getLowStockProducts(int quantityLevel)
     {
@@ -276,7 +289,7 @@ public class Inventory {
     /**
      * This method gets all products that are based on the provided category.
      * @param category is the category of the products to look for.
-     * @return ArrayList<Product> - All products that are under the specified category.
+     * @return ArrayList Product - All products that are under the specified category.
      */
     public ArrayList<Product> getProductsByCategory(String category)
     {
@@ -296,7 +309,7 @@ public class Inventory {
 
     /**
      * This method gets all products that are already expired.
-     * @return ArrayList<Product> - All products that are already expired.
+     * @return ArrayList Product - All products that are already expired.
      */
     public ArrayList<Product> getExpiredProducts()
     {
@@ -346,7 +359,7 @@ public class Inventory {
 
     /**
      * This method displays the products in the inventory in a per Shelf basis.
-     * @return void
+     *
      */
     public void displayInventory()
     {
@@ -438,7 +451,7 @@ public class Inventory {
 
     /**
      * This is a getter method to return the shelves of the Inventory.
-     * @return ArrayList<Shelf> - All shelves in Inventory.
+     * @return ArrayList Shelf - All shelves in Inventory.
      */
     public ArrayList<Shelf> getShelves()
     {

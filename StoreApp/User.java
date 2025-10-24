@@ -1,5 +1,11 @@
 package StoreApp;
 
+/***
+ * Stores the necessary information for all the users
+ * parent class of employee and customer
+ *
+ */
+
 public class User {
     private int uniqueID;
     private static int uniqueIDCounter = 0;
@@ -22,9 +28,9 @@ public class User {
 
     /**
      * Class User parameterized constructor
-     * @param name
-     * @param email
-     * @param password
+     * @param name name provided by user to login
+     * @param email email provided by user to login should be unique
+     * @param password provided by user to login should be unique
      */
     public User(String name, String email, String password)
     {
@@ -72,7 +78,7 @@ public class User {
 
     /**
      * This sets User's name.
-     * @return void
+     * @param name name given by user
      */
     public void setName(String name)
     {
@@ -81,7 +87,7 @@ public class User {
 
     /**
      * This sets User's email
-     * @return void
+     * @param email email provided by user
      */
     public void setEmail(String email)
     {
@@ -90,7 +96,7 @@ public class User {
 
     /**
      * This sets User's uniqueID
-     * @return void
+     * @param id Unique ID wanted to be set/changed into
      */
     public void setUniqueID(int id)
     {

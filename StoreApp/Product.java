@@ -1,5 +1,8 @@
 package StoreApp;
 
+/***
+ * Represents product in the store and contains details such as product name, price, etc.
+ */
 public class Product {
     private int productID;
     private static int productIDCounter = 0;
@@ -76,7 +79,7 @@ public class Product {
     /**
      * This method updates the stock of this Product.
      * @param restockQuantity is the amount of stock to update the stock of this Product.
-     * @return void
+     *
      */
     public void updateStock(int restockQuantity)
     {
@@ -168,7 +171,7 @@ public class Product {
     /**
      * This method sets the product's productID.
      * @param productID is the new productID.
-     * @return void
+     *
      */
     public void setProductID(int productID)
     {
@@ -178,7 +181,7 @@ public class Product {
     /**
      * This method sets the product's productName.
      * @param productName is the new productName.
-     * @return void
+     *
      */
     public void setProductName(String productName)
     {
@@ -188,7 +191,7 @@ public class Product {
     /**
      * This method sets the product's productPrice.
      * @param productPrice is the new productPrice.
-     * @return void
+     *
      */
     public void setProductPrice(double productPrice)
     {
@@ -198,7 +201,7 @@ public class Product {
     /**
      * This method sets the product's productQuantity.
      * @param productQuantity is the new productQuantity.
-     * @return void
+     *
      */
     public void setProductQuantity(int productQuantity)
     {
@@ -208,7 +211,7 @@ public class Product {
     /**
      * This method sets the product's productCategory.
      * @param productCategory is the new productCategory.
-     * @return void
+     *
      */
     public void setProductCategory(String productCategory)
     {
@@ -218,7 +221,7 @@ public class Product {
     /**
      * This method sets the product's brand.
      * @param brand is the new brand.
-     * @return void
+     *
      */
     public void setBrand(String brand)
     {
@@ -228,7 +231,7 @@ public class Product {
     /**
      * This method sets the product's variant.
      * @param variant is the new variant.
-     * @return void
+     *
      */
     public void setVariant(String variant)
     {
@@ -238,7 +241,7 @@ public class Product {
     /**
      * This method sets the product's expirationDate.
      * @param expirationDate is the new expirationDate.
-     * @return void
+     *
      */
     public void setExpirationDate(String expirationDate)
     {

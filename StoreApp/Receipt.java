@@ -1,5 +1,8 @@
 package StoreApp;
 
+/***
+ * Displays the whole summary of transaction made by the customer
+ */
 public class Receipt {
     private Transaction transaction;
     private String receiptNumber;
@@ -28,7 +31,7 @@ public class Receipt {
 
     /**
      * This method displays the Receipt details.
-     * @return void
+     *
      */
     public void displayReceiptDetails()
     {

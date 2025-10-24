@@ -1,18 +1,24 @@
 package StoreApp;
 import java.util.ArrayList;
 
+/**
+ * Where all items picked by customer is placed.
+ */
 public class Cart {
     private ArrayList<Item> items;
 
+    /**
+     * Default constructor for class Cart
+     */
     public Cart() {
         this.items = new ArrayList<>();
     }
 
     /***
-     * Is a method which checks the if the desired product has enough stock/quantity in order to fulfill the customer's request.
+     * Is a method which checks if the desired product has enough stock/quantity in order to fulfill the customer's request.
      * @param product is the product that wants to be added to the cart
      * @param quantity is the number of products desired to be added to cart
-     * @return a boolean to signify succes / failure
+     * @return a boolean to signify success / failure
      */
     public boolean addItem(Product product, int quantity)
     {
@@ -98,7 +104,7 @@ public class Cart {
 
     /***
      * method that checks if the cart is empty
-     * @return boleaan to show if empty = true or not empty = false
+     * @return boolean to show if empty = true or not empty = false
      */
     public boolean isEmpty()
     {

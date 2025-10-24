@@ -2,6 +2,9 @@ package StoreApp;
 
 import java.util.ArrayList;
 
+/***
+ * Where products are displayed, what customers can see once they enter the customer view
+ */
 public class Shelf {
     private int shelfID;
     private static int shelfIDCounter = 0;
@@ -116,7 +119,7 @@ public class Shelf {
 
     /**
      * This method displays the Products stored in a Shelf.
-     * @return void
+     *
      */
     public void displayShelf()
     {
@@ -206,7 +209,7 @@ public class Shelf {
 
     /**
      * This is a getter method to get the Shelf's products.
-     * @return ArrayList<Product> - All Shelf's Products
+     * @return ArrayList Product - All Shelf's Products
      */
     public ArrayList<Product> getProductsOnShelf()
     {
@@ -234,7 +237,7 @@ public class Shelf {
     /**
      * This method sets the Shelf's category.
      * @param newCategory is the new category to be used.
-     * @return void
+     *
      */
     public void setShelfCategory(String newCategory)
     {

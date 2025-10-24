@@ -1,8 +1,15 @@
 package StoreApp;
 
+/***
+ * This represents the employee of the store where they have access to do the restocking or certain
+ * processes only employees can do
+ */
 public class Employee extends User {
     private String role;
 
+    /**
+     * Default constructor for employee
+     */
     public Employee()
     {
         super();

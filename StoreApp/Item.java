@@ -1,5 +1,8 @@
 package StoreApp;
 
+/***
+ * Class that represents item which interacts with cart
+ */
 public class Item {
     private Product product;
     private int quantity;
