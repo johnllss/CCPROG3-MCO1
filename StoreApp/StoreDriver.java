@@ -28,11 +28,11 @@ public class StoreDriver {
         inventory.addProduct(new Product("Beer", 90.0, 10, "Beverages", "Stella Artois", "Stella 0.0", "2028-08-15"));
         
         // Toiletries
-        inventory.addProduct(new Product("Soap", 50.0, 10, "Toiletries", "Safeguard", "Pink", null));
-        inventory.addProduct(new Product("Shampoo", 99.0, 10, "Toiletries", "Head & Shoulders", "Classic Clean", null));
-        inventory.addProduct(new Product("Airy Matte Tint", 30.0, 10, "Toiletries", "BLK Cosmetics", "Dearest Rose Pink", null));
-        inventory.addProduct(new Product("Toothbrush", 135.0, 10, "Toiletries", "Oral-B", "Electric Toothbrush", null));
-        inventory.addProduct(new Product("Deodorant", 199.0, 10, "Toiletries", "Old Spice", "Wolfthorne", null));
+        inventory.addProduct(new Product("Soap", 50.0, 10, "Toiletries", "Safeguard", "Pink", "N/A"));
+        inventory.addProduct(new Product("Shampoo", 99.0, 10, "Toiletries", "Head & Shoulders", "Classic Clean", "N/A"));
+        inventory.addProduct(new Product("Airy Matte Tint", 30.0, 10, "Toiletries", "BLK Cosmetics", "Dearest Rose Pink", "N/A"));
+        inventory.addProduct(new Product("Toothbrush", 135.0, 10, "Toiletries", "Oral-B", "Electric Toothbrush", "N/A"));
+        inventory.addProduct(new Product("Deodorant", 199.0, 10, "Toiletries", "Old Spice", "Wolfthorne", "N/A"));
         
         // Cleaning Products
         inventory.addProduct(new Product("Detergent", 55.0, 10, "Cleaning Products", "Tide", "Powder", "2027-01-02"));
@@ -44,8 +44,8 @@ public class StoreDriver {
         // Medications
         inventory.addProduct(new Product("Adhesive Bandage", 25.0, 10, "Medications", "Band-Aid", "Waterproof", "2026-05-17"));
         inventory.addProduct(new Product("Antibiotic", 30.0, 10, "Medications", "Amoxil", "Amoxicillin", "2026-01-23"));
-        inventory.addProduct(new Product("Antihistamine", 80.0, 10, "Medications", "Claritin", "Standard Tablet", null));
-        inventory.addProduct(new Product("Anesthetics", 125.0, 10, "Medications", "Diprivan", "Propofol", null));
+        inventory.addProduct(new Product("Antihistamine", 80.0, 10, "Medications", "Claritin", "Standard Tablet", "N/A"));
+        inventory.addProduct(new Product("Anesthetics", 125.0, 10, "Medications", "Diprivan", "Propofol", "N/A"));
         inventory.addProduct(new Product("Paracetamol", 55.0, 10, "Medications", "Biogesic", "500mg", "2028-08-15"));
 
         System.out.println("\nInitialization of inventory complete.\n");
