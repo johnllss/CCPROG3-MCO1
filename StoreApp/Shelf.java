@@ -31,21 +31,15 @@ public class Shelf {
      * @param product is the product to be added.
      * @return boolean for success/failure
      */
+
     public boolean addProductToShelf(Product product)
     {
-        if (isShelfFull())
+        if(isShelfFull() || !product.getProductCategory().equals(this.category))
         {
-            System.out.println("Oops! Shelf is full.");
             return false;
-        } else if (!product.getProductCategory().equals(this.category))
-        {
-            System.out.println("The product's category does not match this shelf's category!");
-            return false;
-        } else 
-        {
-            products.add(product);
-            return true;
         }
+        products.add(product);
+        return true;
     }
 
     /**
@@ -154,40 +148,7 @@ public class Shelf {
         }
     }
 
-    /***
-     * Displays a modified view for customers for better UI
-     */
-    public void displayShelfCustomerView()
-    {
-        System.out.println("\n== " + this.category + "==\n");
-        if (products.isEmpty())
-        {
-            System.out.println("Currently empty.");
-        } else
-        {
-            // DISPLAY HEADERS FOR PRODUCTS
-            System.out.printf("%-4s %-30s %-30s %-12s %-15s %-15s%n", "#", "Product Name", "Brand", "Price", "Stock", "Availability");
-            System.out.println("-----");
 
-            // ACTUAL PRODUCT INFORMATION
-            int count = 1;
-            for (Product productOnShelf: products)
-            {
-                String stockStatus = "In-Stock";
-
-                // checks for product's stock quantity
-                if (productOnShelf.getProductQuantity() < 3)
-                {
-                    // and sets to "Low stock" if below set threshold
-                    stockStatus = "Low stock.";
-                }
-
-                System.out.printf("%-4d %-30s %-30s PHP %-9.2f %-15d %-15s%n",
-                        count++, productOnShelf.getProductName(), productOnShelf.getBrand(), productOnShelf.getProductPrice(), productOnShelf.getProductQuantity(), stockStatus);
-            }
-        }
-
-    }
 
     /**
      * This is a getter method to get the Shelf's shelfID.
