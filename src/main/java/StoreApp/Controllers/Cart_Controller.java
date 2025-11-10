@@ -2,10 +2,8 @@ package StoreApp.Controllers;
 
 import StoreApp.Models.Item;
 import javafx.collections.FXCollections;
-import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 import java.lang.classfile.Label;
@@ -41,7 +39,7 @@ public class Cart_Controller {
     {
         double subTotal = 0; // TODO: modify to calculate/get the subtotal
         double vat = subTotal * 0.10; // TODO: modify to include seniority validation
-        double total = subtotal + vat;
+        double total = subTotal + vat;
 
         subtotalLabel.setText(String.format("PHP %.2f", subTotal));
         vatLabel.setText(String.format("₱ %.2f", vat));
