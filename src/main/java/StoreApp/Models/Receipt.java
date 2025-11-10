@@ -1,4 +1,4 @@
-package StoreApp;
+package StoreApp.Models;
 
 /***
  * Displays the whole summary of transaction made by the customer
