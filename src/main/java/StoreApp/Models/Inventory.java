@@ -1,6 +1,7 @@
 package StoreApp.Models;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 /***
  * This is the storage for all shelves where they employees may edit or restock
@@ -84,22 +85,14 @@ public class Inventory {
         // check each of the shelves
         for (Shelf shelf: shelves)
         {
-            // check if category matches 
-            if (product.getProductCategory() == shelf.getShelfCategory())
+            // check if category matches (Objects.equals() allows for null-safe comparison)
+            if (Objects.equals(product.getProductCategory(), shelf.getShelfCategory()))
             {
                 // add product
-                boolean isAdded = shelf.addProductToShelf(product);
-
-                if (isAdded)
-                {
-                    System.out.println("Product added successfully.");
-                }
-
-                return isAdded;
+                return shelf.addProductToShelf(product);
             }
         }
 
-        System.out.println("Failed to add the product.");
         return false;
     }
 
@@ -117,8 +110,6 @@ public class Inventory {
         if (product != null)
         {
             product.updateStock(amount);
-
-            System.out.println("Product successfully restocked.");
 
             return true;
         }
@@ -141,7 +132,6 @@ public class Inventory {
 
             if (isRemoved != null)
             {
-                System.out.println("Product successfully removed.");
                 return true;
             }
         }
@@ -163,8 +153,6 @@ public class Inventory {
         {
             product.setProductName(newName);
 
-            System.out.println("Product name successfully updated.");
-
             return true;
         }
 
@@ -184,8 +172,6 @@ public class Inventory {
         if (product != null)
         {
             product.setProductPrice(newPrice);
-
-            System.out.println("Product price successfully updated.");
 
             return true;
         }
@@ -207,8 +193,6 @@ public class Inventory {
         {
             product.setBrand(newBrand);
 
-            System.out.println("Product brand successfully updated.");
-
             return true;
         }
 
@@ -229,8 +213,6 @@ public class Inventory {
         {
             product.setVariant(newVariant);
 
-            System.out.println("Product variant successfully updated.");
-
             return true;
         }
 
@@ -250,8 +232,6 @@ public class Inventory {
         if (product != null)
         {
             product.setExpirationDate(newExpirationDate);
-
-            System.out.println("Product expiration date successfully updated.");
 
             return true;
         }
@@ -338,8 +318,6 @@ public class Inventory {
     {
         // TODO: SAVING TO FILE
 
-        System.out.println("Saving inventory to " + fileName);
-
         return false;
     }
 
@@ -352,8 +330,6 @@ public class Inventory {
     {
         // TODO: LOADING FROM FILE
 
-        System.out.println("Loading inventory from " + fileName);
-
         return false;
     }
 
@@ -363,14 +339,10 @@ public class Inventory {
      */
     public void displayInventory()
     {
-        System.out.println(">>> INVENTORY OVERVIEW <<<");
-
         for (Shelf shelf: shelves)
         {
             shelf.displayShelf();
         }
-
-        System.out.printf("Total Products: %d%n", getTotalProductCount());
     }
 
     /**
@@ -393,17 +365,12 @@ public class Inventory {
             // check if product exists in inventory
             if (productItemInInventory == null)
             {
-                System.out.println("Uh-oh! " +productItem.getProductName()+ " no longer available.");
                 return false;
             }
 
             // check if product has sufficient stock
             if (productItemInInventory.getProductQuantity() < userDesiredQty)
             {
-                System.out.println("Sadly, " +productItem.getProductName()+ " has an insufficient stock.");
-                System.out.println("Your desired quantity: " +userDesiredQty);
-                System.out.println("Available quantity: " +productItem.getProductQuantity());
-
                 return false;
             }
         }
