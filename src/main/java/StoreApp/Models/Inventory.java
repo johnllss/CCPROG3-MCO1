@@ -1,8 +1,6 @@
 package StoreApp.Models;
 
-import java.sql.Array;
 import java.util.ArrayList;
-import java.util.Objects;
 
 /***
  * This is the storage for all shelves where they employees may edit or restock
@@ -206,7 +204,7 @@ public class Inventory {
     {
         Product product = findProduct(productID);
 
-        if (product != null && newbrand != null)
+        if (product != null && newBrand != null)
         {
             product.setBrand(newBrand);
             return true;
