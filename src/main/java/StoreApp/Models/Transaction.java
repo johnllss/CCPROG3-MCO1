@@ -1,6 +1,4 @@
-package StoreApp;
-
-import java.util.Scanner;
+package StoreApp.Models;
 
 /**
  * where the cart is checked out. It handles all the computation and discounts
@@ -48,13 +46,11 @@ public class Transaction {
 
     /**
      * This method calculates the discount to be applied.
+     * @param pointsToRedeem is the number of points that the customer wants to redeem.
      * @return double for the discount.
      */
-    public double calculateDiscount()
+    public double calculateDiscount(int pointsToRedeem)
     {
-        Scanner scan = new Scanner(System.in);
-        // TODO: find out how to close scan without prematurely closing it here
-        
         discount = 0.0; // discount reset to 0.0
 
         // SENIOR DISCOUNT
@@ -65,41 +61,35 @@ public class Transaction {
         }
 
         // MEMBERSHIP DISCOUNT
-        if (customer.hasMembership())
+        if (customer.hasMembership() && pointsToRedeem > 0)
         {
             MembershipCard card = customer.getMembershipCard();
-            int currentPoints = card.getPoints();
-            // possible max discount cap with respect to subtotal (prevents over-discounting)
-            double maxDiscountCap = subtotal - discount;
 
-            int userDesiredPoints;
-
-            // loop for getting user input for using points until valid input
-            do 
+            if (pointsToRedeem <= card.getPoints() && pointsToRedeem <= (subtotal - discount))
             {
-                System.out.println("Your current points: " + currentPoints);
-                System.out.println("Your max usable points: " + (int)maxDiscountCap);
-                System.out.println("Enter the amount of points to use (0 to skip): ");
-
-                userDesiredPoints = scan.nextInt();
-
-                if (userDesiredPoints < 0) 
-                {
-                    System.out.println("Oops! Points must be positive.");
-                } else if (userDesiredPoints > currentPoints)
-                {
-                    System.out.println("Oops! Not enough points.");
-                } else if (userDesiredPoints > maxDiscountCap)
-                {
-                    System.out.println("Oops! That's above your usable points.");
-                }
-            } while (userDesiredPoints < 0 || userDesiredPoints > currentPoints || userDesiredPoints > maxDiscountCap);
-
-            discount += userDesiredPoints;
-            card.redeemPoints(userDesiredPoints);
-        }    
+                discount += pointsToRedeem;
+                card.redeemPoints(pointsToRedeem);
+            }
+        }
 
         return discount;
+    }
+
+    /**
+     * This is a helper function to get the max-usable points of the customer (for Controller usage).
+     * @return int for the max number of usable points.
+     */
+    public int getMaxUsablePoints()
+    {
+        if (!customer.hasMembership())
+        {
+            return 0;
+        }
+
+        int currentPoints = customer.getMembershipCard().getPoints();
+        double maxDiscountCap = subtotal - discount;
+
+        return Math.min(currentPoints, (int)maxDiscountCap);
     }
 
     /**

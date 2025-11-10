@@ -1,4 +1,4 @@
-package StoreApp;
+package StoreApp.Models;
 
 import java.util.ArrayList;
 
@@ -81,25 +81,22 @@ public class Inventory {
      */
     public boolean addProduct(Product product)
     {
+        if (product == null)
+        {
+            return false;
+        }
+
         // check each of the shelves
         for (Shelf shelf: shelves)
         {
-            // check if category matches 
-            if (product.getProductCategory() == shelf.getShelfCategory())
+            // check if category matches
+            if (product.getProductCategory().equals(shelf.getShelfCategory()))
             {
                 // add product
-                boolean isAdded = shelf.addProductToShelf(product);
-
-                if (isAdded)
-                {
-                    System.out.println("Product added successfully.");
-                }
-
-                return isAdded;
+                return shelf.addProductToShelf(product);
             }
         }
 
-        System.out.println("Failed to add the product.");
         return false;
     }
 
@@ -111,14 +108,18 @@ public class Inventory {
      */
     public boolean restockProduct(int productID, int amount)
     {
+        // prevent processing 0 or negative amounts
+        if (amount <= 0)
+        {
+            return false;
+        }
+
         Product product = findProduct(productID);
 
         // If not nonexistent, restock
         if (product != null)
         {
             product.updateStock(amount);
-
-            System.out.println("Product successfully restocked.");
 
             return true;
         }
@@ -141,7 +142,6 @@ public class Inventory {
 
             if (isRemoved != null)
             {
-                System.out.println("Product successfully removed.");
                 return true;
             }
         }
@@ -159,11 +159,9 @@ public class Inventory {
     {
         Product product = findProduct(productID);
 
-        if (product != null)
+        if (product != null && newName != null)
         {
             product.setProductName(newName);
-
-            System.out.println("Product name successfully updated.");
 
             return true;
         }
@@ -179,14 +177,17 @@ public class Inventory {
      */
     public boolean updateProductPrice(int productID, double newPrice)
     {
+        // prevent processing 0 or negative newPrice
+        if (newPrice < 0)
+        {
+            return false;
+        }
+
         Product product = findProduct(productID);
 
         if (product != null)
         {
             product.setProductPrice(newPrice);
-
-            System.out.println("Product price successfully updated.");
-
             return true;
         }
 
@@ -203,12 +204,9 @@ public class Inventory {
     {
         Product product = findProduct(productID);
 
-        if (product != null)
+        if (product != null && newBrand != null)
         {
             product.setBrand(newBrand);
-
-            System.out.println("Product brand successfully updated.");
-
             return true;
         }
 
@@ -225,12 +223,9 @@ public class Inventory {
     {
         Product product = findProduct(productID);
 
-        if (product != null)
+        if (product != null && newVariant != null)
         {
             product.setVariant(newVariant);
-
-            System.out.println("Product variant successfully updated.");
-
             return true;
         }
 
@@ -247,12 +242,9 @@ public class Inventory {
     {
         Product product = findProduct(productID);
 
-        if (product != null)
+        if (product != null && newExpirationDate != null)
         {
             product.setExpirationDate(newExpirationDate);
-
-            System.out.println("Product expiration date successfully updated.");
-
             return true;
         }
 
@@ -275,7 +267,7 @@ public class Inventory {
             // check each product on shelf...
             for (Product product: shelf.getProductsOnShelf())
             {
-                // then, check if lower than threshold
+                // then, check if lower than a given threshold
                 if (product.getProductQuantity() < quantityLevel)
                 {
                     lowStockProducts.add(product);
@@ -293,11 +285,16 @@ public class Inventory {
      */
     public ArrayList<Product> getProductsByCategory(String category)
     {
+        if (category == null)
+        {
+            return new ArrayList<>();
+        }
+
         // check each shelf
         for (Shelf shelf: shelves)
         {
             // if provided category is same with shelf category
-            if (shelf.getShelfCategory() == category)
+            if (shelf.getShelfCategory().equals(category))
             {
                 return shelf.getProductsOnShelf();
             }
@@ -330,62 +327,20 @@ public class Inventory {
     }
 
     /**
-     * This method saves the Inventory's data to a file
-     * @param fileName is the file name of the file
-     * @return boolean for success/failure
-     */
-    public boolean saveInventoryToFile(String fileName)
-    {
-        // TODO: SAVING TO FILE
-
-        System.out.println("Saving inventory to " + fileName);
-
-        return false;
-    }
-
-    /**
-     * This method loads the saved Inventory data from a file
-     * @param fileName is the file name of the file
-     * @return boolean for success/failure
-     */
-    public boolean loadInventoryFromFile(String fileName)
-    {
-        // TODO: LOADING FROM FILE
-
-        System.out.println("Loading inventory from " + fileName);
-
-        return false;
-    }
-
-    /**
-     * This method displays the products in the inventory in a per Shelf basis.
-     *
-     */
-    public void displayInventory()
-    {
-        System.out.println(">>> INVENTORY OVERVIEW <<<");
-
-        for (Shelf shelf: shelves)
-        {
-            shelf.displayShelf();
-        }
-
-        System.out.printf("Total Products: %d%n", getTotalProductCount());
-    }
-
-    /**
      * This method verifies the stocks of the Customer's items placed inside their cart.
      * @param cart is the customer's cart.
      * @return boolean for success/failure
      */
     public boolean verifyCartStock(Cart cart)
     {
-        ArrayList<Item> itemsInCart = cart.getItems();
+        if (cart == null || cart.isEmpty())
+        {
+            return false;
+        }
 
-        for (Item item: itemsInCart)
+        for (Item item: cart.getItems())
         {
             Product productItem = item.getProduct();
-            int userDesiredQty = item.getQuantity();
 
             // find the product in inventory
             Product productItemInInventory = findProduct(productItem.getProductID());
@@ -393,17 +348,12 @@ public class Inventory {
             // check if product exists in inventory
             if (productItemInInventory == null)
             {
-                System.out.println("Uh-oh! " +productItem.getProductName()+ " no longer available.");
                 return false;
             }
 
             // check if product has sufficient stock
-            if (productItemInInventory.getProductQuantity() < userDesiredQty)
+            if (productItemInInventory.getProductQuantity() < item.getQuantity())
             {
-                System.out.println("Sadly, " +productItem.getProductName()+ " has an insufficient stock.");
-                System.out.println("Your desired quantity: " +userDesiredQty);
-                System.out.println("Available quantity: " +productItem.getProductQuantity());
-
                 return false;
             }
         }
@@ -419,14 +369,27 @@ public class Inventory {
      */
     public boolean operateCartPurchase(Cart cart)
     {
-        ArrayList<Item> itemsInCart = cart.getItems();
+        if (cart == null || cart.isEmpty())
+        {
+            return false;
+        }
 
-        for (Item item: itemsInCart)
+        for (Item item: cart.getItems())
         {
             Product itemInInventory = findProduct(item.getProduct().getProductID());
 
+            if (itemInInventory == null)
+            {
+                return false;
+            }
+
             // reduce stock of the product item by quantity amount
-            itemInInventory.reduceStock(item.getQuantity());
+            boolean isReduced = itemInInventory.reduceStock(item.getQuantity());
+
+            if (!isReduced)
+            {
+                return false;
+            }
         }
 
         return true;
@@ -456,5 +419,29 @@ public class Inventory {
     public ArrayList<Shelf> getShelves()
     {
         return shelves;
+    }
+
+    /**
+     * This method saves the Inventory's data to a file
+     * @param fileName is the file name of the file
+     * @return boolean for success/failure
+     */
+    public boolean saveInventoryToFile(String fileName)
+    {
+        // TODO: SAVING TO FILE
+
+        return false;
+    }
+
+    /**
+     * This method loads the saved Inventory data from a file
+     * @param fileName is the file name of the file
+     * @return boolean for success/failure
+     */
+    public boolean loadInventoryFromFile(String fileName)
+    {
+        // TODO: LOADING FROM FILE
+
+        return false;
     }
 }

@@ -1,4 +1,4 @@
-package StoreApp;
+package StoreApp.Models;
 
 /***
  * Represents users membership card, should there be a presence of it

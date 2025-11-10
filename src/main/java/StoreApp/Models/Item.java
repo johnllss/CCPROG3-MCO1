@@ -1,4 +1,4 @@
-package StoreApp;
+package StoreApp.Models;
 
 /***
  * Class that represents item which interacts with cart
