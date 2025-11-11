@@ -1,4 +1,4 @@
-package StoreApp;
+package StoreApp.Models;
 
 /***
  * This represents the employee of the store where they have access to do the restocking or certain

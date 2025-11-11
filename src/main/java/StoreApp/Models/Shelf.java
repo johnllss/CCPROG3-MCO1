@@ -1,4 +1,4 @@
-package StoreApp;
+package StoreApp.Models;
 
 import java.util.ArrayList;
 

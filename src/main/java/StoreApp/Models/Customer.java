@@ -1,4 +1,4 @@
-package StoreApp;
+package StoreApp.Models;
 
 /**
  * Class that represents customer, stores necessary data such as membership card or seniority.

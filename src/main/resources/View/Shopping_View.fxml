@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="StoreApp.Controllers.Shopping_Controller">
+
+    <children>
+        <VBox spacing="10" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
+            <HBox alignment="CENTER_LEFT" spacing="20" style="-fx-background-color: #f5f5f5; -fx-padding: 15;">
+                <Label fx:id="categoryLabel" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #006937;" text="CategoryName" />
+                <Pane HBox.hgrow="ALWAYS" />
+                <Button fx:id="cartBtn" alignment="CENTER" contentDisplay="CENTER" style="-fx-background-color: #006937; -fx-text-fill: WHITE;" text="🛒" textAlignment="CENTER">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </Button>
+            </HBox>
+            <ScrollPane fitToWidth="true" style="-fx-padding: 15;" VBox.vgrow="ALWAYS">
+                <content>
+                    <GridPane fx:id="productsGrid" hgap="20" vgap="20">
+                        <padding>
+                            <Insets bottom="10" left="10" right="10" top="10" />
+                        </padding>
+                    </GridPane>
+                </content>
+            </ScrollPane>
+            <HBox alignment="CENTER" style="-fx-background-color: #f5f5f5; -fx-padding: 10;">
+                <children>
+                    <Button fx:id="foodBtn" mnemonicParsing="false" style="-fx-background-color: #ffde59;" text="Food" textFill="#006937">
+                        <HBox.margin>
+                            <Insets left="20.0" />
+                        </HBox.margin>
+                    </Button>
+                    <Button fx:id="beverageBtn" mnemonicParsing="false" style="-fx-background-color: #006937;" text="Beverages" textFill="WHITE">
+                        <HBox.margin>
+                            <Insets left="20.0" />
+                        </HBox.margin>
+                    </Button>
+                    <Button fx:id="toiletriesBtn" mnemonicParsing="false" style="-fx-background-color: #ffde59;" text="Toiletries" textFill="#006937">
+                        <HBox.margin>
+                            <Insets left="20.0" />
+                        </HBox.margin>
+                    </Button>
+                    <Button fx:id="medicineBtn" mnemonicParsing="false" style="-fx-background-color: #ffde59;" text="Medicine" textFill="#006937">
+                        <HBox.margin>
+                            <Insets left="20.0" />
+                        </HBox.margin>
+                    </Button>
+                    <Button fx:id="householdBtn" mnemonicParsing="false" style="-fx-background-color: #ffde59;" text="Household" textFill="#006937">
+                        <HBox.margin>
+                            <Insets left="20.0" />
+                        </HBox.margin>
+                    </Button>
+                </children>
+            </HBox>
+        </VBox>
+    </children>
+</AnchorPane>

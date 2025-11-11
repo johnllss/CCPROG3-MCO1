@@ -1,4 +1,4 @@
-package StoreApp;
+package StoreApp.Models;
 
 /***
  * Represents product in the store and contains details such as product name, price, etc.

@@ -1,5 +1,7 @@
 package StoreApp;
 
+import StoreApp.Models.*;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
