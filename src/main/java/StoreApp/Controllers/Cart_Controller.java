@@ -1,24 +1,50 @@
 package StoreApp.Controllers;
 
+import StoreApp.Models.Cart;
+import StoreApp.Models.Customer;
 import StoreApp.Models.Item;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
+import javafx.geometry.Pos;
 import javafx.scene.layout.VBox;
 
 import java.lang.classfile.Label;
+
+import static javafx.collections.FXCollections.*;
 
 public class Cart_Controller {
     @FXML private VBox productsBox;
     @FXML private Label subtotalLabel;
     @FXML private Label vatLabel;
     @FXML private Label totalLabel;
+    @FXML private TableView<Item> cartTable;
+    @FXML private TableColumn<Cart, Integer> productQuantityColumn;
+    @FXML private TableColumn<Cart, String> productNameColumn;
+    @FXML private TableColumn<Cart, String> productPriceColumn;
+    private Customer customer;
+    private Cart cart;
+    private ObservableList<Item> ItemList;
 
-    private ObservableList<Item> items = FXCollections.observableArrayList();
+
+    public void SetObjects(Customer customer){
+        this.customer = customer;
+        this.cart = customer.getCart();
+        this.ItemList = observableArrayList(cart.getItems());
+        cartTable.setItems(ItemList);
+
+    }
+
+    // TODO Populating Table itself with dynamic buttons
 
     @FXML
     public void initialize()
     {
+
         // TODO
         updateProductBoxDisplay();
         updateAllTotals();

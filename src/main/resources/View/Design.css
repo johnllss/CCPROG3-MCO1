@@ -1,0 +1,10 @@
+.nav-btn{
+    -fx-background-color:  #ffde59;
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 5,0,0,0);
+}
+.nav-btn:hover{
+    -fx-background-color: #ffd83d;
+    -fx-cursor: hand;
+}
