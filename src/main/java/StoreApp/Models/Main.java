@@ -1,4 +1,4 @@
-package StoreApp;
+package StoreApp.Models;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
