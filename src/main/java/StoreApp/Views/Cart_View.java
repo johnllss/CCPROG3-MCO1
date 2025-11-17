@@ -1,4 +1,4 @@
-package StoreApp;
+package StoreApp.Views;
 
 import java.util.ArrayList;
 

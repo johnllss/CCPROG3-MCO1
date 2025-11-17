@@ -1,4 +1,4 @@
-package StoreApp;
+package StoreApp.Views;
 
 public class Receipt_View {
     /**
