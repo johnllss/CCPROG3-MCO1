@@ -1,6 +1,6 @@
-package StoreApp;
+package StoreApp.Controllers;
 
-import java.util.ArrayList;
+import StoreApp.Views.Shelf_View;
 
 public class Shelf_Controller {
     private Shelf model;

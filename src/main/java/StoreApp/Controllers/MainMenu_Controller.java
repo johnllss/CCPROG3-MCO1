@@ -1,4 +1,4 @@
-package StoreApp;
+package StoreApp.Controllers;
 
 import javafx.event.ActionEvent;
 

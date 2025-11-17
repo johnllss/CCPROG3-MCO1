@@ -1,4 +1,4 @@
-package StoreApp;
+package StoreApp.Controllers;
 
 public class Receipt_Controller {
     private  Receipt_View view;
