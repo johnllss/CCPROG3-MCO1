@@ -1,5 +1,6 @@
 package StoreApp.Controllers;
 
+import StoreApp.Models.Employee;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,31 +21,82 @@ public class Employee_Login_Controller {
     @FXML private Button loginBtn;
     @FXML private Button returnBtn;
 
+    private Employee[] employees;
     private Stage stage;
     private Scene scene;
     private Parent root;
 
-    public void login(ActionEvent event) throws IOException
+    public void setEmployees(Employee[] employees)
     {
-        String employeeEmail = emailText.getText();
-
-        FXMLLoader loader = new FXMLLoader("Inventory_View.fxml");
-        root = loader.load();
-
-        Inventory_Controller inventoryController = loader.getController();
-
-        // TODO: method to be implemented
-        inventoryController.displayEmployeeName(employeeName);
-
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        this.employees = employees;
     }
 
-    public void
-    returnToMainMenu()
+    public void login(ActionEvent event) throws IOException
     {
-        // TODO: implement returning to main menu
+        // extract entered employee details
+        String employeeEmail = emailText.getText();
+        String employeePassword = passwordText.getText();
+
+        if (employeeEmail.isEmpty() || employeePassword.isEmpty())
+        {
+            errorLabel.setText("Please fill in all required fields.");
+            return;
+        }
+
+        Employee foundEmployee = null;
+        boolean isLoggedIn = false;
+
+        // loop through all employees
+        for (Employee e: employees)
+        {
+            // find match
+            if (e.login(employeeEmail, employeePassword))
+            {
+                foundEmployee = e;
+                isLoggedIn = true;
+                break;
+            }
+        }
+
+        if (!isLoggedIn)
+        {
+            errorLabel.setText("Invalid email or password");
+            return;
+        }
+
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/Inventory_View.fxml"));
+            root = loader.load();
+
+            Inventory_Controller inventoryController = loader.getController();
+
+            inventoryController.displayEmployeeName(foundEmployee.getName());
+//            inventoryController.setInventory(inventory);
+
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            errorLabel.setText("error: Failed loading inventory view");
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void returnToMainMenu(ActionEvent event)
+    {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/MainMenu_View.fxml"));
+            root = loader.load();
+
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
