@@ -33,7 +33,7 @@ public class MainMenu_Controller {
         System.out.println("Customer View");
 
         try {
-            FXMLLoader loader = new FXML(getClass().getResource("/View/Shopping_View.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/Shopping_View.fxml"));
             Parent root = loader.load();
 
             Shopping_Controller shoppingController = loader.getController();
@@ -56,7 +56,7 @@ public class MainMenu_Controller {
         System.out.println("Employee View");
 
         try {
-            FXMLLoader loader = new FXML(getClass().getResource("/View/Employee_Login_View.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/Employee_Login_View.fxml"));
             Parent root = loader.load();
 
             Employee_Login_Controller loginController = loader.getController();
