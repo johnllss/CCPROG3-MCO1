@@ -1,6 +1,7 @@
 package StoreApp.Controllers;
 
 import StoreApp.Models.Employee;
+import StoreApp.Models.Inventory;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,14 +22,23 @@ public class Employee_Login_Controller {
     @FXML private Button loginBtn;
     @FXML private Button returnBtn;
 
-    private Employee[] employees;
     private Stage stage;
     private Scene scene;
     private Parent root;
 
+    // data needed for injection
+    private Employee[] employees;
+    private Inventory inventory;
+
+    // setters for injections
     public void setEmployees(Employee[] employees)
     {
         this.employees = employees;
+    }
+
+    public void setInventory(Inventory inventory)
+    {
+        this.inventory = inventory;
     }
 
     public void login(ActionEvent event) throws IOException
@@ -71,7 +81,7 @@ public class Employee_Login_Controller {
             Inventory_Controller inventoryController = loader.getController();
 
             inventoryController.displayEmployeeName(foundEmployee.getName());
-//            inventoryController.setInventory(inventory);
+            inventoryController.setInventory(inventory);
 
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             scene = new Scene(root);
