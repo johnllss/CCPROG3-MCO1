@@ -25,4 +25,6 @@ public class Inventory_Controller implements Initializable {
         String choice = choiceBox.getValue();
 
     }
+
+
 }
