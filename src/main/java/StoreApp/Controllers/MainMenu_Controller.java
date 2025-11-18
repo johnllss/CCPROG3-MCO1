@@ -31,6 +31,23 @@ public class MainMenu_Controller {
     public void goToCustomerView(ActionEvent event)
     {
         System.out.println("Customer View");
+
+        try {
+            FXMLLoader loader = new FXML(getClass().getResource("/View/Shopping_View.fxml"));
+            Parent root = loader.load();
+
+            Shopping_Controller shoppingController = loader.getController();
+
+            shoppingController.setInventory(inventory);
+
+            // code for switching fxml
+            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
