@@ -43,6 +43,13 @@ public class Employee_Login_Controller {
 
     public void login(ActionEvent event) throws IOException
     {
+        if (employees == null || inventory == null)
+        {
+            errorLabel.setText("system error: Data not initialized");
+            System.err.print("error: employees or inventory not initialized");
+            return;
+        }
+
         // extract entered employee details
         String employeeEmail = emailText.getText();
         String employeePassword = passwordText.getText();
