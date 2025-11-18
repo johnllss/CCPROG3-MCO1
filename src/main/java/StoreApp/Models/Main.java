@@ -1,5 +1,6 @@
 package StoreApp.Models;
 
+import StoreApp.Controllers.MainMenu_Controller;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -12,7 +13,26 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("MainMenu_View.fxml"));
+            // declare core data
+            Inventory inventory = new Inventory();
+            Employee[] employees;
+
+            if (!initializeInventory(inventory))
+            {
+                System.err.println("error: inventory has not been successfully initialized");
+            }
+
+            employees = initializeEmployees();
+
+            // load main menu view
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/MainMenu_View.fxml"));
+            Parent root = loader.load();
+
+            // inject data into MainMenu
+            MainMenu_Controller mainMenuController = loader.getController();
+            mainMenuController.setEmployees(employees);
+            mainMenuController.setInventory(inventory);
+
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.setTitle("StoreApp");
@@ -25,6 +45,64 @@ public class Main extends Application {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    private boolean initializeInventory(Inventory inventory)
+    {
+        if (inventory == null)
+        {
+            System.err.println("error: uninitializable null inventory");
+            return false;
+        }
+
+        // INITIALIZATION OF INVENTORY'S PRODUCTS
+        // Food
+        inventory.addProduct(new Product("Sandwich", 30.0, 10, "Food", "Subway", "Cheese", "2025-10-27"));
+        inventory.addProduct(new Product("Pastries", 45.0, 10, "Food", "Subway", "Cheese", "2025-10-26"));
+        inventory.addProduct(new Product("Fried Chicken", 50.0, 10, "Food", "Subway", "Cheese", "2026-01-15"));
+        inventory.addProduct(new Product("Sushi", 120.0, 10, "Food", "Makimura Ramen Bar", "Raw", "2027-03-10"));
+        inventory.addProduct(new Product("Yogurt", 215.0, 10, "Food", "Chobani", "Vanilla", "2025-10-27"));
+
+        // Beverages
+        inventory.addProduct(new Product("Dairy", 100.0, 10, "Beverages", "Selecta", "Milk", "2025-11-30"));
+        inventory.addProduct(new Product("Coffee", 220.0, 10, "Beverages", "Starbucks", "Iced", "2025-02-02"));
+        inventory.addProduct(new Product("Tea", 115.0, 10, "Beverages", "Honest Tea", "Green Tea", "2026-02-14"));
+        inventory.addProduct(new Product("Energy Drink", 159.0, 10, "Beverages", "Red Bull", "The Summer Edition", "2027-10-11"));
+        inventory.addProduct(new Product("Beer", 90.0, 10, "Beverages", "Stella Artois", "Stella 0.0", "2028-08-15"));
+
+        // Toiletries
+        inventory.addProduct(new Product("Soap", 50.0, 10, "Toiletries", "Safeguard", "Pink", "N/A"));
+        inventory.addProduct(new Product("Shampoo", 99.0, 10, "Toiletries", "Head & Shoulders", "Classic Clean", "N/A"));
+        inventory.addProduct(new Product("Airy Matte Tint", 30.0, 10, "Toiletries", "BLK Cosmetics", "Dearest Rose Pink", "N/A"));
+        inventory.addProduct(new Product("Toothbrush", 135.0, 10, "Toiletries", "Oral-B", "Electric Toothbrush", "N/A"));
+        inventory.addProduct(new Product("Deodorant", 199.0, 10, "Toiletries", "Old Spice", "Wolfthorne", "N/A"));
+
+        // Cleaning Products
+        inventory.addProduct(new Product("Detergent", 55.0, 10, "Cleaning Products", "Tide", "Powder", "2027-01-02"));
+        inventory.addProduct(new Product("Tissue", 69.0, 10, "Cleaning Products", "Femme", "Interfolded Paper Towel", "2027-03-25"));
+        inventory.addProduct(new Product("Hand Sanitizer", 95.0, 10, "Cleaning Products", "Purell", "Bottled", "2029-09-23"));
+        inventory.addProduct(new Product("Degreaser", 215.0, 10, "Cleaning Products", "Lysol", "Multi-Purpose", "2028-11-11"));
+        inventory.addProduct(new Product("Bleach", 150.0, 10, "Cleaning Products", "Zonrox", "Original", "2023-11-05"));
+
+        // Medications
+        inventory.addProduct(new Product("Adhesive Bandage", 25.0, 10, "Medications", "Band-Aid", "Waterproof", "2026-05-17"));
+        inventory.addProduct(new Product("Antibiotic", 30.0, 10, "Medications", "Amoxil", "Amoxicillin", "2026-01-23"));
+        inventory.addProduct(new Product("Antihistamine", 80.0, 10, "Medications", "Claritin", "Standard Tablet", "N/A"));
+        inventory.addProduct(new Product("Anesthetics", 125.0, 10, "Medications", "Diprivan", "Propofol", "N/A"));
+        inventory.addProduct(new Product("Paracetamol", 55.0, 10, "Medications", "Biogesic", "500mg", "2028-08-15"));
+
+        // debugger
+        System.out.println("Inventory is successfully initialized.");
+        return true;
+    }
+
+    private Employee[] initializeEmployees()
+    {
+        return new Employee[] {
+                new Employee("John Lloyd", "johnlloyd@gmail.com", "abc123", "Manager"),
+                new Employee("Kristin", "kristin@gmail.com", "xyz456", "Manager"),
+                new Employee("Leon", "leon@gmail.com", "lmn098", "Restocker")
+        };
     }
 
     public void logout(Stage stage)
