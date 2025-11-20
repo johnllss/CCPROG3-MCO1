@@ -13,8 +13,6 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-import javax.swing.*;
-
 public class Inventory_Controller implements Initializable {
 
     @FXML private ChoiceBox<String> choiceBox;

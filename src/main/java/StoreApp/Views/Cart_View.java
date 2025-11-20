@@ -2,6 +2,8 @@ package StoreApp.Views;
 
 import java.util.ArrayList;
 
+import StoreApp.Models.Item;
+
 public class Cart_View {
     /***
      * iterates through every item and displays product name, product price, product quantity

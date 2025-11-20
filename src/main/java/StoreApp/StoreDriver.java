@@ -1,9 +1,9 @@
-package StoreApp;
+// package StoreApp;
 
-import StoreApp.Models.*;
+// import StoreApp.Models.*;
 
-import java.util.ArrayList;
-import java.util.Scanner;
+// import java.util.ArrayList;
+// import java.util.Scanner;
 /*
 public class StoreDriver {
     public static void main(String[] args) {

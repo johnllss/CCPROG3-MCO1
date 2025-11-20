@@ -1,11 +1,17 @@
 package StoreApp.Views;
 
+import StoreApp.Models.Cart_Model;
+import StoreApp.Models.Customer_Model;
+import StoreApp.Models.Item_Model;
+import StoreApp.Models.Product_Model;
+import StoreApp.Models.Transaction_Model;
+
 public class Receipt_View {
     /**
      * This method displays the Receipt details.
      *
      */
-    public void displayReceiptDetails(Transaction transaction, String receiptNumber)
+    public void displayReceiptDetails(Transaction_Model transaction, String receiptNumber)
     {
         System.out.println(">>> YOUR RECEIPT <<<");
         System.out.println("Receipt #: " + receiptNumber);
@@ -14,10 +20,10 @@ public class Receipt_View {
 
         // display each item and their details
         System.out.println("Your Orders:");
-        Cart cart = transaction.getCart();
-        for (Item item: cart.getItems())
+        Cart_Model cart = transaction.getCart();
+        for (Item_Model item: cart.getItems())
         {
-            Product productItem = item.getProduct();
+            Product_Model productItem = item.getProduct();
             String productName = productItem.getProductName();
             int productQty = item.getQuantity();
             double productPrice = productItem.getProductPrice();
@@ -37,7 +43,7 @@ public class Receipt_View {
         System.out.printf("Change:          PHP%10.2f\n", transaction.calculateChange());
 
         // display customer's points if hasMembership() = true
-        Customer customer = transaction.getCustomer();
+        Customer_Model customer = transaction.getCustomer();
         if (customer.hasMembership())
         {
             int pointsEarnedFromTXN = transaction.calculateMembershipPoints();
