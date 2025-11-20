@@ -4,7 +4,7 @@ import StoreApp.Models.*;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-
+/*
 public class StoreDriver {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
@@ -200,7 +200,7 @@ public class StoreDriver {
 
                         System.out.println("== Category ==" + currentShelf.getShelfCategory() + "Shelf: " + currentIndex + 1);
 
-                        currentShelf.displayShelfCustomerView();
+
 
                         System.out.println("\nThe Shopping Menu\n");
                         System.out.println("1. Add Product to Cart");
@@ -261,7 +261,7 @@ public class StoreDriver {
                         else if (var1.equals("3") || var1.equalsIgnoreCase("View Cart"))
                         {
                             System.out.println("\nYour cart right now:\n");
-                            cart.displayCart();
+
                         }
                         else if (var1.equals("4") || var1.equalsIgnoreCase("Remove Item From Cart"))
                         {
@@ -405,4 +405,4 @@ public class StoreDriver {
         }
         input.close();
     }
-}
+*/

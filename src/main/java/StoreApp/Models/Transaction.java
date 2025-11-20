@@ -3,6 +3,7 @@ package StoreApp.Models;
 /**
  * where the cart is checked out. It handles all the computation and discounts
  */
+
 public class Transaction {
     private Cart cart;
     private Customer customer;
@@ -20,6 +21,7 @@ public class Transaction {
      * @param customer is the referenced customer.
      * @param cart is the referenced cart.
      */
+
     public Transaction(Customer customer, Cart cart)
     {
         this.cart = cart;
@@ -38,6 +40,8 @@ public class Transaction {
      * This method calculates the whole Cart's subtotal.
      * @return double for the subtotal.
      */
+
+
     public double calculateSubtotal()
     {
         subtotal = cart.calculateCartSubTotal();
@@ -49,6 +53,7 @@ public class Transaction {
      * @param pointsToRedeem is the number of points that the customer wants to redeem.
      * @return double for the discount.
      */
+
     public double calculateDiscount(int pointsToRedeem)
     {
         discount = 0.0; // discount reset to 0.0
@@ -120,7 +125,6 @@ public class Transaction {
     public double calculateTotal()
     {
         calculateSubtotal();
-        calculateDiscount();
         calculateTax();
 
         total = subtotal - discount + tax;
@@ -137,10 +141,10 @@ public class Transaction {
         {
             change = amountReceived - total;
             return change;
-        } else 
+        } else
         {
             change = 0.0;
-            return change;    
+            return change;
         }
     }
 
@@ -289,3 +293,4 @@ public class Transaction {
         this.amountReceived = amount;
     }
 }
+

@@ -49,4 +49,6 @@ public class Inventory_Controller implements Initializable {
             stage.close();
         }
     }
+
+
 }

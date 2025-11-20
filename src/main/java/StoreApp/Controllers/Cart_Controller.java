@@ -1,19 +1,14 @@
 package StoreApp.Controllers;
 
-import StoreApp.Models.Cart;
-import StoreApp.Models.Customer;
+import StoreApp.Models.Cart_Model;
+import StoreApp.Models.Customer_Model;
 import StoreApp.Models.Item;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.HBox;
-import javafx.geometry.Pos;
 import javafx.scene.layout.VBox;
 
-import java.lang.classfile.Label;
+import javafx.scene.control.Label;
 
 import static javafx.collections.FXCollections.*;
 
@@ -23,15 +18,15 @@ public class Cart_Controller {
     @FXML private Label vatLabel;
     @FXML private Label totalLabel;
     @FXML private TableView<Item> cartTable;
-    @FXML private TableColumn<Cart, Integer> productQuantityColumn;
-    @FXML private TableColumn<Cart, String> productNameColumn;
-    @FXML private TableColumn<Cart, String> productPriceColumn;
-    private Customer customer;
-    private Cart cart;
+    @FXML private TableColumn<Cart_Model, Integer> productQuantityColumn;
+    @FXML private TableColumn<Cart_Model, String> productNameColumn;
+    @FXML private TableColumn<Cart_Model, String> productPriceColumn;
+    private Customer_Model customer;
+    private Cart_Model cart;
     private ObservableList<Item> ItemList;
 
 
-    public void SetObjects(Customer customer){
+    public void SetObjects(Customer_Model customer){
         this.customer = customer;
         this.cart = customer.getCart();
         this.ItemList = observableArrayList(cart.getItems());
@@ -67,9 +62,9 @@ public class Cart_Controller {
         double vat = subTotal * 0.10; // TODO: modify to include seniority validation
         double total = subTotal + vat;
 
-        subtotalLabel.setText(String.format("PHP %.2f", subTotal));
+        subtotalLabel.setText(String.format("₱ %.2f", subTotal));
         vatLabel.setText(String.format("₱ %.2f", vat));
-        totalLabel.setText(String.format("PHP %.2f", total));
+        totalLabel.setText(String.format("₱ %.2f", total));
     }
 
     @FXML

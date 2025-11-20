@@ -1,11 +1,21 @@
 package StoreApp.Controllers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class Shopping_Controller {
-    @FXML Label productsGrid;
+    @FXML
+    GridPane productsGrid;
     @FXML Label categoryLabel;
     @FXML Button cartBtn;
     @FXML Button foodBtn;
@@ -13,6 +23,10 @@ public class Shopping_Controller {
     @FXML Button toiletriesBtn;
     @FXML Button medicineBtn;
     @FXML Button householdBtn;
+    @FXML Button backBtn;
+    private Stage primaryStage;
+    private Scene scene;
+    private Parent root;
 
     @FXML
     public void initialize()
@@ -55,4 +69,14 @@ public class Shopping_Controller {
             2. set this in the main stage
          */
     }
+
+    private void backToMain(ActionEvent e) throws IOException
+    {
+        root = FXMLLoader.load(getClass().getResource("/View/MainMenu_View.fxml"));
+        primaryStage = (Stage)((Node)e.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+
 }
