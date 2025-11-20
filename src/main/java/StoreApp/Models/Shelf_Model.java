@@ -8,7 +8,7 @@ public class Shelf_Model {
     private String category;
     private int currentCapacity;
     private int maxCapacity;
-    private ArrayList<Product> products;
+    private ArrayList<Product_Model> products;
 
     /**
      * Class Shelf parameterized constructor
@@ -20,7 +20,7 @@ public class Shelf_Model {
         this.shelfID = ++shelfIDCounter;
         this.category = category;
         this.maxCapacity = maxCapacity;
-        this.products = new ArrayList<Product>();
+        this.products = new ArrayList<Product_Model>();
     }
     public int getShelfID() {
         return shelfID;
@@ -46,17 +46,17 @@ public class Shelf_Model {
     public void setMaxCapacity(int maxCapacity) {
         this.maxCapacity = maxCapacity;
     }
-    public ArrayList<Product> getProducts() {
+    public ArrayList<Product_Model> getProductsOnShelf() {
         return products;
     }
-    public void setProducts(ArrayList<Product> products) {
+    public void setProducts(ArrayList<Product_Model> products) {
         this.products = products;
     }
-    public void addProduct(Product product)
+    public void addProduct(Product_Model product)
     {
         this.products.add(product);
     }
-    public void removeProduct(Product product)
+    public void removeProduct(Product_Model product)
     {
         this.products.remove(product);
     }
