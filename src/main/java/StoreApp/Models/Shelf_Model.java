@@ -28,10 +28,10 @@ public class Shelf_Model {
     public void setShelfID(int shelfID) {
         this.shelfID = shelfID;
     }
-    public String getCategory() {
+    public String getShelfCategory() {
         return category;
     }
-    public void setCategory(String category) {
+    public void setShelfCategory(String category) {
         this.category = category;
     }
     public int getCurrentCapacity() {
