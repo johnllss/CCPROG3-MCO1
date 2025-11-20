@@ -1,7 +1,9 @@
 package StoreApp.Controllers;
 
-
+import StoreApp.Models.Employee;
+import StoreApp.Models.Inventory;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -11,28 +13,71 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class MainMenu_Controller {
-    private Stage primaryStage;
-    private Scene scene;
-    private Parent root;
+    private Employee[] employees;
+    private Inventory inventory;
 
-    public void CustomerView(ActionEvent e) throws IOException
+    // setters for injections
+    public void setEmployees(Employee[] employees)
     {
-        root = FXMLLoader.load(getClass().getResource("/View/Shopping_View.fxml"));
-        primaryStage = (Stage)((Node)e.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        primaryStage.setScene(scene);
-        primaryStage.show();
+        this.employees = employees;
     }
-    public void EmployeeView(ActionEvent e) throws IOException
+
+    public void setInventory(Inventory inventory)
     {
-        root = FXMLLoader.load(getClass().getResource("/View/Employee_Login_View.fxml"));
-        primaryStage = (Stage)((Node)e.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        primaryStage.setScene(scene);
-        primaryStage.show();
+        this.inventory = inventory;
     }
-    public void Exit(ActionEvent e)
+
+    @FXML
+    public void goToCustomerView(ActionEvent event)
     {
-        System.out.println("Exit");
+        System.out.println("Customer View");
+
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/Shopping_View.fxml"));
+            Parent root = loader.load();
+
+            Shopping_Controller shoppingController = loader.getController();
+
+            shoppingController.setInventory(inventory);
+
+            // code for switching fxml
+            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void goToEmployeeView(ActionEvent event)
+    {
+        System.out.println("Employee View");
+
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/Employee_Login_View.fxml"));
+            Parent root = loader.load();
+
+            Employee_Login_Controller loginController = loader.getController();
+
+            loginController.setEmployees(employees);
+            loginController.setInventory(inventory);
+
+            // code for switching fxml
+            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void goToExit(ActionEvent event)
+    {
+        System.out.println("Exiting...");
+        System.exit(0);
     }
 }

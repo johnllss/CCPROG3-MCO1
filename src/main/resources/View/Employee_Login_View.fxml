@@ -17,6 +17,6 @@
       <TextField fx:id="passwordText" layoutX="194.0" layoutY="244.0" prefHeight="25.0" prefWidth="212.0" promptText="Password" />
       <Label fx:id="errorLabel" layoutX="285.0" layoutY="173.0" textAlignment="CENTER" textFill="WHITE" />
       <Button fx:id="loginBtn" layoutX="274.0" layoutY="305.0" mnemonicParsing="false" style="-fx-background-color: #7ed957;" text="Login" />
-      <Button fx:id="returnBtn" layoutX="232.0" layoutY="345.0" mnemonicParsing="false" style="-fx-background-color: #b6dda5;" text="Return to Main Menu" />
+      <Button fx:id="returnBtn" layoutX="232.0" layoutY="345.0" mnemonicParsing="false" style="-fx-background-color: #b6dda5;" text="Return to Main Menu" onAction="#returnToMainMenu"/>
    </children>
 </AnchorPane>

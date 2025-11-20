@@ -16,7 +16,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-border-color: black;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="StoreApp.Controllers.Inventory_Controller">
+<AnchorPane fx:id="scenePane" prefHeight="400.0" prefWidth="600.0" style="-fx-border-color: black;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="StoreApp.Controllers.Inventory_Controller">
    <children>
       <VBox alignment="TOP_CENTER" fillWidth="false" prefHeight="406.0" prefWidth="160.0" style="-fx-border-color: black;" AnchorPane.leftAnchor="0.0">
          <children>
@@ -36,7 +36,7 @@
                   <Font size="34.0" />
                </font>
             </Label>
-            <Button alignment="TOP_CENTER" mnemonicParsing="false" prefHeight="26.0" prefWidth="107.0" style="-fx-background-color: #006937;" text="Add Product" textFill="WHITE">
+            <Button fx:id="addBtn" alignment="TOP_CENTER" mnemonicParsing="false" onAction="#addProduct" prefHeight="26.0" prefWidth="107.0" style="-fx-background-color: #006937;" text="Add Product" textFill="WHITE">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin>
@@ -44,7 +44,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button layoutX="49.0" layoutY="197.0" mnemonicParsing="false" style="-fx-background-color: #006937;" text="Restock Product" textFill="WHITE">
+            <Button fx:id="restockBtn" layoutX="49.0" layoutY="197.0" mnemonicParsing="false" onAction="#restockProduct" style="-fx-background-color: #006937;" text="Restock Product" textFill="WHITE">
                <VBox.margin>
                   <Insets top="15.0" />
                </VBox.margin>
@@ -52,7 +52,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button layoutX="49.0" layoutY="222.0" mnemonicParsing="false" style="-fx-background-color: #006937;" text="Update Product" textFill="WHITE">
+            <Button fx:id="updateBtn" layoutX="49.0" layoutY="222.0" mnemonicParsing="false" onAction="#updateProduct" style="-fx-background-color: #006937;" text="Update Product" textFill="WHITE">
                <VBox.margin>
                   <Insets top="15.0" />
                </VBox.margin>
@@ -60,7 +60,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button layoutX="49.0" layoutY="247.0" mnemonicParsing="false" style="-fx-background-color: #006937;" text="Remove Product" textFill="WHITE">
+            <Button fx:id="removeBtn" layoutX="49.0" layoutY="247.0" mnemonicParsing="false" onAction="#removeProduct" style="-fx-background-color: #006937;" text="Remove Product" textFill="WHITE">
                <VBox.margin>
                   <Insets top="15.0" />
                </VBox.margin>
@@ -68,7 +68,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button layoutX="49.0" layoutY="272.0" mnemonicParsing="false" style="-fx-background-color: #006937;" text="View Low Stocks" textFill="WHITE">
+            <Button fx:id="viewLowStocksBtn" layoutX="49.0" layoutY="272.0" mnemonicParsing="false" onAction="#viewLowStock" style="-fx-background-color: #006937;" text="View Low Stocks" textFill="WHITE">
                <VBox.margin>
                   <Insets top="15.0" />
                </VBox.margin>
@@ -78,13 +78,13 @@
             </Button>
          </children>
       </VBox>
-      <Button fx:id="logout_btn" layoutX="522.0" layoutY="22.0" mnemonicParsing="false" style="-fx-background-color: #b6dda5;" text="Logout" />
+      <Button fx:id="logout_btn" layoutX="522.0" layoutY="22.0" mnemonicParsing="false" onAction="#logout" style="-fx-background-color: #b6dda5;" text="Logout" />
       <ComboBox fx:id="filterCombo" layoutX="178.0" layoutY="89.0" prefHeight="19.0" prefWidth="127.0" promptText="Filter Products">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </ComboBox>
-      <Label layoutX="178.0" layoutY="20.0" prefHeight="57.0" prefWidth="232.0" text="Welcome, *name*!" textFill="#006937">
+      <Label fx:id="welcomeNameText" layoutX="178.0" layoutY="20.0" prefHeight="57.0" prefWidth="232.0" text="Welcome, *name*!" textFill="#006937">
          <font>
             <Font size="28.0" />
          </font>
