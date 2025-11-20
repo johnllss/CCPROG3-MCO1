@@ -1,6 +1,6 @@
 package StoreApp.Models;
 
-public class Customer_Model extends User {
+public class Customer_Model extends User_Model {
     private MembershipCard membershipCard;
     private boolean isSenior;
     private int age;

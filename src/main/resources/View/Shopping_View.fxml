@@ -25,20 +25,21 @@
 
                 <Button layoutX="522.0" layoutY="13.0" prefHeight="45.0" prefWidth="51.0" style="-fx-background-radius:50%; -fx-border-radius:50%; -fx-background-color:#006937;">
                     <graphic>
-                        <ImageView fitHeight="23.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="CartButton" fitHeight="23.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                             <image>
                                 <Image url="@../ConvenienceStore UI.png" />
                             </image>
                         </ImageView>
                     </graphic>
                 </Button>
+            <Button fx:id="backButton" layoutX="435.0" layoutY="26.0" mnemonicParsing="false" onAction="#backToMain" style="-fx-background-color: #006937;" text="&lt; Back" textFill="WHITE" />
             </children>
         </AnchorPane>
     </top>
 
     <!-- Center Section -->
     <center>
-        <GridPane hgap="10" prefHeight="265.0" prefWidth="600.0" vgap="10" BorderPane.alignment="CENTER">
+        <GridPane fx:id="productsGrid" hgap="10" prefHeight="265.0" prefWidth="600.0" vgap="10" BorderPane.alignment="CENTER">
             <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10" prefWidth="140" />
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10" prefWidth="140" />
@@ -58,7 +59,7 @@
                             <Image url="@../ConvenienceStore UI copy.png" />
                         </image>
                     </ImageView>
-                    <Button layoutX="100" layoutY="85" prefHeight="26" prefWidth="29" style="-fx-border-radius:50%; -fx-background-radius:50%; -fx-background-color:#006937;" text="+" textFill="WHITE">
+                    <Button fx:id="addToCart1" layoutX="100" layoutY="85" prefHeight="26" prefWidth="29" style="-fx-border-radius:50%; -fx-background-radius:50%; -fx-background-color:#006937;" text="+" textFill="WHITE">
                         <font>
                             <Font name="Helvetica Neue Bold" size="13" />
                         </font>
@@ -87,7 +88,7 @@
                             <Image url="@../ConvenienceStore UI copy.png" />
                         </image>
                     </ImageView>
-                    <Button layoutX="100" layoutY="85" prefHeight="26" prefWidth="29" style="-fx-border-radius:50%; -fx-background-radius:50%; -fx-background-color:#006937;" text="+" textFill="WHITE">
+                    <Button fx:id="addToCart2" layoutX="100" layoutY="85" prefHeight="26" prefWidth="29" style="-fx-border-radius:50%; -fx-background-radius:50%; -fx-background-color:#006937;" text="+" textFill="WHITE">
                         <font>
                             <Font name="Helvetica Neue Bold" size="13" />
                         </font>
@@ -116,7 +117,7 @@
                             <Image url="@../ConvenienceStore UI copy.png" />
                         </image>
                     </ImageView>
-                    <Button layoutX="100" layoutY="85" prefHeight="26" prefWidth="29" style="-fx-border-radius:50%; -fx-background-radius:50%; -fx-background-color:#006937;" text="+" textFill="WHITE">
+                    <Button fx:id="addToCart3" layoutX="100" layoutY="85" prefHeight="26" prefWidth="29" style="-fx-border-radius:50%; -fx-background-radius:50%; -fx-background-color:#006937;" text="+" textFill="WHITE">
                         <font>
                             <Font name="Helvetica Neue Bold" size="13" />
                         </font>
@@ -145,7 +146,7 @@
                             <Image url="@../ConvenienceStore UI copy.png" />
                         </image>
                     </ImageView>
-                    <Button layoutX="100" layoutY="85" prefHeight="26" prefWidth="29" style="-fx-border-radius:50%; -fx-background-radius:50%; -fx-background-color:#006937;" text="+" textFill="WHITE">
+                    <Button fx:id="addToCart4" layoutX="100" layoutY="85" prefHeight="26" prefWidth="29" style="-fx-border-radius:50%; -fx-background-radius:50%; -fx-background-color:#006937;" text="+" textFill="WHITE">
                         <font>
                             <Font name="Helvetica Neue Bold" size="13" />
                         </font>
@@ -175,7 +176,7 @@
                             <Image url="@../ConvenienceStore UI copy.png" />
                         </image>
                     </ImageView>
-                    <Button layoutX="100" layoutY="85" prefHeight="26" prefWidth="29" style="-fx-border-radius:50%; -fx-background-radius:50%; -fx-background-color:#006937;" text="+" textFill="WHITE">
+                    <Button fx:id="addToCart5" layoutX="100" layoutY="85" prefHeight="26" prefWidth="29" style="-fx-border-radius:50%; -fx-background-radius:50%; -fx-background-color:#006937;" text="+" textFill="WHITE">
                         <font>
                             <Font name="Helvetica Neue Bold" size="13" />
                         </font>
@@ -204,7 +205,7 @@
                             <Image url="@../ConvenienceStore UI copy.png" />
                         </image>
                     </ImageView>
-                    <Button layoutX="100" layoutY="85" prefHeight="26" prefWidth="29" style="-fx-border-radius:50%; -fx-background-radius:50%; -fx-background-color:#006937;" text="+" textFill="WHITE">
+                    <Button fx:id="addToCart6" layoutX="100" layoutY="85" prefHeight="26" prefWidth="29" style="-fx-border-radius:50%; -fx-background-radius:50%; -fx-background-color:#006937;" text="+" textFill="WHITE">
                         <font>
                             <Font name="Helvetica Neue Bold" size="13" />
                         </font>
@@ -233,7 +234,7 @@
                             <Image url="@../ConvenienceStore UI copy.png" />
                         </image>
                     </ImageView>
-                    <Button layoutX="100" layoutY="85" prefHeight="26" prefWidth="29" style="-fx-border-radius:50%; -fx-background-radius:50%; -fx-background-color:#006937;" text="+" textFill="WHITE">
+                    <Button fx:id="addToCart7" layoutX="100" layoutY="85" prefHeight="26" prefWidth="29" style="-fx-border-radius:50%; -fx-background-radius:50%; -fx-background-color:#006937;" text="+" textFill="WHITE">
                         <font>
                             <Font name="Helvetica Neue Bold" size="13" />
                         </font>
@@ -262,7 +263,7 @@
                             <Image url="@../ConvenienceStore UI copy.png" />
                         </image>
                     </ImageView>
-                    <Button layoutX="100" layoutY="85" prefHeight="26" prefWidth="29" style="-fx-border-radius:50%; -fx-background-radius:50%; -fx-background-color:#006937;" text="+" textFill="WHITE">
+                    <Button fx:id="addToCart8" layoutX="100" layoutY="85" prefHeight="26" prefWidth="29" style="-fx-border-radius:50%; -fx-background-radius:50%; -fx-background-color:#006937;" text="+" textFill="WHITE">
                         <font>
                             <Font name="Helvetica Neue Bold" size="13" />
                         </font>
@@ -292,22 +293,22 @@
         <AnchorPane prefHeight="55.0" prefWidth="600.0" BorderPane.alignment="CENTER">
             <children>
 
-                <Button layoutX="20.0" layoutY="14.0" prefHeight="26" prefWidth="29" style="-fx-border-radius:50%; -fx-background-radius:50%; -fx-background-color:#006937;" text="&lt;" textFill="WHITE">
+                <Button fx:id="NextButton1" layoutX="20.0" layoutY="14.0" prefHeight="26" prefWidth="29" style="-fx-border-radius:50%; -fx-background-radius:50%; -fx-background-color:#006937;" text="&lt;" textFill="WHITE">
                     <font>
                         <Font name="Helvetica Neue Bold" size="13" />
                     </font>
                 </Button>
-                <Button layoutX="559.0" layoutY="14.0" prefHeight="26" prefWidth="29" style="-fx-border-radius:50%; -fx-background-radius:50%; -fx-background-color:#006937;" text="&gt;" textFill="WHITE">
+                <Button fx:id="NextButton2" layoutX="559.0" layoutY="14.0" prefHeight="26" prefWidth="29" style="-fx-border-radius:50%; -fx-background-radius:50%; -fx-background-color:#006937;" text="&gt;" textFill="WHITE">
                     <font>
                         <Font name="Helvetica Neue Bold" size="13" />
                     </font>
                 </Button>
 
                 <!-- Category Buttons -->
-                <Button layoutX="117.0" layoutY="15.0" styleClass="nav-btn" stylesheets="@Design.css" text="Food" textFill="#006937" />
-                <Button layoutX="197.0" layoutY="15.0" styleClass="nav-btn" stylesheets="@Design.css" text="Beverages" textFill="#006937" />
-                <Button layoutX="307.0" layoutY="15.0" styleClass="nav-btn" stylesheets="@Design.css" text="Snacks" textFill="#006937" />
-                <Button layoutX="397.0" layoutY="15.0" styleClass="nav-btn" stylesheets="@Design.css" text="Others" textFill="#006937" />
+                <Button fx:id="foodBtn" layoutX="117.0" layoutY="15.0" styleClass="nav-btn" stylesheets="@Design.css" text="Food" textFill="#006937" />
+                <Button fx:id="beverageBtn" layoutX="197.0" layoutY="15.0" styleClass="nav-btn" stylesheets="@Design.css" text="Beverages" textFill="#006937" />
+                <Button fx:id="toiletriesBtn" layoutX="307.0" layoutY="15.0" styleClass="nav-btn" stylesheets="@Design.css" text="Toiletries" textFill="#006937" />
+                <Button fx:id="medicineBtn" layoutX="397.0" layoutY="15.0" styleClass="nav-btn" stylesheets="@Design.css" text="Medicine" textFill="#006937" />
             </children>
         </AnchorPane>
     </bottom>

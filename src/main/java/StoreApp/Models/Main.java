@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 public class Main extends Application {
     public void start(Stage stage) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("MainMenu_View.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/View/MainMenu_View.fxml"));
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.setTitle("StoreApp");

@@ -20,6 +20,13 @@ public class User_Model {
         this.password = "N/A";
     }
 
+    public User_Model(String name, String email, String password){
+        this.uniqueID = ++uniqueIDCounter;
+        this.name = name;
+        this.email = email;
+        this.password = password;
+    }
+
     public int getUniqueID() {
         return uniqueID;
     }
