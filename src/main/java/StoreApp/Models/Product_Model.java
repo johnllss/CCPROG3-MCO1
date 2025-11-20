@@ -42,9 +42,6 @@ public class Product_Model {
     public int getProductIDCounter() {
         return productIDCounter;
     }
-    public void setProductIDCounter(int productIDCounter) {
-        this.productIDCounter = productIDCounter;
-    }
     public String getProductName() {
         return productName;
     }
