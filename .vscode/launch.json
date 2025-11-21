@@ -10,7 +10,7 @@
             "name": "Launch Java Program",
             "request": "launch",
             "mainClass": "Main",
-            "vmArgs": "--module-path \"C:/Users/johnlloyd/Desktop/Jigs DLSU/4th Term 1/CCPROG3/CCPROG3-MCO1/lib\" --add-modules javafx.controls, javafx.fxml"
+            "vmArgs": "--module-path \"E:/[PERSONAL] Jigs/DLSU BSCS-ST/4th Term 1/CCPROG3/CCPROG3-MCO1/lib\" --add-modules javafx.controls, javafx.fxml"
         }
     ]
 }
