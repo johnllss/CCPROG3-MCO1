@@ -12,8 +12,13 @@ public class Shelf_Controller {
         this.view = view;
     }
 
+    // lagay ko dito yung
+
+    public boolean isShelfFull(){
+        return model.getProductsOnShelf().size() >= model.getMaxCapacity();
+    }
     public void addProduct(Product_Model product){
-        if(model.isShelfFull())
+        if(isShelfFull())
         {
             view.displayFullShelf();
         }
