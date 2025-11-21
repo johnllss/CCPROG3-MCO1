@@ -3,6 +3,7 @@ package StoreApp.Controllers;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import StoreApp.Models.Inventory_Model;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -19,6 +20,7 @@ public class Inventory_Controller implements Initializable {
     @FXML private Button logout_btn;
     @FXML private AnchorPane scenePane;
 
+    private Inventory_Model inventory;
     private Stage stage;
 
     private String[] categories = {"food", "beverage", "medicine", "household"};
@@ -31,6 +33,11 @@ public class Inventory_Controller implements Initializable {
     public void getCategory(ActionEvent event)
     {
         String choice = choiceBox.getValue();
+    }
+
+    public void setInventory(Inventory_Model inv)
+    {
+        this.inventory = inv;
     }
 
     public void logout(ActionEvent event)
@@ -47,6 +54,4 @@ public class Inventory_Controller implements Initializable {
             stage.close();
         }
     }
-
-
 }
