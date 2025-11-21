@@ -1,7 +1,6 @@
 package StoreApp.Controllers;
 
-import StoreApp.Models.Employee;
-import StoreApp.Models.Inventory;
+import StoreApp.Models.Employee_Model;
 import StoreApp.Models.Inventory_Model;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -28,11 +27,11 @@ public class Employee_Login_Controller {
     private Parent root;
 
     // data needed for injection
-    private Employee[] employees;
+    private Employee_Model[] employees;
     private Inventory_Model inventory;
 
     // setters for injections
-    public void setEmployees(Employee[] employees)
+    public void setEmployees(Employee_Model[] employees)
     {
         this.employees = employees;
     }
@@ -61,11 +60,11 @@ public class Employee_Login_Controller {
             return;
         }
 
-        Employee foundEmployee = null;
+        Employee_Model foundEmployee = null;
         boolean isLoggedIn = false;
 
         // loop through all employees
-        for (Employee e: employees)
+        for (Employee_Model e: employees)
         {
             // find match
             if (e.login(employeeEmail, employeePassword))

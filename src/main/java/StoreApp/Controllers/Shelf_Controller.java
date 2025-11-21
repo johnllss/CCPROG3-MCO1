@@ -14,18 +14,23 @@ public class Shelf_Controller {
 
     // lagay ko dito yung
 
-    public boolean isShelfFull(){
+    public boolean isShelfFull()
+    {
         return model.getProductsOnShelf().size() >= model.getMaxCapacity();
     }
-    public void addProduct(Product_Model product){
+
+    public void addProduct(Product_Model product)
+    {
         if(isShelfFull())
         {
             view.displayFullShelf();
         }
+
         if(!product.getProductCategory().equals(model.getShelfCategory()))
         {
             view.displayProductCategoryMismatch();
         }
+        
         else
         {
             view.displaySuccessAdding();

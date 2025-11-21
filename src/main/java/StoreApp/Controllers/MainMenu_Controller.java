@@ -1,6 +1,7 @@
 package StoreApp.Controllers;
 
 import StoreApp.Models.Employee;
+import StoreApp.Models.Employee_Model;
 import StoreApp.Models.Inventory_Model;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -13,11 +14,11 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class MainMenu_Controller {
-    private Employee[] employees;
+    private Employee_Model[] employees;
     private Inventory_Model inventory;
 
     // setters for injections
-    public void setEmployees(Employee[] employees)
+    public void setEmployees(Employee_Model[] employees)
     {
         this.employees = employees;
     }
