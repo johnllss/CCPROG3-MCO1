@@ -2,6 +2,8 @@ package StoreApp.Views;
 
 import java.util.ArrayList;
 
+import StoreApp.Models.Product_Model;
+
 public class Shelf_View {
     public void displayFullShelf()
     {
@@ -26,7 +28,7 @@ public class Shelf_View {
     /***
      * Displays a modified view for customers for better UI
      */
-    public void displayShelfCustomerView(String category, ArrayList<Product> products)
+    public void displayShelfCustomerView(String category, ArrayList<Product_Model> products)
     {
         System.out.println("\n== " + category + "==\n");
         if (products.isEmpty())
@@ -40,7 +42,7 @@ public class Shelf_View {
 
             // ACTUAL PRODUCT INFORMATION
             int count = 1;
-            for (Product productOnShelf: products)
+            for (Product_Model productOnShelf: products)
             {
                 String stockStatus = "In-Stock";
 
