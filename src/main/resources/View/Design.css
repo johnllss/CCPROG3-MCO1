@@ -1,10 +1,98 @@
-.nav-btn{
-    -fx-background-color:  #ffde59;
+/* BACKGROUNDS styleClasses */
+.primary-background {
+    -fx-background-color: #006937;
+}
+
+.light-background {
+    -fx-background-color: #faf9fa;
+}
+
+.white-background {
+    -fx-background-color: #ffff;
+}
+
+/* BUTTONS styleClasses */
+.primary-btn {
+    -fx-background-color: #006937;
+    -fx-text-fill: white;
+}
+
+.primary-btn:hover {
+    -fx-cursor: hand;
+    -fx-background-color: #005830;
+}
+
+.login-btn {
+    -fx-background-color: #7ed957;
+}
+
+.login-btn:hover {
+    -fx-cursor: hand;
+    -fx-background-color: #6ec847;
+}
+
+.secondary-btn {
+    -fx-background-color: #b6dda5;
+}
+
+.secondary-btn:hover {
+    -fx-cursor: hand;
+    -fx-background-color: #a5cc94;
+}
+
+/* CIRCULAR BUTTON styleClass */
+.circular-btn {
+    -fx-border-radius: 50%;
+    -fx-background-radius: 50%;
+    -fx-background-color: #006937;
+    -fx-text-fill: white;
+}
+
+.circular-btn:hover {
+    -fx-cursor: hand;
+    -fx-background-color: #005830;
+}
+
+/* PRODUCT CARD styleClass */
+.product-card {
+    -fx-background-color: #ffff;
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+}
+
+/* INFO/SUMMARY BOXES styleClass */
+.info-box {
+    -fx-background-color: #ffff;
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+}
+
+/* NAV BUTTON styleClass */
+.nav-btn {
+    -fx-background-color: #ffde59;
     -fx-background-radius: 8;
     -fx-border-radius: 8;
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 5,0,0,0);
 }
-.nav-btn:hover{
+
+.nav-btn:hover {
     -fx-background-color: #ffd83d;
     -fx-cursor: hand;
+}
+
+/* CHECKOUT BUTTON styleClass */
+.checkoutBtn {
+    -fx-background-color: #1a7d36;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.checkoutBtn:hover {
+    -fx-cursor: hand;
+    -fx-background-color: #156429;
+}
+
+/* BORDER styleClass */
+.black-border {
+    -fx-border-color: black;
 }
