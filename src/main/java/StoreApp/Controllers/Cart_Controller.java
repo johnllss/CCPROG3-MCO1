@@ -2,7 +2,7 @@ package StoreApp.Controllers;
 
 import StoreApp.Models.Cart_Model;
 import StoreApp.Models.Customer_Model;
-import StoreApp.Models.Item;
+import StoreApp.Models.Item_Model;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -17,13 +17,13 @@ public class Cart_Controller {
     @FXML private Label subtotalLabel;
     @FXML private Label vatLabel;
     @FXML private Label totalLabel;
-    @FXML private TableView<Item> cartTable;
+    @FXML private TableView<Item_Model> cartTable;
     @FXML private TableColumn<Cart_Model, Integer> productQuantityColumn;
     @FXML private TableColumn<Cart_Model, String> productNameColumn;
     @FXML private TableColumn<Cart_Model, String> productPriceColumn;
     private Customer_Model customer;
     private Cart_Model cart;
-    private ObservableList<Item> ItemList;
+    private ObservableList<Item_Model> ItemList;
 
 
     public void SetObjects(Customer_Model customer){
