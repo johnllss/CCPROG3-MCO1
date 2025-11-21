@@ -31,6 +31,4 @@ public class Shelf_Controller {
     {
         view.displayShelfCustomerView(model.getShelfCategory(), model.getProductsOnShelf());
     }
-
-
 }

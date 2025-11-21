@@ -14,7 +14,7 @@ public class Main extends Application {
     public void start(Stage stage) {
         try {
             // declare core data
-            Inventory inventory = new Inventory();
+            Inventory_Model inventory = new Inventory_Model();
             Employee[] employees;
 
             if (!initializeInventory(inventory))
@@ -47,7 +47,7 @@ public class Main extends Application {
         }
     }
 
-    private boolean initializeInventory(Inventory inventory)
+    private boolean initializeInventory(Inventory_Model inventory)
     {
         if (inventory == null)
         {
