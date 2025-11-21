@@ -1,6 +1,5 @@
 package StoreApp.Controllers;
 
-import StoreApp.Models.Employee;
 import StoreApp.Models.Employee_Model;
 import StoreApp.Models.Inventory_Model;
 import javafx.event.ActionEvent;
