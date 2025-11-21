@@ -8,20 +8,27 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <BorderPane prefHeight="400.0" prefWidth="629.0" styleClass="light-background" stylesheets="@Design.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="StoreApp.Controllers.Shopping_Controller">
     <top>
-        <AnchorPane prefHeight="77.0" prefWidth="600.0">
+        <HBox alignment="CENTER_LEFT" prefHeight="77.0" spacing="10" BorderPane.alignment="CENTER">
+            <padding>
+                <Insets bottom="15" left="20" right="20" top="15" />
+            </padding>
             <children>
-                <Text fill="#006937" layoutX="28.0" layoutY="45.0" text="BEVERAGES" wrappingWidth="125">
+                <Text fill="#006937" text="BEVERAGES" wrappingWidth="125">
                     <font>
                         <Font name="Helvetica Neue Bold" size="20" />
                     </font>
                 </Text>
-                <Button layoutX="550.0" layoutY="14.0" prefHeight="45.0" prefWidth="51.0" styleClass="circular-btn">
+                <Region HBox.hgrow="ALWAYS" />
+                <Button fx:id="backButton" mnemonicParsing="false" onAction="#backToMain" styleClass="primary-btn" text="&lt; Back" textFill="WHITE" />
+                <Button prefHeight="45.0" prefWidth="51.0" styleClass="circular-btn">
                     <graphic>
                         <ImageView fx:id="CartButton" fitHeight="23.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -30,9 +37,8 @@
                         </ImageView>
                     </graphic>
                 </Button>
-            <Button fx:id="backButton" layoutX="477.0" layoutY="24.0" mnemonicParsing="false" onAction="#backToMain" styleClass="primary-btn" text="&lt; Back" textFill="WHITE" />
             </children>
-        </AnchorPane>
+        </HBox>
     </top>
     <center>
         <GridPane fx:id="productsGrid" hgap="10" prefHeight="268.0" prefWidth="580.0" vgap="10" BorderPane.alignment="CENTER">
@@ -265,24 +271,28 @@
         </GridPane>
     </center>
     <bottom>
-        <AnchorPane prefHeight="55.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+        <HBox alignment="CENTER" prefHeight="55.0" spacing="10" BorderPane.alignment="CENTER">
+            <padding>
+                <Insets bottom="10" left="15" right="15" top="10" />
+            </padding>
             <children>
-
-                <Button fx:id="NextButton1" layoutX="14.0" layoutY="14.0" prefHeight="26" prefWidth="29" styleClass="circular-btn" text="&lt;" textFill="WHITE">
+                <Button fx:id="NextButton1" prefHeight="26" prefWidth="29" styleClass="circular-btn" text="&lt;" textFill="WHITE">
                     <font>
                         <Font name="Helvetica Neue Bold" size="13" />
                     </font>
                 </Button>
-                <Button fx:id="NextButton2" layoutX="586.0" layoutY="14.0" prefHeight="26" prefWidth="29" styleClass="circular-btn" text="&gt;" textFill="WHITE">
+                <Region HBox.hgrow="ALWAYS" />
+                <Button fx:id="foodBtn" styleClass="nav-btn" text="Food" textFill="#006937" />
+                <Button fx:id="beverageBtn" styleClass="nav-btn" text="Beverages" textFill="#006937" />
+                <Button fx:id="toiletriesBtn" styleClass="nav-btn" text="Toiletries" textFill="#006937" />
+                <Button fx:id="medicineBtn" styleClass="nav-btn" text="Medicine" textFill="#006937" />
+                <Region HBox.hgrow="ALWAYS" />
+                <Button fx:id="NextButton2" prefHeight="26" prefWidth="29" styleClass="circular-btn" text="&gt;" textFill="WHITE">
                     <font>
                         <Font name="Helvetica Neue Bold" size="13" />
                     </font>
                 </Button>
-                <Button fx:id="foodBtn" layoutX="139.0" layoutY="15.0" styleClass="nav-btn" text="Food" textFill="#006937" />
-                <Button fx:id="beverageBtn" layoutX="223.0" layoutY="15.0" styleClass="nav-btn" text="Beverages" textFill="#006937" />
-                <Button fx:id="toiletriesBtn" layoutX="333.0" layoutY="15.0" styleClass="nav-btn" text="Toiletries" textFill="#006937" />
-                <Button fx:id="medicineBtn" layoutX="445.0" layoutY="15.0" styleClass="nav-btn" text="Medicine" textFill="#006937" />
             </children>
-        </AnchorPane>
+        </HBox>
     </bottom>
 </BorderPane>
