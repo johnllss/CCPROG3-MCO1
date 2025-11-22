@@ -13,6 +13,11 @@ public class Inventory_Model {
         this.shelves = new ArrayList<Shelf_Model>();
         initializeShelves();
     }
+
+    /**
+     * This method initializes each shelf of the Inventory
+     *
+     */
     public void initializeShelves()
     {
         String[] categories = {"Food", "Beverages", "Toiletries", "Cleaning Products", "Medications"};
@@ -43,6 +48,42 @@ public class Inventory_Model {
         }
 
         return new ArrayList<>();
+    }
+
+    public ArrayList<Product_Model> getLowStockProducts(int quantityLevel)
+    {
+        ArrayList<Product_Model> lowStockProducts = new ArrayList<Product_Model>();
+
+        for (Shelf_Model shelf: shelves)
+        {
+            for (Product_Model product: shelf.getProductsOnShelf())
+            {
+                if (product.getProductQuantity() < quantityLevel)
+                {
+                    lowStockProducts.add(product);
+                }
+            }
+        }
+
+        return lowStockProducts;
+    }
+
+    public ArrayList<Product_Model> getExpiredProducts()
+    {
+        ArrayList<Product_Model> expiredProducts = new ArrayList<Product_Model>();
+
+        for (Shelf_Model shelf: shelves)
+        {
+            for (Product_Model product: shelf.getProductsOnShelf())
+            {
+                if (product.getExpirationDate() != null && !product.getExpirationDate().equalsIgnoreCase("N/A"))
+                {
+                    expiredProducts.add(product);
+                }
+            }
+        }
+
+        return expiredProducts;
     }
 
 }
