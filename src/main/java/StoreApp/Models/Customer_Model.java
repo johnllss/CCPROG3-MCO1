@@ -22,26 +22,45 @@ public class Customer_Model extends User_Model {
         this.cart = cart;
     }
 
+    /***
+     * method that checks if the saved customer has a membership card
+     * @return boolean has membership = true null membership = false
+     */
+    public boolean hasMembership()
+    {
+        if (membershipCard == null)
+        {
+            return false;
+        }
 
-    public MembershipCard getMembershipCard() {
-        return membershipCard;
+        return true;
     }
-    public void setMembershipCard(MembershipCard membershipCard) {
-        this.membershipCard = membershipCard;
-    }
+
     public boolean isSenior() {
         return isSenior;
     }
-    public void setSenior(boolean senior) {
-        isSenior = senior;
-    }
+
     public int getAge() {
         return age;
     }
+    
+    public MembershipCard getMembershipCard() {
+        return membershipCard;
+    }
+
+    public Cart_Model getCart() {
+        return cart;
+    }
+    
     public void setAge(int age) {
         this.age = age;
     }
-    public Cart_Model getCart() {
-        return cart;
+
+    public void setMembershipCard(MembershipCard membershipCard) {
+        this.membershipCard = membershipCard;
+    }
+
+    public void setSenior(boolean senior) {
+        isSenior = senior;
     }
 }
