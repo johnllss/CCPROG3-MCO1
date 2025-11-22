@@ -40,7 +40,7 @@
     -fx-background-color: #a5cc94;
 }
 
-/* CIRCULAR BUTTON styleClass */
+/* CIRCULAR BUTTON styleClass (+ button in shopping) */
 .circular-btn {
     -fx-border-radius: 50%;
     -fx-background-radius: 50%;

@@ -17,7 +17,7 @@ import java.util.ArrayList;
 
 import StoreApp.Models.Inventory_Model;
 import StoreApp.Models.Product_Model;
-import StoreApp.Views.Product_View;
+import javafx.scene.layout.AnchorPane;
 
 public class Shopping_Controller {
     @FXML GridPane productsGrid;
@@ -69,23 +69,34 @@ public class Shopping_Controller {
         // create a product card until reaching 4 columns
         for (Product_Model product : products)
         {
-            Product_View productCard = createProductCard(product);
-            productsGrid.add(productCard, col, row);
-
-            col++;
-
-            // If 4 cols, then go down +1 row
-            if (col >= 4)
+            try
             {
-                col = 0;
-                row++;
+                AnchorPane productCard = createProductCard(product);
+                productsGrid.add(productCard, col, row);
+
+                col++;
+
+                // If 4 cols, then go down +1 row
+                if (col >= 4)
+                {
+                    col = 0;
+                    row++;
+                }
+            }
+            catch (IOException e)
+            {
+                System.out.println("Failed to load product card: " + e.getMessage());
             }
         }
     }
 
-    private Product_View createProductCard(Product_Model product)
+    private AnchorPane createProductCard(Product_Model product) throws IOException
     {
-        return new Product_View(product, this::handleAddToCart);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/ProductCard.fxml"));
+        AnchorPane card = loader.load();
+        Product_Controller productController = loader.getController();
+        productController.setProduct(product, this::handleAddToCart);
+        return card;
     }
 
     private void handleAddToCart(Product_Model product)
