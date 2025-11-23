@@ -12,6 +12,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
+import java.util.function.BiConsumer;
+
 public class Product_Controller {
 
     @FXML
@@ -25,7 +27,8 @@ public class Product_Controller {
     private HBox QuantityBtn;
     private int quantity = 1;
 
-    private Product_Model productModel;
+    private Product_Model product;
+    private BiConsumer<Product_Model, Integer> addToCartCallback;
 
     @FXML
     private void onAddToCartBtnClicked(ActionEvent e){
@@ -43,12 +46,14 @@ public class Product_Controller {
                 if(quantity > 1){
                     quantity--;
                     quantityLabel.setText(String.valueOf(quantity));
+                    notifyCartUpdate();
                 }
             });
             Plus.setOnAction(e1 -> {
                 if(quantity != 0) {
                     quantity++;
                     quantityLabel.setText(String.valueOf(quantity));
+                    notifyCartUpdate();
                 }
             });
 
@@ -57,6 +62,29 @@ public class Product_Controller {
         }
         buttonPane.getChildren().remove(addToCartBtn);
         buttonPane.getChildren().add(QuantityBtn);
+        notifyCartUpdate();
+    }
+
+    public void setProduct(Product_Model product, BiConsumer<Product_Model, Integer> callback)
+    {
+        this.product = product;
+        this.addToCartCallback = callback;
+
+        // Update UI with product information
+        if (product != null)
+        {
+            productName.setText(product.getProductName());
+            productPrice.setText(String.format("₱ %.2f", product.getProductPrice()));
+            // TODO: Set product image if available
+        }
+    }
+
+    private void notifyCartUpdate()
+    {
+        if (addToCartCallback != null && product != null)
+        {
+            addToCartCallback.accept(product, quantity);
+        }
     }
 
     /**
@@ -65,7 +93,7 @@ public class Product_Controller {
      */
     public boolean isExpired()
     {
-        return productModel.isExpired();
+        return product.isExpired();
     }
 
     /**
@@ -74,7 +102,7 @@ public class Product_Controller {
      */
     public boolean isPerishable()
     {
-        return productModel.isPerishable();
+        return product.isPerishable();
     }
 
     /**
@@ -83,7 +111,7 @@ public class Product_Controller {
      */
     public boolean isProductLowStock()
     {
-        return productModel.isProductLowStock();
+        return product.isProductLowStock();
     }
 }
 
