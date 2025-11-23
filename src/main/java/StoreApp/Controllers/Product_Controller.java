@@ -1,35 +1,60 @@
-package StoreApp.Controllers;
+package main.controllers;
 
-import StoreApp.Models.Product_Model;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
-import javafx.scene.image.Image;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
-import java.util.function.Consumer;
-
 public class Product_Controller {
-    @FXML private ImageView productImage;
+
+    @FXML
+    private ImageView productImage;
     @FXML private Button addToCartBtn;
     @FXML private Text productName;
     @FXML private Text productPrice;
+    @FXML private VBox cardRoot;
+    @FXML private AnchorPane buttonPane;
 
-    public void setProduct(Product_Model product, Consumer<Product_Model> onAddToCart)
-    {
-        try
-        {
-            Image image = new Image(getClass().getResourceAsStream("/ConvenienceStore UI copy.png"));
-            productImage.setImage(image);
+    private HBox QuantityBtn;
+    private int quantity = 1;
+
+    @FXML
+    private void onAddToCartBtnClicked(ActionEvent e){
+        if(QuantityBtn == null){
+            QuantityBtn = new HBox(10);
+            QuantityBtn.setAlignment(Pos.CENTER_LEFT);
+            QuantityBtn.setMaxWidth(Double.MAX_VALUE);
+            Button Minus = new Button("-");
+            Button Plus = new Button("+");
+            Label quantityLabel = new Label(String.valueOf(quantity));
+
+            Minus.getStyleClass().add("circular-btn");
+            Plus.getStyleClass().add("circular-btn");
+            Minus.setOnAction(e1 -> {
+                if(quantity > 1){
+                    quantity--;
+                    quantityLabel.setText(String.valueOf(quantity));
+                }
+            });
+            Plus.setOnAction(e1 -> {
+                if(quantity != 0) {
+                    quantity++;
+                    quantityLabel.setText(String.valueOf(quantity));
+                }
+            });
+
+            QuantityBtn.getChildren().addAll(Minus, quantityLabel, Plus);
+
         }
-        catch (Exception e)
-        {
-            System.out.println("Image failed to load.");
-        }
-
-        productName.setText(product.getProductName());
-        productPrice.setText(String.format("₱%.2f", product.getProductPrice()));
-
-        addToCartBtn.setOnAction(e -> onAddToCart.accept(product));
+        buttonPane.getChildren().remove(addToCartBtn);
+        buttonPane.getChildren().add(QuantityBtn);
     }
 }
+
+
