@@ -18,8 +18,7 @@ public class Item_Model {
      * This method calculates for the Item's subtotal price in the Cart. 
      * @return double for the subtotal price of the Item in the Cart.
      */
-    public double calculateItemSubtotal()
-    {
+    public double calculateItemSubtotal() {
         return this.product.getProductPrice() * this.quantity;
     }
 
@@ -55,4 +54,3 @@ public class Item_Model {
         this.quantity = quantity;
     }
 }
-
