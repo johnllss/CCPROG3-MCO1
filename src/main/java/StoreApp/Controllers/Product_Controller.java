@@ -1,5 +1,6 @@
-package main.controllers;
+package StoreApp.Controllers;
 
+import StoreApp.Models.Product_Model;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
@@ -23,6 +24,8 @@ public class Product_Controller {
 
     private HBox QuantityBtn;
     private int quantity = 1;
+
+    private Product_Model productModel;
 
     @FXML
     private void onAddToCartBtnClicked(ActionEvent e){
@@ -54,6 +57,44 @@ public class Product_Controller {
         }
         buttonPane.getChildren().remove(addToCartBtn);
         buttonPane.getChildren().add(QuantityBtn);
+    }
+
+    /**
+     * This method checks if the product is expired or not.
+     * @return boolean for success/failure
+     */
+    public boolean isExpired()
+    {
+        if (isPerishable())
+        {
+            // TODO: implement date comparison
+            // might need Date class if there is one for dates
+        }
+
+        return false;
+    }
+
+    /**
+     * This method checks if the product is perishable or not.
+     * @return boolean for success/failure.
+     */
+    public boolean isPerishable()
+    {
+        return !productModel.getExpirationDate().equalsIgnoreCase("N/A");
+    }
+
+    /**
+     * This method checks if the product is low on stock.
+     * @return boolean if success/failure.
+     */
+    public boolean isProductLowStock()
+    {
+        if (productModel.getProductQuantity() < 3)
+        {
+            return true;
+        }
+
+        return false;
     }
 }
 
