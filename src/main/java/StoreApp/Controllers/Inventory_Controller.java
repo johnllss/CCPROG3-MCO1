@@ -45,217 +45,131 @@ public class Inventory_Controller implements Initializable {
         this.inventory = inv;
     }
 
+    /**
+     * Delegates finding a product by ID to the inventory model.
+     * @param productID is the ID of the product to find.
+     * @return Product_Model if found, null otherwise.
+     */
     public Product_Model findProduct(int productID)
     {
-        for (Shelf_Model shelf: inventory.getShelves())
-        {
-            for (Product_Model product: shelf.getProductsOnShelf())
-            {
-                if (product.getProductID() == productID)
-                {
-                    return product;
-                }
-            }
-        }
-
-        return null;
+        return inventory.findProduct(productID);
     }
 
+    /**
+     * Delegates finding a product by name and brand to the inventory model.
+     * @param productName is the name of the product to find.
+     * @param productBrand is the brand of the product to find.
+     * @return Product_Model if found, null otherwise.
+     */
     public Product_Model findProduct(String productName, String productBrand)
     {
-        for (Shelf_Model shelf: inventory.getShelves())
-        {
-            for (Product_Model product: shelf.getProductsOnShelf())
-            {
-                if (product.getProductName().equalsIgnoreCase(productName) &&
-                    product.getBrand().equalsIgnoreCase(productBrand))
-                {
-                    return product;
-                }
-            }
-        }
-
-        return null;
+        return inventory.findProduct(productName, productBrand);
     }
 
+    /**
+     * Delegates adding a product to the inventory model.
+     * @param product is the product to add.
+     * @return boolean for success/failure.
+     */
     public boolean addProduct(Product_Model product)
     {
-        if (product == null)
-        {
-            return false;
-        }
-
-        for (Shelf_Model shelf: inventory.getShelves())
-        {
-            if (product.getProductCategory().equals(shelf.getShelfCategory()))
-            {
-                shelf.addProduct(product);
-                return true;
-            }
-        }
-
-        return false;
+        return inventory.addProduct(product);
     }
 
+    /**
+     * Delegates restocking a product to the inventory model.
+     * @param productID is the ID of the product to restock.
+     * @param amount is the amount to add to the product's quantity.
+     * @return boolean for success/failure.
+     */
     public boolean restockProduct(int productID, int amount)
     {
-        if (amount <= 0)
-        {
-            return false;
-        }
-
-        Product_Model product = findProduct(productID);
-
-        if (product != null)
-        {
-            product.setProductQuantity(product.getProductQuantity() + amount);
-            return true;
-        }
-
-        return false;
+        return inventory.restockProduct(productID, amount);
     }
 
+    /**
+     * Delegates removing a product to the inventory model.
+     * @param productID is the ID of the product to remove.
+     * @return boolean for success/failure.
+     */
     public boolean removeProduct(int productID)
     {
-        for (Shelf_Model shelf: inventory.getShelves())
-        {
-            for (Product_Model product: shelf.getProductsOnShelf())
-            {
-                if (product.getProductID() == productID)
-                {
-                    shelf.removeProduct(product);
-                    return true;
-                }
-            }
-        }
-
-        return false;
+        return inventory.removeProduct(productID);
     }
 
+    /**
+     * Delegates updating product name to the inventory model.
+     * @param productID is the ID of the product to update.
+     * @param newName is the new name for the product.
+     * @return boolean for success/failure.
+     */
     public boolean updateProductName(int productID, String newName)
     {
-        Product_Model product = findProduct(productID);
-
-        if (product != null && newName != null)
-        {
-            product.setProductName(newName);
-            return true;
-        }
-
-        return false;
+        return inventory.updateProductName(productID, newName);
     }
 
+    /**
+     * Delegates updating product price to the inventory model.
+     * @param productID is the ID of the product to update.
+     * @param newPrice is the new price for the product.
+     * @return boolean for success/failure.
+     */
     public boolean updateProductPrice(int productID, double newPrice)
     {
-        if (newPrice < 0)
-        {
-            return false;
-        }
-
-        Product_Model product = findProduct(productID);
-
-        if (product != null)
-        {
-            product.setProductPrice(newPrice);
-            return true;
-        }
-
-        return false;
+        return inventory.updateProductPrice(productID, newPrice);
     }
 
+    /**
+     * Delegates updating product brand to the inventory model.
+     * @param productID is the ID of the product to update.
+     * @param newBrand is the new brand for the product.
+     * @return boolean for success/failure.
+     */
     public boolean updateProductBrand(int productID, String newBrand)
     {
-        Product_Model product = findProduct(productID);
-
-        if (product != null && newBrand != null)
-        {
-            product.setBrand(newBrand);
-            return true;
-        }
-
-        return false;
+        return inventory.updateProductBrand(productID, newBrand);
     }
 
+    /**
+     * Delegates updating product variant to the inventory model.
+     * @param productID is the ID of the product to update.
+     * @param newVariant is the new variant for the product.
+     * @return boolean for success/failure.
+     */
     public boolean updateProductVariant(int productID, String newVariant)
     {
-        Product_Model product = findProduct(productID);
-
-        if (product != null && newVariant != null)
-        {
-            product.setVariant(newVariant);
-            return true;
-        }
-
-        return false;
+        return inventory.updateProductVariant(productID, newVariant);
     }
 
+    /**
+     * Delegates updating product expiration date to the inventory model.
+     * @param productID is the ID of the product to update.
+     * @param newExpirationDate is the new expiration date for the product.
+     * @return boolean for success/failure.
+     */
     public boolean updateProductExpirationDate(int productID, String newExpirationDate)
     {
-        Product_Model product = findProduct(productID);
-
-        if (product != null && newExpirationDate != null)
-        {
-            product.setExpirationDate(newExpirationDate);
-            return true;
-        }
-
-        return false;
+        return inventory.updateProductExpirationDate(productID, newExpirationDate);
     }
 
+    /**
+     * Delegates verifying cart stock to the inventory model.
+     * @param cart is the cart to verify.
+     * @return boolean for success/failure.
+     */
     public boolean verifyCartStock(Cart_Model cart)
     {
-        if (cart == null || cart.isEmpty())
-        {
-            return false;
-        }
-
-        for (Item_Model item: cart.getItems())
-        {
-            Product_Model productItem = item.getProduct();
-
-            Product_Model productItemInInventory = findProduct(productItem.getProductID());
-
-            if (productItemInInventory == null)
-            {
-                return false;
-            }
-
-            if (productItemInInventory.getProductQuantity() < item.getQuantity())
-            {
-                return false;
-            }
-        }
-
-        return true;
+        return inventory.verifyCartStock(cart);
     }
 
+    /**
+     * Delegates processing cart purchase to the inventory model.
+     * @param cart is the cart to process.
+     * @return boolean for success/failure.
+     */
     public boolean operateCartPurchase(Cart_Model cart)
     {
-        if (cart == null || cart.isEmpty())
-        {
-            return false;
-        }
-
-        for (Item_Model item: cart.getItems())
-        {
-            Product_Model itemInInventory = findProduct(item.getProduct().getProductID());
-
-            if (itemInInventory == null)
-            {
-                return false;
-            }
-
-            int newQuantity = itemInInventory.getProductQuantity() - item.getQuantity();
-
-            if (newQuantity < 0)
-            {
-                return false;
-            }
-
-            itemInInventory.setProductQuantity(newQuantity);
-        }
-
-        return true;
+        return inventory.operateCartPurchase(cart);
     }
 
     public void logout(ActionEvent event)
