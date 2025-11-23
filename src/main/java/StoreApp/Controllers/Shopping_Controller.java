@@ -13,9 +13,14 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+import java.util.ArrayList;
+
+import StoreApp.Models.Inventory_Model;
+import StoreApp.Models.Product_Model;
+import javafx.scene.layout.AnchorPane;
+
 public class Shopping_Controller {
-    @FXML
-    GridPane productsGrid;
+    @FXML GridPane productsGrid;
     @FXML Label categoryLabel;
     @FXML Button cartBtn;
     @FXML Button foodBtn;
@@ -24,53 +29,100 @@ public class Shopping_Controller {
     @FXML Button medicineBtn;
     @FXML Button householdBtn;
     @FXML Button backBtn;
+
+    private Inventory_Model inventory;
+    private String currentCategory = "Beverages";
+
     private Stage primaryStage;
     private Scene scene;
     private Parent root;
+    private Product_Model productModel;
 
     @FXML
     public void initialize()
     {
-        categoryLabel.setText("Beverages"); // TODO: modify to be dynamic
-        populateProductsGrid();
+        categoryLabel.setText(currentCategory);
         setupNavBar();
+    }
+
+    public void setInventory(Inventory_Model inv)
+    {
+        this.inventory = inv;
+        populateProductsGrid();
     }
 
     private void populateProductsGrid()
     {
-        // TODO
-        /*
-            1. extract product names
-            2. extract product prices
-            3. get image paths
-            4. for loop for creating a Product Card display
-                - .add() to add the product to the productGrid
+        if (inventory == null) 
+        {
+            return;
+        }
 
-            Note: Product Card display might need a Product_View.java to instantiate
-         */
+        // clear out products
+        productsGrid.getChildren().clear();
+
+        // get products of customer's chosen category
+        ArrayList<Product_Model> products = inventory.getProductsByCategory(currentCategory);
+
+        int col = 0;
+        int row = 0;
+
+        // create a product card until reaching 4 columns
+        for (Product_Model product : products)
+        {
+            try
+            {
+                AnchorPane productCard = createProductCard(product);
+                productsGrid.add(productCard, col, row);
+
+                col++;
+
+                // If 4 cols, then go down +1 row
+                if (col >= 4)
+                {
+                    col = 0;
+                    row++;
+                }
+            }
+            catch (IOException e)
+            {
+                System.out.println("Failed to load product card: " + e.getMessage());
+            }
+        }
+    }
+
+    private AnchorPane createProductCard(Product_Model product) throws IOException
+    {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/ProductCard.fxml"));
+        AnchorPane card = loader.load();
+        Product_Controller productController = loader.getController();
+        productModel.setProduct(product, this::handleAddToCart);
+        return card;
+    }
+
+    private void handleAddToCart(Product_Model product)
+    {
+        System.out.println("Adding to cart: " + product.getProductName());
     }
 
     private void setupNavBar()
     {
-        // fxmlFile should use Product_View or perhaps just create a .fxml view for each category?
-        foodBtn.setOnAction(e -> switchCategory(""));
-        beverageBtn.setOnAction(e -> switchCategory(""));
-        toiletriesBtn.setOnAction(e -> switchCategory(""));
-        medicineBtn.setOnAction(e -> switchCategory(""));
-        householdBtn.setOnAction(e -> switchCategory(""));
+        foodBtn.setOnAction(e -> switchCategory("Food"));
+        beverageBtn.setOnAction(e -> switchCategory("Beverages"));
+        toiletriesBtn.setOnAction(e -> switchCategory("Toiletries"));
+        medicineBtn.setOnAction(e -> switchCategory("Medications"));
+        householdBtn.setOnAction(e -> switchCategory("Cleaning Products"));
     }
 
-    private void switchCategory(String fxmlFile)
+    private void switchCategory(String category)
     {
-        System.out.println("Navigating to " + fxmlFile);
-        // TODO:
-        /*
-            1. load FXML using FXMLLoader
-            2. set this in the main stage
-         */
+        currentCategory = category;
+        categoryLabel.setText(category.toUpperCase());
+        populateProductsGrid();
     }
 
-    private void backToMain(ActionEvent e) throws IOException
+    @FXML
+    public void backToMain(ActionEvent e) throws IOException
     {
         root = FXMLLoader.load(getClass().getResource("/View/MainMenu_View.fxml"));
         primaryStage = (Stage)((Node)e.getSource()).getScene().getWindow();
