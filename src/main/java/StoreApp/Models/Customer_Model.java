@@ -1,7 +1,7 @@
 package StoreApp.Models;
 
 public class Customer_Model extends User_Model {
-    private MembershipCard membershipCard;
+    private MembershipCard_Model membershipCard;
     private boolean isSenior;
     private int age;
     private Cart_Model cart;
@@ -15,7 +15,7 @@ public class Customer_Model extends User_Model {
      * @param isSenior whether customer is a senior
      * @param cart object that customer used during whole shopping
      */
-    public Customer_Model(String name, String email, String password, MembershipCard membershipCard, boolean isSenior, Cart_Model cart) {
+    public Customer_Model(String name, String email, String password, MembershipCard_Model membershipCard, boolean isSenior, Cart_Model cart) {
         super(name, email, password);
         this.membershipCard = membershipCard;
         this.isSenior = isSenior;
@@ -44,7 +44,7 @@ public class Customer_Model extends User_Model {
         return age;
     }
     
-    public MembershipCard getMembershipCard() {
+    public MembershipCard_Model getMembershipCard() {
         return membershipCard;
     }
 
@@ -56,7 +56,7 @@ public class Customer_Model extends User_Model {
         this.age = age;
     }
 
-    public void setMembershipCard(MembershipCard membershipCard) {
+    public void setMembershipCard(MembershipCard_Model membershipCard) {
         this.membershipCard = membershipCard;
     }
 

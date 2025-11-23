@@ -68,7 +68,7 @@ public class Transaction {
         // MEMBERSHIP DISCOUNT
         if (customer.hasMembership() && pointsToRedeem > 0)
         {
-            MembershipCard card = customer.getMembershipCard();
+            MembershipCard_Model card = customer.getMembershipCard();
 
             if (pointsToRedeem <= card.getPoints() && pointsToRedeem <= (subtotal - discount))
             {
