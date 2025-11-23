@@ -34,4 +34,81 @@ public class Cart_Model {
     public void clearCart() {
         items.clear();
     }
+
+    /**
+     * This method checks if the desired product has enough stock/quantity in order to fulfill the customer's request.
+     * @param product is the product that is to be added.
+     * @param quantity is the number of products desired to be added to cart.
+     * @return a boolean to signify success/failure.
+     */
+    public boolean addItem(Product_Model product, int quantity) {
+        if (product.getProductQuantity() < quantity) {
+            return false;
+        } else {
+            items.add(new Item_Model(product, quantity));
+            return true;
+        }
+    }
+
+    /**
+     * This method iterates through all items in cart and checks if product that wants to be is to be removed is in the cart.
+     * @param productID is the ID of the product being removed.
+     * @return boolean indicating success/failure of search
+     */
+    public boolean removeItem(int productID) {
+        for (Item_Model i : items) {
+            if (i.getProduct().getProductID() == productID) {
+                items.remove(i);
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * This method iterates through all the items in the cart to find the item being searched.
+     * @param productID is the id of the product that wants to be found.
+     * @return Item_Model that is searched.
+     */
+    public Item_Model findItem(int productID) {
+        for (Item_Model item: items) {
+            if (item.getProduct().getProductID() == productID) {
+                return item;
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * This method updates the quantity of the product in cart.
+     * @param productID is the ID of the product to be updated.
+     * @param amount quantity of the product.
+     * @return boolean, shows success or failure of the process.
+     */
+    public boolean updateQuantity(int productID, int amount) {
+        for (Item_Model item: items) {
+            if (item.getProduct().getProductID() == productID && item.getProduct().getProductQuantity() >= amount) {
+                item.setQuantity(amount);
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * This method iterates and calculates the total price for every item in the cart.
+     * @return double (total price)
+     */
+    public double calculateCartSubTotal() {
+        double subTotal = 0;
+        
+        for (Item_Model item: items) {
+            subTotal += item.getProduct().getProductPrice() * item.getQuantity();
+        }
+
+        return subTotal;
+    }
 }
