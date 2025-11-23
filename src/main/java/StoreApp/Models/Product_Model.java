@@ -195,4 +195,42 @@ public class Product_Model {
     public void setExpirationDate(String expirationDate) {
         this.expirationDate = expirationDate;
     }
+
+    /**
+     * This method checks if the product is expired or not.
+     * @return boolean for success/failure
+     */
+    public boolean isExpired()
+    {
+        if (isPerishable())
+        {
+            // TODO: implement date comparison
+            // might need Date class if there is one for dates
+        }
+
+        return false;
+    }
+
+    /**
+     * This method checks if the product is perishable or not.
+     * @return boolean for success/failure.
+     */
+    public boolean isPerishable()
+    {
+        return !expirationDate.equalsIgnoreCase("N/A");
+    }
+
+    /**
+     * This method checks if the product is low on stock.
+     * @return boolean if success/failure.
+     */
+    public boolean isProductLowStock()
+    {
+        if (productQuantity < 3)
+        {
+            return true;
+        }
+
+        return false;
+    }
 }

@@ -60,41 +60,30 @@ public class Product_Controller {
     }
 
     /**
-     * This method checks if the product is expired or not.
+     * This method is delegated the task of checking if product is expired to the product model.
      * @return boolean for success/failure
      */
     public boolean isExpired()
     {
-        if (isPerishable())
-        {
-            // TODO: implement date comparison
-            // might need Date class if there is one for dates
-        }
-
-        return false;
+        return productModel.isExpired();
     }
 
     /**
-     * This method checks if the product is perishable or not.
+     * This method is delegated the task of checking if product is perishable to the product model.
      * @return boolean for success/failure.
      */
     public boolean isPerishable()
     {
-        return !productModel.getExpirationDate().equalsIgnoreCase("N/A");
+        return productModel.isPerishable();
     }
 
     /**
-     * This method checks if the product is low on stock.
+     * This method is delegated the task of checking if product is low on stock to the product model.
      * @return boolean if success/failure.
      */
     public boolean isProductLowStock()
     {
-        if (productModel.getProductQuantity() < 3)
-        {
-            return true;
-        }
-
-        return false;
+        return productModel.isProductLowStock();
     }
 }
 
