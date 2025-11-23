@@ -85,8 +85,7 @@ public class Cart_Controller {
      * @return boolean to signify success/failure.
      */
     public boolean addItem(Product_Model product, int quantity) {
-        customer.getCart().addItem(product, quantity);
-        return cart.addItem(product, quantity);
+        return customer.getCart().addItem(product, quantity);
     }
 
     /**
