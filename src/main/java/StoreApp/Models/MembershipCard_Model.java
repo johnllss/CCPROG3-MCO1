@@ -1,5 +1,7 @@
 package StoreApp.Models;
 
+import java.util.Random;
+
 /***
  * Represents users membership card, should there be a presence of it
  */
@@ -42,14 +44,17 @@ public class MembershipCard_Model {
     }
 
     /**
-     * This method generates the card number of the customer.
+     * This method generates the card number of the customer following XXXX (XXXX is a random 4-digit number)
      * @return String for the generatedCardNumber.
      */
     public String generateCardNumber()
     {
-        // TODO generation
+        Random random = new Random();
 
-        return "";
+        // generates 0 to 899999, and then add 1000 to follow 4-digit rule
+        int randomNum = 1000 + random.nextInt(900000);
+
+        return String.valueOf(randomNum);
     }
     
     /**
