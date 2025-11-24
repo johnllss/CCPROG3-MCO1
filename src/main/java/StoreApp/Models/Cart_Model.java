@@ -42,12 +42,14 @@ public class Cart_Model {
      * @return a boolean to signify success/failure.
      */
     public boolean addItem(Product_Model product, int quantity) {
-        if (product.getProductQuantity() < quantity) {
-            return false;
-        } else {
+        if(product.ProductQuantity(quantity)) {
             items.add(new Item_Model(product, quantity));
             return true;
         }
+        else{
+            return false;
+        }
+
     }
 
     /**
@@ -83,16 +85,17 @@ public class Cart_Model {
 
     /**
      * This method updates the quantity of the product in cart.
-     * @param productID is the ID of the product to be updated.
+     * @param product is the ID of the product to be updated.
      * @param amount quantity of the product.
      * @return boolean, shows success or failure of the process.
      */
-    public boolean updateQuantity(int productID, int amount) {
+    public boolean updateQuantity(Product_Model product, int amount) {
         for (Item_Model item: items) {
-            if (item.getProduct().getProductID() == productID && item.getProduct().getProductQuantity() >= amount) {
-                item.setQuantity(amount);
-                return true;
-            }
+            if (item.getProduct().getProductName() == product.getProductName())
+                if (item.getProduct().getProductQuantity() >= amount) {
+                    item.setQuantity(amount);
+                    return true;
+                }
         }
 
         return false;

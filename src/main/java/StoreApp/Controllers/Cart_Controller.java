@@ -109,7 +109,7 @@ public class Cart_Controller {
      * @return boolean to signify success/failure.
      */
     public boolean addItem(Product_Model product, int quantity) {
-        return cart.addItem(product, quantity);
+        return customer.getCart().addItem(product, quantity);
     }
 
     /**
@@ -132,11 +132,11 @@ public class Cart_Controller {
 
     /**
      * This method is delegated the task of updating quantity of the item in the cart.
-     * @param productID id of the product that needs to be updated.
+     * @param product id of the product that needs to be updated.
      * @param amount quantity of the product.
      * @return boolean, shows success or failure of the process.
      */
-    public boolean updateQuantity(int productID, int amount) {
-        return cart.updateQuantity(productID, amount);
+    public boolean updateQuantity(Product_Model product, int amount) {
+        return cart.updateQuantity(product, amount);
     }
 }

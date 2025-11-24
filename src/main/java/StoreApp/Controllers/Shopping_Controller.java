@@ -39,6 +39,7 @@ public class Shopping_Controller {
     private Stage primaryStage;
     private Scene scene;
     private Parent root;
+    private Product_Model productModel;
 
     @FXML
     public void initialize()

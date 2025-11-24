@@ -1,6 +1,7 @@
 package StoreApp.Controllers;
 
 import StoreApp.Models.Product_Model;
+import StoreApp.Models.Customer_Model;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
@@ -26,9 +27,11 @@ public class Product_Controller {
 
     private HBox QuantityBtn;
     private int quantity = 1;
+    private Customer_Model customer;
 
     private Product_Model product;
     private BiConsumer<Product_Model, Integer> addToCartCallback;
+
 
     @FXML
     private void onAddToCartBtnClicked(ActionEvent e){
@@ -50,7 +53,7 @@ public class Product_Controller {
                 }
             });
             Plus.setOnAction(e1 -> {
-                if(quantity != 0) {
+                if(quantity < productModel.getProductQuantity()) {
                     quantity++;
                     quantityLabel.setText(String.valueOf(quantity));
                     notifyCartUpdate();
@@ -58,7 +61,6 @@ public class Product_Controller {
             });
 
             QuantityBtn.getChildren().addAll(Minus, quantityLabel, Plus);
-
         }
         buttonPane.getChildren().remove(addToCartBtn);
         buttonPane.getChildren().add(QuantityBtn);
