@@ -25,7 +25,7 @@ public class Inventory_Controller implements Initializable {
     private Inventory_Model inventory;
     private Stage stage;
 
-    private String[] categories = {"food", "beverage", "medicine", "household"};
+    private String[] categories = {"Food", "Beverage", "Toiletries", "Cleaning Products", "Medications"};
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
