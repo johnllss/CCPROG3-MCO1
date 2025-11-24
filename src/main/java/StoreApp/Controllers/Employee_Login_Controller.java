@@ -64,12 +64,12 @@ public class Employee_Login_Controller {
         boolean isLoggedIn = false;
 
         // loop through all employees
-        for (Employee_Model e: employees)
+        for (Employee_Model employee: employees)
         {
             // find match
-            if (e.login(employeeEmail, employeePassword))
+            if (employee.login(employeeEmail, employeePassword))
             {
-                foundEmployee = e;
+                foundEmployee = employee;
                 isLoggedIn = true;
                 break;
             }
