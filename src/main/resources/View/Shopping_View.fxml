@@ -4,7 +4,6 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -21,7 +20,7 @@
                 <Insets bottom="15" left="20" right="20" top="15" />
             </padding>
             <children>
-                <Text fx:id="categoryLabel" fill="#006937" text="BEVERAGES" wrappingWidth="125">
+                <Text fx:id="categoryLabel" fill="#006937" text="BEVERAGES" wrappingWidth="151.0">
                     <font>
                         <Font name="Helvetica Neue Bold" size="20" />
                     </font>
@@ -63,7 +62,7 @@
                 <Insets bottom="10" left="15" right="15" top="10" />
             </padding>
             <children>
-                <Button fx:id="NextButton1" prefHeight="26" prefWidth="29" styleClass="circular-btn" text="&lt;" textFill="WHITE">
+                <Button fx:id="previousCategoryBtn" prefHeight="26" prefWidth="29" styleClass="circular-btn" text="&lt;" textFill="WHITE">
                     <font>
                         <Font name="Helvetica Neue Bold" size="13" />
                     </font>
@@ -75,7 +74,7 @@
                 <Button fx:id="cleaningProductsBtn" styleClass="nav-btn" text="Cleaning Products" textFill="#006937" />
                 <Button fx:id="medicineBtn" styleClass="nav-btn" text="Medicine" textFill="#006937" />
                 <Region HBox.hgrow="ALWAYS" />
-                <Button fx:id="NextButton2" prefHeight="26" prefWidth="29" styleClass="circular-btn" text="&gt;" textFill="WHITE">
+                <Button fx:id="nextCategoryBtn" prefHeight="26" prefWidth="29" styleClass="circular-btn" text="&gt;" textFill="WHITE">
                     <font>
                         <Font name="Helvetica Neue Bold" size="13" />
                     </font>

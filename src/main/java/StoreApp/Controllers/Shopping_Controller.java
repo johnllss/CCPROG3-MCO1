@@ -32,16 +32,20 @@ public class Shopping_Controller {
     @FXML Button cleaningProductsBtn;
     @FXML Button medicineBtn;
     @FXML Button backBtn;
-
-    private Inventory_Model inventory;
-    private Customer_Model customer;
-    private Employee_Model[] employees;
-    private String currentCategory = "Beverages";
+    @FXML Button previousCategoryBtn;
+    @FXML Button nextCategoryBtn;
 
     private Stage primaryStage;
     private Scene scene;
     private Parent root;
-    private Product_Model product;
+
+    private Inventory_Model inventory;
+    private Customer_Model customer;
+    private Employee_Model[] employees;
+
+    private String currentCategory = "Food";
+    private final String[] categories = {"Food", "Beverages", "Toiletries", "Cleaning Products", "Medications"};
+    private int currentCategoryIndex = 1;
 
     @FXML
     public void initialize()
@@ -50,21 +54,6 @@ public class Shopping_Controller {
         setupNavBar();
     }
 
-    public void setInventory(Inventory_Model inv)
-    {
-        this.inventory = inv;
-        populateProductsGrid();
-    }
-
-    public void setCustomer(Customer_Model customer)
-    {
-        this.customer = customer;
-    }
-
-    public void setEmployees(Employee_Model[] employees)
-    {
-        this.employees = employees;
-    }
     
     private void populateProductsGrid()
     {
@@ -72,41 +61,41 @@ public class Shopping_Controller {
         {
             return;
         }
-
+        
         // clear out products
         productsGrid.getChildren().clear();
-
+        
         // get products of customer's chosen category
         ArrayList<Product_Model> products = inventory.getProductsByCategory(currentCategory);
-
+        
         int col = 0;
         int row = 0;
-
+        
         // create a product card until reaching 4 columns
         for (Product_Model product : products)
-        {
+            {
             try
             {
                 VBox productCard = createProductCard(product);
                 productsGrid.add(productCard, col, row);
-
+                
                 col++;
-
+                
                 // If 4 cols, then go down +1 row
                 if (col >= 4)
+                    {
+                        col = 0;
+                        row++;
+                    }
+                }
+                catch (IOException e)
                 {
-                    col = 0;
-                    row++;
+                    System.out.println("Failed to load product card: " + e.getMessage());
                 }
             }
-            catch (IOException e)
-            {
-                System.out.println("Failed to load product card: " + e.getMessage());
-            }
         }
-    }
-
-
+        
+        
     private VBox createProductCard(Product_Model product) throws IOException
     {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/Product_View.fxml"));
@@ -116,7 +105,7 @@ public class Shopping_Controller {
         productController.setProduct(product, this::handleAddToCart);
         return card;
     }
-
+    
     private void setupNavBar()
     {
         foodBtn.setOnAction(e -> switchCategory("Food"));
@@ -124,32 +113,71 @@ public class Shopping_Controller {
         toiletriesBtn.setOnAction(e -> switchCategory("Toiletries"));
         cleaningProductsBtn.setOnAction(e -> switchCategory("Cleaning Products"));
         medicineBtn.setOnAction(e -> switchCategory("Medications"));
+        previousCategoryBtn.setOnAction(e -> navigateToPreviousCategory());
+        nextCategoryBtn.setOnAction(e -> navigateToNextCategory());
     }
-
+        
     private void switchCategory(String category)
     {
         currentCategory = category;
-        categoryLabel.setText(category.toUpperCase());
+        categoryLabel.setText(category);
+        
+        // update current category index to match the selected category (to let the previous and next category buttons know which category is currently selected)
+        for (int i = 0; i < categories.length; i++)
+            {
+                if (categories[i].equals(category))
+                {
+                    currentCategoryIndex = i;
+                    break;
+                }
+            }
+            
         populateProductsGrid();
     }
+                
+    private void navigateToPreviousCategory()
+    {
+        currentCategoryIndex--;
+        
+        // wrap around to the last category if index goes < 0
+        if (currentCategoryIndex < 0)
+            {
+                currentCategoryIndex = categories.length - 1;
+            }
 
+        switchCategory(categories[currentCategoryIndex]);
+    }
+
+    private void navigateToNextCategory()
+    {
+        currentCategoryIndex++;
+        
+        // wrap around to the first category if index exceeds the category array length
+        if (currentCategoryIndex >= categories.length)
+        {
+            currentCategoryIndex = 0;
+        }
+            
+        switchCategory(categories[currentCategoryIndex]);
+    }
+        
     @FXML
     public void backToMain(ActionEvent e) throws IOException
     {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/MainMenu_View.fxml"));
         root = loader.load();
-
+        
         // pass inventory and employees back to MainMenu
         MainMenu_Controller mainMenuController = loader.getController();
         mainMenuController.setInventory(inventory);
         mainMenuController.setEmployees(employees);
-
+        
         primaryStage = (Stage)((Node)e.getSource()).getScene().getWindow();
         scene = new Scene(root);
         primaryStage.setScene(scene);
         primaryStage.show();
     }
-
+        
     private void handleAddToCart(Product_Model product, int quantity)
     {
         if (customer == null)
@@ -157,10 +185,10 @@ public class Shopping_Controller {
             System.err.println("error: Customer not set in Shopping_Controller");
             return;
         }
-
+            
         Cart_Model cart = customer.getCart();
         boolean success = cart.addItem(product, quantity);
-
+        
         if (success)
         {
             System.out.println("Added " + quantity + "x " + product.getProductName() + " to cart");
@@ -170,7 +198,7 @@ public class Shopping_Controller {
             System.err.println("Item has not been successfully added to cart.");
         }
     }
-
+    
     @FXML
     public void goToCart(ActionEvent event)
     {
@@ -179,12 +207,12 @@ public class Shopping_Controller {
             // load FXML
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/Cart_View.fxml"));
             Parent root = loader.load();
-        
+            
             // get controller and pass inventory and customer states
             Cart_Controller cartController = loader.getController();
             cartController.setInventory(inventory);
             cartController.setCustomer(customer);
-
+            
             Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
             stage.setScene(scene);
@@ -194,5 +222,21 @@ public class Shopping_Controller {
         {
             e.printStackTrace();
         }
+    }
+    
+    public void setInventory(Inventory_Model inv)
+    {
+        this.inventory = inv;
+        populateProductsGrid();
+    }
+    
+    public void setCustomer(Customer_Model customer)
+    {
+        this.customer = customer;
+    }
+    
+    public void setEmployees(Employee_Model[] employees)
+    {
+        this.employees = employees;
     }
 }
