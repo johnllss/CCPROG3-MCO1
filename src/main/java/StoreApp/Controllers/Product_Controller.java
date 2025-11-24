@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
@@ -72,7 +73,21 @@ public class Product_Controller {
         {
             productName.setText(product.getProductName());
             productPrice.setText(String.format("₱ %.2f", product.getProductPrice()));
-            // TODO: Set product image if available
+
+            // Load and set product image
+            if (product.getImagePath() != null && !product.getImagePath().isEmpty())
+            {
+                try
+                {
+                    String imagePath = product.getImagePath();
+                    Image image = new Image(getClass().getResourceAsStream(imagePath));
+                    productImage.setImage(image);
+                }
+                catch (Exception e)
+                {
+                    System.err.println("Failed to load image for " + product.getProductName() + ": " + e.getMessage());
+                }
+            }
         }
     }
 

@@ -63,39 +63,39 @@ public class Main extends Application {
 
         // INITIALIZATION OF INVENTORY'S PRODUCTS
         // Food
-        inventory.addProduct(new Product_Model("Sandwich", 30.0, 10, "Food", "Subway", "Cheese", "2025-10-27"));
-        inventory.addProduct(new Product_Model("Pastries", 45.0, 10, "Food", "Subway", "Cheese", "2025-10-26"));
-        inventory.addProduct(new Product_Model("Fried Chicken", 50.0, 10, "Food", "Subway", "Cheese", "2026-01-15"));
-        inventory.addProduct(new Product_Model("Sushi", 120.0, 10, "Food", "Makimura Ramen Bar", "Raw", "2027-03-10"));
-        inventory.addProduct(new Product_Model("Yogurt", 215.0, 10, "Food", "Chobani", "Vanilla", "2025-10-27"));
+        inventory.addProduct(new Product_Model("Sandwich", 30.0, 10, "Food", "Subway", "Cheese", "2025-10-27", "/redbull.png"));
+        inventory.addProduct(new Product_Model("Pastries", 45.0, 10, "Food", "Subway", "Cheese", "2025-10-26", "/redbull.png"));
+        inventory.addProduct(new Product_Model("Fried Chicken", 50.0, 10, "Food", "Subway", "Cheese", "2026-01-15", "/redbull.png"));
+        inventory.addProduct(new Product_Model("Sushi", 120.0, 10, "Food", "Makimura Ramen Bar", "Raw", "2027-03-10", "/redbull.png"));
+        inventory.addProduct(new Product_Model("Yogurt", 215.0, 10, "Food", "Chobani", "Vanilla", "2025-10-27", "/redbull.png"));
 
         // Beverages
-        inventory.addProduct(new Product_Model("Dairy", 100.0, 10, "Beverages", "Selecta", "Milk", "2025-11-30"));
-        inventory.addProduct(new Product_Model("Coffee", 220.0, 10, "Beverages", "Starbucks", "Iced", "2025-02-02"));
-        inventory.addProduct(new Product_Model("Tea", 115.0, 10, "Beverages", "Honest Tea", "Green Tea", "2026-02-14"));
-        inventory.addProduct(new Product_Model("Energy Drink", 159.0, 10, "Beverages", "Red Bull", "The Summer Edition", "2027-10-11"));
-        inventory.addProduct(new Product_Model("Beer", 90.0, 10, "Beverages", "Stella Artois", "Stella 0.0", "2028-08-15"));
+        inventory.addProduct(new Product_Model("Dairy", 100.0, 10, "Beverages", "Selecta", "Milk", "2025-11-30", "/redbull.png"));
+        inventory.addProduct(new Product_Model("Coffee", 220.0, 10, "Beverages", "Starbucks", "Iced", "2025-02-02", "/redbull.png"));
+        inventory.addProduct(new Product_Model("Tea", 115.0, 10, "Beverages", "Honest Tea", "Green Tea", "2026-02-14", "/redbull.png"));
+        inventory.addProduct(new Product_Model("Energy Drink", 159.0, 10, "Beverages", "Red Bull", "The Summer Edition", "2027-10-11", "/redbull.png"));
+        inventory.addProduct(new Product_Model("Beer", 90.0, 10, "Beverages", "Stella Artois", "Stella 0.0", "2028-08-15", "/redbull.png"));
 
         // Toiletries
-        inventory.addProduct(new Product_Model("Soap", 50.0, 10, "Toiletries", "Safeguard", "Pink", "N/A"));
-        inventory.addProduct(new Product_Model("Shampoo", 99.0, 10, "Toiletries", "Head & Shoulders", "Classic Clean", "N/A"));
-        inventory.addProduct(new Product_Model("Airy Matte Tint", 30.0, 10, "Toiletries", "BLK Cosmetics", "Dearest Rose Pink", "N/A"));
-        inventory.addProduct(new Product_Model("Toothbrush", 135.0, 10, "Toiletries", "Oral-B", "Electric Toothbrush", "N/A"));
-        inventory.addProduct(new Product_Model("Deodorant", 199.0, 10, "Toiletries", "Old Spice", "Wolfthorne", "N/A"));
+        inventory.addProduct(new Product_Model("Soap", 50.0, 10, "Toiletries", "Safeguard", "Pink", "N/A", "/redbull.png"));
+        inventory.addProduct(new Product_Model("Shampoo", 99.0, 10, "Toiletries", "Head & Shoulders", "Classic Clean", "N/A", "/redbull.png"));
+        inventory.addProduct(new Product_Model("Airy Matte Tint", 30.0, 10, "Toiletries", "BLK Cosmetics", "Dearest Rose Pink", "N/A", "/redbull.png"));
+        inventory.addProduct(new Product_Model("Toothbrush", 135.0, 10, "Toiletries", "Oral-B", "Electric Toothbrush", "N/A", "/redbull.png"));
+        inventory.addProduct(new Product_Model("Deodorant", 199.0, 10, "Toiletries", "Old Spice", "Wolfthorne", "N/A", "/redbull.png"));
 
         // Cleaning Products
-        inventory.addProduct(new Product_Model("Detergent", 55.0, 10, "Cleaning Products", "Tide", "Powder", "2027-01-02"));
-        inventory.addProduct(new Product_Model("Tissue", 69.0, 10, "Cleaning Products", "Femme", "Interfolded Paper Towel", "2027-03-25"));
-        inventory.addProduct(new Product_Model("Hand Sanitizer", 95.0, 10, "Cleaning Products", "Purell", "Bottled", "2029-09-23"));
-        inventory.addProduct(new Product_Model("Degreaser", 215.0, 10, "Cleaning Products", "Lysol", "Multi-Purpose", "2028-11-11"));
-        inventory.addProduct(new Product_Model("Bleach", 150.0, 10, "Cleaning Products", "Zonrox", "Original", "2023-11-05"));
+        inventory.addProduct(new Product_Model("Detergent", 55.0, 10, "Cleaning Products", "Tide", "Powder", "2027-01-02", "/redbull.png"));
+        inventory.addProduct(new Product_Model("Tissue", 69.0, 10, "Cleaning Products", "Femme", "Interfolded Paper Towel", "2027-03-25", "/redbull.png"));
+        inventory.addProduct(new Product_Model("Hand Sanitizer", 95.0, 10, "Cleaning Products", "Purell", "Bottled", "2029-09-23", "/redbull.png"));
+        inventory.addProduct(new Product_Model("Degreaser", 215.0, 10, "Cleaning Products", "Lysol", "Multi-Purpose", "2028-11-11", "/redbull.png"));
+        inventory.addProduct(new Product_Model("Bleach", 150.0, 10, "Cleaning Products", "Zonrox", "Original", "2023-11-05", "/redbull.png"));
 
         // Medications
-        inventory.addProduct(new Product_Model("Adhesive Bandage", 25.0, 10, "Medications", "Band-Aid", "Waterproof", "2026-05-17"));
-        inventory.addProduct(new Product_Model("Antibiotic", 30.0, 10, "Medications", "Amoxil", "Amoxicillin", "2026-01-23"));
-        inventory.addProduct(new Product_Model("Antihistamine", 80.0, 10, "Medications", "Claritin", "Standard Tablet", "N/A"));
-        inventory.addProduct(new Product_Model("Anesthetics", 125.0, 10, "Medications", "Diprivan", "Propofol", "N/A"));
-        inventory.addProduct(new Product_Model("Paracetamol", 55.0, 10, "Medications", "Biogesic", "500mg", "2028-08-15"));
+        inventory.addProduct(new Product_Model("Adhesive Bandage", 25.0, 10, "Medications", "Band-Aid", "Waterproof", "2026-05-17", "/redbull.png"));
+        inventory.addProduct(new Product_Model("Antibiotic", 30.0, 10, "Medications", "Amoxil", "Amoxicillin", "2026-01-23", "/redbull.png"));
+        inventory.addProduct(new Product_Model("Antihistamine", 80.0, 10, "Medications", "Claritin", "Standard Tablet", "N/A", "/redbull.png"));
+        inventory.addProduct(new Product_Model("Anesthetics", 125.0, 10, "Medications", "Diprivan", "Propofol", "N/A", "/redbull.png"));
+        inventory.addProduct(new Product_Model("Paracetamol", 55.0, 10, "Medications", "Biogesic", "500mg", "2028-08-15", "/redbull.png"));
 
         // debugger
         System.out.println("Inventory is successfully initialized.");

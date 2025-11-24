@@ -10,6 +10,7 @@ public class Product_Model {
     private String brand;
     private String variant;
     private String expirationDate;
+    private String imagePath;
 
     /**
      * Class Product parameterized constructor
@@ -20,8 +21,9 @@ public class Product_Model {
      * @param brand is product brand.
      * @param variant is the product variant
      * @param expirationDate is the product's expiration date.
+     * @param imagePath is the path to the product's image file.
      */
-    public Product_Model(String productName, double productPrice, int productQuantity, String productCategory, String brand, String variant, String expirationDate)
+    public Product_Model(String productName, double productPrice, int productQuantity, String productCategory, String brand, String variant, String expirationDate, String imagePath)
     {
         this.productID = ++productIDCounter;
         this.productName = productName;
@@ -31,6 +33,7 @@ public class Product_Model {
         this.brand = brand;
         this.variant = variant;
         this.expirationDate = expirationDate;
+        this.imagePath = imagePath;
     }
 
     /**
@@ -57,6 +60,55 @@ public class Product_Model {
     public void updateStock(int restockQuantity)
     {
         this.productQuantity = productQuantity + restockQuantity;
+    }
+
+        /**
+     * This method checks if the product is expired or not.
+     * @return boolean for success/failure
+     */
+    public boolean isExpired()
+    {
+        if (isPerishable())
+        {
+            // TODO: implement date comparison
+            // might need Date class if there is one for dates
+        }
+
+        return false;
+    }
+
+    /**
+     * This method checks if the product is perishable or not.
+     * @return boolean for success/failure.
+     */
+    public boolean isPerishable()
+    {
+        return !expirationDate.equalsIgnoreCase("N/A");
+    }
+
+    /**
+     * This method checks if the product is low on stock.
+     * @return boolean if success/failure.
+     */
+    public boolean isProductLowStock()
+    {
+        if (productQuantity < 3)
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    public boolean ProductQuantity(int quantity){
+        if (quantity > productQuantity)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
     }
 
     /**
@@ -197,51 +249,18 @@ public class Product_Model {
     }
 
     /**
-     * This method checks if the product is expired or not.
-     * @return boolean for success/failure
+     * This is a getter method to get the imagePath attribute.
+     * @return String for imagePath.
      */
-    public boolean isExpired()
-    {
-        if (isPerishable())
-        {
-            // TODO: implement date comparison
-            // might need Date class if there is one for dates
-        }
-
-        return false;
+    public String getImagePath() {
+        return imagePath;
     }
 
     /**
-     * This method checks if the product is perishable or not.
-     * @return boolean for success/failure.
+     * This method sets the product's imagePath.
+     * @param imagePath is the new imagePath.
      */
-    public boolean isPerishable()
-    {
-        return !expirationDate.equalsIgnoreCase("N/A");
-    }
-
-    /**
-     * This method checks if the product is low on stock.
-     * @return boolean if success/failure.
-     */
-    public boolean isProductLowStock()
-    {
-        if (productQuantity < 3)
-        {
-            return true;
-        }
-
-        return false;
-    }
-
-    public boolean ProductQuantity(int quantity){
-        if (quantity > productQuantity)
-        {
-            return false;
-        }
-        else
-        {
-            return true;
-        }
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
     }
 }
