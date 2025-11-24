@@ -1,4 +1,7 @@
 package StoreApp.Controllers;
+/*
+import StoreApp.Models.Receipt_Model;
+import StoreApp.Views.Receipt_View;
 
 import StoreApp.Models.Receipt_Model;
 import StoreApp.Views.Receipt_View;
@@ -14,3 +17,4 @@ public class Receipt_Controller {
         view.displayReceiptDetails(model.getTransaction(), model.generateReceiptNumber());
     }
 }
+ */

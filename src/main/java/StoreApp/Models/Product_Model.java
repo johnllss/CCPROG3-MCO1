@@ -233,4 +233,15 @@ public class Product_Model {
 
         return false;
     }
+
+    public boolean ProductQuantity(int quantity){
+        if (quantity > productQuantity)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
 }

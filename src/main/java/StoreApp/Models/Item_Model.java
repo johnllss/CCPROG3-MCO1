@@ -9,7 +9,8 @@ public class Item_Model {
      * @param product is the product being referenced
      * @param quantity is the quantity placed by the Customer
      */
-    public Item_Model(Product_Model product, int quantity) {
+    public Item_Model(Product_Model product, int quantity)
+    {
         this.product = product;
         this.quantity = quantity;
     }
