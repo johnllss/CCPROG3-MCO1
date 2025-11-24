@@ -1,0 +1,16 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        
+        {
+            "type": "java",
+            "name": "Launch Java Program",
+            "request": "launch",
+            "mainClass": "Main",
+            "vmArgs": "--module-path \"E:/[PERSONAL] Jigs/DLSU BSCS-ST/4th Term 1/CCPROG3/CCPROG3-MCO1/lib\" --add-modules javafx.controls, javafx.fxml"
+        }
+    ]
+}

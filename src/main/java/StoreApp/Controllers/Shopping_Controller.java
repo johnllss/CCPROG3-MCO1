@@ -96,7 +96,7 @@ public class Shopping_Controller {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/ProductCard.fxml"));
         AnchorPane card = loader.load();
         Product_Controller productController = loader.getController();
-        productModel.setProduct(product, this::handleAddToCart);
+        productController.setProduct(product, this::handleAddToCart);
         return card;
     }
 

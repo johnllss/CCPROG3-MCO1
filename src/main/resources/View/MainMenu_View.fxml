@@ -7,7 +7,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="487.0" prefWidth="550.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="StoreApp.Controllers.MainMenu_Controller">
    <children>
-      <Button contentDisplay="CENTER" layoutX="189.0" layoutY="175.0" mnemonicParsing="false" onAction="#goToCustomerView" prefHeight="27.0" prefWidth="173.0" text="Simulate Customer View">
+      <Button contentDisplay="CENTER" layoutX="189.0" layoutY="177.0" mnemonicParsing="false" onAction="#goToCustomerView" prefHeight="27.0" prefWidth="173.0" text="Simulate Customer View">
          <font>
             <Font name="Tahoma" size="13.0" />
          </font>
@@ -18,7 +18,7 @@
             <Font name="Tahoma" size="13.0" />
          </font>
       </Button>
-      <Button contentDisplay="CENTER" layoutX="189.0" layoutY="266.0" mnemonicParsing="false" onAction="#goToExit" prefHeight="27.0" prefWidth="173.0" text="Exit">
+      <Button contentDisplay="CENTER" layoutX="189.0" layoutY="257.0" mnemonicParsing="false" onAction="#goToExit" prefHeight="27.0" prefWidth="173.0" text="Exit">
          <font>
             <Font name="Tahoma" size="13.0" />
          </font>

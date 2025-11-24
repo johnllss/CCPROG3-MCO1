@@ -1,7 +1,7 @@
 package StoreApp.Models;
 
 public class Item_Model {
-    private Product product;
+    private Product_Model product;
     private int quantity;
 
     /**
@@ -15,17 +15,43 @@ public class Item_Model {
         this.quantity = quantity;
     }
 
-    public Product getProduct() {
+    /**
+     * This method calculates for the Item's subtotal price in the Cart. 
+     * @return double for the subtotal price of the Item in the Cart.
+     */
+    public double calculateItemSubtotal() {
+        return this.product.getProductPrice() * this.quantity;
+    }
+
+    /**
+     * This is a getter method to get the referenced product.
+     * @return Product is the product and its details.
+     */
+    public Product_Model getProduct() {
         return product;
     }
-    public void setProduct(Product product) {
+
+    /**
+     * This is a getter method to get the quantity of the Item placed by the Customer.
+     * @return int is the quantity in this class.
+     */
+    public void setProduct(Product_Model product) {
         this.product = product;
     }
+
+    /**
+     * This is a getter method to get the quantity of the Item placed by the Customer.
+     * @return int is the quantity in this class.
+     */
     public int getQuantity() {
         return quantity;
     }
+
+    /**
+     * This is a setter method to set the new quantity as desired by the Customer.
+     * @param quantity is the new quantity.
+     */
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
 }
-

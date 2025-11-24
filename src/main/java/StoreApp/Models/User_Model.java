@@ -27,27 +27,66 @@ public class User_Model {
         this.password = password;
     }
 
+    /**
+     * This is a getter method to get User's uniqueID.
+     * @return int for uniqueID.
+     */
     public int getUniqueID() {
         return uniqueID;
     }
+
+    /**
+     * This sets User's uniqueID
+     * @param id Unique ID wanted to be set/changed into
+     */
     public void setUniqueID(int uniqueID) {
         this.uniqueID = uniqueID;
     }
+
+    /**
+     * This is a getter method to get User's name.
+     * @return String for name.
+     */
     public String getName() {
         return name;
     }
+
+    /**
+     * This sets User's name.
+     * @param name name given by user
+     */
     public void setName(String name) {
         this.name = name;
     }
+
+    /**
+     * This is a getter method to get User's email.
+     * @return String for email.
+     */
     public String getEmail() {
         return email;
     }
+
+    /**
+     * This sets User's email
+     * @param email email provided by user
+     */
     public void setEmail(String email) {
         this.email = email;
     }
+
+    /**
+     * This is a getter method to get User's password.
+     * @return String for password.
+     */
     public String getPassword() {
         return password;
     }
+
+    /**
+     * This sets User's password
+     * @param email password provided by user
+     */
     public void setPassword(String password) {
         this.password = password;
     }

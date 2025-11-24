@@ -1,6 +1,9 @@
-package StoreApp.Models;
+package StoreApp;
 
 import StoreApp.Controllers.MainMenu_Controller;
+import StoreApp.Models.Employee_Model;
+import StoreApp.Models.Inventory_Model;
+import StoreApp.Models.Product;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -14,8 +17,8 @@ public class Main extends Application {
     public void start(Stage stage) {
         try {
             // declare core data
-            Inventory inventory = new Inventory();
-            Employee[] employees;
+            Inventory_Model inventory = new Inventory_Model();
+            Employee_Model[] employees;
 
             if (!initializeInventory(inventory))
             {
@@ -47,7 +50,7 @@ public class Main extends Application {
         }
     }
 
-    private boolean initializeInventory(Inventory inventory)
+    private boolean initializeInventory(Inventory_Model inventory)
     {
         if (inventory == null)
         {
@@ -96,12 +99,12 @@ public class Main extends Application {
         return true;
     }
 
-    private Employee[] initializeEmployees()
+    private Employee_Model[] initializeEmployees()
     {
-        return new Employee[] {
-                new Employee("John Lloyd", "johnlloyd@gmail.com", "abc123", "Manager"),
-                new Employee("Kristin", "kristin@gmail.com", "xyz456", "Manager"),
-                new Employee("Leon", "leon@gmail.com", "lmn098", "Restocker")
+        return new Employee_Model[] {
+                new Employee_Model("John Lloyd", "johnlloyd@gmail.com", "abc123", "Manager"),
+                new Employee_Model("Kristin", "kristin@gmail.com", "xyz456", "Manager"),
+                new Employee_Model("Leon", "leon@gmail.com", "lmn098", "Restocker")
         };
     }
 

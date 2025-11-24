@@ -3,7 +3,7 @@ package StoreApp.Models;
 /***
  * Represents users membership card, should there be a presence of it
  */
-public class MembershipCard {
+public class MembershipCard_Model {
     private String cardNumber;
     private int points;
 
@@ -11,7 +11,7 @@ public class MembershipCard {
      * Class MembershipCard parameterized constructor
      * @param cardNumber is the membership card number of the Customer
      */
-    public MembershipCard(String cardNumber) {
+    public MembershipCard_Model(String cardNumber) {
         this.cardNumber = cardNumber;
         this.points = 0;
     }
