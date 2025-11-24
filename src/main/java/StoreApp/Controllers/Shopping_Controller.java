@@ -7,7 +7,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
@@ -21,7 +20,6 @@ import StoreApp.Models.Cart_Model;
 import StoreApp.Models.Customer_Model;
 import StoreApp.Models.Inventory_Model;
 import StoreApp.Models.Product_Model;
-import javafx.scene.layout.AnchorPane;
 
 public class Shopping_Controller {
     @FXML GridPane productsGrid;
@@ -41,7 +39,7 @@ public class Shopping_Controller {
     private Stage primaryStage;
     private Scene scene;
     private Parent root;
-    private Product_Model productModel;
+    private Product_Model product;
 
     @FXML
     public void initialize()
