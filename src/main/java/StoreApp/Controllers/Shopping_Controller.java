@@ -131,4 +131,54 @@ public class Shopping_Controller {
         primaryStage.show();
     }
 
+<<<<<<< Updated upstream
 }
+=======
+    private void handleAddToCart(Product_Model product, int quantity)
+    {
+        if (customer == null)
+        {
+            System.err.println("error: Customer not set in Shopping_Controller");
+            return;
+        }
+
+        Cart_Model cart = customer.getCart();
+        boolean success = cart.addItem(product, quantity);
+
+        if (success)
+        {
+            System.out.println("Added " + quantity + "x " + product.getProductName() + " to cart");
+        }
+        else
+        {
+            System.err.println("Item has not been successfully added to cart.");
+        }
+    }
+
+    @FXML
+    public void goToCart(ActionEvent event)
+    {
+        try
+        {
+            // load FXML
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/Cart_View.fxml"));
+            Parent root = loader.load();
+        
+            // get controller and pass inventory and customer states
+            Cart_Controller cartController = loader.getController();
+            cartController.setInventory(inventory);
+            cartController.setCustomer(customer);
+
+            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+            System.out.println("Cart");
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
+}
+>>>>>>> Stashed changes

@@ -32,7 +32,15 @@ public class Cart_Controller {
         this.cart = customer.getCart();
         this.ItemList = observableArrayList(cart.getItems());
         cartTable.setItems(ItemList);
+<<<<<<< Updated upstream
 
+=======
+        /*
+        updateProductBoxDisplay();
+        updateAllTotals();
+
+         */
+>>>>>>> Stashed changes
     }
 
     @FXML
@@ -41,6 +49,8 @@ public class Cart_Controller {
         updateProductBoxDisplay();
         updateAllTotals();
     }
+
+
 
     private void updateProductBoxDisplay()
     {
