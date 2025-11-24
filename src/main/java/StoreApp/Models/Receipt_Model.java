@@ -1,5 +1,9 @@
 package StoreApp.Models;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Random;
+
 public class Receipt_Model {
     private Transaction_Model transaction;
     private String receiptNumber;
@@ -15,15 +19,21 @@ public class Receipt_Model {
     }
 
     /**
-     * This method generates a random receipt number.
+     * This method generates a random receipt number following YYYY-MM-DD-XXXX (XXXX is a random 4-digit number)
      * @return String for receiptNumber.
      */
     public String generateReceiptNumber()
     {
-        // TODO: research on how to create a receipt number programming-wise
-        // research on standard receipt number formats too
+        LocalDateTime dateNow = LocalDateTime.now();
+        DateTimeFormatter formattedDate = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        String datePart = dateNow.format(formattedDate);
 
-        return "";
+        Random random = new Random();
+
+        // generate 0 to 8999 and add 1000 to follow 4-digit rule
+        int randomNum = 1000 + random.nextInt(9000); // generates 1000-9999
+
+        return datePart + "-" + randomNum;
     }
 
     /**
