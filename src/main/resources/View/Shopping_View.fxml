@@ -21,14 +21,14 @@
                 <Insets bottom="15" left="20" right="20" top="15" />
             </padding>
             <children>
-                <Text fill="#006937" text="BEVERAGES" wrappingWidth="125">
+                <Text fx:id="categoryLabel" fill="#006937" text="BEVERAGES" wrappingWidth="125">
                     <font>
                         <Font name="Helvetica Neue Bold" size="20" />
                     </font>
                 </Text>
                 <Region HBox.hgrow="ALWAYS" />
                 <Button fx:id="backButton" mnemonicParsing="false" onAction="#backToMain" styleClass="primary-btn" text="&lt; Back" textFill="WHITE" />
-                <Button prefHeight="45.0" prefWidth="51.0" styleClass="circular-btn">
+                <Button fx:id="cartBtn" onAction="#goToCart" prefHeight="45.0" prefWidth="51.0" styleClass="circular-btn">
                     <graphic>
                         <ImageView fx:id="CartButton" fitHeight="23.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                             <image>

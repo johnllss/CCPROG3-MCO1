@@ -15,6 +15,8 @@ import java.io.IOException;
 
 import java.util.ArrayList;
 
+import StoreApp.Models.Cart_Model;
+import StoreApp.Models.Customer_Model;
 import StoreApp.Models.Inventory_Model;
 import StoreApp.Models.Product_Model;
 import javafx.scene.layout.AnchorPane;
@@ -31,6 +33,7 @@ public class Shopping_Controller {
     @FXML Button backBtn;
 
     private Inventory_Model inventory;
+    private Customer_Model customer;
     private String currentCategory = "Beverages";
 
     private Stage primaryStage;
@@ -49,6 +52,11 @@ public class Shopping_Controller {
     {
         this.inventory = inv;
         populateProductsGrid();
+    }
+
+    public void setCustomer(Customer_Model customer)
+    {
+        this.customer = customer;
     }
 
     private void populateProductsGrid()
@@ -100,11 +108,6 @@ public class Shopping_Controller {
         return card;
     }
 
-    private void handleAddToCart(Product_Model product)
-    {
-        System.out.println("Adding to cart: " + product.getProductName());
-    }
-
     private void setupNavBar()
     {
         foodBtn.setOnAction(e -> switchCategory("Food"));
@@ -131,4 +134,49 @@ public class Shopping_Controller {
         primaryStage.show();
     }
 
+    private void handleAddToCart(Product_Model product, int quantity)
+    {
+        if (customer == null)
+        {
+            System.err.println("error: Customer not set in Shopping_Controller");
+            return;
+        }
+
+        Cart_Model cart = customer.getCart();
+        boolean success = cart.addItem(product, quantity);
+
+        if (success)
+        {
+            System.out.println("Added " + quantity + "x " + product.getProductName() + " to cart");
+        }
+        else
+        {
+            System.err.println("Item has not been successfully added to cart.");
+        }
+    }
+
+    @FXML
+    public void goToCart(ActionEvent event)
+    {
+        try
+        {
+            // load FXML
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/Cart_View.fxml"));
+            Parent root = loader.load();
+        
+            // get controller and pass inventory and customer states
+            Cart_Controller cartController = loader.getController();
+            cartController.setInventory(inventory);
+            cartController.setCustomer(customer);
+
+            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
 }

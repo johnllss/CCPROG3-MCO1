@@ -1,5 +1,7 @@
 package StoreApp.Controllers;
 
+import StoreApp.Models.Cart_Model;
+import StoreApp.Models.Customer_Model;
 import StoreApp.Models.Employee_Model;
 import StoreApp.Models.Inventory_Model;
 import javafx.event.ActionEvent;
@@ -33,12 +35,16 @@ public class MainMenu_Controller {
         System.out.println("Customer View");
 
         try {
+            // create a new customer with an empty cart for this shopping session
+            Customer_Model customer = new Customer_Model("Guest", "guest@gmail.com", "", null, false, new Cart_Model());
+
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/Shopping_View.fxml"));
             Parent root = loader.load();
 
             Shopping_Controller shoppingController = loader.getController();
 
             shoppingController.setInventory(inventory);
+            shoppingController.setCustomer(customer);
 
             // code for switching fxml
             Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();

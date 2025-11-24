@@ -4,7 +4,6 @@ import StoreApp.Models.Receipt_Model;
 import StoreApp.Views.Receipt_View;
 
 import StoreApp.Models.Receipt_Model;
-import StoreApp.Views.Receipt_View;
 
 public class Receipt_Controller {
     private  Receipt_View view;

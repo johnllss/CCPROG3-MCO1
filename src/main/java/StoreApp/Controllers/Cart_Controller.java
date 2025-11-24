@@ -2,13 +2,19 @@ package StoreApp.Controllers;
 
 import StoreApp.Models.Cart_Model;
 import StoreApp.Models.Customer_Model;
+import StoreApp.Models.Inventory_Model;
 import StoreApp.Models.Item_Model;
 import StoreApp.Models.Product_Model;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
-
+import javafx.stage.Stage;
 import javafx.scene.control.Label;
 
 import static javafx.collections.FXCollections.*;
@@ -22,17 +28,21 @@ public class Cart_Controller {
     @FXML private TableColumn<Cart_Model, Integer> productQuantityColumn;
     @FXML private TableColumn<Cart_Model, String> productNameColumn;
     @FXML private TableColumn<Cart_Model, String> productPriceColumn;
+
     private Customer_Model customer;
     private Cart_Model cart;
+    private Inventory_Model inventory;
     private ObservableList<Item_Model> ItemList;
 
+    public void setInventory(Inventory_Model inventory) {
+        this.inventory = inventory;
+    }
 
-    public void SetObjects(Customer_Model customer){
+    public void setCustomer(Customer_Model customer) {
         this.customer = customer;
         this.cart = customer.getCart();
         this.ItemList = observableArrayList(cart.getItems());
         cartTable.setItems(ItemList);
-
     }
 
     @FXML
@@ -72,10 +82,24 @@ public class Cart_Controller {
     }
 
     @FXML
-    private void returnToProducts()
+    private void returnToProducts(ActionEvent event)
     {
-        System.out.println("Returning");
-        // TODO load back to fxml of product listings
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/Shopping_View.fxml"));
+            Parent root = loader.load();
+
+            // state management so the next scene knows which customer is shopping and what the inventory's state is
+            Shopping_Controller shoppingController = loader.getController();
+            shoppingController.setInventory(inventory);
+            shoppingController.setCustomer(customer);
+
+            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     /**
