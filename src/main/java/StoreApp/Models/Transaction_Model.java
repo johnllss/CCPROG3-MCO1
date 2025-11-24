@@ -1,5 +1,8 @@
 package StoreApp.Models;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 public class Transaction_Model {
     private Cart_Model cart;
     private Customer_Model customer;
@@ -148,11 +151,14 @@ public class Transaction_Model {
     }
 
     /**
-     * This method generates the time stamp for the processed transaction.
+     * This method generates the time stamp for the processed transaction folowing MMM-DD-YYYY HH:MM:SS.
      * @return String for the time stamp.
      */
     private String generateTimeStamp() {
-        return "''";
+        LocalDateTime dateNow = LocalDateTime.now();
+        DateTimeFormatter formattedDate = DateTimeFormatter.ofPattern("MMM-dd-yyyy HH:mm:ss");
+
+        return dateNow.format(formattedDate);
     }
 
     /**
@@ -286,9 +292,25 @@ public class Transaction_Model {
     
     /**
      * This is a getter method to get Transaction's paymentMethod.
-     * @return double for paymentMethod.
+     * @return String for paymentMethod.
      */
     public String getPaymentMethod() {
         return paymentMethod;
+    }
+
+    /**
+     * This method sets the Transaction's paymentMethod.
+     * @param paymentMethod is the payment method used (Cash/Card).
+     */
+    public void setPaymentMethod(String paymentMethod) {
+        this.paymentMethod = paymentMethod;
+    }
+
+    /**
+     * This is a getter method to get Transaction's timestamp.
+     * @return String for timestamp.
+     */
+    public String getTimestamp() {
+        return timestamp;
     }
 }
