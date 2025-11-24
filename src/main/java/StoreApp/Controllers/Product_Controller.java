@@ -1,7 +1,6 @@
 package StoreApp.Controllers;
 
 import StoreApp.Models.Product_Model;
-import StoreApp.Models.Customer_Model;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
@@ -11,9 +10,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
-
-import java.util.function.BiConsumer;
 
 public class Product_Controller {
 
@@ -27,15 +23,14 @@ public class Product_Controller {
 
     private HBox QuantityBtn;
     private int quantity = 1;
-    private Customer_Model customer;
 
     private Product_Model product;
-    private BiConsumer<Product_Model, Integer> addToCartCallback;
+    private AddToCartCallback addToCartCallback;
 
 
     @FXML
     private void onAddToCartBtnClicked(ActionEvent e){
-        if(QuantityBtn == null){
+        if(QuantityBtn == null) {
             QuantityBtn = new HBox(10);
             QuantityBtn.setAlignment(Pos.CENTER_LEFT);
             QuantityBtn.setMaxWidth(Double.MAX_VALUE);
@@ -62,12 +57,13 @@ public class Product_Controller {
 
             QuantityBtn.getChildren().addAll(Minus, quantityLabel, Plus);
         }
+
         buttonPane.getChildren().remove(addToCartBtn);
         buttonPane.getChildren().add(QuantityBtn);
         notifyCartUpdate();
     }
 
-    public void setProduct(Product_Model product, BiConsumer<Product_Model, Integer> callback)
+    public void setProduct(Product_Model product, AddToCartCallback callback)
     {
         this.product = product;
         this.addToCartCallback = callback;
@@ -85,7 +81,7 @@ public class Product_Controller {
     {
         if (addToCartCallback != null && product != null)
         {
-            addToCartCallback.accept(product, quantity);
+            addToCartCallback.onAddToCart(product, quantity);
         }
     }
 
@@ -116,5 +112,3 @@ public class Product_Controller {
         return product.isProductLowStock();
     }
 }
-
-
