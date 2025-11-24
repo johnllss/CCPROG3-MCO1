@@ -1,5 +1,13 @@
 {
     "java.project.sourcePaths": [
-        "src\\main\\java"
+        "src\\main\\java",
+        "src\\main\\resources"
+    ],
+    "java.configuration.runtimes": [
+        {
+            "name": "JavaSE-25",
+            "path": "C:\\Users\\johna\\.jdks\\liberica-full-25.0.1",
+            "default": true
+        }
     ]
 }
