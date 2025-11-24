@@ -60,7 +60,7 @@ public class Shopping_Controller {
     {
         this.customer = customer;
     }
-
+    
     private void populateProductsGrid()
     {
         if (inventory == null) 
@@ -100,6 +100,7 @@ public class Shopping_Controller {
             }
         }
     }
+
 
     private VBox createProductCard(Product_Model product) throws IOException
     {
