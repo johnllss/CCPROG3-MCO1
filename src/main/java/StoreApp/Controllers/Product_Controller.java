@@ -12,9 +12,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 public class Product_Controller {
-
-    @FXML
-    private ImageView productImage;
+    @FXML private ImageView productImage;
     @FXML private Button addToCartBtn;
     @FXML private Label productName;
     @FXML private Label productPrice;
@@ -26,7 +24,6 @@ public class Product_Controller {
 
     private Product_Model product;
     private AddToCartCallback addToCartCallback;
-
 
     @FXML
     private void onAddToCartBtnClicked(ActionEvent e){
@@ -40,6 +37,8 @@ public class Product_Controller {
 
             Minus.getStyleClass().add("circular-btn");
             Plus.getStyleClass().add("circular-btn");
+
+            // on every press of + or -, update the cart
             Minus.setOnAction(e1 -> {
                 if(quantity > 1){
                     quantity--;
@@ -81,6 +80,7 @@ public class Product_Controller {
     {
         if (addToCartCallback != null && product != null)
         {
+            // calls the method assigned to addToCartCallback and sends the product and quantity data
             addToCartCallback.onAddToCart(product, quantity);
         }
     }
