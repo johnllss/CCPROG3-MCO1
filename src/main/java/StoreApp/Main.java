@@ -13,8 +13,10 @@ import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 
 public class Main extends Application {
+    private static Stage primaryStage;
     @Override
     public void start(Stage stage) {
+        primaryStage = stage;
         try {
             // declare core data
             Inventory_Model inventory = new Inventory_Model();
@@ -121,6 +123,7 @@ public class Main extends Application {
             stage.close();
         }
     }
+
 
     public static void main(String[] args) {
         launch(args);

@@ -20,8 +20,8 @@ public class Product_Controller {
     @FXML
     private ImageView productImage;
     @FXML private Button addToCartBtn;
-    @FXML private Text productName;
-    @FXML private Text productPrice;
+    @FXML private Label productName;
+    @FXML private Label productPrice;
     @FXML private VBox cardRoot;
     @FXML private AnchorPane buttonPane;
 
@@ -53,7 +53,7 @@ public class Product_Controller {
                 }
             });
             Plus.setOnAction(e1 -> {
-                if(quantity < productModel.getProductQuantity()) {
+                if(quantity < product.getProductQuantity()) {
                     quantity++;
                     quantityLabel.setText(String.valueOf(quantity));
                     notifyCartUpdate();

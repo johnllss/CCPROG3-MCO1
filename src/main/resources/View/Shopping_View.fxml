@@ -286,6 +286,7 @@
                 <Button fx:id="beverageBtn" styleClass="nav-btn" text="Beverages" textFill="#006937" />
                 <Button fx:id="toiletriesBtn" styleClass="nav-btn" text="Toiletries" textFill="#006937" />
                 <Button fx:id="medicineBtn" styleClass="nav-btn" text="Medicine" textFill="#006937" />
+                <Button fx:id="householdBtn" styleClass="nav-btn" text="Household" textFill="#006937" />
                 <Region HBox.hgrow="ALWAYS" />
                 <Button fx:id="NextButton2" prefHeight="26" prefWidth="29" styleClass="circular-btn" text="&gt;" textFill="WHITE">
                     <font>

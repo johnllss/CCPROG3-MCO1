@@ -9,6 +9,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -23,7 +25,7 @@ import javafx.scene.layout.AnchorPane;
 
 public class Shopping_Controller {
     @FXML GridPane productsGrid;
-    @FXML Label categoryLabel;
+    @FXML Text categoryLabel;
     @FXML Button cartBtn;
     @FXML Button foodBtn;
     @FXML Button beverageBtn;
@@ -80,7 +82,7 @@ public class Shopping_Controller {
         {
             try
             {
-                AnchorPane productCard = createProductCard(product);
+                VBox productCard = createProductCard(product);
                 productsGrid.add(productCard, col, row);
 
                 col++;
@@ -99,10 +101,11 @@ public class Shopping_Controller {
         }
     }
 
-    private AnchorPane createProductCard(Product_Model product) throws IOException
+    private VBox createProductCard(Product_Model product) throws IOException
     {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/ProductCard.fxml"));
-        AnchorPane card = loader.load();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/Product_View.fxml"));
+        System.out.println(getClass().getResource("/View/Product_View.fxml"));
+        VBox card = loader.load();
         Product_Controller productController = loader.getController();
         productController.setProduct(product, this::handleAddToCart);
         return card;
