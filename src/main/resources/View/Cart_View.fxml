@@ -31,7 +31,7 @@
             </Label>
             <VBox fx:id="productsBox" spacing="10">
             </VBox>
-         <TableView prefHeight="200.0" prefWidth="366.0">
+         <TableView fx:id="cartTable" prefHeight="200.0" prefWidth="366.0">
            <columns>
              <TableColumn prefWidth="87.32689476013184" text="Product Name" />
              <TableColumn prefWidth="124.8717269897461" text="Quantity" />
