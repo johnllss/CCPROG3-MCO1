@@ -18,6 +18,7 @@ import java.util.ArrayList;
 
 import StoreApp.Models.Cart_Model;
 import StoreApp.Models.Customer_Model;
+import StoreApp.Models.Employee_Model;
 import StoreApp.Models.Inventory_Model;
 import StoreApp.Models.Product_Model;
 
@@ -28,12 +29,13 @@ public class Shopping_Controller {
     @FXML Button foodBtn;
     @FXML Button beverageBtn;
     @FXML Button toiletriesBtn;
+    @FXML Button cleaningProductsBtn;
     @FXML Button medicineBtn;
-    @FXML Button householdBtn;
     @FXML Button backBtn;
 
     private Inventory_Model inventory;
     private Customer_Model customer;
+    private Employee_Model[] employees;
     private String currentCategory = "Beverages";
 
     private Stage primaryStage;
@@ -57,6 +59,11 @@ public class Shopping_Controller {
     public void setCustomer(Customer_Model customer)
     {
         this.customer = customer;
+    }
+
+    public void setEmployees(Employee_Model[] employees)
+    {
+        this.employees = employees;
     }
     
     private void populateProductsGrid()
@@ -115,8 +122,8 @@ public class Shopping_Controller {
         foodBtn.setOnAction(e -> switchCategory("Food"));
         beverageBtn.setOnAction(e -> switchCategory("Beverages"));
         toiletriesBtn.setOnAction(e -> switchCategory("Toiletries"));
+        cleaningProductsBtn.setOnAction(e -> switchCategory("Cleaning Products"));
         medicineBtn.setOnAction(e -> switchCategory("Medications"));
-        householdBtn.setOnAction(e -> switchCategory("Cleaning Products"));
     }
 
     private void switchCategory(String category)
@@ -129,7 +136,14 @@ public class Shopping_Controller {
     @FXML
     public void backToMain(ActionEvent e) throws IOException
     {
-        root = FXMLLoader.load(getClass().getResource("/View/MainMenu_View.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/MainMenu_View.fxml"));
+        root = loader.load();
+
+        // pass inventory and employees back to MainMenu
+        MainMenu_Controller mainMenuController = loader.getController();
+        mainMenuController.setInventory(inventory);
+        mainMenuController.setEmployees(employees);
+
         primaryStage = (Stage)((Node)e.getSource()).getScene().getWindow();
         scene = new Scene(root);
         primaryStage.setScene(scene);
