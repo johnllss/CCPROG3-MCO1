@@ -32,14 +32,9 @@ public class Inventory_Controller implements Initializable {
         choiceBox.getItems().addAll(categories);
     }
 
-    public void getCategory(ActionEvent event)
+    public void displayEmployeeName(String employeeName) 
     {
-        String choice = choiceBox.getValue();
-    }
-
-    public void setInventory(Inventory_Model inv)
-    {
-        this.inventory = inv;
+        // Display the employee name in the appropriate UI component
     }
 
     /**
@@ -186,5 +181,15 @@ public class Inventory_Controller implements Initializable {
             System.out.println("You successfully logged out!");
             stage.close();
         }
+    }
+
+    public void getCategory(ActionEvent event)
+    {
+        String choice = choiceBox.getValue();
+    }
+
+    public void setInventory(Inventory_Model inv)
+    {
+        this.inventory = inv;
     }
 }
