@@ -241,8 +241,8 @@ public class Product_Model {
     }
 
     /**
-     * This method sets the product's expirationDate.
-     * @param expirationDate is the new expirationDate.
+     * This is a getter method to get the expirationDate attribute.
+     * @return String for expirationDate.
      */
     public void setExpirationDate(String expirationDate) {
         this.expirationDate = expirationDate;
