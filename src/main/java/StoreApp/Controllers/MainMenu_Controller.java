@@ -45,6 +45,7 @@ public class MainMenu_Controller {
 
             shoppingController.setInventory(inventory);
             shoppingController.setCustomer(customer);
+            shoppingController.setEmployees(employees);
 
             // code for switching fxml
             Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
