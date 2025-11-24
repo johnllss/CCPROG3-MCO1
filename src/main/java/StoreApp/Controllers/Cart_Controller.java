@@ -43,14 +43,18 @@ public class Cart_Controller {
         this.cart = customer.getCart();
         this.ItemList = observableArrayList(cart.getItems());
         cartTable.setItems(ItemList);
+        updateProductBoxDisplay();
+        updateAllTotals();
     }
-
+    /*
     @FXML
     public void initialize()
     {
         updateProductBoxDisplay();
         updateAllTotals();
     }
+
+     */
 
     private void updateProductBoxDisplay()
     {
