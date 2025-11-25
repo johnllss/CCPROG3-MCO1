@@ -77,14 +77,14 @@ public class Main extends Application {
         inventory.addProduct(new Product_Model("Beer", 90.0, 10, "Beverages", "Stella Artois", "Stella 0.0", "2028-08-15", "/redbull.png"));
 
         // Toiletries
-        inventory.addProduct(new Product_Model("Soap", 50.0, 10, "Toiletries", "Safeguard", "Pink", "N/A", "/redbull.png"));
+        inventory.addProduct(new Product_Model("Soap", 50.0, 1, "Toiletries", "Safeguard", "Pink", "N/A", "/redbull.png"));
         inventory.addProduct(new Product_Model("Shampoo", 99.0, 10, "Toiletries", "Head & Shoulders", "Classic Clean", "N/A", "/redbull.png"));
         inventory.addProduct(new Product_Model("Airy Matte Tint", 30.0, 10, "Toiletries", "BLK Cosmetics", "Dearest Rose Pink", "N/A", "/redbull.png"));
         inventory.addProduct(new Product_Model("Toothbrush", 135.0, 10, "Toiletries", "Oral-B", "Electric Toothbrush", "N/A", "/redbull.png"));
         inventory.addProduct(new Product_Model("Deodorant", 199.0, 10, "Toiletries", "Old Spice", "Wolfthorne", "N/A", "/redbull.png"));
 
         // Cleaning Products
-        inventory.addProduct(new Product_Model("Detergent", 55.0, 10, "Cleaning Products", "Tide", "Powder", "2027-01-02", "/redbull.png"));
+        inventory.addProduct(new Product_Model("Detergent", 55.0, 3, "Cleaning Products", "Tide", "Powder", "2027-01-02", "/redbull.png"));
         inventory.addProduct(new Product_Model("Tissue", 69.0, 10, "Cleaning Products", "Femme", "Interfolded Paper Towel", "2027-03-25", "/redbull.png"));
         inventory.addProduct(new Product_Model("Hand Sanitizer", 95.0, 10, "Cleaning Products", "Purell", "Bottled", "2029-09-23", "/redbull.png"));
         inventory.addProduct(new Product_Model("Degreaser", 215.0, 10, "Cleaning Products", "Lysol", "Multi-Purpose", "2028-11-11", "/redbull.png"));
