@@ -96,9 +96,12 @@ public class Transaction_Controller {
     @FXML
     private void selectCashPayment() {
         if (cashCheckBox.isSelected()) {
-            cardCheckBox.setSelected(false);
+            // make amount field of cash inputtable
             amountText.setDisable(false);
-
+            
+            // unselect card checkbox
+            cardCheckBox.setSelected(false);
+            
             // disable inputting in card fields and clear previous inputs
             accountNumberText.setDisable(true);
             cvvText.setDisable(true);;
@@ -106,10 +109,38 @@ public class Transaction_Controller {
             accountNumberText.clear();
             cvvText.clear();
             expiryDateText.clear();
-        } else {
-            // if card payment, disable and clear amount field
+        } else { 
+            // if unselected, disable and clear amount field
             amountText.setDisable(true);
             amountText.clear();
+        }
+    }
+
+    /**
+     * This method handles the card payment method selection.
+     */
+    @FXML
+    private void selectCardPayment() {
+        if (cardCheckBox.isSelected()) {
+            // enable all card fields
+            accountNumberText.setDisable(false);
+            cvvText.setDisable(false);
+            expiryDateText.setDisable(false);
+            
+            // unselect cash checkbox
+            cashCheckBox.setSelected(false);
+
+            // disable inputting in cash's amount field and clear previous inputs
+            amountText.setDisable(true);
+            amountText.clear();
+        } else {
+            // if unselected, disable and clear all card fields
+            accountNumberText.setDisable(true);
+            cvvText.setDisable(true);
+            expiryDateText.setDisable(true);
+            accountNumberText.clear();
+            cvvText.clear();
+            expiryDateText.clear();
         }
     }
 }
