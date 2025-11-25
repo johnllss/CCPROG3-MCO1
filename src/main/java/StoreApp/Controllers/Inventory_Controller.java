@@ -31,6 +31,7 @@ public class Inventory_Controller implements Initializable {
     @FXML private TextField brand_txtbox;
     @FXML private TextField price_txtbox;
     @FXML private TextField qty_txtbox;
+    @FXML private DatePicker expirationDate_picker;
     @FXML private TableView<Product_Model> productTable;
     @FXML private TableColumn<Product_Model, Integer> productID;
     @FXML private TableColumn<Product_Model, String> productName;
@@ -160,17 +161,36 @@ public class Inventory_Controller implements Initializable {
             String brand = brand_txtbox.getText().trim();
             double price = Double.parseDouble(price_txtbox.getText().trim());
             int qty = Integer.parseInt(qty_txtbox.getText().trim());
+            LocalDate expirationDate = expirationDate_picker.getValue();
 
             if(name.isEmpty() || category.isEmpty() || brand.isEmpty() || price < 0 || qty < 0){
                 Alert alert = new Alert(Alert.AlertType.WARNING, "Please fill out all the fields", ButtonType.OK);
                 alert.showAndWait();
                 return;
             }
-            Product_Model product = new Product_Model(name, price, qty, category, brand);
+
+            Product_Model product;
+            if (expirationDate != null) {
+                // use the full constructor with expiration date
+                product = new Product_Model(name, price, qty, category, brand, "", expirationDate, "");
+            } else {
+                // use the constructor without expiration date for non-perishable items
+                product = new Product_Model(name, price, qty, category, brand);
+            }
+
             boolean success = inventory.addProduct(product);
-            if(success){
+            if (success) {
                Alert alert = new Alert(Alert.AlertType.INFORMATION, "Product added", ButtonType.OK);
                 alert.showAndWait();
+
+                // clear fields after successful adding of product
+                name_txtbox.clear();
+                brand_txtbox.clear();
+                price_txtbox.clear();
+                qty_txtbox.clear();
+                category_choiceBox.setValue(null);
+                expirationDate_picker.setValue(null);
+                productObservableList.setAll(inventory.getAllProducts());
             }
             else{
                Alert alert =  new Alert(Alert.AlertType.WARNING, "Product already exists", ButtonType.OK);
@@ -178,7 +198,7 @@ public class Inventory_Controller implements Initializable {
             }
 
         }catch(NumberFormatException e){
-            new Alert(Alert.AlertType.WARNING, "Please enter a valid number", ButtonType.OK);
+            new Alert(Alert.AlertType.WARNING, "Please enter a valid number", ButtonType.OK).showAndWait();
         }
 
     }
@@ -239,6 +259,7 @@ public class Inventory_Controller implements Initializable {
         String brand = brand_txtbox.getText().trim();
         int productID;
         Double price = null;
+        LocalDate expirationDate = expirationDate_picker.getValue();
 
 
         try {
@@ -275,6 +296,10 @@ public class Inventory_Controller implements Initializable {
         }
         if (price != null && price != product.getProductPrice()) {
             inventory.updateProductPrice(productID, price);
+            updated = true;
+        }
+        if (expirationDate != null && !expirationDate.equals(product.getExpirationDate())) {
+            inventory.updateProductExpirationDate(productID, expirationDate);
             updated = true;
         }
 
