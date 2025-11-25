@@ -4,6 +4,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import StoreApp.Models.*;
+import javafx.beans.property.ReadOnlyIntegerWrapper;
+import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -11,11 +13,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -36,6 +40,11 @@ public class Inventory_Controller implements Initializable {
     @FXML private TableColumn<Product_Model, String> productBrand;
     @FXML private TableColumn<Product_Model, Double> productPrice;
     @FXML private TableColumn<Product_Model, Integer> productStock;
+    @FXML private Label employeeName;
+    @FXML private AnchorPane rightPane;
+    @FXML private AnchorPane details;
+    @FXML private TextField ID_txtbox;
+
 
     private Inventory_Model inventory;
     private Stage stage;
@@ -53,9 +62,9 @@ public class Inventory_Controller implements Initializable {
 
     }
 
-    public void displayEmployeeName(String employeeName) 
+    public void displayEmployeeName(String employee)
     {
-        // Display the employee name in the appropriate UI component
+        employeeName.setText(employee);
     }
     @FXML
     public void onLogOut(ActionEvent event)
@@ -84,14 +93,14 @@ public class Inventory_Controller implements Initializable {
     private void FilterByCategory(ActionEvent event)
     {
         String choice = filterCombo.getValue();
-        if(choice.equals("All") || choice == null)
-        {
+        if (choice == null || choice.equals("All")) {
             productObservableList.setAll(inventory.getAllProducts());
-            return;
+        } else {
+            var filtered = inventory.getProductsByCategory(choice);
+            productObservableList.setAll(filtered);
         }
-        else{
-            productObservableList.setAll(inventory.getProductsByCategory(choice));
-        }
+
+        productTable.refresh();
     }
 
 
@@ -154,7 +163,7 @@ public class Inventory_Controller implements Initializable {
                 alert.showAndWait();
             }
 
-        } catch(NumberFormatException e) {
+        }catch(NumberFormatException e){
             Alert alert = new Alert(Alert.AlertType.WARNING, "Please enter a valid number", ButtonType.OK);
         }
 
@@ -165,6 +174,7 @@ public class Inventory_Controller implements Initializable {
     {
         System.out.println("Restock Button Pressed");
         Stage popup = new  Stage();
+        popup.setTitle("Restock");
         popup.initModality(Modality.WINDOW_MODAL);
         Label qty = new Label("Quantity");
         TextField qty_txtbox = new TextField();
@@ -184,6 +194,7 @@ public class Inventory_Controller implements Initializable {
 
                 inventory.restockProduct(product_ID, quantity);
                 popup.close();
+                productTable.refresh();
             } catch (NumberFormatException ex) {
                 Alert alert = new Alert(Alert.AlertType.WARNING, "Please enter a valid number", ButtonType.OK);
                 alert.showAndWait();
@@ -200,21 +211,147 @@ public class Inventory_Controller implements Initializable {
     }
 
     @FXML
-    private void updateProduct(ActionEvent event)
-    {
-        System.out.println("Update Product button clicked!");
+    private void updateProduct(ActionEvent event) {
+        String name = name_txtbox.getText().trim();
+        String category = category_choiceBox.getValue();
+        String brand = brand_txtbox.getText().trim();
+        int productID;
+        Double price = null;
+
+
+        try {
+            productID = Integer.parseInt(ID_txtbox.getText().trim());
+
+            String priceText = price_txtbox.getText().trim();
+            if (!priceText.isEmpty()) {
+                price = Double.parseDouble(priceText);
+            }
+        } catch (NumberFormatException e) {
+            new Alert(Alert.AlertType.ERROR, "Invalid number format!", ButtonType.OK).showAndWait();
+            return;
+        }
+
+        Product_Model product = inventory.findProduct(productID);
+        if (product == null) {
+            new Alert(Alert.AlertType.ERROR, "Product not found!", ButtonType.OK).showAndWait();
+            return;
+        }
+
+        boolean updated = false;
+
+        if (!name.isEmpty() && !name.equals(product.getProductName())) {
+            inventory.updateProductName(productID, name);
+            updated = true;
+        }
+        if (category != null && !category.equals(product.getProductCategory())) {
+            inventory.updateProductVariant(productID, category);
+            updated = true;
+        }
+        if (!brand.isEmpty() && !brand.equals(product.getProductBrand())) {
+            inventory.updateProductBrand(productID, brand);
+            updated = true;
+        }
+        if (price != null && price != product.getProductPrice()) {
+            inventory.updateProductPrice(productID, price);
+            updated = true;
+        }
+
+        String message = updated ? "Product updated successfully!" : "No changes detected";
+        new Alert(Alert.AlertType.INFORMATION, message, ButtonType.OK).showAndWait();
+        productTable.refresh();
     }
+
 
     @FXML
     private void removeProduct(ActionEvent event)
     {
         System.out.println("Delete Product button clicked!");
+        Stage popup = new  Stage();
+        popup.setTitle("Remove item");
+        popup.initModality(Modality.WINDOW_MODAL);
+        Label productID = new Label("Product ID");
+        TextField productID_txtbox = new TextField();
+        Button submitbtn = new Button("Submit");
+        Button cancelbtn = new Button("Cancel");
+
+        VBox vbox = new VBox();
+        vbox.setPadding(new Insets(15,15,10,15));
+        vbox.getChildren().addAll(productID, productID_txtbox, submitbtn, cancelbtn);
+
+        submitbtn.setOnAction(e -> {
+            try {
+                int product_ID = Integer.parseInt(productID_txtbox.getText());
+
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to remove?", ButtonType.OK,  ButtonType.CANCEL);
+                alert.showAndWait().ifPresent(response -> {
+                    if (response == ButtonType.OK) {
+                        boolean success = inventory.removeProduct(product_ID);
+                        if(success){
+                            productObservableList.setAll(inventory.getAllProducts());
+                            Alert alert1 = new Alert(Alert.AlertType.INFORMATION, "Product removed", ButtonType.OK);
+                            alert1.showAndWait();
+                            popup.close();
+                            productTable.refresh();
+                        }
+                        else{
+                            Alert alert2 = new Alert(Alert.AlertType.WARNING, "Product not removed", ButtonType.OK);
+                            alert2.showAndWait();
+                        }
+                    }
+                    else{
+                        popup.close();
+                    }
+                });
+
+
+            } catch (NumberFormatException ex) {
+                Alert alert = new Alert(Alert.AlertType.WARNING, "Please enter a valid number", ButtonType.OK);
+                alert.showAndWait();
+            }
+        });
+        cancelbtn.setOnAction(e -> {
+            popup.close();
+        });
+
+        Scene scene = new Scene(vbox);
+        popup.setScene(scene);
+        popup.show();
+        System.out.println("inventory = " + inventory);
     }
 
     @FXML
-    private void viewLowStock(ActionEvent event)
-    {
-        System.out.println("View Low Stock button clicked!");
+    private void viewLowStock(ActionEvent event) {
+        details.setVisible(false);
+        ObservableList<Product_Model> allProducts = FXCollections.observableArrayList(productObservableList);
+
+        // Show only low-stock products
+        productTable.setItems(FXCollections.observableArrayList(
+                inventory.getLowStockProducts(3)
+        ));
+
+
+        Button back = new Button("Back");
+        back.setStyle("-fx-background-color: #006937; -fx-text-fill: white;");
+
+        // Position the button relative to the table
+        back.setLayoutX(10);
+        back.setLayoutY(productTable.getLayoutY() + productTable.getHeight() + 10);
+
+        back.setOnAction(e -> {
+            // Restore full product list
+            productTable.setItems(allProducts);
+
+            // Remove the back button from the pane
+            rightPane.getChildren().remove(back);
+
+            // Show details again
+            details.setVisible(true);
+        });
+
+        // Add the back button to the pane containing the table
+        if (!rightPane.getChildren().contains(back)) {
+            rightPane.getChildren().add(back);
+        }
     }
 
     /**

@@ -109,6 +109,12 @@ public class Employee_Login_Controller {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/MainMenu_View.fxml"));
             root = loader.load();
 
+            MainMenu_Controller mainMenuController = loader.getController();
+
+
+            mainMenuController.setInventory(inventory);
+            mainMenuController.setEmployees(employees);
+
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             scene = new Scene(root);
             stage.setScene(scene);
