@@ -1,15 +1,24 @@
 package StoreApp.Controllers;
 
-import javafx.scene.control.Label;
-
 import StoreApp.Models.Cart_Model;
 import StoreApp.Models.Customer_Model;
+import StoreApp.Models.Item_Model;
+import StoreApp.Models.Product_Model;
 import StoreApp.Models.Receipt_Model;
 import StoreApp.Models.Transaction_Model;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 public class Receipt_Controller {
     @FXML private Label receiptNumberLabel;
@@ -75,5 +84,38 @@ public class Receipt_Controller {
         }
     }
 
-    
+    /**
+     * This method displays all items in the cart on the receipt.
+     * @param cart is the cart containing the purchased items.
+     */
+    private void displayCartItems(Cart_Model cart) {
+        itemsVBox.getChildren().clear();
+
+        for (Item_Model item: cart.getItems()) {
+            // extract necessary details to display
+            Product_Model product = item.getProduct();
+            int quantity = item.getQuantity();
+            double price = product.getProductPrice();
+            double itemTotalPrice = price * quantity;
+
+            HBox itemRow = new HBox(10);
+            itemRow.setPadding(new Insets(5, 0, 5, 0));
+
+            Label quantityLabel = new Label(quantity + "x");
+            quantityLabel.setPrefWidth(40);
+
+            Label nameLabel = new Label(product.getProductName());
+            nameLabel.setPrefWidth(250);
+
+            Label priceLabel = new Label(String.format("₱ %.2f", price));
+            priceLabel.setPrefWidth(80);
+
+            Label totalLabel = new Label(String.format("₱ %.2f", itemTotalPrice));
+            totalLabel.setPrefWidth(80);
+            totalLabel.setStyle("-fx-font-weight: bold");
+
+            itemRow.getChildren().addAll(quantityLabel, nameLabel, priceLabel, totalLabel);
+            itemsVBox.getChildren().add(itemRow);
+        }
+    }
 }
