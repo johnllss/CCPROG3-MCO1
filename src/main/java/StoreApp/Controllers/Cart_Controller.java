@@ -124,7 +124,14 @@ public class Cart_Controller {
         else if(!sign){
             newQty = newQty - 1;
         }
-        cart.updateQuantity(item.getProduct(), newQty);
+
+        // if quantity becomes 0 or negative, remove the item from cart
+        if(newQty <= 0) {
+            cart.removeItem(item.getProduct().getProductID());
+        } else {
+            cart.updateQuantity(item.getProduct(), newQty);
+        }
+
         cartTable.refresh();
         updateAllTotals();
     }
