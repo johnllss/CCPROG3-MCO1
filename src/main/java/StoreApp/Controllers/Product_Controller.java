@@ -19,6 +19,7 @@ public class Product_Controller {
     @FXML private Label productPrice;
     @FXML private VBox cardRoot;
     @FXML private AnchorPane buttonPane;
+    @FXML private HBox badgeContainer;
 
     private HBox QuantityBtn;
     private int quantity = 1;
@@ -115,6 +116,9 @@ public class Product_Controller {
                     System.err.println("Failed to load image for " + product.getProductName() + ": " + e.getMessage());
                 }
             }
+
+            // display status badges based on product state
+            displayStatusBadges();
         }
     }
     /**
@@ -166,5 +170,41 @@ public class Product_Controller {
     public boolean isProductLowStock()
     {
         return product.isProductLowStock();
+    }
+
+    /**
+     * This method creates a status badge label with the specified text and style class to display the status of the Product in the Product_View.
+     * @param text is the text to display on the badge.
+     * @param styleClass is the CSS style class for the badge.
+     * @return Label configured as a status badge.
+     */
+    private Label createBadge(String text, String styleClass) {
+        Label badge = new Label(text);
+        badge.getStyleClass().addAll("status-badge", styleClass);
+
+        return badge;
+    }
+
+    /**
+     * This method displays status badges on the product card based on product state. This only shows LOW STOCK and PERISHABLE badges.
+     */
+    private void displayStatusBadges() {
+        if (badgeContainer == null || product == null) {
+            return;
+        }
+
+        // clear any existing badges
+        badgeContainer.getChildren().clear();
+
+        // show LOW STOCK badge
+        if (isProductLowStock()) {
+            Label lowStockBadge = createBadge("LOW STOCK", "badge-low-stock");
+            badgeContainer.getChildren().add(lowStockBadge);
+        }
+        // show PERISHABLE badge only if not low stock
+        else if (isPerishable()) {
+            Label perishableBadge = createBadge("PERISHABLE", "badge-perishable");
+            badgeContainer.getChildren().add(perishableBadge);
+        }
     }
 }
