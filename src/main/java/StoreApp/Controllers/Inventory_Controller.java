@@ -42,6 +42,8 @@ public class Inventory_Controller implements Initializable {
     @FXML private AnchorPane rightPane;
     @FXML private AnchorPane details;
     @FXML private TextField ID_txtbox;
+    @FXML private Button viewExpiredBtn;
+    @FXML private Label expiredProductsLabel;
 
 
     private Inventory_Model inventory;
@@ -171,6 +173,7 @@ public class Inventory_Controller implements Initializable {
                 category_choiceBox.setValue(null);
                 expirationDate_picker.setValue(null);
                 productObservableList.setAll(inventory.getAllProducts());
+                updateExpiredProductsLabel();
             }
             else{
                Alert alert =  new Alert(Alert.AlertType.WARNING, "Product already exists", ButtonType.OK);
@@ -333,6 +336,7 @@ public class Inventory_Controller implements Initializable {
                         boolean success = inventory.removeProduct(product_ID);
                         if(success){
                             productObservableList.setAll(inventory.getAllProducts());
+                            updateExpiredProductsLabel();
                             Alert alert1 = new Alert(Alert.AlertType.INFORMATION, "Product removed", ButtonType.OK);
                             alert1.showAndWait();
                             popup.close();
@@ -404,6 +408,198 @@ public class Inventory_Controller implements Initializable {
     }
 
     /**
+     * This method displays only expired products in the product table.
+     * @param event is the action event triggered by the button.
+     */
+    @FXML
+    private void viewExpiredProducts(ActionEvent event) {
+        details.setVisible(false);
+        ObservableList<Product_Model> allProducts = FXCollections.observableArrayList(productObservableList);
+
+        // show only expired products
+        productTable.setItems(FXCollections.observableArrayList(inventory.getExpiredProducts()));
+
+        // create another returning button below for specifically going back to the default product table
+        Button back = new Button("Back");
+        back.getStyleClass().add("primary-btn");
+
+        // position the button relative to the table
+        back.setLayoutX(10);
+        back.setLayoutY(productTable.getLayoutY() + productTable.getHeight() + 10);
+
+        // when 
+        back.setOnAction(e -> {
+            // restore full product list
+            productTable.setItems(allProducts);
+
+            // remove the back button from the pane
+            rightPane.getChildren().remove(back);
+
+            // show details again
+            details.setVisible(true);
+        });
+
+        // add the back button to the pane
+        if (!rightPane.getChildren().contains(back)) {
+            rightPane.getChildren().add(back);
+        }
+    }
+
+    /**
+     * This method applies red font color to all expired products.
+     */
+    private void colorizeRedFontToExpiredProducts() {
+        // apply to Product ID column
+        productID.setCellFactory(column -> new TableCell<Product_Model, Integer>() {
+            @Override
+            protected void updateItem(Integer item, boolean empty) {
+                super.updateItem(item, empty);
+
+                if (empty || item == null) {
+                    setText(null);
+                    setStyle("");
+                } else {
+                    setText(String.valueOf(item));
+
+                    Product_Model product = getTableView().getItems().get(getIndex());
+                    if (product.isExpired()) {
+                        setStyle("-fx-text-fill: #d32f2f; -fx-font-weight: bold;");
+                    } else {
+                        setStyle("");
+                    }
+                }
+            }
+        });
+
+        // apply to Product Name column
+        productName.setCellFactory(column -> new TableCell<Product_Model, String>() {
+            @Override
+            protected void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty);
+
+                if (empty || item == null) {
+                    setText(null);
+                    setStyle("");
+                } else {
+                    setText(item);
+
+                    Product_Model product = getTableView().getItems().get(getIndex());
+                    if (product.isExpired()) {
+                        setStyle("-fx-text-fill: #d32f2f; -fx-font-weight: bold;");
+                    } else {
+                        setStyle("");
+                    }
+                }
+            }
+        });
+
+        // apply to Brand column
+        productBrand.setCellFactory(column -> new TableCell<Product_Model, String>() {
+            @Override
+            protected void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty);
+
+                if (empty || item == null) {
+                    setText(null);
+                    setStyle("");
+                } else {
+                    setText(item);
+
+                    Product_Model product = getTableView().getItems().get(getIndex());
+                    if (product.isExpired()) {
+                        setStyle("-fx-text-fill: #d32f2f; -fx-font-weight: bold;");
+                    } else {
+                        setStyle("");
+                    }
+                }
+            }
+        });
+
+        // apply to Price column
+        productPrice.setCellFactory(column -> new TableCell<Product_Model, Double>() {
+            @Override
+            protected void updateItem(Double item, boolean empty) {
+                super.updateItem(item, empty);
+
+                if (empty || item == null) {
+                    setText(null);
+                    setStyle("");
+                } else {
+                    setText(String.format("%.2f", item));
+
+                    Product_Model product = getTableView().getItems().get(getIndex());
+                    if (product.isExpired()) {
+                        setStyle("-fx-text-fill: #d32f2f; -fx-font-weight: bold;");
+                    } else {
+                        setStyle("");
+                    }
+                }
+            }
+        });
+
+        // apply to Stock column
+        productStock.setCellFactory(column -> new TableCell<Product_Model, Integer>() {
+            @Override
+            protected void updateItem(Integer item, boolean empty) {
+                super.updateItem(item, empty);
+
+                if (empty || item == null) {
+                    setText(null);
+                    setStyle("");
+                } else {
+                    setText(String.valueOf(item));
+
+                    Product_Model product = getTableView().getItems().get(getIndex());
+                    if (product.isExpired()) {
+                        setStyle("-fx-text-fill: #d32f2f; -fx-font-weight: bold;");
+                    } else {
+                        setStyle("");
+                    }
+                }
+            }
+        });
+    }
+
+    /**
+     * This method applies a light red background for all expired products.
+     */
+    private void colorizeLightRedBGToExpiredProduccts() {
+        productTable.setRowFactory(tv -> new TableRow<Product_Model>() {
+            @Override
+            protected void updateItem(Product_Model product, boolean empty) {
+                super.updateItem(product, empty);
+
+                if (empty || product == null) {
+                    setStyle("");
+                } else if (product.isExpired()) {
+                    // light red background for expired products
+                    setStyle("-fx-background-color: #ffebee;");
+                } else {
+                    setStyle("");
+                }
+            }
+        });
+    }
+
+    /**
+     * This method updates the expired products statistics label.
+     */
+    private void updateExpiredProductsLabel() {
+        if (inventory != null) {
+            int expiredCount = inventory.getExpiredProducts().size();
+
+            if (expiredCount > 0) {
+                expiredProductsLabel.setText(String.format("%d expired product%s", expiredCount, expiredCount == 1 ? "" : "s"));
+
+                expiredProductsLabel.setVisible(true);
+            } else {
+                expiredProductsLabel.setText("");
+                expiredProductsLabel.setVisible(false);
+            }
+        }
+    }
+
+    /**
      * This method asks for confirmation from the employee for logging out. If confirmed, the employee will be logged out.
      * @param event is the event listener.
      */
@@ -434,8 +630,18 @@ public class Inventory_Controller implements Initializable {
         productBrand.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(cellData.getValue().getProductBrand()));
         productPrice.setCellValueFactory(cellData -> new javafx.beans.property.ReadOnlyObjectWrapper<>(cellData.getValue().getProductPrice()));
         productStock.setCellValueFactory(cellData -> new javafx.beans.property.ReadOnlyObjectWrapper<>(cellData.getValue().getProductQuantity()));
+
+        // apply cell factory for red text on expired products
+        colorizeRedFontToExpiredProducts();
+
+        // apply row factory for color-coded rows
+        colorizeLightRedBGToExpiredProduccts();
+
         productTable.setItems(productObservableList);
         productObservableList.setAll(inventory.getAllProducts());
+
+        // update expired products statistics label
+        updateExpiredProductsLabel();
 
     }
 
