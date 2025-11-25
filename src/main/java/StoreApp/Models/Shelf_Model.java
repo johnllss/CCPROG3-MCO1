@@ -79,6 +79,10 @@ public class Shelf_Model {
         return currentCapacity;
     }
 
+    /**
+     * This method sets the Shelf's currentCapacity.
+     * @param currentCapacity is the new current capacity to be set.
+     */
     public void setCurrentCapacity(int currentCapacity) {
         this.currentCapacity = currentCapacity;
     }
@@ -91,6 +95,10 @@ public class Shelf_Model {
         return maxCapacity;
     }
 
+    /**
+     * This method sets the Shelf's maxCapacity.
+     * @param maxCapacity is the new max capacity to be set.
+     */
     public void setMaxCapacity(int maxCapacity) {
         this.maxCapacity = maxCapacity;
     }
@@ -103,6 +111,10 @@ public class Shelf_Model {
         return products;
     }
 
+    /**
+     * This method sets the Shelf's products.
+     * @param products is the new products list to be set.
+     */
     public void setProducts(ArrayList<Product_Model> products) {
         this.products = products;
     }

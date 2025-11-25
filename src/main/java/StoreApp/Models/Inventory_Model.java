@@ -28,10 +28,19 @@ public class Inventory_Model {
         }
     }
 
+    /**
+     * This is a getter method to get Inventory's shelves.
+     * @return ArrayList of Shelf_Model for shelves.
+     */
     public ArrayList<Shelf_Model> getShelves() {
         return shelves;
     }
 
+    /**
+     * This method retrieves all products in a specific category.
+     * @param category is the category to filter products by.
+     * @return ArrayList of Product_Model for products in the category.
+     */
     public ArrayList<Product_Model> getProductsByCategory(String category)
     {
         if (category == null)
@@ -50,6 +59,11 @@ public class Inventory_Model {
         return new ArrayList<>();
     }
 
+    /**
+     * This method retrieves all products that have stock below a specified quantity level.
+     * @param quantityLevel is the threshold quantity for low stock.
+     * @return ArrayList of Product_Model for low stock products.
+     */
     public ArrayList<Product_Model> getLowStockProducts(int quantityLevel)
     {
         ArrayList<Product_Model> lowStockProducts = new ArrayList<Product_Model>();
@@ -68,6 +82,10 @@ public class Inventory_Model {
         return lowStockProducts;
     }
 
+    /**
+     * This method retrieves all products that are expired.
+     * @return ArrayList of Product_Model for products that are expired.
+     */
     public ArrayList<Product_Model> getExpiredProducts()
     {
         ArrayList<Product_Model> expiredProducts = new ArrayList<Product_Model>();
@@ -365,6 +383,10 @@ public class Inventory_Model {
 
         return true;
     }
+    /**
+     * This method retrieves all products from all shelves in the inventory.
+     * @return ArrayList of Product_Model for all products.
+     */
     public ArrayList<Product_Model> getAllProducts() {
         ArrayList<Product_Model> allProducts = new ArrayList<>();
         for (Shelf_Model shelf : shelves) {

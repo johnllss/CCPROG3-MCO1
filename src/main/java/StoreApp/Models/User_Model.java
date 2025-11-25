@@ -20,6 +20,12 @@ public class User_Model {
         this.password = "N/A";
     }
 
+    /**
+     * Class User_Model parameterized constructor
+     * @param name is the user's name.
+     * @param email is the user's email.
+     * @param password is the user's password.
+     */
     public User_Model(String name, String email, String password){
         this.uniqueID = ++uniqueIDCounter;
         this.name = name;
