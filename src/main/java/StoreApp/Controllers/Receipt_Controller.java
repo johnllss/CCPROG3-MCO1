@@ -1,8 +1,11 @@
 package StoreApp.Controllers;
 
-import java.lang.classfile.Label;
+import javafx.scene.control.Label;
 
+import StoreApp.Models.Cart_Model;
+import StoreApp.Models.Customer_Model;
 import StoreApp.Models.Receipt_Model;
+import StoreApp.Models.Transaction_Model;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
@@ -35,4 +38,42 @@ public class Receipt_Controller {
         this.receipt = receipt;
         displayReceiptDetails();
     }
+
+    /**
+     * This method displays all the receipt details in the scene.
+     */
+    private void displayReceiptDetails() {
+        if (receipt == null) {
+            return;
+        }
+
+        Transaction_Model transaction = receipt.getTransaction();
+        Customer_Model customer = transaction.getCustomer();
+        Cart_Model cart = transaction.getCart();
+
+        receiptNumberLabel.setText(receipt.getReceiptNumber());
+        timestampLabel.setText(transaction.getTimestamp());
+
+        displayCartItems(cart);
+
+        subtotalLabel.setText(String.format("₱ %.2f", transaction.getSubtotal()));
+        discountLabel.setText(String.format("₱ %.2f", transaction.getDiscount()));
+        taxLabel.setText(String.format("₱ %.2f", transaction.getTax()));
+        totalLabel.setText(String.format("₱ %.2f", transaction.getTotal()));
+        
+        totalLabel.setText(transaction.getPaymentMethod());
+        amountReceivedLabel.setText(String.format("₱ %.2f", transaction.getAmountReceived()));
+        changeLabel.setText(String.format("₱ %.2f", transaction.getChange()));
+
+        if (customer.hasMembership()) {
+            // 1 point per ₱50 spent
+            int pointsEarned = (int)(transaction.getTotal() / 50);
+            pointsEarnedLabel.setText(pointsEarned + " points");
+            membershipPane.setVisible(true);
+        } else {
+            membershipPane.setVisible(false);
+        }
+    }
+
+    
 }
