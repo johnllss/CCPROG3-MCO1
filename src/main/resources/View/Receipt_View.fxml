@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="500.0" stylesheets="@Design.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="StoreApp.Controllers.Receipt_Controller">
+   <top>
+      <AnchorPane prefHeight="80.0" prefWidth="500.0" BorderPane.alignment="CENTER">
+         <children>
+            <Text fill="#006937" layoutX="160.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="RECEIPT" textAlignment="CENTER">
+               <font>
+                  <Font name="Helvetica Neue Bold" size="28.0" />
+               </font>
+            </Text>
+            <Label layoutX="14.0" layoutY="50.0" text="Store Name" />
+            <Label layoutX="14.0" layoutY="65.0" text="Address Line" />
+         </children>
+      </AnchorPane>
+   </top>
+   <bottom>
+      <AnchorPane prefHeight="60.0" prefWidth="500.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="newTransactionButton" layoutX="150.0" layoutY="15.0" mnemonicParsing="false" onAction="#startNewTransaction" prefHeight="30.0" prefWidth="200.0" text="New Transaction" />
+         </children>
+      </AnchorPane>
+   </bottom>
+   <right>
+      <ScrollPane fitToWidth="true" prefHeight="400.0" prefWidth="500.0" BorderPane.alignment="CENTER">
+         <content>
+            <VBox prefHeight="380.0" prefWidth="480.0" spacing="10.0">
+               <children>
+                  <AnchorPane prefHeight="60.0" prefWidth="480.0">
+                     <children>
+                        <Label layoutX="14.0" layoutY="5.0" text="Receipt Number:" />
+                        <Label fx:id="receiptNumberLabel" layoutX="120.0" layoutY="5.0" text="YYYY-MM-DD-XXXX" />
+                        <Label layoutX="14.0" layoutY="25.0" text="Date &amp; Time:" />
+                        <Label fx:id="timestampLabel" layoutX="120.0" layoutY="25.0" text="MMM-DD-YYYY HH:MM:SS" />
+                     </children>
+                  </AnchorPane>
+                  <Line endX="450.0" startX="0.0" />
+                  <AnchorPane prefHeight="30.0" prefWidth="480.0">
+                     <children>
+                        <Label layoutX="14.0" layoutY="5.0" text="Customer Information:" textFill="#006937">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="40.0" prefWidth="480.0">
+                     <children>
+                        <Label layoutX="14.0" layoutY="5.0" text="Name:" />
+                        <Label fx:id="customerNameLabel" layoutX="120.0" layoutY="5.0" text="Customer Name" />
+                        <Label layoutX="14.0" layoutY="25.0" text="Email:" />
+                        <Label fx:id="customerEmailLabel" layoutX="120.0" layoutY="25.0" text="customer@email.com" />
+                     </children>
+                  </AnchorPane>
+                  <Line endX="450.0" startX="0.0" />
+                  <AnchorPane prefHeight="30.0" prefWidth="480.0">
+                     <children>
+                        <Label layoutX="14.0" layoutY="5.0" text="Items Purchased:" textFill="#006937">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+                  <VBox fx:id="itemsVBox" prefHeight="150.0" prefWidth="480.0" spacing="5.0" />
+                  <Line endX="450.0" startX="0.0" />
+                  <AnchorPane prefHeight="120.0" prefWidth="480.0">
+                     <children>
+                        <Label layoutX="14.0" layoutY="5.0" text="Subtotal:" />
+                        <Label fx:id="subtotalLabel" layoutX="380.0" layoutY="5.0" text="₱ 0.00" />
+                        <Label layoutX="14.0" layoutY="30.0" text="Discount:" />
+                        <Label fx:id="discountLabel" layoutX="380.0" layoutY="30.0" text="₱ 0.00" />
+                        <Label layoutX="14.0" layoutY="55.0" text="Tax (12%):" />
+                        <Label fx:id="taxLabel" layoutX="380.0" layoutY="55.0" text="₱ 0.00" />
+                        <Label layoutX="14.0" layoutY="85.0" text="TOTAL:">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="totalLabel" layoutX="380.0" layoutY="85.0" text="₱ 0.00">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+                  <Line endX="450.0" startX="0.0" />
+                  <AnchorPane prefHeight="80.0" prefWidth="480.0">
+                     <children>
+                        <Label layoutX="14.0" layoutY="5.0" text="Payment Method:" />
+                        <Label fx:id="paymentMethodLabel" layoutX="120.0" layoutY="5.0" text="Cash/Card" />
+                        <Label layoutX="14.0" layoutY="30.0" text="Amount Received:" />
+                        <Label fx:id="amountReceivedLabel" layoutX="120.0" layoutY="30.0" text="₱ 0.00" />
+                        <Label layoutX="14.0" layoutY="55.0" text="Change:" />
+                        <Label fx:id="changeLabel" layoutX="120.0" layoutY="55.0" text="₱ 0.00" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="membershipPane" prefHeight="40.0" prefWidth="480.0">
+                     <children>
+                        <Label layoutX="14.0" layoutY="5.0" text="Membership Points Earned:" textFill="#006937" />
+                        <Label fx:id="pointsEarnedLabel" layoutX="180.0" layoutY="5.0" text="0 points" textFill="#006937">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </VBox>
+         </content>
+      </ScrollPane>
+   </right>
+</BorderPane>

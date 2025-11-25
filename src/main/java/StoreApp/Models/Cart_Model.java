@@ -3,9 +3,6 @@ package StoreApp.Models;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-import java.util.ArrayList;
-import java.util.Objects;
-
 public class Cart_Model {
     private ObservableList<Item_Model> items;
 

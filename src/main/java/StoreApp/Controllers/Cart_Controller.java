@@ -5,7 +5,6 @@ import StoreApp.Models.Customer_Model;
 import StoreApp.Models.Inventory_Model;
 import StoreApp.Models.Item_Model;
 import StoreApp.Models.Product_Model;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,13 +12,9 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import javafx.scene.control.Label;
-
-import static javafx.collections.FXCollections.*;
 
 public class Cart_Controller {
     @FXML private VBox productsBox;
@@ -145,13 +140,34 @@ public class Cart_Controller {
         totalLabel.setText(String.format("₱ %.2f", total));
     }
 
+    /**
+     * This method goes to the checkout view scene.
+     */
     @FXML
-    private void processCheckout()
+    private void goToCheckout(ActionEvent event)
     {
         System.out.println("Checkout");
-        // TODO implement checkout or reroute to a .fxml checkout and make checkout controller
+
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/Transaction_View.fxml"));
+            Parent root = loader.load();
+
+            Transaction_Controller transactionController = loader.getController();
+            transactionController.setData(customer, inventory);
+
+            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
+    /**
+     * This method returns to the shopping view scene to view all products for sale.
+     * @param event is the action event triggered by the button.
+     */
     @FXML
     private void returnToProducts(ActionEvent event)
     {

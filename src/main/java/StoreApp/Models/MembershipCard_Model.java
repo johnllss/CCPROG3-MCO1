@@ -51,8 +51,8 @@ public class MembershipCard_Model {
     {
         Random random = new Random();
 
-        // generates 0 to 899999, and then add 1000 to follow 4-digit rule
-        int randomNum = 1000 + random.nextInt(900000);
+        // generates 0 to 8999, and then add 1000 to follow 4-digit rule
+        int randomNum = 1000 + random.nextInt(9000);
 
         return String.valueOf(randomNum);
     }
