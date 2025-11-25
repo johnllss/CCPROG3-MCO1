@@ -3,10 +3,7 @@ package StoreApp.Controllers;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import StoreApp.Models.Inventory_Model;
-import StoreApp.Models.Item_Model;
-import StoreApp.Models.Product_Model;
-import StoreApp.Models.Cart_Model;
+import StoreApp.Models.*;
 import javafx.beans.property.ReadOnlyIntegerWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -14,12 +11,15 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class Inventory_Controller implements Initializable {
@@ -41,6 +41,7 @@ public class Inventory_Controller implements Initializable {
 
     private Inventory_Model inventory;
     private Stage stage;
+    private Employee_Model[] employees;
 
     private String[] categories = {"Food", "Beverage", "Toiletries", "Cleaning Products", "Medications"};
     private String[] filterCategories = {"All","Food", "Beverage", "Toiletries", "Cleaning Products", "Medications"};
@@ -62,14 +63,15 @@ public class Inventory_Controller implements Initializable {
     public void onLogOut(ActionEvent event)
     {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/MainMenu_View.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/Employee_Login_View.fxml"));
             Parent root = loader.load();
 
-            // If you have a Shopping_Controller and Inventory_Model to pass
-            MainMenu_Controller mainMenuController = loader.getController();
-            mainMenuController.setInventory(inventory);
 
-            // Load the scene
+            Employee_Login_Controller employeeLoginController= loader.getController();
+            employeeLoginController.setInventory(inventory);
+            employeeLoginController.setEmployees(employees);
+
+
             Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
             stage.setScene(scene);
@@ -163,7 +165,40 @@ public class Inventory_Controller implements Initializable {
     @FXML
     private void restockProduct(ActionEvent event)
     {
-        System.out.println("Restock Product button clicked!");
+        System.out.println("Restock Button Pressed");
+        Stage popup = new  Stage();
+        popup.initModality(Modality.WINDOW_MODAL);
+        Label qty = new Label("Quantity");
+        TextField qty_txtbox = new TextField();
+        Label productID = new Label("Product ID");
+        TextField productID_txtbox = new TextField();
+        Button submitbtn = new Button("Submit");
+        Button cancelbtn = new Button("Cancel");
+
+        VBox vbox = new VBox();
+        vbox.setPadding(new Insets(15,15,10,15));
+        vbox.getChildren().addAll(qty, qty_txtbox, productID, productID_txtbox, submitbtn, cancelbtn);
+
+        submitbtn.setOnAction(e -> {
+            try {
+                int quantity = Integer.parseInt(qty_txtbox.getText());
+                int product_ID = Integer.parseInt(productID_txtbox.getText());
+
+                inventory.restockProduct(product_ID, quantity);
+                popup.close();
+            } catch (NumberFormatException ex) {
+                Alert alert = new Alert(Alert.AlertType.WARNING, "Please enter a valid number", ButtonType.OK);
+                alert.showAndWait();
+            }
+        });
+        cancelbtn.setOnAction(e -> {
+            popup.close();
+        });
+
+        Scene scene = new Scene(vbox);
+        popup.setScene(scene);
+        popup.show();
+        System.out.println("inventory = " + inventory);
     }
 
     @FXML
@@ -315,5 +350,9 @@ public class Inventory_Controller implements Initializable {
         productTable.setItems(productObservableList);
         productObservableList.setAll(inventory.getAllProducts());
 
+    }
+
+    public void setEmployees(Employee_Model[] employees){
+        this.employees = employees;
     }
 }

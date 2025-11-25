@@ -89,6 +89,7 @@ public class Employee_Login_Controller {
 
             inventoryController.displayEmployeeName(foundEmployee.getName());
             inventoryController.setInventory(inventory);
+            inventoryController.setEmployees(employees);
 
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             scene = new Scene(root);
