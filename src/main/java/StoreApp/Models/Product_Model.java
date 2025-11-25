@@ -1,5 +1,7 @@
 package StoreApp.Models;
 
+import java.time.LocalDate;
+
 public class Product_Model {
     private int productID;
     private static int productIDCounter = 0;
@@ -9,7 +11,7 @@ public class Product_Model {
     private String productCategory;
     private String brand;
     private String variant;
-    private String expirationDate;
+    private LocalDate expirationDate;
     private String imagePath;
 
     /**
@@ -23,7 +25,7 @@ public class Product_Model {
      * @param expirationDate is the product's expiration date.
      * @param imagePath is the path to the product's image file.
      */
-    public Product_Model(String productName, double productPrice, int productQuantity, String productCategory, String brand, String variant, String expirationDate, String imagePath)
+    public Product_Model(String productName, double productPrice, int productQuantity, String productCategory, String brand, String variant, LocalDate expirationDate, String imagePath)
     {
         this.productID = ++productIDCounter;
         this.productName = productName;
@@ -79,19 +81,14 @@ public class Product_Model {
         this.productQuantity = productQuantity + restockQuantity;
     }
 
-        /**
+    /**
      * This method checks if the product is expired or not.
      * @return boolean for success/failure
      */
     public boolean isExpired()
     {
-        if (isPerishable())
-        {
-            // TODO: implement date comparison
-            // might need Date class if there is one for dates
-        }
-
-        return false;
+        // if expiration date is a date before today, then expired
+        return isPerishable() && expirationDate.isBefore(LocalDate.now());
     }
 
     /**
@@ -100,7 +97,7 @@ public class Product_Model {
      */
     public boolean isPerishable()
     {
-        return !expirationDate.equalsIgnoreCase("N/A");
+        return expirationDate != null;
     }
 
     /**
@@ -258,7 +255,7 @@ public class Product_Model {
      * This is a getter method to get the expirationDate attribute.
      * @return String for expirationDate.
      */
-    public String getExpirationDate() {
+    public LocalDate getExpirationDate() {
         return expirationDate;
     }
 
@@ -266,7 +263,7 @@ public class Product_Model {
      * This is a getter method to get the expirationDate attribute.
      * @param expirationDate is the new expiration date.
      */
-    public void setExpirationDate(String expirationDate) {
+    public void setExpirationDate(LocalDate expirationDate) {
         this.expirationDate = expirationDate;
     }
 
