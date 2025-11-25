@@ -139,22 +139,6 @@ public class Product_Model {
     }
 
     /**
-     * This method sets the product's productID.
-     * @param productID is the new productID.
-     */
-    public void setProductID(int productID) {
-        this.productID = productID;
-    }
-
-    /**
-     * This methods returns the product ID of the Product_Model
-     * @return int is the ID number of the Product_Model.
-     */
-    public int getProductIDCounter() {
-        return productIDCounter;
-    }
-
-    /**
      * This is a getter method to get the productName attribute.
      * @return String for productName.
      */
