@@ -25,6 +25,7 @@ public class Cart_Controller {
     @FXML private TableColumn<Item_Model, Integer> qty;
     @FXML private TableColumn<Item_Model, String> ProductName;
     @FXML private TableColumn<Item_Model, String> total;
+    @FXML private TableColumn<Item_Model, Void> Remove;
 
     private Customer_Model customer;
     private Cart_Model cart;
@@ -123,7 +124,40 @@ public class Cart_Controller {
             }
         });
 
+        Remove.setCellFactory(column -> new TableCell<Item_Model, Void>() {
+            private Button removeBtn = new Button("Remove");
 
+            {
+                removeBtn.getStyleClass().add("danger-btn");
+                removeBtn.setStyle("-fx-min-width: 70;");
+
+                removeBtn.setOnAction(event -> {
+                    Item_Model item = getTableView().getItems().get(getIndex());
+                    removeItemFromCart(item);
+                });
+            }
+
+            @Override
+            protected void updateItem(Void item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty) {
+                    setGraphic(null);
+                } else {
+                    setGraphic(removeBtn);
+                }
+            }
+        });
+
+    }
+
+    /**
+     * This method removes an item completely from the cart.
+     * @param item is the item to remove from the cart.
+     */
+    private void removeItemFromCart(Item_Model item) {
+        cart.removeItem(item.getProduct().getProductID());
+        cartTable.refresh();
+        updateAllTotals();
     }
 
     /**
