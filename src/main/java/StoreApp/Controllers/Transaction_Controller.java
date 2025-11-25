@@ -187,7 +187,7 @@ public class Transaction_Controller {
 
         // if membershipCheckBox is selected, get membership card number, otherwise null
         String cardNumber = membershipCheckBox.isSelected() ? membershipNumberText.getText() : null;
-        
+
         boolean isSenior = seniorCheckBox.isSelected() && customer.isSenior();
 
         double discount = 0.0;
@@ -319,6 +319,17 @@ public class Transaction_Controller {
 
                 return false;
             }
+        }
+
+        String cardNumber = membershipCheckBox.isSelected() ? membershipNumberText.getText() : null;
+        boolean isSenior = seniorCheckBox.isSelected() && customer.isSenior();
+
+        if (!transaction.isDiscountable(cardNumber, isSenior)) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("No Discounts Available");
+            alert.setHeaderText("Note:");
+            alert.setContentText("You do not qualify for any discounts. Add a membership card or senior status to save!");
+            alert.showAndWait();
         }
 
         return true;
