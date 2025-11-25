@@ -47,6 +47,7 @@ public class Inventory_Controller implements Initializable {
     private Inventory_Model inventory;
     private Stage stage;
     private Employee_Model[] employees;
+    private Employee_Model loggedInEmployee;
 
     private String[] categories = {"Food", "Beverage", "Toiletries", "Cleaning Products", "Medications"};
     private String[] filterCategories = {"All","Food", "Beverage", "Toiletries", "Cleaning Products", "Medications"};
@@ -64,9 +65,13 @@ public class Inventory_Controller implements Initializable {
      * This method displays the employee name on the view.
      * @param employee is the name of the employee to display.
      */
-    public void displayEmployeeName(String employee)
+    public void displayEmployeeName(String employeeName)
     {
-        employeeName.setText(employee);
+        if (loggedInEmployee != null) {
+            employeeName.setText(employeeName + " (" + loggedInEmployee.getRole() + ")");
+        } else {
+            employeeName.setText(employeeName);
+        }
     }
 
     /**
@@ -120,6 +125,14 @@ public class Inventory_Controller implements Initializable {
      */
     @FXML
     private void addProduct(ActionEvent event) {
+        if (!hasPermission("Manager")) {
+            Alert alert = new Alert(Alert.AlertType.ERROR,
+                "Access Denied: Only Managers can add products",
+                ButtonType.OK);
+            alert.showAndWait();
+            return;
+        }
+
         // For now, just debug
         System.out.println("Add Product button clicked!");
         try{
@@ -221,6 +234,13 @@ public class Inventory_Controller implements Initializable {
      */
     @FXML
     private void updateProduct(ActionEvent event) {
+        if (!hasPermission("Manager")) {
+            new Alert(Alert.AlertType.ERROR,
+                "Access Denied: Only Managers can update products",
+                ButtonType.OK).showAndWait();
+            return;
+        }
+
         String name = name_txtbox.getText().trim();
         String category = category_choiceBox.getValue();
         String brand = brand_txtbox.getText().trim();
@@ -283,6 +303,13 @@ public class Inventory_Controller implements Initializable {
     @FXML
     private void removeProduct(ActionEvent event)
     {
+        if (!hasPermission("Manager")) {
+            new Alert(Alert.AlertType.ERROR,
+                "Access Denied: Only Managers can remove products",
+                ButtonType.OK).showAndWait();
+            return;
+        }
+
         System.out.println("Delete Product button clicked!");
         Stage popup = new  Stage();
         popup.setTitle("Remove item");
@@ -418,5 +445,38 @@ public class Inventory_Controller implements Initializable {
      */
     public void setEmployees(Employee_Model[] employees){
         this.employees = employees;
+    }
+
+    /**
+     * This sets the current logged-in employee.
+     * @param employee is the Employee_Model who logged in.
+     */
+    public void setLoggedInEmployee(Employee_Model employee) {
+        this.loggedInEmployee = employee;
+    }
+
+    /**
+     * This method checks if the current logged in employee has permission for an action.
+     * @param requiredRole is the minimum role required ("Manager" or "Restocker").
+     * @return boolean indicating if employee has permission.
+     */
+    private boolean hasPermission(String requiredRole) {
+        if (loggedInEmployee == null) {
+            return false;
+        }
+
+        String role = loggedInEmployee.getRole();
+
+        // managers have all permissions
+        if (role.equalsIgnoreCase("Manager")) {
+            return true;
+        }
+
+        // restockers only have restock permission
+        if (role.equalsIgnoreCase("Restocker") && requiredRole.equalsIgnoreCase("Restocker")) {
+            return true;
+        }
+
+        return false;
     }
 }

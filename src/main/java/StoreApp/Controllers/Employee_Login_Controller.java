@@ -99,6 +99,7 @@ public class Employee_Login_Controller {
 
             Inventory_Controller inventoryController = loader.getController();
 
+            inventoryController.setLoggedInEmployee(foundEmployee);
             inventoryController.displayEmployeeName(foundEmployee.getName());
             inventoryController.setInventory(inventory);
             inventoryController.setEmployees(employees);
