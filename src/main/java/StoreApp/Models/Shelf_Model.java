@@ -39,83 +39,10 @@ public class Shelf_Model {
     }
 
     /**
-     * This is a getter method to get the Shelf's shelfID.
-     * @return int for shelfID.
-     */
-    public int getShelfID() {
-        return shelfID;
-    }
-
-    /**
-     * This method sets the Shelf's ID to a given ID.
-     * @param shelfID is the new given shelfID
-     */
-    public void setShelfID(int shelfID) {
-        this.shelfID = shelfID;
-    }
-
-    /**
-     * This is a getter method to get the Shelf's category.
-     * @return int for category.
-     */
-    public String getShelfCategory() {
-        return category;
-    }
-
-    /**
-     * This method sets the Shelf's category.
-     * @param newCategory is the new category to be used.
-     *
-     */
-    public void setShelfCategory(String category) {
-        this.category = category;
-    }
-
-    /**
-     * This is a getter method to get the Shelf's currentCapacity.
-     * @return int for currentCapacity.
-     */
-    public int getCurrentCapacity() {
-        return currentCapacity;
-    }
-
-    /**
-     * This method sets the Shelf's currentCapacity.
-     * @param currentCapacity is the new current capacity to be set.
-     */
-    public void setCurrentCapacity(int currentCapacity) {
-        this.currentCapacity = currentCapacity;
-    }
-
-    /**
-     * This is a getter method to get the Shelf's maxCapacity.
-     * @return int for maxCapacity.
-     */
-    public int getMaxCapacity() {
-        return maxCapacity;
-    }
-
-    /**
-     * This method sets the Shelf's maxCapacity.
-     * @param maxCapacity is the new max capacity to be set.
-     */
-    public void setMaxCapacity(int maxCapacity) {
-        this.maxCapacity = maxCapacity;
-    }
-
-    /**
      * This is a getter method to get the Shelf's products.
      * @return ArrayList Product - All Shelf's Products
      */
     public ArrayList<Product_Model> getProductsOnShelf() {
         return products;
-    }
-
-    /**
-     * This method sets the Shelf's products.
-     * @param products is the new products list to be set.
-     */
-    public void setProducts(ArrayList<Product_Model> products) {
-        this.products = products;
     }
 }
