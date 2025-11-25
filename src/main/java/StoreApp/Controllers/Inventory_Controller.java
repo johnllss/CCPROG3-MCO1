@@ -58,10 +58,19 @@ public class Inventory_Controller implements Initializable {
 
     }
 
+    /**
+     * This method displays the employee name on the view.
+     * @param employee is the name of the employee to display.
+     */
     public void displayEmployeeName(String employee)
     {
         employeeName.setText(employee);
     }
+
+    /**
+     * This method handles the logout action.
+     * @param event is the action event triggered by the logout button.
+     */
     @FXML
     public void onLogOut(ActionEvent event)
     {
@@ -85,6 +94,10 @@ public class Inventory_Controller implements Initializable {
         }
     }
 
+    /**
+     * This method filters the products displayed by category.
+     * @param event is the action event triggered by the filter selection.
+     */
     @FXML
     private void FilterByCategory(ActionEvent event)
     {
@@ -132,6 +145,10 @@ public class Inventory_Controller implements Initializable {
         return inventory.addProduct(product);
     }
 
+    /**
+     * This method handles the add product action from the UI.
+     * @param event is the action event triggered by the add product button.
+     */
     @FXML
     private void addProduct(ActionEvent event) {
         // For now, just debug
@@ -165,6 +182,10 @@ public class Inventory_Controller implements Initializable {
 
     }
 
+    /**
+     * This method handles the restock product action from the UI.
+     * @param event is the action event triggered by the restock button.
+     */
     @FXML
     private void restockProduct(ActionEvent event)
     {
@@ -206,6 +227,10 @@ public class Inventory_Controller implements Initializable {
         System.out.println("inventory = " + inventory);
     }
 
+    /**
+     * This method handles the update product action from the UI.
+     * @param event is the action event triggered by the update button.
+     */
     @FXML
     private void updateProduct(ActionEvent event) {
         String name = name_txtbox.getText().trim();
@@ -258,6 +283,10 @@ public class Inventory_Controller implements Initializable {
     }
 
 
+    /**
+     * This method handles the remove product action from the UI.
+     * @param event is the action event triggered by the remove button.
+     */
     @FXML
     private void removeProduct(ActionEvent event)
     {
@@ -315,6 +344,10 @@ public class Inventory_Controller implements Initializable {
         System.out.println("inventory = " + inventory);
     }
 
+    /**
+     * This method displays only low stock products in the table view.
+     * @param event is the action event triggered by the view low stock button.
+     */
     @FXML
     private void viewLowStock(ActionEvent event) {
         details.setVisible(false);
@@ -465,11 +498,19 @@ public class Inventory_Controller implements Initializable {
         }
     }
 
+    /**
+     * This method gets the selected category from the choice box.
+     * @param event is the action event triggered by category selection.
+     */
     public void getCategory(ActionEvent event)
     {
         String choice = category_choiceBox.getValue();
     }
 
+    /**
+     * This method sets the inventory for the controller and initializes the table view.
+     * @param inv is the Inventory_Model to be set.
+     */
     public void setInventory(Inventory_Model inv)
     {
         this.inventory = inv;
@@ -483,6 +524,10 @@ public class Inventory_Controller implements Initializable {
 
     }
 
+    /**
+     * This sets the employees array for the controller.
+     * @param employees is the array of Employee_Model to be set.
+     */
     public void setEmployees(Employee_Model[] employees){
         this.employees = employees;
     }
