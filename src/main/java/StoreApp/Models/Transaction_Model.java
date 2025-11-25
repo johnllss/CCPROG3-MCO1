@@ -147,7 +147,8 @@ public class Transaction_Model {
      * @return boolean for success/failure.
      */
     public boolean isDiscountable(String cardNumber, boolean isSenior) {
-        return false;
+
+        return (cardNumber != null && !cardNumber.isEmpty()) || isSenior;
     }
 
     /**
