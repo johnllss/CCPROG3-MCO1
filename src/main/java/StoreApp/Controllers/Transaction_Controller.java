@@ -108,7 +108,7 @@ public class Transaction_Controller {
             expiryDateText.clear();
         } else {
             // if card payment, disable and clear amount field
-            amountText.setDisable(truel);
+            amountText.setDisable(true);
             amountText.clear();
         }
     }
