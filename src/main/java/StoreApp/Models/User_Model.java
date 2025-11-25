@@ -42,14 +42,6 @@ public class User_Model {
     }
 
     /**
-     * This sets User's uniqueID
-     * @param id Unique ID wanted to be set/changed into
-     */
-    public void setUniqueID(int uniqueID) {
-        this.uniqueID = uniqueID;
-    }
-
-    /**
      * This is a getter method to get User's name.
      * @return String for name.
      */
@@ -87,13 +79,5 @@ public class User_Model {
      */
     public String getPassword() {
         return password;
-    }
-
-    /**
-     * This sets User's password
-     * @param email password provided by user
-     */
-    public void setPassword(String password) {
-        this.password = password;
     }
 }
