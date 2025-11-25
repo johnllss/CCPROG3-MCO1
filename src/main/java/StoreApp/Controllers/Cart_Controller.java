@@ -217,42 +217,4 @@ public class Cart_Controller {
             e.printStackTrace();
         }
     }
-
-    /**
-     * This method is delegated the task of adding an item to the cart model.
-     * @param product is the product that is to be added to the cart.
-     * @param quantity is the number of products desired to be added to cart.
-     * @return boolean to signify success/failure.
-     */
-    public boolean addItem(Product_Model product, int quantity) {
-        return customer.getCart().addItem(product, quantity);
-    }
-
-    /**
-     * This method is delegated the task of removing an item to the cart model.
-     * @param productID is the ID of the product being removed.
-     * @return boolean indicating success/failure of search.
-     */
-    public boolean removeItem(int productID) {
-        return cart.removeItem(productID);
-    }
-
-    /**
-     * This method is delegated the task of finding an item in the cart.
-     * @param productID is the id of the product that needs to be found.
-     * @return Item_Model that is searched.
-     */
-    public Item_Model findItem(int productID) {
-        return cart.findItem(productID);
-    }
-
-    /**
-     * This method is delegated the task of updating quantity of the item in the cart.
-     * @param product id of the product that needs to be updated.
-     * @param amount quantity of the product.
-     * @return boolean, shows success or failure of the process.
-     */
-    public boolean updateQuantity(Product_Model product, int amount) {
-        return cart.updateQuantity(product, amount);
-    }
 }
