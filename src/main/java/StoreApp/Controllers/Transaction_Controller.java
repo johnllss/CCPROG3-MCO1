@@ -75,4 +75,18 @@ public class Transaction_Controller {
 
         updateTransactionSummary();
     }
+
+    /**
+     * This method handles the senior citizen checkbox toggle.
+     */
+    @FXML
+    private void toggleSenior() {
+        ageText.setDisable(!seniorCheckBox.isSelected());
+
+        if (!seniorCheckBox.isSelected()) {
+            ageText.clear();
+        }
+
+        updateTransactionSummary();
+    }
 }
