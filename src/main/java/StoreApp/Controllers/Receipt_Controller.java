@@ -20,6 +20,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+
 public class Receipt_Controller {
     @FXML private Label receiptNumberLabel;
     @FXML private Label timestampLabel;
@@ -46,6 +48,11 @@ public class Receipt_Controller {
     public void setReceipt(Receipt_Model receipt) {
         this.receipt = receipt;
         displayReceiptDetails();
+        try{
+            Receipt_Saving.saveReceipt(receipt);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
