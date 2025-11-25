@@ -15,6 +15,10 @@ import javafx.stage.Stage;
 public class Main extends Application {
     private static Stage primaryStage;
     
+    /**
+     * This method starts the JavaFX application and initializes the main menu.
+     * @param stage is the primary stage for this application.
+     */
     @Override
     public void start(Stage stage) {
         primaryStage = stage;
@@ -53,6 +57,11 @@ public class Main extends Application {
         }
     }
 
+    /**
+     * This method initializes the inventory with sample products.
+     * @param inventory is the Inventory_Model to be initialized.
+     * @return boolean for success/failure.
+     */
     private boolean initializeInventory(Inventory_Model inventory)
     {
         if (inventory == null)
@@ -102,6 +111,10 @@ public class Main extends Application {
         return true;
     }
 
+    /**
+     * This method initializes the employees array with sample employees.
+     * @return Employee_Model array containing the initialized employees.
+     */
     private Employee_Model[] initializeEmployees()
     {
         return new Employee_Model[] {
@@ -111,6 +124,10 @@ public class Main extends Application {
         };
     }
 
+    /**
+     * This method displays a logout confirmation dialog and closes the application.
+     * @param stage is the stage to be closed.
+     */
     public void logout(Stage stage)
     {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -126,6 +143,10 @@ public class Main extends Application {
     }
 
 
+    /**
+     * This is the main entry point for the application.
+     * @param args is the command line arguments.
+     */
     public static void main(String[] args) {
         launch(args);
     }
