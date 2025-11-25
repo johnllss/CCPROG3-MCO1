@@ -276,7 +276,7 @@ public class Transaction_Controller {
             return false;
         }
 
-        if (seniorCheckBox.isScaleShape()) {
+        if (seniorCheckBox.isSelected()) {
             if (ageText.getText().isEmpty()) {
                 popupAlert(Alert.AlertType.ERROR, "Missing Information", "Please enter your age.");
 

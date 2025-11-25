@@ -64,7 +64,8 @@ public class Receipt_Controller {
         timestampLabel.setText(transaction.getTimestamp());
 
         displayCartItems(cart);
-
+        customerNameLabel.setText(transaction.getCustomer().getName());
+        customerEmailLabel.setText(transaction.getCustomer().getEmail());
         subtotalLabel.setText(String.format("₱ %.2f", transaction.getSubtotal()));
         discountLabel.setText(String.format("₱ %.2f", transaction.getDiscount()));
         taxLabel.setText(String.format("₱ %.2f", transaction.getTax()));
