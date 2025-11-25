@@ -42,6 +42,9 @@ public class Shopping_Controller {
     private final String[] categories = {"Food", "Beverages", "Toiletries", "Cleaning Products", "Medications"};
     private int currentCategoryIndex = 1;
 
+    /**
+     * This method initializes the controller after FXML elements are loaded.
+     */
     @FXML
     public void initialize()
     {
@@ -49,7 +52,9 @@ public class Shopping_Controller {
         setupNavBar();
     }
 
-    
+    /**
+     * This method populates the products grid with products from the selected category.
+     */
     private void populateProductsGrid()
     {
         if (inventory == null) 
@@ -91,6 +96,12 @@ public class Shopping_Controller {
         }
         
         
+    /**
+     * This method creates a product card UI component for a given product.
+     * @param product is the product to create a card for.
+     * @return VBox containing the product card UI.
+     * @throws IOException if the FXML file cannot be loaded.
+     */
     private VBox createProductCard(Product_Model product) throws IOException
     {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/Product_View.fxml"));
@@ -103,6 +114,9 @@ public class Shopping_Controller {
         return card;
     }
     
+    /**
+     * This method sets up the navigation bar with category button actions.
+     */
     private void setupNavBar()
     {
         foodBtn.setOnAction(e -> switchCategory("Food"));
@@ -113,7 +127,11 @@ public class Shopping_Controller {
         previousCategoryBtn.setOnAction(e -> navigateToPreviousCategory());
         nextCategoryBtn.setOnAction(e -> navigateToNextCategory());
     }
-        
+
+    /**
+     * This method switches the displayed category and updates the products grid.
+     * @param category is the category to switch to.
+     */
     private void switchCategory(String category)
     {
         currentCategory = category;
@@ -132,10 +150,13 @@ public class Shopping_Controller {
         populateProductsGrid();
     }
                 
+    /**
+     * This method navigates to the previous category in the category list.
+     */
     private void navigateToPreviousCategory()
     {
         currentCategoryIndex--;
-        
+
         // wrap around to the last category if index goes < 0
         if (currentCategoryIndex < 0)
             {
@@ -145,6 +166,9 @@ public class Shopping_Controller {
         switchCategory(categories[currentCategoryIndex]);
     }
 
+    /**
+     * This method navigates to the next category in the category list.
+     */
     private void navigateToNextCategory()
     {
         currentCategoryIndex++;
@@ -158,23 +182,37 @@ public class Shopping_Controller {
         switchCategory(categories[currentCategoryIndex]);
     }
         
+    /**
+     * This method handles navigation back to the main menu.
+     * @param e is the action event triggered by the back button.
+     * @throws IOException if the FXML file cannot be loaded.
+     */
     @FXML
-    public void backToMain(ActionEvent e) throws IOException
+    public void backToMain(ActionEvent event) throws IOException
     {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/MainMenu_View.fxml"));
-        root = loader.load();
-        
-        // pass inventory and employees back to MainMenu
-        MainMenu_Controller mainMenuController = loader.getController();
-        mainMenuController.setInventory(inventory);
-        mainMenuController.setEmployees(employees);
-        
-        primaryStage = (Stage)((Node)e.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        primaryStage.setScene(scene);
-        primaryStage.show();
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/MainMenu_View.fxml"));
+            root = loader.load();
+            
+            // pass inventory and employees back to MainMenu
+            MainMenu_Controller mainMenuController = loader.getController();
+            mainMenuController.setInventory(inventory);
+            mainMenuController.setEmployees(employees);
+            
+            primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            primaryStage.setScene(scene);
+            primaryStage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
         
+    /**
+     * This method handles adding a product to the cart or updating its quantity.
+     * @param product is the product to add or update.
+     * @param quantity is the quantity to set.
+     */
     private void handleAddToCart(Product_Model product, int quantity)
     {
         if (customer == null)
@@ -203,6 +241,10 @@ public class Shopping_Controller {
         }
     }
     
+    /**
+     * This method handles navigation to the Cart_View.
+     * @param event is the action event triggered by the cart button.
+     */
     @FXML
     public void goToCart(ActionEvent event)
     {
@@ -228,6 +270,10 @@ public class Shopping_Controller {
         }
     }
     
+    /**
+     * This sets the inventory for the controller.
+     * @param inv is the Inventory_Model to be set.
+     */
     public void setInventory(Inventory_Model inv)
     {
         this.inventory = inv;
@@ -236,7 +282,11 @@ public class Shopping_Controller {
             populateProductsGrid();
         }
     }
-    
+
+    /**
+     * This sets the customer for the controller.
+     * @param customer is the Customer_Model to be set.
+     */
     public void setCustomer(Customer_Model customer)
     {
         this.customer = customer;
@@ -245,7 +295,11 @@ public class Shopping_Controller {
             populateProductsGrid();
         }
     }
-    
+
+    /**
+     * This sets the employees array for the controller.
+     * @param employees is the array of Employee_Model to be set.
+     */
     public void setEmployees(Employee_Model[] employees)
     {
         this.employees = employees;
