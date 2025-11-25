@@ -67,7 +67,10 @@ public class Shopping_Controller {
         
         // get products of customer's chosen category
         ArrayList<Product_Model> products = inventory.getProductsByCategory(currentCategory);
-        
+
+        // filter out expired products and do not show them in the product grid
+        products.removeIf(product -> product.isExpired());
+
         int col = 0;
         int row = 0;
         
