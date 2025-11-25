@@ -1,5 +1,6 @@
 package StoreApp.Models;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Inventory_Model {
@@ -94,7 +95,7 @@ public class Inventory_Model {
         {
             for (Product_Model product: shelf.getProductsOnShelf())
             {
-                if (product.getExpirationDate() != null && !product.getExpirationDate().equalsIgnoreCase("N/A"))
+                if (product.isExpired())
                 {
                     expiredProducts.add(product);
                 }
@@ -305,7 +306,7 @@ public class Inventory_Model {
      * @param newExpirationDate is the new expiration date for the product.
      * @return boolean for success/failure.
      */
-    public boolean updateProductExpirationDate(int productID, String newExpirationDate)
+    public boolean updateProductExpirationDate(int productID, LocalDate newExpirationDate)
     {
         Product_Model product = findProduct(productID);
 

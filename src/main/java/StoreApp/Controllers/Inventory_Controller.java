@@ -1,6 +1,7 @@
 package StoreApp.Controllers;
 
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 import StoreApp.Models.*;
@@ -177,7 +178,7 @@ public class Inventory_Controller implements Initializable {
             }
 
         }catch(NumberFormatException e){
-            Alert alert = new Alert(Alert.AlertType.WARNING, "Please enter a valid number", ButtonType.OK);
+            new Alert(Alert.AlertType.WARNING, "Please enter a valid number", ButtonType.OK);
         }
 
     }
@@ -454,7 +455,7 @@ public class Inventory_Controller implements Initializable {
      * @param newExpirationDate is the new expiration date for the product.
      * @return boolean for success/failure.
      */
-    public boolean updateProductExpirationDate(int productID, String newExpirationDate)
+    public boolean updateProductExpirationDate(int productID, LocalDate newExpirationDate)
     {
         return inventory.updateProductExpirationDate(productID, newExpirationDate);
     }
@@ -496,15 +497,6 @@ public class Inventory_Controller implements Initializable {
             System.out.println("You successfully logged out!");
             stage.close();
         }
-    }
-
-    /**
-     * This method gets the selected category from the choice box.
-     * @param event is the action event triggered by category selection.
-     */
-    public void getCategory(ActionEvent event)
-    {
-        String choice = category_choiceBox.getValue();
     }
 
     /**
