@@ -18,17 +18,28 @@ public class MainMenu_Controller {
     private Employee_Model[] employees;
     private Inventory_Model inventory;
 
-    // setters for injections
+    /**
+     * This sets the employees array for the controller.
+     * @param employees is the array of Employee_Model to be set.
+     */
     public void setEmployees(Employee_Model[] employees)
     {
         this.employees = employees;
     }
 
+    /**
+     * This sets the inventory for the controller.
+     * @param inventory is the Inventory_Model to be set.
+     */
     public void setInventory(Inventory_Model inventory)
     {
         this.inventory = inventory;
     }
 
+    /**
+     * This method handles navigation to the customer shopping view.
+     * @param event is the action event triggered by the button click.
+     */
     @FXML
     public void goToCustomerView(ActionEvent event)
     {
@@ -57,6 +68,10 @@ public class MainMenu_Controller {
         }
     }
 
+    /**
+     * This method handles navigation to the employee login view.
+     * @param event is the action event triggered by the button click.
+     */
     @FXML
     public void goToEmployeeView(ActionEvent event)
     {
@@ -81,6 +96,10 @@ public class MainMenu_Controller {
         }
     }
 
+    /**
+     * This method handles the exit action to close the application.
+     * @param event is the action event triggered by the button click.
+     */
     @FXML
     public void goToExit(ActionEvent event)
     {
