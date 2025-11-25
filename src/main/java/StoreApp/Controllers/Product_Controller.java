@@ -21,60 +21,75 @@ public class Product_Controller {
     @FXML private AnchorPane buttonPane;
     @FXML private HBox badgeContainer;
 
-    private HBox QuantityBtn;
+    private HBox quantityControls;
+    private Button confirmAddBtn;
     private int quantity = 1;
 
     private Product_Model product;
     private AddToCartCallback addToCartCallback;
 
     /**
-     * This method handles the action when the add to cart button is clicked.
+     * This method handles the action when the initial add to cart button is clicked. It shows the quantity selector controls.
      * @param e is the action event triggered by the button click.
      */
     @FXML
     private void onAddToCartBtnClicked(ActionEvent e) {
+        // show quantity controls instead of the initial add button
+        showQuantityControls();
+    }
 
-        // Build QuantityBtn only once
-        if (QuantityBtn == null) {
-            QuantityBtn = new HBox(10);
-            QuantityBtn.setAlignment(Pos.CENTER_LEFT);
+    /**
+     * This method creates and displays the quantity selector controls with an "Add to Cart" button.
+     */
+    private void showQuantityControls() {
+        // build quantity controls only once
+        if (quantityControls == null) {
+            quantityControls = new HBox(5);
+            quantityControls.setAlignment(Pos.CENTER);
 
             Button minusBtn = new Button("-");
             Button plusBtn = new Button("+");
             Label qtyLabel = new Label(String.valueOf(quantity));
+            confirmAddBtn = new Button("Add");
 
             minusBtn.getStyleClass().add("circular-btn");
             plusBtn.getStyleClass().add("circular-btn");
+            confirmAddBtn.getStyleClass().add("primary-btn");
 
+            // style the quantity label
+            qtyLabel.setStyle("-fx-min-width: 20px; -fx-alignment: center;");
+
+            // decrease quantity (minimum 1)
             minusBtn.setOnAction(ev -> {
                 if (quantity > 1) {
                     quantity--;
                     qtyLabel.setText(String.valueOf(quantity));
-                    notifyCartUpdate();
                 }
             });
 
+            // increase quantity (up to available stock)
             plusBtn.setOnAction(ev -> {
                 if (quantity < product.getProductQuantity()) {
                     quantity++;
                     qtyLabel.setText(String.valueOf(quantity));
-                    notifyCartUpdate();
                 }
             });
 
-            QuantityBtn.getChildren().addAll(minusBtn, qtyLabel, plusBtn);
+            // add to cart when confirm button is clicked
+            confirmAddBtn.setOnAction(ev -> {
+                notifyCartUpdate();
+            });
+
+            quantityControls.getChildren().addAll(minusBtn, qtyLabel, plusBtn, confirmAddBtn);
         }
 
-
-        Label qtyLabel = (Label) QuantityBtn.getChildren().get(1);
+        // update the quantity label to current value
+        Label qtyLabel = (Label) quantityControls.getChildren().get(1);
         qtyLabel.setText(String.valueOf(quantity));
 
-
+        // replace the initial add button with quantity controls
         buttonPane.getChildren().remove(addToCartBtn);
-        buttonPane.getChildren().add(QuantityBtn);
-
-        notifyCartUpdate();
-
+        buttonPane.getChildren().add(quantityControls);
     }
 
 
@@ -125,11 +140,7 @@ public class Product_Controller {
      * This method displays the quantity adjustment buttons.
      */
     private void showQuantityButtons() {
-        if (QuantityBtn != null) {
-            buttonPane.getChildren().remove(addToCartBtn);
-            buttonPane.getChildren().add(QuantityBtn);
-            ((Label) QuantityBtn.getChildren().get(1)).setText(String.valueOf(quantity));
-        }
+        showQuantityControls();
     }
 
 

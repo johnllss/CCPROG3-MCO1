@@ -18,9 +18,9 @@
                <children>
                   <Label fx:id="productName" layoutX="4.0" layoutY="28.0" text="ProductName" />
                   <Label fx:id="productPrice" layoutX="4.0" layoutY="49.0" stylesheets="@Design.css" text="ProductPrice" />
-                  <AnchorPane fx:id="buttonPane" layoutX="56.0" layoutY="30.0" prefHeight="26.0" prefWidth="32.0">
+                  <AnchorPane fx:id="buttonPane" layoutX="4.0" layoutY="30.0" prefHeight="35.0" prefWidth="132.0">
                      <children>
-                        <Button fx:id="addToCartBtn" layoutX="36.0" layoutY="8.0" mnemonicParsing="false" onAction="#onAddToCartBtnClicked" prefHeight="26.0" prefWidth="29.0" styleClass="circular-btn" stylesheets="@Design.css" text="+" textFill="WHITE">
+                        <Button fx:id="addToCartBtn" layoutX="95.0" layoutY="3.0" mnemonicParsing="false" onAction="#onAddToCartBtnClicked" prefHeight="26.0" prefWidth="29.0" styleClass="circular-btn" stylesheets="@Design.css" text="+" textFill="WHITE">
                            <font>
                               <Font name="Helvetica Neue Bold" size="13.0" />
                            </font>
