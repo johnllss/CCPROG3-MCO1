@@ -21,7 +21,7 @@
             <padding>
                 <Insets bottom="20" left="20" right="20" top="20" />
             </padding>
-            <Label text="Cart" textFill="#006937">
+            <Label text="My Cart" textFill="#006937">
                 <font>
                     <Font name="Helvetica Neue Bold" size="24.0" />
                 </font>
@@ -79,9 +79,9 @@
     </right>
     <top>
         <AnchorPane prefHeight="50.0" BorderPane.alignment="CENTER">
-            <Button onAction="#returnToProducts" prefHeight="25.0" prefWidth="76.0" text="&lt; Back" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="15.0">
+            <Button onAction="#returnToProducts" prefHeight="25.0" prefWidth="64.0" styleClass="primary-btn" text="&lt; Back" AnchorPane.rightAnchor="29.0" AnchorPane.topAnchor="15.0">
                 <graphic>
-                    <ImageView fitHeight="15" fitWidth="15" pickOnBounds="true" preserveRatio="true">
+                    <ImageView fitHeight="15" fitWidth="1.0" pickOnBounds="true" preserveRatio="true">
                         <image>
                             <Image url="@path/to/back_arrow.png" />
                         </image>
