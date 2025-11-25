@@ -188,9 +188,8 @@ public class Shopping_Controller {
 
         if (item != null) {
 
-            int newQty = item.getQuantity() + quantity;
-            if(cart.updateQuantity(product, newQty)) {
-                System.out.println("Updated " + product.getProductName() + " quantity to " + newQty);
+            if(cart.updateQuantity(product, quantity)) {
+                System.out.println("Updated " + product.getProductName() + " quantity to " + quantity);
             } else {
                 System.err.println("Failed to update quantity for " + product.getProductName());
             }
