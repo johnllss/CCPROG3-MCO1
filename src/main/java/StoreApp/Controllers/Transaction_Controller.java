@@ -89,4 +89,27 @@ public class Transaction_Controller {
 
         updateTransactionSummary();
     }
+
+    /**
+     * This method handles the cash payment method selection.
+     */
+    @FXML
+    private void selectCashPayment() {
+        if (cashCheckBox.isSelected()) {
+            cardCheckBox.setSelected(false);
+            amountText.setDisable(false);
+
+            // disable inputting in card fields and clear previous inputs
+            accountNumberText.setDisable(true);
+            cvvText.setDisable(true);;
+            expiryDateText.setDisable(true);
+            accountNumberText.clear();
+            cvvText.clear();
+            expiryDateText.clear();
+        } else {
+            // if card payment, disable and clear amount field
+            amountText.setDisable(truel);
+            amountText.clear();
+        }
+    }
 }
