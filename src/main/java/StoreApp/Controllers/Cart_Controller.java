@@ -30,10 +30,18 @@ public class Cart_Controller {
     private Cart_Model cart;
     private Inventory_Model inventory;
 
+    /**
+     * This sets the inventory for the controller.
+     * @param inventory is the Inventory_Model to be set.
+     */
     public void setInventory(Inventory_Model inventory) {
         this.inventory = inventory;
     }
 
+    /**
+     * This sets the customer and initializes the cart display.
+     * @param customer is the Customer_Model to be set.
+     */
     public void setCustomer(Customer_Model customer) {
         this.customer = customer;
         this.cart = customer.getCart();
@@ -52,6 +60,9 @@ public class Cart_Controller {
 
      */
 
+    /**
+     * This method updates the product table display with cart items.
+     */
     private void updateProductTableDisplay() {
         productsBox.getChildren().clear();
 
@@ -115,6 +126,11 @@ public class Cart_Controller {
 
     }
 
+    /**
+     * This method updates the quantity of an item in the cart table.
+     * @param item is the item to update.
+     * @param sign is true to increase quantity, false to decrease.
+     */
     private void updateTableColumnQty(Item_Model item, boolean sign) {
         int newQty = item.getQuantity();
         if(sign){
@@ -136,6 +152,9 @@ public class Cart_Controller {
         updateAllTotals();
     }
 
+    /**
+     * This method calculates and updates all total labels (subtotal, VAT, total).
+     */
     private void updateAllTotals()
     {
         double subTotal = cart.calculateCartSubTotal();
@@ -149,6 +168,7 @@ public class Cart_Controller {
 
     /**
      * This method goes to the checkout view scene.
+     * @param event is the action event triggered by the checkout button.
      */
     @FXML
     private void goToCheckout(ActionEvent event)
