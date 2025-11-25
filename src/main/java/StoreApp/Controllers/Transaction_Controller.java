@@ -47,4 +47,20 @@ public class Transaction_Controller {
         cvvText.setDisable(true);
         expiryDateText.setDisable(true);
     }
+
+    /**
+     * This method sets the customer, cart, and inventory from the previous scene.
+     * @param customer is the customer making the purchase.
+     * @param inventory is the store's inventory.
+     */
+    public void setData(Customer_Model customer, Inventory_Model inventory) {
+        this.customer = customer;
+        this.cart = customer.getCart();
+        this.inventory = inventory;
+        this.transaction = new Transaction_Model(customer, cart);
+
+        updateTransactionSummary();
+    }
+
+    
 }
