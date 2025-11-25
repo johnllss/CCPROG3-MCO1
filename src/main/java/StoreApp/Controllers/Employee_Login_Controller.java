@@ -30,17 +30,29 @@ public class Employee_Login_Controller {
     private Employee_Model[] employees;
     private Inventory_Model inventory;
 
-    // setters for injections
+    /**
+     * This sets the employees array for the controller.
+     * @param employees is the array of Employee_Model to be set.
+     */
     public void setEmployees(Employee_Model[] employees)
     {
         this.employees = employees;
     }
 
+    /**
+     * This sets the inventory for the controller.
+     * @param inventory is the Inventory_Model to be set.
+     */
     public void setInventory(Inventory_Model inventory)
     {
         this.inventory = inventory;
     }
 
+    /**
+     * This method handles the employee login process.
+     * @param event is the action event triggered by the login button.
+     * @throws IOException if the FXML file cannot be loaded.
+     */
     public void login(ActionEvent event) throws IOException
     {
         if (employees == null || inventory == null)
@@ -102,6 +114,10 @@ public class Employee_Login_Controller {
 
     }
 
+    /**
+     * This method handles navigation back to the main menu.
+     * @param event is the action event triggered by the return button.
+     */
     @FXML
     public void returnToMainMenu(ActionEvent event)
     {
