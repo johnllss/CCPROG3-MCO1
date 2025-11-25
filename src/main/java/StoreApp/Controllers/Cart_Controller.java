@@ -50,15 +50,6 @@ public class Cart_Controller {
         updateProductTableDisplay();
         updateAllTotals();
     }
-    /*
-    @FXML
-    public void initialize()
-    {
-        updateProductBoxDisplay();
-        updateAllTotals();
-    }
-
-     */
 
     /**
      * This method updates the product table display with cart items.
@@ -158,8 +149,19 @@ public class Cart_Controller {
     private void updateAllTotals()
     {
         double subTotal = cart.calculateCartSubTotal();
-        double vat = subTotal * 0.10; // TODO: modify to include seniority validation
-        double total = subTotal + vat;
+
+        double tax;
+        double vat;
+        double total;
+
+        if (customer.isSenior()) {
+            tax = 0.0;
+        } else {
+            tax = 0.12;
+        }
+
+        vat = subTotal * tax;
+        total = subTotal + vat;
 
         subtotalLabel.setText(String.format("₱ %.2f", subTotal));
         vatLabel.setText(String.format("₱ %.2f", vat));
