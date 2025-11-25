@@ -5,7 +5,6 @@ import StoreApp.Models.Customer_Model;
 import StoreApp.Models.Inventory_Model;
 import StoreApp.Models.Item_Model;
 import StoreApp.Models.Product_Model;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,13 +12,10 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.scene.control.Label;
-
-import static javafx.collections.FXCollections.*;
 
 public class Cart_Controller {
     @FXML private VBox productsBox;

@@ -4,7 +4,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import StoreApp.Models.*;
-import javafx.beans.property.ReadOnlyIntegerWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -17,7 +16,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -156,7 +154,7 @@ public class Inventory_Controller implements Initializable {
                 alert.showAndWait();
             }
 
-        }catch(NumberFormatException e){
+        } catch(NumberFormatException e) {
             Alert alert = new Alert(Alert.AlertType.WARNING, "Please enter a valid number", ButtonType.OK);
         }
 

@@ -185,7 +185,6 @@ public class Shopping_Controller {
             
         Cart_Model cart = customer.getCart();
         Item_Model item = customer.getCart().findItem(product.getProductID());
-        boolean success = cart.addItem(product, quantity);
 
         if (item != null) {
 
