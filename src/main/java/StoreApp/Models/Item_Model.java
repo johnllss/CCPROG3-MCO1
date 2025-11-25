@@ -35,14 +35,6 @@ public class Item_Model {
      * This is a getter method to get the quantity of the Item placed by the Customer.
      * @return int is the quantity in this class.
      */
-    public void setProduct(Product_Model product) {
-        this.product = product;
-    }
-
-    /**
-     * This is a getter method to get the quantity of the Item placed by the Customer.
-     * @return int is the quantity in this class.
-     */
     public int getQuantity() {
         return quantity;
     }
