@@ -13,10 +13,18 @@ public class Cart_Model {
         this.items = FXCollections.observableArrayList();
     }
 
+    /**
+     * This is a getter method to get Cart's items.
+     * @return ObservableList of Item_Model for items.
+     */
     public ObservableList<Item_Model> getItems() {
         return items;
     }
 
+    /**
+     * This sets Cart's items.
+     * @param items is the items list to be set.
+     */
     public void setItems(ObservableList<Item_Model> items) {
         this.items = items;
     }
