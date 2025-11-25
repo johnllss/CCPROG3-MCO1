@@ -9,6 +9,13 @@
             "name": "Main",
             "request": "launch",
             "mainClass": "StoreApp.Main",
+            "projectName": "CCPROG3-MCO1_ea20115"
+        },
+        {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "StoreApp.Main",
             "projectName": "CCPROG3-MCO1_5157e064",
             "vmArgs": "--add-modules javafx.controls,javafx.fxml"
         },
