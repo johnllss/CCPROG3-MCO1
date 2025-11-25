@@ -36,6 +36,14 @@ public class Product_Model {
         this.imagePath = imagePath;
     }
 
+    /**
+     * Class Product_Model parameterized constructor
+     * @param name is the product name.
+     * @param price is the product price.
+     * @param qty is the product quantity.
+     * @param category is the product category.
+     * @param brand is the product brand.
+     */
     public Product_Model(String name, double price, int qty, String category, String brand) {
         this.productID = ++productIDCounter;
         this.productName = name;
@@ -109,6 +117,11 @@ public class Product_Model {
         return false;
     }
 
+    /**
+     * This method checks if the requested quantity is available in stock.
+     * @param quantity is the quantity to check against stock.
+     * @return boolean for success/failure.
+     */
     public boolean ProductQuantity(int quantity){
         if (quantity > productQuantity)
         {
