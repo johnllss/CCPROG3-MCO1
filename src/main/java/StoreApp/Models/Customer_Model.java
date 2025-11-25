@@ -36,30 +36,58 @@ public class Customer_Model extends User_Model {
         return true;
     }
 
+    /**
+     * This is a getter method to get Customer's senior status.
+     * @return boolean for isSenior.
+     */
     public boolean isSenior() {
         return isSenior;
     }
 
+    /**
+     * This is a getter method to get Customer's age.
+     * @return int for age.
+     */
     public int getAge() {
         return age;
     }
-    
+
+    /**
+     * This is a getter method to get Customer's membership card.
+     * @return MembershipCard_Model for membershipCard.
+     */
     public MembershipCard_Model getMembershipCard() {
         return membershipCard;
     }
 
+    /**
+     * This is a getter method to get Customer's cart.
+     * @return Cart_Model for cart.
+     */
     public Cart_Model getCart() {
         return cart;
     }
-    
+
+    /**
+     * This sets Customer's age.
+     * @param age is the age provided by the customer.
+     */
     public void setAge(int age) {
         this.age = age;
     }
 
+    /**
+     * This sets Customer's membership card.
+     * @param membershipCard is the membership card to be assigned.
+     */
     public void setMembershipCard(MembershipCard_Model membershipCard) {
         this.membershipCard = membershipCard;
     }
 
+    /**
+     * This sets Customer's senior status.
+     * @param senior is the senior status to be set.
+     */
     public void setSenior(boolean senior) {
         isSenior = senior;
     }
