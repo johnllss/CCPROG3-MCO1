@@ -39,6 +39,14 @@ public class Shelf_Model {
     }
 
     /**
+     * This is a getter method to get the Shelf's category.
+     * @return int for category.
+     */
+    public String getShelfCategory() {
+        return category;
+    }
+
+    /**
      * This is a getter method to get the Shelf's products.
      * @return ArrayList Product - All Shelf's Products
      */
