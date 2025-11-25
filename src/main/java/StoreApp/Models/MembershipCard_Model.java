@@ -1,6 +1,6 @@
 package StoreApp.Models;
 
-import java.util.Random;
+import java.time.LocalDate;
 
 /***
  * Represents users membership card, should there be a presence of it
@@ -8,14 +8,25 @@ import java.util.Random;
 public class MembershipCard_Model {
     private String cardNumber;
     private int points;
+    private LocalDate registrationDate;
 
     /**
      * Class MembershipCard parameterized constructor
      * @param cardNumber is the membership card number of the Customer
+     * @param registrationDate is the date the membership was created
      */
-    public MembershipCard_Model(String cardNumber) {
+    public MembershipCard_Model(String cardNumber, LocalDate registrationDate) {
         this.cardNumber = cardNumber;
         this.points = 0;
+        this.registrationDate = registrationDate;
+    }
+
+    /**
+     * Class MembershipCard parameterized constructor (overload for backward compatibility)
+     * @param cardNumber is the membership card number of the Customer
+     */
+    public MembershipCard_Model(String cardNumber) {
+        this(cardNumber, LocalDate.now());
     }
 
     /**
@@ -44,20 +55,6 @@ public class MembershipCard_Model {
     }
 
     /**
-     * This method generates the card number of the customer following XXXX (XXXX is a random 4-digit number)
-     * @return String for the generatedCardNumber.
-     */
-    public String generateCardNumber()
-    {
-        Random random = new Random();
-
-        // generates 0 to 8999, and then add 1000 to follow 4-digit rule
-        int randomNum = 1000 + random.nextInt(9000);
-
-        return String.valueOf(randomNum);
-    }
-    
-    /**
      * This is a getter method to get the cardNumber.
      * @return String for the cardNumber.
      */
@@ -81,5 +78,21 @@ public class MembershipCard_Model {
     public void setCardNumber(String newCardNumber)
     {
         this.cardNumber = newCardNumber;
+    }
+
+    /**
+     * This sets the points for the membership card
+     * @param points the number of points to set
+     */
+    public void setPoints(int points) {
+        this.points = points;
+    }
+
+    /**
+     * This is a getter method to get the registration date.
+     * @return LocalDate for the registrationDate.
+     */
+    public LocalDate getRegistrationDate() {
+        return registrationDate;
     }
 }

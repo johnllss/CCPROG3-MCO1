@@ -4,15 +4,19 @@ import StoreApp.Models.Cart_Model;
 import StoreApp.Models.Customer_Model;
 import StoreApp.Models.Inventory_Model;
 import StoreApp.Models.MembershipCard_Model;
+import StoreApp.Models.MembershipDataManager;
 import StoreApp.Models.Receipt_Model;
 import StoreApp.Models.Transaction_Model;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.TextField;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -24,6 +28,10 @@ public class Transaction_Controller {
     @FXML private TextField fullNameText;
     @FXML private TextField emailText;
     @FXML private CheckBox membershipCheckBox;
+    @FXML private RadioButton existingMemberRadio;
+    @FXML private RadioButton newMemberRadio;
+    @FXML private ToggleGroup membershipTypeGroup;
+    @FXML private Button registerMemberBtn;
     @FXML private TextField membershipNumberText;
     @FXML private CheckBox seniorCheckBox;
     @FXML private TextField ageText;
@@ -44,6 +52,7 @@ public class Transaction_Controller {
     private Cart_Model cart;
     private Inventory_Model inventory;
     private Transaction_Model transaction;
+    private MembershipDataManager membershipDataManager;
 
     /**
      * This method initializes the controller after FXML elements are loaded, setting up the initial state of UI elements.
@@ -55,6 +64,14 @@ public class Transaction_Controller {
         accountNumberText.setDisable(true);
         cvvText.setDisable(true);
         expiryDateText.setDisable(true);
+
+        // Initialize membership data manager
+        membershipDataManager = MembershipDataManager.getInstance();
+
+        // Initially hide radio buttons and register button
+        existingMemberRadio.setVisible(false);
+        newMemberRadio.setVisible(false);
+        registerMemberBtn.setVisible(false);
     }
 
     /**
@@ -76,10 +93,18 @@ public class Transaction_Controller {
      */
     @FXML
     private void toggleMembership() {
-        membershipNumberText.setDisable(!membershipCheckBox.isSelected());
+        boolean isChecked = membershipCheckBox.isSelected();
 
-        if (!membershipCheckBox.isSelected()) {
+        // Show/hide radio buttons
+        existingMemberRadio.setVisible(isChecked);
+        newMemberRadio.setVisible(isChecked);
+
+        if (!isChecked) {
+            // Clear selections
+            membershipTypeGroup.selectToggle(null);
             membershipNumberText.clear();
+            membershipNumberText.setDisable(true);
+            registerMemberBtn.setVisible(false);
         }
 
         updateTransactionSummary();
@@ -97,6 +122,115 @@ public class Transaction_Controller {
         }
 
         updateTransactionSummary();
+    }
+
+    /**
+     * This method handles the selection of existing member radio button.
+     */
+    @FXML
+    private void selectExistingMember() {
+        membershipNumberText.setDisable(false);
+        membershipNumberText.setVisible(true);
+        registerMemberBtn.setVisible(false);
+        membershipNumberText.requestFocus();
+
+        // Add listener for real-time validation
+        membershipNumberText.textProperty().addListener((obs, oldVal, newVal) -> {
+            validateExistingMember(newVal);
+        });
+    }
+
+    /**
+     * This method handles the selection of new member radio button.
+     */
+    @FXML
+    private void selectNewMember() {
+        membershipNumberText.setDisable(true);
+        membershipNumberText.setVisible(false);
+        membershipNumberText.clear();
+        registerMemberBtn.setVisible(true);
+    }
+
+    /**
+     * This method validates an existing member's card number in real-time.
+     * @param cardNumber the card number to validate
+     */
+    private void validateExistingMember(String cardNumber) {
+        if (cardNumber == null || cardNumber.trim().isEmpty()) {
+            membershipNumberText.setStyle(""); // Reset style
+            return;
+        }
+
+        Customer_Model existingMember = membershipDataManager.findByCardNumber(cardNumber.trim());
+
+        if (existingMember != null) {
+            // Valid card: Green border
+            membershipNumberText.setStyle("-fx-border-color: green;");
+
+            // Update customer reference
+            customer.setMembershipCard(existingMember.getMembershipCard());
+            updateTransactionSummary();
+        } else {
+            // Invalid card: Red border
+            membershipNumberText.setStyle("-fx-border-color: red;");
+        }
+    }
+
+    /**
+     * This method opens the membership registration modal dialog.
+     */
+    @FXML
+    private void openMembershipRegistration() {
+        try {
+            // Check for duplicate using current form inputs
+            String name = fullNameText.getText().trim();
+            String email = emailText.getText().trim();
+
+            if (name.isEmpty() || email.isEmpty()) {
+                popupAlert(Alert.AlertType.WARNING, "Missing Information",
+                    "Please enter your name and email first.");
+                return;
+            }
+
+            // Check if already a member
+            Customer_Model existingMember = membershipDataManager.findByNameAndEmail(name, email);
+            if (existingMember != null) {
+                String cardNum = existingMember.getMembershipCard().getCardNumber();
+                popupAlert(Alert.AlertType.INFORMATION, "Already a Member!",
+                    "You already have a membership!\nYour card number is: " + cardNum);
+
+                // Auto-populate and switch to existing member
+                membershipNumberText.setText(cardNum);
+                existingMemberRadio.setSelected(true);
+                selectExistingMember();
+                return;
+            }
+
+            // Open registration modal
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/Membership_Registration_Dialog.fxml"));
+            Parent root = loader.load();
+
+            Membership_Registration_Controller regController = loader.getController();
+            regController.setData(name, email, membershipDataManager);
+
+            Stage modal = new Stage();
+            modal.initModality(Modality.WINDOW_MODAL);
+            modal.setTitle("Membership Registration");
+            modal.setScene(new Scene(root));
+            modal.showAndWait();
+
+            // After modal closes, check if registration was successful
+            String newCardNumber = regController.getGeneratedCardNumber();
+            if (newCardNumber != null) {
+                membershipNumberText.setText(newCardNumber);
+                existingMemberRadio.setSelected(true);
+                selectExistingMember();
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            popupAlert(Alert.AlertType.ERROR, "Error", "Unable to open registration form.");
+        }
     }
 
     /**
@@ -165,13 +299,14 @@ public class Transaction_Controller {
 
         int pointsToUse = 0;
 
-        if (membershipCheckBox.isSelected() && !membershipNumberText.getText().isEmpty()) {
-            customer.setMembershipCard(new MembershipCard_Model(membershipNumberText.getText()));
-
-            /* TODO should have a scenario where the user is a new member. generateCardNumber() might need to be inside the MembershipCard_Model controller to auto-generate the card number.
-
-            TODO also, there needs to be a validation of the card to determine if the customer is already a member. Or, perhaps, just put checkboxes to ask to user if they are a current or new member.
-            */
+        if (membershipCheckBox.isSelected() && existingMemberRadio != null && existingMemberRadio.isSelected()) {
+            String cardNum = membershipNumberText.getText().trim();
+            if (!cardNum.isEmpty()) {
+                Customer_Model existingMember = membershipDataManager.findByCardNumber(cardNum);
+                if (existingMember != null) {
+                    customer.setMembershipCard(existingMember.getMembershipCard());
+                }
+            }
         }
 
         if (seniorCheckBox.isSelected() && !ageText.getText().isEmpty()) {
@@ -279,10 +414,32 @@ public class Transaction_Controller {
             return false;
         }
 
-        if (membershipCheckBox.isSelected() && membershipNumberText.getText().isEmpty()) {
-            popupAlert(Alert.AlertType.ERROR, "Missing Information", "Please enter your membership number.");
+        if (membershipCheckBox.isSelected()) {
+            // Check radio button selected
+            if (membershipTypeGroup.getSelectedToggle() == null) {
+                popupAlert(Alert.AlertType.ERROR, "Missing Selection",
+                    "Please select Existing Member or New Member.");
+                return false;
+            }
 
-            return false;
+            // Validate existing member has card number
+            if (existingMemberRadio.isSelected() && membershipNumberText.getText().isEmpty()) {
+                popupAlert(Alert.AlertType.ERROR, "Missing Information",
+                    "Please enter your membership number.");
+                return false;
+            }
+
+            // Validate card exists in database
+            if (existingMemberRadio.isSelected()) {
+                String cardNum = membershipNumberText.getText().trim();
+                Customer_Model member = membershipDataManager.findByCardNumber(cardNum);
+
+                if (member == null) {
+                    popupAlert(Alert.AlertType.ERROR, "Invalid Card",
+                        "Membership card number not found.");
+                    return false;
+                }
+            }
         }
 
         if (seniorCheckBox.isSelected()) {
