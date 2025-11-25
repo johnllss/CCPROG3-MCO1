@@ -3,7 +3,6 @@ package StoreApp.Controllers;
 import StoreApp.Models.Cart_Model;
 import StoreApp.Models.Customer_Model;
 import StoreApp.Models.Inventory_Model;
-import StoreApp.Models.MembershipCard_Model;
 import StoreApp.Models.MembershipDataManager;
 import StoreApp.Models.Receipt_Model;
 import StoreApp.Models.Transaction_Model;
