@@ -359,6 +359,10 @@ public class Transaction_Controller {
         }
     }
 
+    /**
+     * This method navigates to the receipt view after successful payment.
+     * @param event is the action event triggered by successful payment processing.
+     */
     private void goToReceipt(ActionEvent event) {
         try {
             Receipt_Model receipt = new Receipt_Model(transaction);
