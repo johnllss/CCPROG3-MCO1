@@ -190,8 +190,7 @@ public class Inventory_Model {
 
         if (product != null)
         {
-            product.setProductQuantity(product.getProductQuantity() + amount);
-            return true;
+            return product.updateStock(amount);
         }
 
         return false;
@@ -372,14 +371,10 @@ public class Inventory_Model {
                 return false;
             }
 
-            int newQuantity = itemInInventory.getProductQuantity() - item.getQuantity();
-
-            if (newQuantity < 0)
+            if (!itemInInventory.reduceStock(item.getQuantity()))
             {
                 return false;
             }
-
-            itemInInventory.setProductQuantity(newQuantity);
         }
 
         return true;

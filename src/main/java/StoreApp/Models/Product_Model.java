@@ -74,11 +74,17 @@ public class Product_Model {
     /**
      * This method updates the stock of this Product.
      * @param restockQuantity is the amount of stock to update the stock of this Product.
-     *
+     * @return boolean for success/failure.
      */
-    public void updateStock(int restockQuantity)
+    public boolean updateStock(int restockQuantity)
     {
+        if (restockQuantity < 0)
+        {
+            return false;
+        }
+
         this.productQuantity = productQuantity + restockQuantity;
+        return true;
     }
 
     /**
