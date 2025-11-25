@@ -2,6 +2,7 @@ package StoreApp.Controllers;
 
 import StoreApp.Models.Cart_Model;
 import StoreApp.Models.Customer_Model;
+import StoreApp.Models.Employee_Model;
 import StoreApp.Models.Inventory_Model;
 import StoreApp.Models.MembershipCard_Model;
 import StoreApp.Models.Receipt_Model;
@@ -44,6 +45,7 @@ public class Transaction_Controller {
     private Customer_Model customer;
     private Cart_Model cart;
     private Inventory_Model inventory;
+    private Employee_Model[] employees;
     private Transaction_Model transaction;
 
     /**
@@ -70,6 +72,14 @@ public class Transaction_Controller {
         this.transaction = new Transaction_Model(customer, cart);
 
         updateTransactionSummary();
+    }
+
+    /**
+     * This sets the employees array for the controller.
+     * @param employees is the array of Employee_Model to be set.
+     */
+    public void setEmployees(Employee_Model[] employees) {
+        this.employees = employees;
     }
 
     /**
@@ -416,6 +426,8 @@ public class Transaction_Controller {
 
             Receipt_Controller receiptController = loader.getController();
             receiptController.setReceipt(receipt);
+            receiptController.setInventory(inventory);
+            receiptController.setEmployees(employees);
 
             Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);

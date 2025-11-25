@@ -256,12 +256,13 @@ public class Shopping_Controller {
             // load FXML
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/Cart_View.fxml"));
             Parent root = loader.load();
-            
+
             // get controller and pass inventory and customer states
             Cart_Controller cartController = loader.getController();
             cartController.setInventory(inventory);
             cartController.setCustomer(customer);
-            
+            cartController.setEmployees(employees);
+
             Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
             stage.setScene(scene);

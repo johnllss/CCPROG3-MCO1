@@ -2,6 +2,7 @@ package StoreApp.Controllers;
 
 import StoreApp.Models.Cart_Model;
 import StoreApp.Models.Customer_Model;
+import StoreApp.Models.Employee_Model;
 import StoreApp.Models.Inventory_Model;
 import StoreApp.Models.Item_Model;
 import javafx.event.ActionEvent;
@@ -28,6 +29,7 @@ public class Cart_Controller {
     private Customer_Model customer;
     private Cart_Model cart;
     private Inventory_Model inventory;
+    private Employee_Model[] employees;
 
     /**
      * This sets the inventory for the controller.
@@ -48,6 +50,14 @@ public class Cart_Controller {
         cartTable.setItems(cart.getItems());
         updateProductTableDisplay();
         updateAllTotals();
+    }
+
+    /**
+     * This sets the employees array for the controller.
+     * @param employees is the array of Employee_Model to be set.
+     */
+    public void setEmployees(Employee_Model[] employees) {
+        this.employees = employees;
     }
 
     /**
@@ -182,6 +192,7 @@ public class Cart_Controller {
 
             Transaction_Controller transactionController = loader.getController();
             transactionController.setData(customer, inventory);
+            transactionController.setEmployees(employees);
 
             Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
