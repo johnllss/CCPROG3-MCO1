@@ -26,6 +26,10 @@ public class Product_Controller {
     private Product_Model product;
     private AddToCartCallback addToCartCallback;
 
+    /**
+     * This method handles the action when the add to cart button is clicked.
+     * @param e is the action event triggered by the button click.
+     */
     @FXML
     private void onAddToCartBtnClicked(ActionEvent e) {
 
@@ -73,6 +77,12 @@ public class Product_Controller {
     }
 
 
+    /**
+     * This method sets the product and initializes the controller with product details.
+     * @param product is the Product_Model to be displayed.
+     * @param existingQty is the existing quantity in the cart.
+     * @param callback is the callback for handling cart updates.
+     */
     public void setProduct(Product_Model product, int existingQty,AddToCartCallback callback)
     {
         this.product = product;
@@ -85,13 +95,13 @@ public class Product_Controller {
         productName.setText(product.getProductName());
         productPrice.setText(String.format("₱ %.2f", product.getProductPrice()));
 
-        // Update UI with product information
+        // update UI with product information
         if (product != null)
         {
             productName.setText(product.getProductName());
             productPrice.setText(String.format("₱ %.2f", product.getProductPrice()));
 
-            // Load and set product image
+            // load and set product image
             if (product.getImagePath() != null && !product.getImagePath().isEmpty())
             {
                 try
@@ -107,6 +117,9 @@ public class Product_Controller {
             }
         }
     }
+    /**
+     * This method displays the quantity adjustment buttons.
+     */
     private void showQuantityButtons() {
         if (QuantityBtn != null) {
             buttonPane.getChildren().remove(addToCartBtn);
@@ -116,6 +129,9 @@ public class Product_Controller {
     }
 
 
+    /**
+     * This method notifies the Cart_Controller about quantity updates.
+     */
     private void notifyCartUpdate()
     {
         if (addToCartCallback != null && product != null)
