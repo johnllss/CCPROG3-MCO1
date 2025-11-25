@@ -1,6 +1,5 @@
 package StoreApp.Controllers;
 
-
 import java.text.NumberFormat;
 
 import StoreApp.Models.Cart_Model;
@@ -8,6 +7,7 @@ import StoreApp.Models.Customer_Model;
 import StoreApp.Models.Inventory_Model;
 import StoreApp.Models.MembershipCard_Model;
 import StoreApp.Models.Receipt_Model;
+import StoreApp.Controllers.Receipt_Controller;
 import StoreApp.Models.Transaction_Model;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -211,7 +211,7 @@ public class Transaction_Controller {
         // if cash payment, process cash info
         if (cashCheckBox.isSelected()) {
             try {
-                double amountReceived = Double.parseDouble(amountText.getText())
+                double amountReceived = Double.parseDouble(amountText.getText());
                 transaction.setAmountReceived(amountReceived);
                 transaction.setPaymentMethod("Cash");
 
@@ -252,7 +252,7 @@ public class Transaction_Controller {
             return;
         }
 
-        goToRecieipt(event);
+        goToReceipt(event);
     }
 
 
@@ -295,7 +295,7 @@ public class Transaction_Controller {
                     return false;
                 }
             } catch (NumberFormatException e) {
-                    popAlert(Alert.AlertType.ERROR, "Invalid Age Input", "Please enter a valid age.");
+                    popupAlert(Alert.AlertType.ERROR, "Invalid Age Input", "Please enter a valid age.");
 
                     return false;
             }
@@ -320,7 +320,7 @@ public class Transaction_Controller {
 
     /**
      * This method displays an alert dialog to the user for errors.
-     * @param alertType is the type of alert.
+     * @param alert is the type of alert.
      * @param title is the title of the alert.
      * @param message is the message to display.
      */
@@ -359,6 +359,26 @@ public class Transaction_Controller {
             } catch (Exception e) {
                 e.printStackTrace();
             }
+        }
+    }
+
+    private void goToReceipt(ActionEvent event) {
+        try {
+            Receipt_Model receipt = new Receipt_Model(transaction);
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/Receipt_View.fxml"));
+            Parent root = loader.load();
+
+            Receipt_Controller receiptController = loader.getController();
+            receiptController.setReceipt(receipt);
+
+            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+            popupAlert(Alert.AlertType.ERROR, "Navigation Error", "Unable to load receipt. Error: " + e.getMessage());
         }
     }
 }
