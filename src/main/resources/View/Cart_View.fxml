@@ -70,7 +70,7 @@
                     </font>
                 </Label>
             </HBox>
-            <Button onAction="#processCheckout" prefHeight="25.0" prefWidth="197.0" styleClass="checkoutBtn" text="Checkout">
+            <Button onAction="#goToCheckout" prefHeight="25.0" prefWidth="197.0" styleClass="checkoutBtn" text="Checkout">
                 <VBox.margin>
                     <Insets top="10" />
                 </VBox.margin>
