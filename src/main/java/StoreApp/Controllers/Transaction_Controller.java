@@ -1,6 +1,5 @@
 package StoreApp.Controllers;
 
-import java.lang.classfile.Label;
 
 import StoreApp.Models.Cart_Model;
 import StoreApp.Models.Customer_Model;
@@ -8,9 +7,10 @@ import StoreApp.Models.Inventory_Model;
 import StoreApp.Models.MembershipCard_Model;
 import StoreApp.Models.Transaction_Model;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.Button;
 
 public class Transaction_Controller {
     @FXML private TextField fullNameText;
@@ -176,5 +176,14 @@ public class Transaction_Controller {
         } else {
             customer.setSenior(false);
         }
+
+        double discount = transaction.calculateDiscount(pointsToUse);
+        double tax = transaction.calculateTax();
+        double total = transaction.calculateTotal();
+
+        subtotalLabel.setText(String.format("₱ %.2f", subtotal));
+        discountLabel.setText(String.format("₱ %.2f", discount));
+        taxLabel.setText(String.format("₱ %.2f", tax));
+        totalLabel.setText(String.format("₱ %.2f", total));
     }
 }
