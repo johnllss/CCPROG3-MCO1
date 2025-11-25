@@ -14,7 +14,7 @@ import javafx.scene.control.TextField;
 public class Transaction_Controller {
     @FXML private TextField fullNameText;
     @FXML private TextField emailText;
-    @FXML private CheckBox membershipChewBox;
+    @FXML private CheckBox membershipCheckBox;
     @FXML private TextField membershipNumberText;
     @FXML private CheckBox seniorCheckBox;
     @FXML private TextField ageText;
@@ -62,5 +62,17 @@ public class Transaction_Controller {
         updateTransactionSummary();
     }
 
-    
+    /**
+     * This method handles the membership checkbox toggle.
+     */
+    @FXML
+    private void toggleMembership() {
+        membershipNumberText.setDisable(!membershipCheckBox.isSelected());
+
+        if (!membershipCheckBox.isSelected()) {
+            membershipNumberText.clear();
+        }
+
+        updateTransactionSummary();
+    }
 }
