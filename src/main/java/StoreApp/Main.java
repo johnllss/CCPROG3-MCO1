@@ -75,10 +75,10 @@ public class Main extends Application {
         inventory.addProduct(new Product_Model("Pastries", 45.0, 10, "Food", "Subway", "Cheese", LocalDate.parse("2025-10-26"), "/redbull.png"));
         inventory.addProduct(new Product_Model("Fried Chicken", 50.0, 10, "Food", "Subway", "Cheese", LocalDate.parse("2026-01-15"), "/redbull.png"));
         inventory.addProduct(new Product_Model("Sushi", 120.0, 10, "Food", "Makimura Ramen Bar", "Raw", LocalDate.parse("2027-03-10"), "/redbull.png"));
-        inventory.addProduct(new Product_Model("Yogurt", 215.0, 10, "Food", "Chobani", "Vanilla", LocalDate.parse("2025-10-27"), "/redbull.png"));
+        inventory.addProduct(new Product_Model("Yogurt", 215.0, 10, "Food", "Chobani", "Vanilla", LocalDate.parse("2023-10-27"), "/redbull.png"));
 
         // Beverages
-        inventory.addProduct(new Product_Model("Dairy", 100.0, 10, "Beverages", "Selecta", "Milk", LocalDate.parse("2025-11-30"), "/redbull.png"));
+        inventory.addProduct(new Product_Model("Dairy", 100.0, 10, "Beverages", "Selecta", "Milk", LocalDate.parse("2024-11-30"), "/redbull.png"));
         inventory.addProduct(new Product_Model("Coffee", 220.0, 10, "Beverages", "Starbucks", "Iced", LocalDate.parse("2025-02-02"), "/redbull.png"));
         inventory.addProduct(new Product_Model("Tea", 115.0, 10, "Beverages", "Honest Tea", "Green Tea", LocalDate.parse("2026-02-14"), "/redbull.png"));
         inventory.addProduct(new Product_Model("Energy Drink", 159.0, 10, "Beverages", "Red Bull", "The Summer Edition", LocalDate.parse("2027-10-11"), "/redbull.png"));
