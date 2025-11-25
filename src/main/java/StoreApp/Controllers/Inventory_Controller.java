@@ -65,12 +65,12 @@ public class Inventory_Controller implements Initializable {
      * This method displays the employee name on the view.
      * @param employee is the name of the employee to display.
      */
-    public void displayEmployeeName(String employeeName)
+    public void displayEmployeeName(String employee)
     {
         if (loggedInEmployee != null) {
-            employeeName.setText(employeeName + " (" + loggedInEmployee.getRole() + ")");
+            employeeName.setText(employee + " (" + loggedInEmployee.getRole() + ")");
         } else {
-            employeeName.setText(employeeName);
+            employeeName.setText(employee);
         }
     }
 
