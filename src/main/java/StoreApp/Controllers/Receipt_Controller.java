@@ -78,7 +78,7 @@ public class Receipt_Controller {
         taxLabel.setText(String.format("₱ %.2f", transaction.getTax()));
         totalLabel.setText(String.format("₱ %.2f", transaction.getTotal()));
         
-        totalLabel.setText(transaction.getPaymentMethod());
+        paymentMethodLabel.setText(transaction.getPaymentMethod());
         amountReceivedLabel.setText(String.format("₱ %.2f", transaction.getAmountReceived()));
         changeLabel.setText(String.format("₱ %.2f", transaction.getChange()));
 
@@ -104,7 +104,7 @@ public class Receipt_Controller {
             Product_Model product = item.getProduct();
             int quantity = item.getQuantity();
             double price = product.getProductPrice();
-            double itemTotalPrice = price * quantity;
+            double itemTotalPrice = item.calculateItemSubtotal();
 
             HBox itemRow = new HBox(10);
             itemRow.setPadding(new Insets(5, 0, 5, 0));

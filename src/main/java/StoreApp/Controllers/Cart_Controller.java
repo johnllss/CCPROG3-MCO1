@@ -66,7 +66,7 @@ public class Cart_Controller {
 
         total.setCellValueFactory(cellData ->
                 new javafx.beans.property.SimpleStringProperty(
-                        String.format("₱ %.2f", cellData.getValue().getProduct().getProductPrice() * cellData.getValue().getQuantity())
+                        String.format("₱ %.2f", cellData.getValue().calculateItemSubtotal())
                 )
         );
         qty.setCellValueFactory(cellData ->

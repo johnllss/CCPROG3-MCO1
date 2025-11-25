@@ -116,7 +116,7 @@ public class Cart_Model {
         double subTotal = 0;
 
         for (Item_Model item: items) {
-            subTotal += item.getProduct().getProductPrice() * item.getQuantity();
+            subTotal += item.calculateItemSubtotal();
         }
 
         return subTotal;
