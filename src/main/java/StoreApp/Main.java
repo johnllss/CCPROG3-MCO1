@@ -12,16 +12,15 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 
+import java.time.LocalDate;
+
 public class Main extends Application {
-    private static Stage primaryStage;
-    
     /**
      * This method starts the JavaFX application and initializes the main menu.
      * @param stage is the primary stage for this application.
      */
     @Override
     public void start(Stage stage) {
-        primaryStage = stage;
         try {
             // declare core data
             Inventory_Model inventory = new Inventory_Model();
@@ -72,39 +71,39 @@ public class Main extends Application {
 
         // INITIALIZATION OF INVENTORY'S PRODUCTS
         // Food
-        inventory.addProduct(new Product_Model("Sandwich", 30.0, 10, "Food", "Subway", "Cheese", "2025-10-27", "/redbull.png"));
-        inventory.addProduct(new Product_Model("Pastries", 45.0, 10, "Food", "Subway", "Cheese", "2025-10-26", "/redbull.png"));
-        inventory.addProduct(new Product_Model("Fried Chicken", 50.0, 10, "Food", "Subway", "Cheese", "2026-01-15", "/redbull.png"));
-        inventory.addProduct(new Product_Model("Sushi", 120.0, 10, "Food", "Makimura Ramen Bar", "Raw", "2027-03-10", "/redbull.png"));
-        inventory.addProduct(new Product_Model("Yogurt", 215.0, 10, "Food", "Chobani", "Vanilla", "2025-10-27", "/redbull.png"));
+        inventory.addProduct(new Product_Model("Sandwich", 30.0, 10, "Food", "Subway", "Cheese", LocalDate.parse("2025-10-27"), "/redbull.png"));
+        inventory.addProduct(new Product_Model("Pastries", 45.0, 10, "Food", "Subway", "Cheese", LocalDate.parse("2025-10-26"), "/redbull.png"));
+        inventory.addProduct(new Product_Model("Fried Chicken", 50.0, 10, "Food", "Subway", "Cheese", LocalDate.parse("2026-01-15"), "/redbull.png"));
+        inventory.addProduct(new Product_Model("Sushi", 120.0, 10, "Food", "Makimura Ramen Bar", "Raw", LocalDate.parse("2027-03-10"), "/redbull.png"));
+        inventory.addProduct(new Product_Model("Yogurt", 215.0, 10, "Food", "Chobani", "Vanilla", LocalDate.parse("2025-10-27"), "/redbull.png"));
 
         // Beverages
-        inventory.addProduct(new Product_Model("Dairy", 100.0, 10, "Beverages", "Selecta", "Milk", "2025-11-30", "/redbull.png"));
-        inventory.addProduct(new Product_Model("Coffee", 220.0, 10, "Beverages", "Starbucks", "Iced", "2025-02-02", "/redbull.png"));
-        inventory.addProduct(new Product_Model("Tea", 115.0, 10, "Beverages", "Honest Tea", "Green Tea", "2026-02-14", "/redbull.png"));
-        inventory.addProduct(new Product_Model("Energy Drink", 159.0, 10, "Beverages", "Red Bull", "The Summer Edition", "2027-10-11", "/redbull.png"));
-        inventory.addProduct(new Product_Model("Beer", 90.0, 10, "Beverages", "Stella Artois", "Stella 0.0", "2028-08-15", "/redbull.png"));
+        inventory.addProduct(new Product_Model("Dairy", 100.0, 10, "Beverages", "Selecta", "Milk", LocalDate.parse("2025-11-30"), "/redbull.png"));
+        inventory.addProduct(new Product_Model("Coffee", 220.0, 10, "Beverages", "Starbucks", "Iced", LocalDate.parse("2025-02-02"), "/redbull.png"));
+        inventory.addProduct(new Product_Model("Tea", 115.0, 10, "Beverages", "Honest Tea", "Green Tea", LocalDate.parse("2026-02-14"), "/redbull.png"));
+        inventory.addProduct(new Product_Model("Energy Drink", 159.0, 10, "Beverages", "Red Bull", "The Summer Edition", LocalDate.parse("2027-10-11"), "/redbull.png"));
+        inventory.addProduct(new Product_Model("Beer", 90.0, 10, "Beverages", "Stella Artois", "Stella 0.0", LocalDate.parse("2028-08-15"), "/redbull.png"));
 
         // Toiletries
-        inventory.addProduct(new Product_Model("Soap", 50.0, 1, "Toiletries", "Safeguard", "Pink", "N/A", "/redbull.png"));
-        inventory.addProduct(new Product_Model("Shampoo", 99.0, 10, "Toiletries", "Head & Shoulders", "Classic Clean", "N/A", "/redbull.png"));
-        inventory.addProduct(new Product_Model("Airy Matte Tint", 30.0, 10, "Toiletries", "BLK Cosmetics", "Dearest Rose Pink", "N/A", "/redbull.png"));
-        inventory.addProduct(new Product_Model("Toothbrush", 135.0, 10, "Toiletries", "Oral-B", "Electric Toothbrush", "N/A", "/redbull.png"));
-        inventory.addProduct(new Product_Model("Deodorant", 199.0, 10, "Toiletries", "Old Spice", "Wolfthorne", "N/A", "/redbull.png"));
+        inventory.addProduct(new Product_Model("Soap", 50.0, 1, "Toiletries", "Safeguard", "Pink", null, "/redbull.png"));
+        inventory.addProduct(new Product_Model("Shampoo", 99.0, 10, "Toiletries", "Head & Shoulders", "Classic Clean", null, "/redbull.png"));
+        inventory.addProduct(new Product_Model("Airy Matte Tint", 30.0, 10, "Toiletries", "BLK Cosmetics", "Dearest Rose Pink", null, "/redbull.png"));
+        inventory.addProduct(new Product_Model("Toothbrush", 135.0, 10, "Toiletries", "Oral-B", "Electric Toothbrush", null, "/redbull.png"));
+        inventory.addProduct(new Product_Model("Deodorant", 199.0, 10, "Toiletries", "Old Spice", "Wolfthorne", null, "/redbull.png"));
 
         // Cleaning Products
-        inventory.addProduct(new Product_Model("Detergent", 55.0, 3, "Cleaning Products", "Tide", "Powder", "2027-01-02", "/redbull.png"));
-        inventory.addProduct(new Product_Model("Tissue", 69.0, 10, "Cleaning Products", "Femme", "Interfolded Paper Towel", "2027-03-25", "/redbull.png"));
-        inventory.addProduct(new Product_Model("Hand Sanitizer", 95.0, 10, "Cleaning Products", "Purell", "Bottled", "2029-09-23", "/redbull.png"));
-        inventory.addProduct(new Product_Model("Degreaser", 215.0, 10, "Cleaning Products", "Lysol", "Multi-Purpose", "2028-11-11", "/redbull.png"));
-        inventory.addProduct(new Product_Model("Bleach", 150.0, 10, "Cleaning Products", "Zonrox", "Original", "2023-11-05", "/redbull.png"));
+        inventory.addProduct(new Product_Model("Detergent", 55.0, 3, "Cleaning Products", "Tide", "Powder", LocalDate.parse("2027-01-02"), "/redbull.png"));
+        inventory.addProduct(new Product_Model("Tissue", 69.0, 10, "Cleaning Products", "Femme", "Interfolded Paper Towel", LocalDate.parse("2027-03-25"), "/redbull.png"));
+        inventory.addProduct(new Product_Model("Hand Sanitizer", 95.0, 10, "Cleaning Products", "Purell", "Bottled", LocalDate.parse("2029-09-23"), "/redbull.png"));
+        inventory.addProduct(new Product_Model("Degreaser", 215.0, 10, "Cleaning Products", "Lysol", "Multi-Purpose", LocalDate.parse("2028-11-11"), "/redbull.png"));
+        inventory.addProduct(new Product_Model("Bleach", 150.0, 10, "Cleaning Products", "Zonrox", "Original", LocalDate.parse("2023-11-05"), "/redbull.png"));
 
         // Medications
-        inventory.addProduct(new Product_Model("Adhesive Bandage", 25.0, 10, "Medications", "Band-Aid", "Waterproof", "2026-05-17", "/redbull.png"));
-        inventory.addProduct(new Product_Model("Antibiotic", 30.0, 10, "Medications", "Amoxil", "Amoxicillin", "2026-01-23", "/redbull.png"));
-        inventory.addProduct(new Product_Model("Antihistamine", 80.0, 10, "Medications", "Claritin", "Standard Tablet", "N/A", "/redbull.png"));
-        inventory.addProduct(new Product_Model("Anesthetics", 125.0, 10, "Medications", "Diprivan", "Propofol", "N/A", "/redbull.png"));
-        inventory.addProduct(new Product_Model("Paracetamol", 55.0, 10, "Medications", "Biogesic", "500mg", "2028-08-15", "/redbull.png"));
+        inventory.addProduct(new Product_Model("Adhesive Bandage", 25.0, 10, "Medications", "Band-Aid", "Waterproof", LocalDate.parse("2026-05-17"), "/redbull.png"));
+        inventory.addProduct(new Product_Model("Antibiotic", 30.0, 10, "Medications", "Amoxil", "Amoxicillin", LocalDate.parse("2026-01-23"), "/redbull.png"));
+        inventory.addProduct(new Product_Model("Antihistamine", 80.0, 10, "Medications", "Claritin", "Standard Tablet", null, "/redbull.png"));
+        inventory.addProduct(new Product_Model("Anesthetics", 125.0, 10, "Medications", "Diprivan", "Propofol", null, "/redbull.png"));
+        inventory.addProduct(new Product_Model("Paracetamol", 55.0, 10, "Medications", "Biogesic", "500mg", LocalDate.parse("2028-08-15"), "/redbull.png"));
 
         // debugger
         System.out.println("Inventory is successfully initialized.");
