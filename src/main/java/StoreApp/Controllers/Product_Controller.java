@@ -78,6 +78,9 @@ public class Product_Controller {
             // add to cart when confirm button is clicked
             confirmAddBtn.setOnAction(ev -> {
                 notifyCartUpdate();
+                
+                // reset UI after adding to cart
+                resetAddToCartButton();
             });
 
             quantityControls.getChildren().addAll(minusBtn, qtyLabel, plusBtn, confirmAddBtn);
@@ -217,5 +220,17 @@ public class Product_Controller {
             Label perishableBadge = createBadge("PERISHABLE", "badge-perishable");
             badgeContainer.getChildren().add(perishableBadge);
         }
+    }
+
+    /**
+     * This method resets the UI back to the initial Add to Cart button after a successful add.
+     */
+    private void resetAddToCartButton() {
+        if (quantityControls != null && buttonPane != null) {
+            buttonPane.getChildren().remove(quantityControls);
+            buttonPane.getChildren().add(addToCartBtn);
+        }
+        // Reset quantity to 1 for the next time the customer adds
+        quantity = 1;
     }
 }

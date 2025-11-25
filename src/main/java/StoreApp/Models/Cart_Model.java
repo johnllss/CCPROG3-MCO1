@@ -109,6 +109,28 @@ public class Cart_Model {
     }
 
     /**
+     * This method increments the quantity of an existing item in the cart by the specified amount.
+     * @param product is the product to increment quantity for.
+     * @param amount is the quantity to add to the existing quantity.
+     * @return boolean indicating success or failure.
+     */
+    public boolean incrementQuantity(Product_Model product, int amount) {
+        for(Item_Model item: items) {
+            if (item.getProduct().getProductID() == product.getProductID()) {
+                int currentQuantity = item.getQuantity();
+                int newQuantity = currentQuantity + amount;
+
+                if (item.getProduct().ProductQuantity(newQuantity)) {
+                    item.setQuantity(newQuantity);
+                    return true;
+                }
+                return false;
+            }
+        }
+        return false;
+    }
+
+    /**
      * This method iterates and calculates the total price for every item in the cart.
      * @return double (total price)
      */

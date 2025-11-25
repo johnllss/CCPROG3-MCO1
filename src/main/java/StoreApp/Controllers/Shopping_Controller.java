@@ -214,7 +214,7 @@ public class Shopping_Controller {
     /**
      * This method handles adding a product to the cart or updating its quantity.
      * @param product is the product to add or update.
-     * @param quantity is the quantity to set.
+     * @param quantity is the quantity to add.
      */
     private void handleAddToCart(Product_Model product, int quantity)
     {
@@ -228,15 +228,15 @@ public class Shopping_Controller {
         Item_Model item = customer.getCart().findItem(product.getProductID());
 
         if (item != null) {
-
-            if(cart.updateQuantity(product, quantity)) {
-                System.out.println("Updated " + product.getProductName() + " quantity to " + quantity);
+            // item exists in cart, so increment its quantity
+            if (cart.incrementQuantity(product, quantity)) {
+                System.out.println("Added " + quantity + "x to " + product.getProductName() + ", total now: " + cart.findItem(product.getProductID()).getQuantity());
             } else {
-                System.err.println("Failed to update quantity for " + product.getProductName());
+                System.err.println("Failed to increment quantity for " + product.getProductName());
             }
         } else {
-
-            if(cart.addItem(product, quantity)) {
+            // item doesn't exist in the cart, add it to cart
+            if (cart.addItem(product, quantity)) {
                 System.out.println("Added " + quantity + "x " + product.getProductName() + " to cart");
             } else {
                 System.err.println("Failed to add " + product.getProductName() + " to cart");
