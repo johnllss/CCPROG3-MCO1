@@ -36,6 +36,7 @@ public class Receipt_Controller {
     @FXML private Label amountReceivedLabel;
     @FXML private Label changeLabel;
     @FXML private Label pointsEarnedLabel;
+    @FXML private Label membershipCardLabel;
     @FXML private AnchorPane membershipPane;
     @FXML private Button newTransactionButton;
 
@@ -83,9 +84,14 @@ public class Receipt_Controller {
         changeLabel.setText(String.format("₱ %.2f", transaction.getChange()));
 
         if (customer.hasMembership()) {
-            // 1 point per ₱50 spent
+            // show points earned
             int pointsEarned = (int)(transaction.getTotal() / 50);
             pointsEarnedLabel.setText(pointsEarned + " points");
+
+            // show membership card number
+            String cardNumber = customer.getMembershipCard().getCardNumber();
+            membershipCardLabel.setText(cardNumber);
+
             membershipPane.setVisible(true);
         } else {
             membershipPane.setVisible(false);

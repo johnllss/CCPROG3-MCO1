@@ -106,10 +106,16 @@
                         <Label fx:id="changeLabel" layoutX="120.0" layoutY="55.0" text="₱ 0.00" />
                      </children>
                   </AnchorPane>
-                  <AnchorPane fx:id="membershipPane" prefHeight="40.0" prefWidth="480.0">
+                  <AnchorPane fx:id="membershipPane" prefHeight="60.0" prefWidth="480.0">
                      <children>
-                        <Label layoutX="14.0" layoutY="5.0" text="Membership Points Earned:" textFill="#006937" />
-                        <Label fx:id="pointsEarnedLabel" layoutX="180.0" layoutY="5.0" text="0 points" textFill="#006937">
+                        <Label layoutX="14.0" layoutY="5.0" text="Membership Card Number:" textFill="#006937" />
+                        <Label fx:id="membershipCardLabel" layoutX="180.0" layoutY="5.0" text="YYYYMMDD-HHMMSS" textFill="#006937">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="14.0" layoutY="30.0" text="Membership Points Earned:" textFill="#006937" />
+                        <Label fx:id="pointsEarnedLabel" layoutX="180.0" layoutY="30.0" text="0 points" textFill="#006937">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>

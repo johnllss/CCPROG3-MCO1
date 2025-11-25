@@ -1,6 +1,7 @@
 package StoreApp.Models;
 
-import java.util.Random;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 /***
  * Represents users membership card, should there be a presence of it
@@ -15,6 +16,14 @@ public class MembershipCard_Model {
      */
     public MembershipCard_Model(String cardNumber) {
         this.cardNumber = cardNumber;
+        this.points = 0;
+    }
+
+    /**
+     * Class MembershipCard_Model default constructor for new members. This version automatically generates a unique card number.
+     */
+    public MembershipCard_Model() {
+        this.cardNumber = generateCardNumber();
         this.points = 0;
     }
 
@@ -44,17 +53,14 @@ public class MembershipCard_Model {
     }
 
     /**
-     * This method generates the card number of the customer following XXXX (XXXX is a random 4-digit number)
-     * @return String for the generatedCardNumber.
+     * This method generates a unique card number using timestamp format, following YYYYMMDD-HHMMSS.
+     * @return String for the generated card number.
      */
     public String generateCardNumber()
     {
-        Random random = new Random();
-
-        // generates 0 to 8999, and then add 1000 to follow 4-digit rule
-        int randomNum = 1000 + random.nextInt(9000);
-
-        return String.valueOf(randomNum);
+        LocalDateTime dateNow = LocalDateTime.now();
+        DateTimeFormatter formattedDate = DateTimeFormatter.ofPattern("yyyyMMdd-HHmmss");
+        return dateNow.format(formattedDate);
     }
     
     /**
