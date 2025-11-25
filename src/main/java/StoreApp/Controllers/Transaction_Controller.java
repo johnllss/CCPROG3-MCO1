@@ -185,7 +185,16 @@ public class Transaction_Controller {
             customer.setSenior(false);
         }
 
-        double discount = transaction.calculateDiscount(pointsToUse);
+        // if membershipCheckBox is selected, get membership card number, otherwise null
+        String cardNumber = membershipCheckBox.isSelected() ? membershipNumberText.getText() : null;
+        
+        boolean isSenior = seniorCheckBox.isSelected() && customer.isSenior();
+
+        double discount = 0.0;
+        if (transaction.isDiscountable(cardNumber, isSenior)) {
+            discount = transaction.calculateDiscount(pointsToUse);
+        }
+
         double tax = transaction.calculateTax();
         double total = transaction.calculateTotal();
 
