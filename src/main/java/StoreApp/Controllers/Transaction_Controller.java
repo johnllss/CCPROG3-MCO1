@@ -240,6 +240,10 @@ public class Transaction_Controller {
             return;
         }
 
+        // update customer information from the form
+        customer.setName(fullNameText.getText());
+        customer.setEmail(emailText.getText());
+
         // if cash payment, process cash info
         if (cashCheckBox.isSelected()) {
             try {
