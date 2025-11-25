@@ -5,6 +5,7 @@ import java.lang.classfile.Label;
 import StoreApp.Models.Cart_Model;
 import StoreApp.Models.Customer_Model;
 import StoreApp.Models.Inventory_Model;
+import StoreApp.Models.MembershipCard_Model;
 import StoreApp.Models.Transaction_Model;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -141,6 +142,39 @@ public class Transaction_Controller {
             accountNumberText.clear();
             cvvText.clear();
             expiryDateText.clear();
+        }
+    }
+
+    /**
+     * This method updates the transaction summary display: subtotal, tax (VAT), discount, and total.
+     */
+    private void updateTransactionSummary() {
+        if (transaction == null) {
+            return;
+        }
+
+        double subtotal = transaction.calculateSubtotal();
+
+        int pointsToUse = 0;
+
+        if (membershipCheckBox.isSelected() && !membershipNumberText.getText().isEmpty()) {
+            customer.setMembershipCard(new MembershipCard_Model(membershipNumberText.getText()));
+
+            /* TODO should have a scenario where the user is a new member. generateCardNumber() might need to be inside the MembershipCard_Model controller to auto-generate the card number.
+
+            TODO also, there needs to be a validation of the card to determine if the customer is already a member. Or, perhaps, just put checkboxes to ask to user if they are a current or new member.
+            */
+        }
+
+        if (seniorCheckBox.isSelected() && !ageText.getText().isEmpty()) {
+            try {
+                int age = Integer.parseInt(ageText.getText());
+                customer.setSenior(age >= 60);
+            } catch (NumberFormatException e) {
+                customer.setSenior(false);
+            }
+        } else {
+            customer.setSenior(false);
         }
     }
 }
