@@ -22,14 +22,6 @@ public class Cart_Model {
     }
 
     /**
-     * This sets Cart's items.
-     * @param items is the items list to be set.
-     */
-    public void setItems(ObservableList<Item_Model> items) {
-        this.items = items;
-    }
-
-    /**
      * Method that checks if the cart is empty
      * @return boolean to show if empty = true or not empty = false
      */
