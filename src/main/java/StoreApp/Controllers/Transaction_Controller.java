@@ -24,6 +24,7 @@ public class Transaction_Controller {
     @FXML private TextField fullNameText;
     @FXML private TextField emailText;
     @FXML private CheckBox membershipCheckBox;
+    @FXML private CheckBox newMemberCheckBox;
     @FXML private TextField membershipNumberText;
     @FXML private CheckBox seniorCheckBox;
     @FXML private TextField ageText;
@@ -76,9 +77,25 @@ public class Transaction_Controller {
      */
     @FXML
     private void toggleMembership() {
-        membershipNumberText.setDisable(!membershipCheckBox.isSelected());
+        if (membershipCheckBox.isSelected()) {
+            newMemberCheckBox.setSelected(false);
+            membershipNumberText.setDisable(false);
+        } else {
+            membershipNumberText.setDisable(true);
+            membershipNumberText.clear();
+        }
 
-        if (!membershipCheckBox.isSelected()) {
+        updateTransactionSummary();
+    }
+
+    /**
+     * This method handles the new member checkbox toggle.
+     */
+    @FXML
+    private void toggleNewMember() {
+        if (newMemberCheckBox.isSelected()) {
+            membershipCheckBox.setSelected(false);
+            membershipNumberText.setDisable(true);
             membershipNumberText.clear();
         }
 
@@ -166,12 +183,11 @@ public class Transaction_Controller {
         int pointsToUse = 0;
 
         if (membershipCheckBox.isSelected() && !membershipNumberText.getText().isEmpty()) {
+            // if existing member, use their provided card number
             customer.setMembershipCard(new MembershipCard_Model(membershipNumberText.getText()));
-
-            /* TODO should have a scenario where the user is a new member. generateCardNumber() might need to be inside the MembershipCard_Model controller to auto-generate the card number.
-
-            TODO also, there needs to be a validation of the card to determine if the customer is already a member. Or, perhaps, just put checkboxes to ask to user if they are a current or new member.
-            */
+        } else if (newMemberCheckBox.isSelected()) {
+            // if new member, auto-generate card number
+            customer.setMembershipCard(new MembershipCard_Model());
         }
 
         if (seniorCheckBox.isSelected() && !ageText.getText().isEmpty()) {
@@ -242,6 +258,14 @@ public class Transaction_Controller {
             transaction.setPaymentMethod("Card");
 
             popupAlert(Alert.AlertType.INFORMATION, "Payment Successful!", "Your card payment was processed succesfully.");
+        }
+
+        // Show generated card number to new members
+        if (newMemberCheckBox.isSelected() && customer.hasMembership()) {
+            String generatedCardNumber = customer.getMembershipCard().getCardNumber();
+            popupAlert(Alert.AlertType.INFORMATION, "Welcome, New Member!",
+                      String.format("Your membership card number is: %s\n\nPlease save this number for future transactions!",
+                                   generatedCardNumber));
         }
 
         // if customer has membership, show points earned
