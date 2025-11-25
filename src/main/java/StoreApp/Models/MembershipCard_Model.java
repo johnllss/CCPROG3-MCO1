@@ -73,13 +73,4 @@ public class MembershipCard_Model {
     public int getPoints() {
         return points;
     }
-
-    /**
-     * This sets a new Card number for the membership card
-     * @param newCardNumber desired string of numbers that would replace current
-     */
-    public void setCardNumber(String newCardNumber)
-    {
-        this.cardNumber = newCardNumber;
-    }
 }
