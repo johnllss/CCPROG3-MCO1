@@ -33,10 +33,10 @@
             </VBox>
          <TableView fx:id="cartTable" prefHeight="200.0" prefWidth="366.0">
            <columns>
-             <TableColumn prefWidth="87.32689476013184" text="Product Name" />
-             <TableColumn prefWidth="124.8717269897461" text="Quantity" />
-               <TableColumn prefWidth="79.19064331054688" text="Total" />
-               <TableColumn prefWidth="76.809326171875" text="Remove" />
+             <TableColumn fx:id="ProductName" prefWidth="87.32689476013184" text="Product Name" />
+             <TableColumn fx:id="qty" prefWidth="124.8717269897461" text="Quantity" />
+               <TableColumn fx:id="total" prefWidth="79.19064331054688" text="Total" />
+               <TableColumn fx:id="Remove" prefWidth="76.809326171875" text="Remove" />
            </columns>
          </TableView>
         </VBox>

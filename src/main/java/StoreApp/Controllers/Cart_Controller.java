@@ -13,6 +13,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.scene.control.Label;
@@ -25,14 +27,13 @@ public class Cart_Controller {
     @FXML private Label vatLabel;
     @FXML private Label totalLabel;
     @FXML private TableView<Item_Model> cartTable;
-    @FXML private TableColumn<Cart_Model, Integer> productQuantityColumn;
-    @FXML private TableColumn<Cart_Model, String> productNameColumn;
-    @FXML private TableColumn<Cart_Model, String> productPriceColumn;
+    @FXML private TableColumn<Item_Model, Integer> qty;
+    @FXML private TableColumn<Item_Model, String> ProductName;
+    @FXML private TableColumn<Item_Model, String> total;
 
     private Customer_Model customer;
     private Cart_Model cart;
     private Inventory_Model inventory;
-    private ObservableList<Item_Model> ItemList;
 
     public void setInventory(Inventory_Model inventory) {
         this.inventory = inventory;
@@ -41,9 +42,9 @@ public class Cart_Controller {
     public void setCustomer(Customer_Model customer) {
         this.customer = customer;
         this.cart = customer.getCart();
-        this.ItemList = observableArrayList(cart.getItems());
-        cartTable.setItems(ItemList);
-        updateProductBoxDisplay();
+
+        cartTable.setItems(cart.getItems());
+        updateProductTableDisplay();
         updateAllTotals();
     }
     /*
@@ -56,15 +57,81 @@ public class Cart_Controller {
 
      */
 
-    private void updateProductBoxDisplay()
-    {
-        productsBox.getChildren().clear(); // clear existing products
+    private void updateProductTableDisplay() {
+        productsBox.getChildren().clear();
 
-        // TODO
-        /*
-            1. loop through each item in cart and update the VBox
-            Note: might need an Item_View.java that displays the specific cart items as shown in the Canva
-         */
+        cartTable.setEditable(true);
+
+        ProductName.setCellValueFactory(cellData ->
+                new javafx.beans.property.SimpleStringProperty(
+                        cellData.getValue().getProduct().getProductName()
+                )
+        );
+
+        total.setCellValueFactory(cellData ->
+                new javafx.beans.property.SimpleStringProperty(
+                        String.format("₱ %.2f", cellData.getValue().getProduct().getProductPrice() * cellData.getValue().getQuantity())
+                )
+        );
+        qty.setCellValueFactory(cellData ->
+                new javafx.beans.property.SimpleIntegerProperty(cellData.getValue().getQuantity()).asObject()
+        );
+
+        qty.setCellFactory(column -> new TableCell<Item_Model, Integer>() {
+            private HBox buttonBox = new HBox(10);
+            private Button minusBtn = new Button("-");
+            private Button plusBtn = new Button("+");
+            private Label qty = new Label();
+
+            {
+                minusBtn.getStyleClass().add("circular-btn");
+                plusBtn.getStyleClass().add("circular-btn");
+                minusBtn.setStyle("-fx-min-width: 30; -fx-min-height: 30;");
+                plusBtn.setStyle("-fx-min-width: 30; -fx-min-height: 30;");
+                qty.setStyle("-fx-font-size: 14; -fx-font-weight: bold;");
+
+
+                buttonBox.getChildren().addAll(minusBtn, qty, plusBtn);
+
+
+                minusBtn.setOnAction(event -> {
+                    Item_Model item = getTableView().getItems().get(getIndex());
+                    updateTableColumnQty(item, false); // decrease
+                });
+
+                plusBtn.setOnAction(event -> {
+                    Item_Model item = getTableView().getItems().get(getIndex());
+                    updateTableColumnQty(item, true); // increase
+                });
+            }
+
+            @Override
+            protected void updateItem(Integer item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty || item == null) {
+                    setGraphic(null); // clear cell if empty
+                } else {
+                    qty.setText(String.valueOf(item)); // update label
+                    setGraphic(buttonBox); // show HBox
+                }
+            }
+        });
+
+
+    }
+
+    private void updateTableColumnQty(Item_Model item, boolean sign) {
+        int newQty = item.getQuantity();
+        if(sign){
+            newQty = newQty + 1;
+
+        }
+        else if(!sign){
+            newQty = newQty - 1;
+        }
+        cart.updateQuantity(item.getProduct(), newQty);
+        cartTable.refresh();
+        updateAllTotals();
     }
 
     private void updateAllTotals()

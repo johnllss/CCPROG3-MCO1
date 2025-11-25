@@ -36,6 +36,15 @@ public class Product_Model {
         this.imagePath = imagePath;
     }
 
+    public Product_Model(String name, double price, int qty, String category, String brand) {
+        this.productID = ++productIDCounter;
+        this.productName = name;
+        this.productPrice = price;
+        this.productQuantity = qty;
+        this.productCategory = category;
+        this.brand = brand;
+    }
+
     /**
      * This method reduces the stock of this Product.
      * @param amount is the amount to reduce the stock of the Product.
@@ -204,7 +213,7 @@ public class Product_Model {
      * This is a getter method to get the brand attribute.
      * @return String for brand
      */
-    public String getBrand() {
+    public String getProductBrand() {
         return brand;
     }
 

@@ -1,5 +1,6 @@
 package StoreApp.Controllers;
 
+import StoreApp.Models.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,12 +16,6 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 import java.util.ArrayList;
-
-import StoreApp.Models.Cart_Model;
-import StoreApp.Models.Customer_Model;
-import StoreApp.Models.Employee_Model;
-import StoreApp.Models.Inventory_Model;
-import StoreApp.Models.Product_Model;
 
 public class Shopping_Controller {
     @FXML GridPane productsGrid;
@@ -102,7 +97,9 @@ public class Shopping_Controller {
         System.out.println(getClass().getResource("/View/Product_View.fxml"));
         VBox card = loader.load();
         Product_Controller productController = loader.getController();
-        productController.setProduct(product, this::handleAddToCart);
+        Item_Model cartItem = customer.getCart().findItem(product.getProductID());
+        int existingQty = cartItem != null ? cartItem.getQuantity() : 0;
+        productController.setProduct(product, existingQty, this::handleAddToCart);
         return card;
     }
     
@@ -187,15 +184,24 @@ public class Shopping_Controller {
         }
             
         Cart_Model cart = customer.getCart();
+        Item_Model item = customer.getCart().findItem(product.getProductID());
         boolean success = cart.addItem(product, quantity);
-        
-        if (success)
-        {
-            System.out.println("Added " + quantity + "x " + product.getProductName() + " to cart");
-        }
-        else
-        {
-            System.err.println("Item has not been successfully added to cart.");
+
+        if (item != null) {
+
+            int newQty = item.getQuantity() + quantity;
+            if(cart.updateQuantity(product, newQty)) {
+                System.out.println("Updated " + product.getProductName() + " quantity to " + newQty);
+            } else {
+                System.err.println("Failed to update quantity for " + product.getProductName());
+            }
+        } else {
+
+            if(cart.addItem(product, quantity)) {
+                System.out.println("Added " + quantity + "x " + product.getProductName() + " to cart");
+            } else {
+                System.err.println("Failed to add " + product.getProductName() + " to cart");
+            }
         }
     }
     
@@ -227,12 +233,19 @@ public class Shopping_Controller {
     public void setInventory(Inventory_Model inv)
     {
         this.inventory = inv;
-        populateProductsGrid();
+        if(customer != null)
+        {
+            populateProductsGrid();
+        }
     }
     
     public void setCustomer(Customer_Model customer)
     {
         this.customer = customer;
+        if(inventory != null)
+        {
+            populateProductsGrid();
+        }
     }
     
     public void setEmployees(Employee_Model[] employees)

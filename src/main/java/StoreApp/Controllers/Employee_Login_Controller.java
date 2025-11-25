@@ -98,6 +98,7 @@ public class Employee_Login_Controller {
             errorLabel.setText("error: Failed loading inventory view");
             e.printStackTrace();
         }
+
     }
 
     @FXML

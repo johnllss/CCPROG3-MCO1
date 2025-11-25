@@ -78,8 +78,8 @@
             </Button>
          </children>
       </VBox>
-      <Button fx:id="logout_btn" layoutX="522.0" layoutY="22.0" mnemonicParsing="false" onAction="#logout" styleClass="secondary-btn" text="Logout" />
-      <ComboBox fx:id="filterCombo" layoutX="178.0" layoutY="89.0" prefHeight="19.0" prefWidth="127.0" promptText="Filter Products">
+      <Button fx:id="logout_btn" layoutX="522.0" layoutY="22.0" mnemonicParsing="false" onAction="#onLogOut" styleClass="secondary-btn" text="Logout" />
+      <ComboBox fx:id="filterCombo" layoutX="178.0" layoutY="89.0" prefHeight="19.0" prefWidth="127.0" promptText="Filter Products" onAction="#FilterByCategory">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -91,23 +91,25 @@
       </Label>
       <TableView fx:id="productTable" layoutX="178.0" layoutY="121.0" prefHeight="149.0" prefWidth="406.0">
         <columns>
-          <TableColumn prefWidth="83.0" text="Product ID" />
-          <TableColumn prefWidth="101.0" text="Name" />
-            <TableColumn prefWidth="103.0" text="Brand" />
-            <TableColumn prefWidth="61.0" text="Price" />
-            <TableColumn minWidth="0.0" prefWidth="55.0" text="Stock" />
+          <TableColumn fx:id="productID" prefWidth="83.0" text="Product ID" />
+          <TableColumn fx:id="productName" prefWidth="101.0" text="Name" />
+            <TableColumn fx:id="productBrand" prefWidth="103.0" text="Brand" />
+            <TableColumn fx:id="productPrice" prefWidth="61.0" text="Price" />
+            <TableColumn fx:id="productStock" minWidth="0.0" prefWidth="55.0" text="Stock" />
         </columns>
       </TableView>
       <AnchorPane layoutX="178.0" layoutY="275.0" prefHeight="121.0" prefWidth="406.0">
          <children>
             <TextField fx:id="name_txtbox" layoutX="47.0" layoutY="22.0" prefHeight="7.0" prefWidth="84.0" />
-            <TextField fx:id="brand_txtBox" layoutX="47.0" layoutY="61.0" prefHeight="7.0" prefWidth="84.0" />
+            <TextField fx:id="brand_txtbox" layoutX="47.0" layoutY="61.0" prefHeight="7.0" prefWidth="84.0" />
             <Text layoutX="2.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" />
             <Text layoutX="2.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Brand" />
-            <TextField fx:id="price_txtBox" layoutX="203.0" layoutY="22.0" prefHeight="7.0" prefWidth="84.0" />
+            <TextField fx:id="price_txtbox" layoutX="203.0" layoutY="22.0" prefHeight="7.0" prefWidth="84.0" />
             <Text layoutX="144.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price" />
-            <ChoiceBox fx:id="catrgory_choiceBox" layoutX="203.0" layoutY="62.0" prefHeight="26.0" prefWidth="84.0" />
+            <ChoiceBox fx:id="category_choiceBox" layoutX="203.0" layoutY="62.0" prefHeight="26.0" prefWidth="84.0" />
             <Text layoutX="144.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Category" />
+            <TextField fx:id="qty_txtbox" layoutX="351.0" layoutY="22.0" prefHeight="26.0" prefWidth="33.0" />
+            <Text layoutX="295.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantity" />
          </children>
       </AnchorPane>
    </children>

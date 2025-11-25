@@ -15,8 +15,8 @@
       </Label>
       <TextField fx:id="emailText" layoutX="194.0" layoutY="200.0" prefHeight="25.0" prefWidth="212.0" promptText="Email" />
       <TextField fx:id="passwordText" layoutX="194.0" layoutY="244.0" prefHeight="25.0" prefWidth="212.0" promptText="Password" />
-      <Label fx:id="errorLabel" layoutX="285.0" layoutY="173.0" textAlignment="CENTER" textFill="WHITE" />
-      <Button fx:id="loginBtn" layoutX="274.0" layoutY="305.0" mnemonicParsing="false" styleClass="login-btn" text="Login" />
-      <Button fx:id="returnBtn" layoutX="232.0" layoutY="345.0" mnemonicParsing="false" styleClass="secondary-btn" text="Return to Main Menu" onAction="#returnToMainMenu"/>
+      <Label fx:id="errorLabel" layoutX="194.0" layoutY="173.0" textAlignment="CENTER" textFill="WHITE" />
+      <Button fx:id="loginBtn" layoutX="274.0" layoutY="305.0" mnemonicParsing="false" onAction="#login" styleClass="login-btn" text="Login" />
+      <Button fx:id="returnBtn" layoutX="232.0" layoutY="345.0" mnemonicParsing="false" onAction="#returnToMainMenu" styleClass="secondary-btn" text="Return to Main Menu" />
    </children>
 </AnchorPane>

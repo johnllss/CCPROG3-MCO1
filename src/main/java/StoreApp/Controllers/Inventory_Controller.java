@@ -4,38 +4,96 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import StoreApp.Models.Inventory_Model;
+import StoreApp.Models.Item_Model;
 import StoreApp.Models.Product_Model;
 import StoreApp.Models.Cart_Model;
+import javafx.beans.property.ReadOnlyIntegerWrapper;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.ChoiceBox;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 public class Inventory_Controller implements Initializable {
 
-    @FXML private ChoiceBox<String> choiceBox;
+    @FXML private ChoiceBox<String> category_choiceBox;
+    @FXML private ComboBox<String> filterCombo;
     @FXML private Button logout_btn;
     @FXML private AnchorPane scenePane;
+    @FXML private TextField name_txtbox;
+    @FXML private TextField brand_txtbox;
+    @FXML private TextField price_txtbox;
+    @FXML private TextField qty_txtbox;
+    @FXML private TableView<Product_Model> productTable;
+    @FXML private TableColumn<Product_Model, Integer> productID;
+    @FXML private TableColumn<Product_Model, String> productName;
+    @FXML private TableColumn<Product_Model, String> productBrand;
+    @FXML private TableColumn<Product_Model, Double> productPrice;
+    @FXML private TableColumn<Product_Model, Integer> productStock;
 
     private Inventory_Model inventory;
     private Stage stage;
 
     private String[] categories = {"Food", "Beverage", "Toiletries", "Cleaning Products", "Medications"};
+    private String[] filterCategories = {"All","Food", "Beverage", "Toiletries", "Cleaning Products", "Medications"};
+    private ObservableList<Product_Model> productObservableList = FXCollections.observableArrayList();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        choiceBox.getItems().addAll(categories);
+        category_choiceBox.getItems().addAll(categories);
+        filterCombo.getItems().addAll(filterCategories);
+        filterCombo.setValue("All");
+
     }
 
     public void displayEmployeeName(String employeeName) 
     {
         // Display the employee name in the appropriate UI component
     }
+    @FXML
+    public void onLogOut(ActionEvent event)
+    {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/MainMenu_View.fxml"));
+            Parent root = loader.load();
+
+            // If you have a Shopping_Controller and Inventory_Model to pass
+            MainMenu_Controller mainMenuController = loader.getController();
+            mainMenuController.setInventory(inventory);
+
+            // Load the scene
+            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void FilterByCategory(ActionEvent event)
+    {
+        String choice = filterCombo.getValue();
+        if(choice.equals("All") || choice == null)
+        {
+            productObservableList.setAll(inventory.getAllProducts());
+            return;
+        }
+        else{
+            productObservableList.setAll(inventory.getProductsByCategory(choice));
+        }
+    }
+
 
     /**
      * This method is delegated the task of finding a product by ID in the Inventory.
@@ -63,9 +121,67 @@ public class Inventory_Controller implements Initializable {
      * @param product is the product to add.
      * @return boolean for success/failure.
      */
+
     public boolean addProduct(Product_Model product)
     {
         return inventory.addProduct(product);
+    }
+
+    @FXML
+    private void addProduct(ActionEvent event) {
+        // For now, just debug
+        System.out.println("Add Product button clicked!");
+        try{
+            String name = name_txtbox.getText().trim();
+            String category = category_choiceBox.getValue();
+            String brand = brand_txtbox.getText().trim();
+            double price = Double.parseDouble(price_txtbox.getText().trim());
+            int qty = Integer.parseInt(qty_txtbox.getText().trim());
+
+            if(name.isEmpty() || category.isEmpty() || brand.isEmpty() || price < 0 || qty < 0){
+                Alert alert = new Alert(Alert.AlertType.WARNING, "Please fill out all the fields", ButtonType.OK);
+                alert.showAndWait();
+                return;
+            }
+            Product_Model product = new Product_Model(name, price, qty, category, brand);
+            boolean success = inventory.addProduct(product);
+            if(success){
+               Alert alert = new Alert(Alert.AlertType.INFORMATION, "Product added", ButtonType.OK);
+                alert.showAndWait();
+            }
+            else{
+               Alert alert =  new Alert(Alert.AlertType.WARNING, "Product already exists", ButtonType.OK);
+                alert.showAndWait();
+            }
+
+        }catch(NumberFormatException e){
+            Alert alert = new Alert(Alert.AlertType.WARNING, "Please enter a valid number", ButtonType.OK);
+        }
+
+    }
+
+    @FXML
+    private void restockProduct(ActionEvent event)
+    {
+        System.out.println("Restock Product button clicked!");
+    }
+
+    @FXML
+    private void updateProduct(ActionEvent event)
+    {
+        System.out.println("Update Product button clicked!");
+    }
+
+    @FXML
+    private void removeProduct(ActionEvent event)
+    {
+        System.out.println("Delete Product button clicked!");
+    }
+
+    @FXML
+    private void viewLowStock(ActionEvent event)
+    {
+        System.out.println("View Low Stock button clicked!");
     }
 
     /**
@@ -185,11 +301,19 @@ public class Inventory_Controller implements Initializable {
 
     public void getCategory(ActionEvent event)
     {
-        String choice = choiceBox.getValue();
+        String choice = category_choiceBox.getValue();
     }
 
     public void setInventory(Inventory_Model inv)
     {
         this.inventory = inv;
+        productID.setCellValueFactory(cellData -> new javafx.beans.property.ReadOnlyObjectWrapper<>(cellData.getValue().getProductID()));
+        productName.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(cellData.getValue().getProductName()));
+        productBrand.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(cellData.getValue().getProductBrand()));
+        productPrice.setCellValueFactory(cellData -> new javafx.beans.property.ReadOnlyObjectWrapper<>(cellData.getValue().getProductPrice()));
+        productStock.setCellValueFactory(cellData -> new javafx.beans.property.ReadOnlyObjectWrapper<>(cellData.getValue().getProductQuantity()));
+        productTable.setItems(productObservableList);
+        productObservableList.setAll(inventory.getAllProducts());
+
     }
 }

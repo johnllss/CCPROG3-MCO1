@@ -27,46 +27,63 @@ public class Product_Controller {
     private AddToCartCallback addToCartCallback;
 
     @FXML
-    private void onAddToCartBtnClicked(ActionEvent e){
-        if(QuantityBtn == null) {
+    private void onAddToCartBtnClicked(ActionEvent e) {
+
+        // Build QuantityBtn only once
+        if (QuantityBtn == null) {
             QuantityBtn = new HBox(10);
             QuantityBtn.setAlignment(Pos.CENTER_LEFT);
-            QuantityBtn.setMaxWidth(Double.MAX_VALUE);
-            Button Minus = new Button("-");
-            Button Plus = new Button("+");
-            Label quantityLabel = new Label(String.valueOf(quantity));
 
-            Minus.getStyleClass().add("circular-btn");
-            Plus.getStyleClass().add("circular-btn");
+            Button minusBtn = new Button("-");
+            Button plusBtn = new Button("+");
+            Label qtyLabel = new Label(String.valueOf(quantity));
 
-            // on every press of + or -, update the cart
-            Minus.setOnAction(e1 -> {
-                if(quantity > 1){
+            minusBtn.getStyleClass().add("circular-btn");
+            plusBtn.getStyleClass().add("circular-btn");
+
+            minusBtn.setOnAction(ev -> {
+                if (quantity > 1) {
                     quantity--;
-                    quantityLabel.setText(String.valueOf(quantity));
-                    notifyCartUpdate();
-                }
-            });
-            Plus.setOnAction(e1 -> {
-                if(quantity < product.getProductQuantity()) {
-                    quantity++;
-                    quantityLabel.setText(String.valueOf(quantity));
+                    qtyLabel.setText(String.valueOf(quantity));
                     notifyCartUpdate();
                 }
             });
 
-            QuantityBtn.getChildren().addAll(Minus, quantityLabel, Plus);
+            plusBtn.setOnAction(ev -> {
+                if (quantity < product.getProductQuantity()) {
+                    quantity++;
+                    qtyLabel.setText(String.valueOf(quantity));
+                    notifyCartUpdate();
+                }
+            });
+
+            QuantityBtn.getChildren().addAll(minusBtn, qtyLabel, plusBtn);
         }
+
+
+        Label qtyLabel = (Label) QuantityBtn.getChildren().get(1);
+        qtyLabel.setText(String.valueOf(quantity));
+
 
         buttonPane.getChildren().remove(addToCartBtn);
         buttonPane.getChildren().add(QuantityBtn);
+
         notifyCartUpdate();
+
     }
 
-    public void setProduct(Product_Model product, AddToCartCallback callback)
+
+    public void setProduct(Product_Model product, int existingQty,AddToCartCallback callback)
     {
         this.product = product;
         this.addToCartCallback = callback;
+
+        if(existingQty > 0){
+            this.quantity = existingQty;
+            showQuantityButtons();
+        }
+        productName.setText(product.getProductName());
+        productPrice.setText(String.format("₱ %.2f", product.getProductPrice()));
 
         // Update UI with product information
         if (product != null)
@@ -90,6 +107,14 @@ public class Product_Controller {
             }
         }
     }
+    private void showQuantityButtons() {
+        if (QuantityBtn != null) {
+            buttonPane.getChildren().remove(addToCartBtn);
+            buttonPane.getChildren().add(QuantityBtn);
+            ((Label) QuantityBtn.getChildren().get(1)).setText(String.valueOf(quantity));
+        }
+    }
+
 
     private void notifyCartUpdate()
     {

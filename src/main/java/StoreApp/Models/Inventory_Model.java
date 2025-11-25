@@ -120,7 +120,7 @@ public class Inventory_Model {
             for (Product_Model product: shelf.getProductsOnShelf())
             {
                 if (product.getProductName().equalsIgnoreCase(productName) &&
-                    product.getBrand().equalsIgnoreCase(productBrand))
+                    product.getProductBrand().equalsIgnoreCase(productBrand))
                 {
                     return product;
                 }
@@ -364,5 +364,12 @@ public class Inventory_Model {
         }
 
         return true;
+    }
+    public ArrayList<Product_Model> getAllProducts() {
+        ArrayList<Product_Model> allProducts = new ArrayList<>();
+        for (Shelf_Model shelf : shelves) {
+            allProducts.addAll(shelf.getProductsOnShelf());
+        }
+        return allProducts;
     }
 }

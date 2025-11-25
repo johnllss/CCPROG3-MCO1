@@ -1,22 +1,26 @@
 package StoreApp.Models;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Cart_Model {
-    private ArrayList<Item_Model> items;
+    private ObservableList<Item_Model> items;
 
     /**
      * Default constructor for class Cart
      */
     public Cart_Model() {
-        this.items = new ArrayList<>();
+        this.items = FXCollections.observableArrayList();
     }
 
-    public ArrayList<Item_Model> getItems() {
+    public ObservableList<Item_Model> getItems() {
         return items;
     }
 
-    public void setItems(ArrayList<Item_Model> items) {
+    public void setItems(ObservableList<Item_Model> items) {
         this.items = items;
     }
 
@@ -42,15 +46,20 @@ public class Cart_Model {
      * @return a boolean to signify success/failure.
      */
     public boolean addItem(Product_Model product, int quantity) {
+        for(Item_Model item : items) {
+            if (item.getProduct().getProductID() == product.getProductID()) {
+                // Already in cart → just ignore (or use updateQuantity instead)
+                return updateQuantity(product, quantity);
+            }
+        }
         if(product.ProductQuantity(quantity)) {
             items.add(new Item_Model(product, quantity));
             return true;
-        }
-        else{
+        } else {
             return false;
         }
-
     }
+
 
     /**
      * This method iterates through all items in cart and checks if product that wants to be is to be removed is in the cart.
@@ -90,14 +99,15 @@ public class Cart_Model {
      * @return boolean, shows success or failure of the process.
      */
     public boolean updateQuantity(Product_Model product, int amount) {
-        for (Item_Model item: items) {
-            if (item.getProduct().getProductName() == product.getProductName())
-                if (item.getProduct().getProductQuantity() >= amount) {
+        for(Item_Model item: items) {
+            if(item.getProduct().getProductID() == product.getProductID()) {
+                if(item.getProduct().ProductQuantity(amount)) {
                     item.setQuantity(amount);
                     return true;
                 }
+                return false;
+            }
         }
-
         return false;
     }
 
@@ -107,7 +117,7 @@ public class Cart_Model {
      */
     public double calculateCartSubTotal() {
         double subTotal = 0;
-        
+
         for (Item_Model item: items) {
             subTotal += item.getProduct().getProductPrice() * item.getQuantity();
         }
