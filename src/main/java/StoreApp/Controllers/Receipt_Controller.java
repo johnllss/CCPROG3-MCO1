@@ -118,4 +118,23 @@ public class Receipt_Controller {
             itemsVBox.getChildren().add(itemRow);
         }
     }
+
+    /**
+     * This method starts a new transaction by returning to the main menu.
+     * @param event is the action event triggered by the button.
+     */
+    @FXML
+    private void startNewTransaction(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/MainMenu_View.fxml"));
+            Parent root = loader.load();
+
+            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
