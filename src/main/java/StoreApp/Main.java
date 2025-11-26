@@ -83,10 +83,10 @@ public class Main extends Application {
         inventory.addProduct(new Product_Model("Corned Beef", 65.0, 10, "Food", "Purefoods", "Original", LocalDate.parse("2026-09-30"), "/images/cornedbeef.jpg"));
 
         // Beverages
-        inventory.addProduct(new Product_Model("Dairy", 100.0, 10, "Beverages", "Selecta", "Milk", LocalDate.parse("2024-11-30"), "/images/dairy.jpg"));
-        inventory.addProduct(new Product_Model("Coffee", 220.0, 10, "Beverages", "Starbucks", "Iced", LocalDate.parse("2025-02-02"), "/images/coffee.jpg"));
-        inventory.addProduct(new Product_Model("Tea", 115.0, 10, "Beverages", "Honest Tea", "Green Tea", LocalDate.parse("2026-02-14"), "/images/tea.png"));
-        inventory.addProduct(new Product_Model("Energy Drink", 159.0, 10, "Beverages", "Red Bull", "The Summer Edition", LocalDate.parse("2027-10-11"), "/images/redbull.png"));
+        inventory.addProduct(new Product_Model("Dairy", 100.0, 3, "Beverages", "Selecta", "Milk", LocalDate.parse("2024-11-30"), "/images/dairy.jpg"));
+        inventory.addProduct(new Product_Model("Coffee", 220.0, 0, "Beverages", "Starbucks", "Iced", LocalDate.parse("2025-02-02"), "/images/coffee.jpg"));
+        inventory.addProduct(new Product_Model("Tea", 115.0, 1, "Beverages", "Honest Tea", "Green Tea", LocalDate.parse("2026-02-14"), "/images/tea.png"));
+        inventory.addProduct(new Product_Model("Energy Drink", 159.0, 999, "Beverages", "Red Bull", "The Summer Edition", LocalDate.parse("2027-10-11"), "/images/redbull.png"));
         inventory.addProduct(new Product_Model("Beer", 90.0, 10, "Beverages", "Stella Artois", "Stella 0.0", LocalDate.parse("2028-08-15"), "/images/beer.png"));
         inventory.addProduct(new Product_Model("Calamansi Juice", 35.0, 10, "Beverages", "Zest-O", "Dalandan", LocalDate.parse("2026-06-18"), "/images/calamansi.jpg"));
         inventory.addProduct(new Product_Model("Soda", 45.0, 10, "Beverages", "Fanta", "330ml", LocalDate.parse("2025-12-25"), "/images/soda.jpg"));
