@@ -31,7 +31,7 @@ echo Main source compiled successfully!
 echo.
 
 echo Step 2: Compiling test files...
-javac -cp "%LIB%\*;%BIN_MAIN%" -d "%BIN_TEST%" "%SRC_TEST%\StoreApp\Models\*Test.java"
+javac -cp "%LIB%\*;%BIN_MAIN%" -d "%BIN_TEST%" "%SRC_TEST%\StoreApp\Models\*Test.java" "%SRC_TEST%\StoreApp\Models\*.java" "%SRC_TEST%\StoreApp\Controllers\*Test.java" "%SRC_TEST%\StoreApp\*.java"
 if %ERRORLEVEL% NEQ 0 (
     echo ERROR: Failed to compile test files
     pause

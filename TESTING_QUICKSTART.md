@@ -2,8 +2,8 @@
 
 ## What You Have
 
-✅ **120+ JUnit test cases** covering all Model classes
-✅ **9 test classes** with comprehensive coverage
+✅ **180+ JUnit test cases** covering all Model and Controller classes
+✅ **14 test classes** with comprehensive coverage (9 Models + 5 Controllers)
 ✅ **Automated test runner** batch scripts
 ✅ **Complete test documentation**
 
@@ -65,7 +65,7 @@ Replace `Product_Model_Test` with any test class name:
 
 ### ✅ All Tests Pass
 ```
-[       120 tests successful      ]
+[       180 tests successful      ]
 [         0 tests failed          ]
 ```
 **Great!** All functionality works correctly.
@@ -85,6 +85,7 @@ testReduceStock_LessThanQuantity_ReturnsTrue() FAILED
 
 ## Test Files Explained
 
+### Model Tests (9 classes)
 | Test File | What It Tests | Test Count |
 |-----------|---------------|------------|
 | `Customer_Model_Test` | Membership checking | 3 |
@@ -96,6 +97,15 @@ testReduceStock_LessThanQuantity_ReturnsTrue() FAILED
 | `Inventory_Model_Test` | Product management | 30+ |
 | `Transaction_Model_Test` | Discounts, tax, payments | 25+ |
 | `Receipt_Model_Test` | Receipt generation | 4 |
+
+### Controller Tests (5 classes)
+| Test File | What It Tests | Test Count |
+|-----------|---------------|------------|
+| `Employee_Login_Controller_Test` | Login authentication logic | 7 |
+| `Inventory_Controller_Test` | Permission checking logic | 9 |
+| `Transaction_Controller_Test` | Input validation logic | 22 |
+| `Cart_Controller_Test` | Total calculation logic | 6 |
+| `Shopping_Controller_Test` | Navigation & cart logic | 12 |
 
 ## Common Issues & Fixes
 
