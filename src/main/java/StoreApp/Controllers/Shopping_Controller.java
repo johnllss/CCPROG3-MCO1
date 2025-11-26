@@ -203,7 +203,7 @@ public class Shopping_Controller {
         
     /**
      * This method handles navigation back to the main menu.
-     * @param e is the action event triggered by the back button.
+     * @param  event is the action event triggered by the back button.
      * @throws IOException if the FXML file cannot be loaded.
      */
     @FXML
