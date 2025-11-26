@@ -231,7 +231,6 @@ public class Cart_Controller {
             Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
             stage.setScene(scene);
-            stage.setMaximized(true);
             stage.show();
         } catch (Exception e) {
             e.printStackTrace();
@@ -255,7 +254,7 @@ public class Cart_Controller {
             shoppingController.setInventory(inventory);
 
             Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            Scene scene = new Scene(root);
+            Scene scene = new Scene(root, stage.getScene().getWidth(), stage.getScene().getHeight());
             stage.setScene(scene);
             stage.show();
         } catch (Exception e) {

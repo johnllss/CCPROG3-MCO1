@@ -105,7 +105,7 @@ public class Employee_Login_Controller {
             inventoryController.setEmployees(employees);
 
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            scene = new Scene(root);
+            scene = new Scene(root, stage.getScene().getWidth(), stage.getScene().getHeight());
             stage.setScene(scene);
             stage.show();
         } catch (IOException e) {
@@ -133,7 +133,7 @@ public class Employee_Login_Controller {
             mainMenuController.setEmployees(employees);
 
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            scene = new Scene(root);
+            scene = new Scene(root, stage.getScene().getWidth(), stage.getScene().getHeight());
             stage.setScene(scene);
             stage.show();
 

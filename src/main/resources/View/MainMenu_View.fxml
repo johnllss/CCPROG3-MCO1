@@ -1,27 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="487.0" prefWidth="550.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="StoreApp.Controllers.MainMenu_Controller">
+<AnchorPane maxHeight="Infinity" maxWidth="Infinity" minHeight="400.0" minWidth="550.0" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="StoreApp.Controllers.MainMenu_Controller">
    <children>
-      <Button contentDisplay="CENTER" layoutX="189.0" layoutY="177.0" mnemonicParsing="false" onAction="#goToCustomerView" prefHeight="27.0" prefWidth="173.0" text="Simulate Customer View">
-         <font>
-            <Font name="Tahoma" size="13.0" />
-         </font>
-      </Button>
-      <Text layoutX="238.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" text="THE BASKET" wrappingWidth="74.0" />
-      <Button contentDisplay="CENTER" layoutX="189.0" layoutY="217.0" mnemonicParsing="false" onAction="#goToEmployeeView" prefHeight="27.0" prefWidth="173.0" text="Employee View">
-         <font>
-            <Font name="Tahoma" size="13.0" />
-         </font>
-      </Button>
-      <Button contentDisplay="CENTER" layoutX="189.0" layoutY="257.0" mnemonicParsing="false" onAction="#goToExit" prefHeight="27.0" prefWidth="173.0" text="Exit">
-         <font>
-            <Font name="Tahoma" size="13.0" />
-         </font>
-      </Button>
+      <VBox alignment="CENTER" spacing="30.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="50.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="THE BASKET" textAlignment="CENTER">
+               <font>
+                  <Font name="Helvetica Neue Bold" size="72.0" />
+               </font>
+            </Text>
+            <Button contentDisplay="CENTER" maxWidth="400.0" minHeight="60.0" minWidth="300.0" mnemonicParsing="false" onAction="#goToCustomerView" prefHeight="60.0" prefWidth="350.0" text="Simulate Customer View">
+               <font>
+                  <Font name="Helvetica Neue" size="20.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="50.0" />
+               </VBox.margin>
+            </Button>
+            <Button contentDisplay="CENTER" maxWidth="400.0" minHeight="60.0" minWidth="300.0" mnemonicParsing="false" onAction="#goToEmployeeView" prefHeight="60.0" prefWidth="350.0" text="Employee View">
+               <font>
+                  <Font name="Helvetica Neue" size="20.0" />
+               </font>
+            </Button>
+            <Button contentDisplay="CENTER" maxWidth="400.0" minHeight="60.0" minWidth="300.0" mnemonicParsing="false" onAction="#goToExit" prefHeight="60.0" prefWidth="350.0" text="Exit">
+               <font>
+                  <Font name="Helvetica Neue" size="20.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
    </children>
 </AnchorPane>
