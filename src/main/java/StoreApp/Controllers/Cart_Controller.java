@@ -252,6 +252,7 @@ public class Cart_Controller {
             Shopping_Controller shoppingController = loader.getController();
             shoppingController.setCustomer(customer);
             shoppingController.setInventory(inventory);
+            shoppingController.setEmployees(employees);
 
             Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             Scene scene = new Scene(root, stage.getScene().getWidth(), stage.getScene().getHeight());

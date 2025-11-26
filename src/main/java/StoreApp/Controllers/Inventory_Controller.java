@@ -53,7 +53,7 @@ public class Inventory_Controller implements Initializable {
     private Employee_Model[] employees;
     private Employee_Model loggedInEmployee;
 
-    private String[] categories = {"Food", "Beverage", "Toiletries", "Cleaning Products", "Medications"};
+    private String[] categories = {"Food", "Beverages", "Toiletries", "Cleaning Products", "Medications"};
     private String[] filterCategories = {"All","Food", "Beverage", "Toiletries", "Cleaning Products", "Medications"};
     private ObservableList<Product_Model> productObservableList = FXCollections.observableArrayList();
 
@@ -279,7 +279,7 @@ public class Inventory_Controller implements Initializable {
             updated = true;
         }
         if (category != null && !category.equals(product.getProductCategory())) {
-            inventory.updateProductVariant(productID, category);
+            inventory.updateProductCategory(productID, category);
             updated = true;
         }
         if (!brand.isEmpty() && !brand.equals(product.getProductBrand())) {
