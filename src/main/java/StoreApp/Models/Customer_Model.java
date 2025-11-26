@@ -3,7 +3,6 @@ package StoreApp.Models;
 public class Customer_Model extends User_Model {
     private MembershipCard_Model membershipCard;
     private boolean isSenior;
-    private int age;
     private Cart_Model cart;
 
     /***
