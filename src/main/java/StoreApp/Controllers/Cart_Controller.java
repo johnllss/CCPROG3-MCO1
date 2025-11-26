@@ -231,6 +231,7 @@ public class Cart_Controller {
             Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
             stage.setScene(scene);
+            stage.setMaximized(true);
             stage.show();
         } catch (Exception e) {
             e.printStackTrace();
@@ -250,8 +251,8 @@ public class Cart_Controller {
 
             // state management so the next scene knows which customer is shopping and what the inventory's state is
             Shopping_Controller shoppingController = loader.getController();
-            shoppingController.setInventory(inventory);
             shoppingController.setCustomer(customer);
+            shoppingController.setInventory(inventory);
 
             Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);

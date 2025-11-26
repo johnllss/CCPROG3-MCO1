@@ -40,7 +40,8 @@ public class Shopping_Controller {
 
     private String currentCategory = "Food";
     private final String[] categories = {"Food", "Beverages", "Toiletries", "Cleaning Products", "Medications"};
-    private int currentCategoryIndex = 1;
+    private int currentCategoryIndex = 0;
+    private boolean isInitialized = false;
 
     /**
      * This method initializes the controller after FXML elements are loaded.
@@ -48,8 +49,14 @@ public class Shopping_Controller {
     @FXML
     public void initialize()
     {
+        isInitialized = true;
         categoryLabel.setText(currentCategory);
         setupNavBar();
+        // Try to populate if both customer and inventory are already set
+        if (inventory != null && customer != null && productsGrid != null)
+        {
+            populateProductsGrid();
+        }
     }
 
     /**
@@ -57,7 +64,7 @@ public class Shopping_Controller {
      */
     private void populateProductsGrid()
     {
-        if (inventory == null) 
+        if (inventory == null || productsGrid == null || !isInitialized) 
         {
             return;
         }
@@ -107,14 +114,19 @@ public class Shopping_Controller {
      */
     private VBox createProductCard(Product_Model product) throws IOException
     {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/Product_View.fxml"));
-        System.out.println(getClass().getResource("/View/Product_View.fxml"));
-        VBox card = loader.load();
-        Product_Controller productController = loader.getController();
-        Item_Model cartItem = customer.getCart().findItem(product.getProductID());
-        int existingQty = cartItem != null ? cartItem.getQuantity() : 0;
-        productController.setProduct(product, existingQty, this::handleAddToCart);
-        return card;
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/Product_View.fxml"));
+            VBox card = loader.load();
+            Product_Controller productController = loader.getController();
+            Item_Model cartItem = customer.getCart().findItem(product.getProductID());
+            int existingQty = cartItem != null ? cartItem.getQuantity() : 0;
+            productController.setProduct(product, existingQty, this::handleAddToCart);
+            return card;
+        } catch (Exception e) {
+            System.err.println("Error loading product card for " + product.getProductName());
+            e.printStackTrace();
+            throw new IOException("Failed to load Product_View.fxml", e);
+        }
     }
     
     /**
@@ -281,7 +293,7 @@ public class Shopping_Controller {
     public void setInventory(Inventory_Model inv)
     {
         this.inventory = inv;
-        if(customer != null)
+        if(customer != null && isInitialized && productsGrid != null)
         {
             populateProductsGrid();
         }
@@ -294,7 +306,7 @@ public class Shopping_Controller {
     public void setCustomer(Customer_Model customer)
     {
         this.customer = customer;
-        if(inventory != null)
+        if(inventory != null && isInitialized && productsGrid != null)
         {
             populateProductsGrid();
         }
