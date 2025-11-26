@@ -29,6 +29,7 @@ public class Inventory_Controller implements Initializable {
     @FXML private AnchorPane scenePane;
     @FXML private TextField name_txtbox;
     @FXML private TextField brand_txtbox;
+    @FXML private TextField variant_txtbox;
     @FXML private TextField price_txtbox;
     @FXML private TextField qty_txtbox;
     @FXML private DatePicker expirationDate_picker;
@@ -36,6 +37,7 @@ public class Inventory_Controller implements Initializable {
     @FXML private TableColumn<Product_Model, Integer> productID;
     @FXML private TableColumn<Product_Model, String> productName;
     @FXML private TableColumn<Product_Model, String> productBrand;
+    @FXML private TableColumn<Product_Model, String> productVariant;
     @FXML private TableColumn<Product_Model, Double> productPrice;
     @FXML private TableColumn<Product_Model, Integer> productStock;
     @FXML private Label employeeName;
@@ -94,7 +96,7 @@ public class Inventory_Controller implements Initializable {
 
 
             Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            Scene scene = new Scene(root);
+            Scene scene = new Scene(root, stage.getScene().getWidth(), stage.getScene().getHeight());
             stage.setScene(scene);
             stage.show();
 
@@ -296,6 +298,84 @@ public class Inventory_Controller implements Initializable {
         String message = updated ? "Product updated successfully!" : "No changes detected";
         new Alert(Alert.AlertType.INFORMATION, message, ButtonType.OK).showAndWait();
         productTable.refresh();
+        updateExpiredProductsLabel();
+    }
+
+
+    /**
+     * This method handles the update variant action from the UI.
+     * @param event is the action event triggered by the update variant button.
+     */
+    @FXML
+    private void updateVariant(ActionEvent event) {
+        if (!hasPermission("Manager")) {
+            new Alert(Alert.AlertType.ERROR,
+                "Access Denied: Only Managers can update variants",
+                ButtonType.OK).showAndWait();
+            return;
+        }
+
+        System.out.println("Update Variant button clicked!");
+        Stage popup = new Stage();
+        popup.setTitle("Update Variant");
+        popup.initModality(Modality.WINDOW_MODAL);
+        
+        Label productIDLabel = new Label("Product ID");
+        TextField productID_txtbox = new TextField();
+        Label variantLabel = new Label("New Variant");
+        TextField variant_txtbox = new TextField();
+        Button submitBtn = new Button("Submit");
+        Button cancelBtn = new Button("Cancel");
+        
+        submitBtn.getStyleClass().add("primary-btn");
+        cancelBtn.getStyleClass().add("secondary-btn");
+
+        VBox vbox = new VBox(10);
+        vbox.setPadding(new Insets(15, 15, 10, 15));
+        vbox.getChildren().addAll(productIDLabel, productID_txtbox, variantLabel, variant_txtbox, submitBtn, cancelBtn);
+
+        submitBtn.setOnAction(e -> {
+            try {
+                int product_ID = Integer.parseInt(productID_txtbox.getText().trim());
+                String newVariant = variant_txtbox.getText().trim();
+
+                if (newVariant.isEmpty()) {
+                    Alert alert = new Alert(Alert.AlertType.WARNING, "Please enter a variant", ButtonType.OK);
+                    alert.showAndWait();
+                    return;
+                }
+
+                Product_Model product = inventory.findProduct(product_ID);
+                if (product == null) {
+                    Alert alert = new Alert(Alert.AlertType.ERROR, "Product not found!", ButtonType.OK);
+                    alert.showAndWait();
+                    return;
+                }
+
+                boolean success = inventory.updateProductVariant(product_ID, newVariant);
+                if (success) {
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION, "Variant updated successfully!", ButtonType.OK);
+                    alert.showAndWait();
+                    productTable.refresh();
+                    popup.close();
+                } else {
+                    Alert alert = new Alert(Alert.AlertType.ERROR, "Failed to update variant", ButtonType.OK);
+                    alert.showAndWait();
+                }
+            } catch (NumberFormatException ex) {
+                Alert alert = new Alert(Alert.AlertType.WARNING, "Please enter a valid product ID", ButtonType.OK);
+                alert.showAndWait();
+            }
+        });
+        
+        cancelBtn.setOnAction(e -> {
+            popup.close();
+        });
+
+        Scene scene = new Scene(vbox);
+        scene.getStylesheets().add(getClass().getResource("/View/Design.css").toExternalForm());
+        popup.setScene(scene);
+        popup.show();
     }
 
 
@@ -515,6 +595,28 @@ public class Inventory_Controller implements Initializable {
             }
         });
 
+        // apply to Variant column
+        productVariant.setCellFactory(column -> new TableCell<Product_Model, String>() {
+            @Override
+            protected void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty);
+
+                if (empty || item == null) {
+                    setText(null);
+                    setStyle("");
+                } else {
+                    setText(item);
+
+                    Product_Model product = getTableView().getItems().get(getIndex());
+                    if (product.isExpired()) {
+                        setStyle("-fx-text-fill: #d32f2f; -fx-font-weight: bold;");
+                    } else {
+                        setStyle("");
+                    }
+                }
+            }
+        });
+
         // apply to Price column
         productPrice.setCellFactory(column -> new TableCell<Product_Model, Double>() {
             @Override
@@ -628,6 +730,10 @@ public class Inventory_Controller implements Initializable {
         productID.setCellValueFactory(cellData -> new javafx.beans.property.ReadOnlyObjectWrapper<>(cellData.getValue().getProductID()));
         productName.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(cellData.getValue().getProductName()));
         productBrand.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(cellData.getValue().getProductBrand()));
+        productVariant.setCellValueFactory(cellData -> {
+            String variant = cellData.getValue().getVariant();
+            return new javafx.beans.property.SimpleStringProperty(variant != null ? variant : "");
+        });
         productPrice.setCellValueFactory(cellData -> new javafx.beans.property.ReadOnlyObjectWrapper<>(cellData.getValue().getProductPrice()));
         productStock.setCellValueFactory(cellData -> new javafx.beans.property.ReadOnlyObjectWrapper<>(cellData.getValue().getProductQuantity()));
 
