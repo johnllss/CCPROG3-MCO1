@@ -79,15 +79,7 @@
     </right>
     <top>
         <AnchorPane minHeight="60" BorderPane.alignment="CENTER">
-            <Button onAction="#returnToProducts" minHeight="40" minWidth="100" styleClass="primary-btn" text="&lt; Back" AnchorPane.rightAnchor="20" AnchorPane.topAnchor="10" style="-fx-font-size: 14;">
-                <graphic>
-                    <ImageView fitHeight="15" fitWidth="1.0" pickOnBounds="true" preserveRatio="true">
-                        <image>
-                            <Image url="@path/to/back_arrow.png" />
-                        </image>
-                    </ImageView>
-                </graphic>
-            </Button>
+            <Button onAction="#returnToProducts" minHeight="40" minWidth="100" styleClass="primary-btn" text="&lt; Back" AnchorPane.rightAnchor="20" AnchorPane.topAnchor="10" style="-fx-font-size: 14;" />
         </AnchorPane>
     </top>
 </BorderPane>
