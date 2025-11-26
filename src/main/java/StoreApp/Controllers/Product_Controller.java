@@ -174,33 +174,6 @@ public class Product_Controller {
     }
 
     /**
-     * This method is delegated the task of checking if product is expired to the product model.
-     * @return boolean for success/failure
-     */
-    public boolean isExpired()
-    {
-        return product.isExpired();
-    }
-
-    /**
-     * This method is delegated the task of checking if product is perishable to the product model.
-     * @return boolean for success/failure.
-     */
-    public boolean isPerishable()
-    {
-        return product.isPerishable();
-    }
-
-    /**
-     * This method is delegated the task of checking if product is low on stock to the product model.
-     * @return boolean if success/failure.
-     */
-    public boolean isProductLowStock()
-    {
-        return product.isProductLowStock();
-    }
-
-    /**
      * This method creates a status badge label with the specified text and style class to display the status of the Product in the Product_View.
      * @param text is the text to display on the badge.
      * @param styleClass is the CSS style class for the badge.
@@ -225,12 +198,12 @@ public class Product_Controller {
         badgeContainer.getChildren().clear();
 
         // show LOW STOCK badge
-        if (isProductLowStock()) {
+        if (product.isProductLowStock()) {
             Label lowStockBadge = createBadge("LOW STOCK", "badge-low-stock");
             badgeContainer.getChildren().add(lowStockBadge);
         }
         // show PERISHABLE badge only if not low stock
-        else if (isPerishable()) {
+        else if (product.isPerishable()) {
             Label perishableBadge = createBadge("PERISHABLE", "badge-perishable");
             badgeContainer.getChildren().add(perishableBadge);
         }
