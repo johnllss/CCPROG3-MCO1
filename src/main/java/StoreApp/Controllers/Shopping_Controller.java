@@ -52,7 +52,7 @@ public class Shopping_Controller {
         isInitialized = true;
         categoryLabel.setText(currentCategory);
         setupNavBar();
-        // Try to populate if both customer and inventory are already set
+        // try to populate if both customer and inventory are already set
         if (inventory != null && customer != null && productsGrid != null)
         {
             populateProductsGrid();
