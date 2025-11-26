@@ -27,7 +27,7 @@ public class Product_Controller {
     private int quantity = 1;
 
     private Product_Model product;
-    private AddToCartCallback addToCartCallback;
+    private AddToCartCallback addToCartCallback; // not instantiating the interface, but creates reference variable to later assign 
 
     /**
      * Initializes the controller and sets up button handlers.
@@ -178,7 +178,7 @@ public class Product_Controller {
     {
         if (addToCartCallback != null && product != null)
         {
-            // calls the method assigned to addToCartCallback and sends the product and quantity data
+            // calls the method assigned/referenced to addToCartCallback and sends the product and quantity data
             addToCartCallback.onAddToCart(product, quantity);
         }
     }

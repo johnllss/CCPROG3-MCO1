@@ -123,7 +123,7 @@ public class Shopping_Controller {
             Item_Model cartItem = customer.getCart().findItem(product.getProductID());
             int existingQty = cartItem != null ? cartItem.getQuantity() : 0;
 
-            productController.setProduct(product, existingQty, this::handleAddToCart);
+            productController.setProduct(product, existingQty, this::handleAddToCart); // last param is a shortcut of method referencing (means use this method)
 
             return card;
         } catch (Exception e) {
