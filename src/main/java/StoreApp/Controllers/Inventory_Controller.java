@@ -147,8 +147,8 @@ public class Inventory_Controller implements Initializable {
             int qty = Integer.parseInt(qty_txtbox.getText().trim());
             LocalDate expirationDate = expirationDate_picker.getValue();
 
-            if(name.isEmpty() || category.isEmpty() || brand.isEmpty() || price < 0 || qty < 0){
-                Alert alert = new Alert(Alert.AlertType.WARNING, "Please fill out all the fields", ButtonType.OK);
+            if(name.isEmpty() || category.isEmpty() || brand.isEmpty() || price <= 0 || qty <= 0){
+                Alert alert = new Alert(Alert.AlertType.WARNING, "Please fill out all the fields with valid values. Price and quantity must be greater than 0.", ButtonType.OK);
                 alert.showAndWait();
                 return;
             }
