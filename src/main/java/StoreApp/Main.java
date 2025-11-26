@@ -71,12 +71,12 @@ public class Main extends Application {
 
         // INITIALIZATION OF INVENTORY'S PRODUCTS
         // Food
-        inventory.addProduct(new Product_Model("Sandwich", 30.0, 10, "Food", "Subway", "Cheese", LocalDate.parse("2027-10-27"), "/images/sandwich.jpg"));
+        inventory.addProduct(new Product_Model("Sandwich", 30.0, 10, "Food", "Subway", "Egg and Cheese Ciabatta Breakfast Sandwich", LocalDate.parse("2027-10-27"), "/images/sandwich.jpg"));
         inventory.addProduct(new Product_Model("Pastries", 45.0, 10, "Food", "Starbucks", "Ham & Cheese Croissant", LocalDate.parse("2028-10-26"), "/images/pastries.jpg"));
         inventory.addProduct(new Product_Model("Chicken Nuggets", 50.0, 10, "Food", "Tyson", "Frozen", LocalDate.parse("2026-01-15"), "/images/chickennuggets.jpg"));
         inventory.addProduct(new Product_Model("Sushi", 120.0, 10, "Food", "Maki Mono", "8s", LocalDate.parse("2027-03-10"), "/images/sushi.jpg"));
         inventory.addProduct(new Product_Model("Yogurt", 215.0, 10, "Food", "Chobani", "Greek Yogurt Blueberry", LocalDate.parse("2023-10-27"), "/images/yogurt.jpg"));
-        inventory.addProduct(new Product_Model("Pancit Canton", 15.0, 10, "Food", "Lucky Me!", "Chilimansi", LocalDate.parse("2026-08-20"), "/images/pancitcanton.jpg"));
+        inventory.addProduct(new Product_Model("Pancit Canton", 15.0, 10, "Food", "Lucky Me!", "Kalamansi", LocalDate.parse("2026-08-20"), "/images/pancitcanton.jpg"));
         inventory.addProduct(new Product_Model("Cup Noodles", 12.0, 10, "Food", "Nissin", "Very Veggie Chicken Flavor", LocalDate.parse("2026-11-15"), "/images/cupnoodles.jpg"));
         inventory.addProduct(new Product_Model("Pan de Sal", 25.0, 10, "Food", "Gardenia", "Classic", LocalDate.parse("2025-12-05"), "/images/pandesal.jpg"));
         inventory.addProduct(new Product_Model("Tuyo", 85.0, 10, "Food", "Ligo", "Spanish Style", LocalDate.parse("2027-04-12"), "/images/tuyo.jpg"));
