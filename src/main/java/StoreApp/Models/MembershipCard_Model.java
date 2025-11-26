@@ -1,6 +1,8 @@
 package StoreApp.Models;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 /***
  * Represents users membership card, should there be a presence of it
@@ -30,6 +32,15 @@ public class MembershipCard_Model {
     }
 
     /**
+     * Class MembershipCard_Model default constructor for new members. This version automatically generates a unique card number.
+     */
+    public MembershipCard_Model() {
+        this.cardNumber = generateCardNumber();
+        this.points = 0;
+        this.registrationDate = LocalDate.now();
+    }
+
+    /**
      * This method adds points to the customer's membership points.
      * @param points is the number of points to add.
      * @return boolean for success/failure.
@@ -52,6 +63,17 @@ public class MembershipCard_Model {
             this.points -= points;
             return true;
         }
+    }
+
+    /**
+     * This method generates a unique card number using timestamp format, following YYYYMMDD-HHMMSS.
+     * @return String for the generated card number.
+     */
+    public String generateCardNumber()
+    {
+        LocalDateTime dateNow = LocalDateTime.now();
+        DateTimeFormatter formattedDate = DateTimeFormatter.ofPattern("yyyyMMdd-HHmmss");
+        return dateNow.format(formattedDate);
     }
 
     /**
