@@ -3,96 +3,92 @@ package StoreApp.Controllers;
 import StoreApp.Models.Product_Model;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 public class Product_Controller {
     @FXML private ImageView productImage;
+    @FXML private Button initialAddBtn;
     @FXML private Button addToCartBtn;
     @FXML private Label productName;
     @FXML private Label productPrice;
     @FXML private VBox cardRoot;
-    @FXML private AnchorPane buttonPane;
+    @FXML private HBox quantityControls;
     @FXML private HBox badgeContainer;
+    @FXML private Button decrementBtn;
+    @FXML private Button incrementBtn;
+    @FXML private Label quantityLabel;
 
-    private HBox quantityControls;
-    private Button confirmAddBtn;
     private int quantity = 1;
 
     private Product_Model product;
     private AddToCartCallback addToCartCallback;
 
     /**
+     * Initializes the controller and sets up button handlers.
+     */
+    @FXML
+    private void initialize() {
+        if (initialAddBtn != null) {
+            initialAddBtn.setOnAction(this::onInitialAddBtnClicked);
+        }
+
+        if (decrementBtn != null) {
+            decrementBtn.setOnAction(e -> decrementQuantity());
+        }
+
+        if (incrementBtn != null) {
+            incrementBtn.setOnAction(e -> incrementQuantity());
+        }
+
+        if (addToCartBtn != null) {
+            addToCartBtn.setOnAction(this::onAddToCartBtnClicked);
+        }
+    }
+
+    /**
      * This method handles the action when the initial add to cart button is clicked. It shows the quantity selector controls.
      * @param e is the action event triggered by the button click.
      */
-    @FXML
-    private void onAddToCartBtnClicked(ActionEvent e) {
+    private void onInitialAddBtnClicked(ActionEvent e) {
         // show quantity controls instead of the initial add button
         showQuantityControls();
     }
 
     /**
-     * This method creates and displays the quantity selector controls with an "Add to Cart" button.
+     * This method handles the action when the confirm add to cart button is clicked.
+     * @param e is the action event triggered by the button click.
+     */
+    @FXML
+    private void onAddToCartBtnClicked(ActionEvent e) {
+        notifyCartUpdate();
+        
+        // reset UI after adding to cart
+        resetAddToCartButton();
+    }
+
+    /**
+     * This method creates and displays the quantity selector controls with an "Add to Cart" check mark button.
      */
     private void showQuantityControls() {
-        // build quantity controls only once
-        if (quantityControls == null) {
-            quantityControls = new HBox(5);
-            quantityControls.setAlignment(Pos.CENTER);
-
-            Button minusBtn = new Button("-");
-            Button plusBtn = new Button("+");
-            Label qtyLabel = new Label(String.valueOf(quantity));
-            confirmAddBtn = new Button("Add");
-
-            minusBtn.getStyleClass().add("circular-btn");
-            plusBtn.getStyleClass().add("circular-btn");
-            confirmAddBtn.getStyleClass().add("primary-btn");
-
-            // style the quantity label
-            qtyLabel.setStyle("-fx-min-width: 20px; -fx-alignment: center;");
-
-            // decrease quantity (minimum 1)
-            minusBtn.setOnAction(ev -> {
-                if (quantity > 1) {
-                    quantity--;
-                    qtyLabel.setText(String.valueOf(quantity));
-                }
-            });
-
-            // increase quantity (up to available stock)
-            plusBtn.setOnAction(ev -> {
-                if (quantity < product.getProductQuantity()) {
-                    quantity++;
-                    qtyLabel.setText(String.valueOf(quantity));
-                }
-            });
-
-            // add to cart when confirm button is clicked
-            confirmAddBtn.setOnAction(ev -> {
-                notifyCartUpdate();
-                
-                // reset UI after adding to cart
-                resetAddToCartButton();
-            });
-
-            quantityControls.getChildren().addAll(minusBtn, qtyLabel, plusBtn, confirmAddBtn);
+        if (quantityControls != null && initialAddBtn != null) {
+            // hide the initial add button
+            initialAddBtn.setVisible(false);
+            initialAddBtn.setManaged(false);
+            
+            // show the quantity controls
+            quantityControls.setVisible(true);
+            quantityControls.setManaged(true);
+            
+            // update the quantity label to current value
+            if (quantityLabel != null) {
+                quantityLabel.setText("1");
+            }
         }
-
-        // update the quantity label to current value
-        Label qtyLabel = (Label) quantityControls.getChildren().get(1);
-        qtyLabel.setText(String.valueOf(quantity));
-
-        // replace the initial add button with quantity controls
-        buttonPane.getChildren().remove(addToCartBtn);
-        buttonPane.getChildren().add(quantityControls);
     }
 
 
@@ -102,15 +98,14 @@ public class Product_Controller {
      * @param existingQty is the existing quantity in the cart.
      * @param callback is the callback for handling cart updates.
      */
-    public void setProduct(Product_Model product, int existingQty,AddToCartCallback callback)
+    public void setProduct(Product_Model product, int existingQty, AddToCartCallback callback)
     {
         this.product = product;
         this.addToCartCallback = callback;
 
-        if(existingQty > 0){
-            this.quantity = existingQty;
-            showQuantityButtons();
-        }
+        // always start with quantity = 1
+        this.quantity = 1;
+
         productName.setText(product.getProductName());
         productPrice.setText(String.format("₱ %.2f", product.getProductPrice()));
 
@@ -139,13 +134,32 @@ public class Product_Controller {
             displayStatusBadges();
         }
     }
+
     /**
-     * This method displays the quantity adjustment buttons.
+     * This method decrements the quantity in the quantity controls by 1 (minimum is 1).
      */
-    private void showQuantityButtons() {
-        showQuantityControls();
+    private void decrementQuantity() {
+        if (quantity > 1) {
+            quantity--;
+
+            if (quantityLabel != null) {
+                quantityLabel.setText(String.valueOf(quantity));
+            }
+        }
     }
 
+    /**
+     * This method increments the quantity in the quantity controls by 1 (up to available stock).
+     */
+    private void incrementQuantity() {
+        if (product != null && quantity < product.getProductQuantity()) {
+            quantity++;
+
+            if (quantityLabel != null) {
+                quantityLabel.setText(String.valueOf(quantity));
+            }
+        }
+    }
 
     /**
      * This method notifies the Cart_Controller about quantity updates.
@@ -223,14 +237,20 @@ public class Product_Controller {
     }
 
     /**
-     * This method resets the UI back to the initial Add to Cart button after a successful add.
+     * This method resets the UI back to the initial Add to Cart (+) button after a successful add.
      */
     private void resetAddToCartButton() {
-        if (quantityControls != null && buttonPane != null) {
-            buttonPane.getChildren().remove(quantityControls);
-            buttonPane.getChildren().add(addToCartBtn);
+        if (quantityControls != null && initialAddBtn != null) {
+            // hide quantity controls
+            quantityControls.setVisible(false);
+            quantityControls.setManaged(false);
+            
+            // then... show the initial add button
+            initialAddBtn.setVisible(true);
+            initialAddBtn.setManaged(true);
         }
-        // Reset quantity to 1 for the next time the customer adds
+
+        // reset quantity to 1 for the next time the customer adds
         quantity = 1;
     }
 }

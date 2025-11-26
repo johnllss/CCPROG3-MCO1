@@ -117,10 +117,14 @@ public class Shopping_Controller {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/Product_View.fxml"));
             VBox card = loader.load();
+
             Product_Controller productController = loader.getController();
+            
             Item_Model cartItem = customer.getCart().findItem(product.getProductID());
             int existingQty = cartItem != null ? cartItem.getQuantity() : 0;
+
             productController.setProduct(product, existingQty, this::handleAddToCart);
+
             return card;
         } catch (Exception e) {
             System.err.println("Error loading product card for " + product.getProductName());
@@ -240,14 +244,14 @@ public class Shopping_Controller {
         Item_Model item = customer.getCart().findItem(product.getProductID());
 
         if (item != null) {
-            // item exists in cart, so increment its quantity
+        // item exists in cart, so increment its quantity
             if (cart.incrementQuantity(product, quantity)) {
                 System.out.println("Added " + quantity + "x to " + product.getProductName() + ", total now: " + cart.findItem(product.getProductID()).getQuantity());
             } else {
                 System.err.println("Failed to increment quantity for " + product.getProductName());
             }
+        // item doesn't exist in the cart, add it to cart
         } else {
-            // item doesn't exist in the cart, add it to cart
             if (cart.addItem(product, quantity)) {
                 System.out.println("Added " + quantity + "x " + product.getProductName() + " to cart");
             } else {
