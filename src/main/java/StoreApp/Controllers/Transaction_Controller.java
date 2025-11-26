@@ -200,11 +200,16 @@ public class Transaction_Controller {
             customer.setMembershipCard(new MembershipCard_Model());
         }
 
-        if (seniorCheckBox.isSelected() && !ageText.getText().isEmpty()) {
-            try {
-                int age = Integer.parseInt(ageText.getText());
-                customer.setSenior(age >= 60);
-            } catch (NumberFormatException e) {
+        if (seniorCheckBox.isSelected()) {
+            // check if an age is actually inputted or not
+            if (!ageText.getText().isEmpty()) {
+                try {
+                    int age = Integer.parseInt(ageText.getText());
+                    customer.setSenior(age >= 60);
+                } catch (NumberFormatException e) {
+                    customer.setSenior(false);
+                }
+            } else {
                 customer.setSenior(false);
             }
         } else {
@@ -317,10 +322,35 @@ public class Transaction_Controller {
             return false;
         }
 
+        // validate email format
+        String email = emailText.getText();
+        if (!isValidEmail(email)) {
+            popupAlert(Alert.AlertType.ERROR, "Invalid Email", "Please enter a valid email address.");
+            return false;
+        }
+
+        // validate that new members don't use an already registered email
+        if (newMemberCheckBox.isSelected()) {
+            if (Receipt_Validating.isEmailAlreadyTaken(emailText.getText())) {
+                popupAlert(Alert.AlertType.ERROR, "Email Already Registered", "This email is already registered as a member. Please use the existing member option or enter a different email.");
+
+                return false;
+            }
+        }
+
         if (membershipCheckBox.isSelected() && membershipNumberText.getText().isEmpty()) {
             popupAlert(Alert.AlertType.ERROR, "Missing Information", "Please enter your membership number.");
 
             return false;
+        }
+
+        // validate that existing membership cards are actually valid
+        if (membershipCheckBox.isSelected() && !membershipNumberText.getText().isEmpty()) {
+            if (!Receipt_Validating.isMembershipCardAlreadyTaken(membershipNumberText.getText())) {
+                popupAlert(Alert.AlertType.ERROR, "Invalid Membership Card", "This membership card number does not exist in our records. Please check your card number or register as a new member.");
+
+                return false;
+            }
         }
 
         if (seniorCheckBox.isSelected()) {
@@ -371,6 +401,31 @@ public class Transaction_Controller {
         }
 
         return true;
+    }
+
+    /**
+     * This method validates email format.
+     * @param email is the email to validate.
+     * @return boolean indicating if email format is valid.
+     */
+    private boolean isValidEmail(String email) {
+        if (email == null || email.trim().isEmpty()) {
+            return false;
+        }
+
+        // simple email validation regex
+        /* 
+            ^ means start from very beginning
+            [A-Za-z0-9+_.-] means A-Z, a-z, 0-9, +, _, ., - chars
+            @ means @ char
+            [A-Za-z0-9.-] means same above but only ., - chars (domain name)
+            . means . char
+            [A-Za-z]{2,} means A-Z, a-z only and 2 or more chars
+            $ means end of string
+         */
+        String emailRegex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$";
+
+        return email.matches(emailRegex);
     }
 
     /**
