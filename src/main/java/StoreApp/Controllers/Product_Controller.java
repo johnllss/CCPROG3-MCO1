@@ -3,6 +3,7 @@ package StoreApp.Controllers;
 import StoreApp.Models.Product_Model;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -152,11 +153,20 @@ public class Product_Controller {
      * This method increments the quantity in the quantity controls by 1 (up to available stock).
      */
     private void incrementQuantity() {
-        if (product != null && quantity < product.getProductQuantity()) {
-            quantity++;
+        if (product != null) {
+            if (quantity < product.getProductQuantity()) {
+                quantity++;
 
-            if (quantityLabel != null) {
-                quantityLabel.setText(String.valueOf(quantity));
+                if (quantityLabel != null) {
+                    quantityLabel.setText(String.valueOf(quantity));
+                }
+            } else {
+                // show alert when max quantity reached
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Maximum Quantity Reached");
+                alert.setHeaderText(null);
+                alert.setContentText("Cannot add more. Only " + product.getProductQuantity() + " items available in stock.");
+                alert.showAndWait();
             }
         }
     }
