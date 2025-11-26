@@ -40,7 +40,8 @@ public class Shopping_Controller {
 
     private String currentCategory = "Food";
     private final String[] categories = {"Food", "Beverages", "Toiletries", "Cleaning Products", "Medications"};
-    private int currentCategoryIndex = 1;
+    private int currentCategoryIndex = 0;
+    private boolean isInitialized = false;
 
     /**
      * This method initializes the controller after FXML elements are loaded.
@@ -48,8 +49,14 @@ public class Shopping_Controller {
     @FXML
     public void initialize()
     {
+        isInitialized = true;
         categoryLabel.setText(currentCategory);
         setupNavBar();
+        // Try to populate if both customer and inventory are already set
+        if (inventory != null && customer != null && productsGrid != null)
+        {
+            populateProductsGrid();
+        }
     }
 
     /**
@@ -57,7 +64,7 @@ public class Shopping_Controller {
      */
     private void populateProductsGrid()
     {
-        if (inventory == null) 
+        if (inventory == null || productsGrid == null || !isInitialized) 
         {
             return;
         }
@@ -67,7 +74,10 @@ public class Shopping_Controller {
         
         // get products of customer's chosen category
         ArrayList<Product_Model> products = inventory.getProductsByCategory(currentCategory);
-        
+
+        // filter out expired products and do not show them in the product grid
+        products.removeIf(product -> product.isExpired());
+
         int col = 0;
         int row = 0;
         
@@ -104,14 +114,23 @@ public class Shopping_Controller {
      */
     private VBox createProductCard(Product_Model product) throws IOException
     {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/Product_View.fxml"));
-        System.out.println(getClass().getResource("/View/Product_View.fxml"));
-        VBox card = loader.load();
-        Product_Controller productController = loader.getController();
-        Item_Model cartItem = customer.getCart().findItem(product.getProductID());
-        int existingQty = cartItem != null ? cartItem.getQuantity() : 0;
-        productController.setProduct(product, existingQty, this::handleAddToCart);
-        return card;
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/Product_View.fxml"));
+            VBox card = loader.load();
+
+            Product_Controller productController = loader.getController();
+            
+            Item_Model cartItem = customer.getCart().findItem(product.getProductID());
+            int existingQty = cartItem != null ? cartItem.getQuantity() : 0;
+
+            productController.setProduct(product, existingQty, this::handleAddToCart);
+
+            return card;
+        } catch (Exception e) {
+            System.err.println("Error loading product card for " + product.getProductName());
+            e.printStackTrace();
+            throw new IOException("Failed to load Product_View.fxml", e);
+        }
     }
     
     /**
@@ -211,7 +230,7 @@ public class Shopping_Controller {
     /**
      * This method handles adding a product to the cart or updating its quantity.
      * @param product is the product to add or update.
-     * @param quantity is the quantity to set.
+     * @param quantity is the quantity to add.
      */
     private void handleAddToCart(Product_Model product, int quantity)
     {
@@ -225,15 +244,15 @@ public class Shopping_Controller {
         Item_Model item = customer.getCart().findItem(product.getProductID());
 
         if (item != null) {
-
-            if(cart.updateQuantity(product, quantity)) {
-                System.out.println("Updated " + product.getProductName() + " quantity to " + quantity);
+        // item exists in cart, so increment its quantity
+            if (cart.incrementQuantity(product, quantity)) {
+                System.out.println("Added " + quantity + "x to " + product.getProductName() + ", total now: " + cart.findItem(product.getProductID()).getQuantity());
             } else {
-                System.err.println("Failed to update quantity for " + product.getProductName());
+                System.err.println("Failed to increment quantity for " + product.getProductName());
             }
+        // item doesn't exist in the cart, add it to cart
         } else {
-
-            if(cart.addItem(product, quantity)) {
+            if (cart.addItem(product, quantity)) {
                 System.out.println("Added " + quantity + "x " + product.getProductName() + " to cart");
             } else {
                 System.err.println("Failed to add " + product.getProductName() + " to cart");
@@ -253,12 +272,13 @@ public class Shopping_Controller {
             // load FXML
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/Cart_View.fxml"));
             Parent root = loader.load();
-            
+
             // get controller and pass inventory and customer states
             Cart_Controller cartController = loader.getController();
             cartController.setInventory(inventory);
             cartController.setCustomer(customer);
-            
+            cartController.setEmployees(employees);
+
             Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
             stage.setScene(scene);
@@ -277,7 +297,7 @@ public class Shopping_Controller {
     public void setInventory(Inventory_Model inv)
     {
         this.inventory = inv;
-        if(customer != null)
+        if(customer != null && isInitialized && productsGrid != null)
         {
             populateProductsGrid();
         }
@@ -290,7 +310,7 @@ public class Shopping_Controller {
     public void setCustomer(Customer_Model customer)
     {
         this.customer = customer;
-        if(inventory != null)
+        if(inventory != null && isInitialized && productsGrid != null)
         {
             populateProductsGrid();
         }

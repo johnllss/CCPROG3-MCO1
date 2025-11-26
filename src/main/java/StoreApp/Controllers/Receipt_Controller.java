@@ -2,6 +2,8 @@ package StoreApp.Controllers;
 
 import StoreApp.Models.Cart_Model;
 import StoreApp.Models.Customer_Model;
+import StoreApp.Models.Employee_Model;
+import StoreApp.Models.Inventory_Model;
 import StoreApp.Models.Item_Model;
 import StoreApp.Models.Product_Model;
 import StoreApp.Models.Receipt_Model;
@@ -36,10 +38,13 @@ public class Receipt_Controller {
     @FXML private Label amountReceivedLabel;
     @FXML private Label changeLabel;
     @FXML private Label pointsEarnedLabel;
+    @FXML private Label membershipCardLabel;
     @FXML private AnchorPane membershipPane;
     @FXML private Button newTransactionButton;
 
     private Receipt_Model receipt;
+    private Inventory_Model inventory;
+    private Employee_Model[] employees;
 
     /**
      * This method sets the receipt model and populates the receipt view.
@@ -53,6 +58,22 @@ public class Receipt_Controller {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * This sets the inventory for the controller.
+     * @param inventory is the Inventory_Model to be set.
+     */
+    public void setInventory(Inventory_Model inventory) {
+        this.inventory = inventory;
+    }
+
+    /**
+     * This sets the employees array for the controller.
+     * @param employees is the array of Employee_Model to be set.
+     */
+    public void setEmployees(Employee_Model[] employees) {
+        this.employees = employees;
     }
 
     /**
@@ -78,14 +99,19 @@ public class Receipt_Controller {
         taxLabel.setText(String.format("₱ %.2f", transaction.getTax()));
         totalLabel.setText(String.format("₱ %.2f", transaction.getTotal()));
         
-        totalLabel.setText(transaction.getPaymentMethod());
+        paymentMethodLabel.setText(transaction.getPaymentMethod());
         amountReceivedLabel.setText(String.format("₱ %.2f", transaction.getAmountReceived()));
         changeLabel.setText(String.format("₱ %.2f", transaction.getChange()));
 
         if (customer.hasMembership()) {
-            // 1 point per ₱50 spent
+            // show points earned
             int pointsEarned = (int)(transaction.getTotal() / 50);
             pointsEarnedLabel.setText(pointsEarned + " points");
+
+            // show membership card number
+            String cardNumber = customer.getMembershipCard().getCardNumber();
+            membershipCardLabel.setText(cardNumber);
+
             membershipPane.setVisible(true);
         } else {
             membershipPane.setVisible(false);
@@ -104,7 +130,7 @@ public class Receipt_Controller {
             Product_Model product = item.getProduct();
             int quantity = item.getQuantity();
             double price = product.getProductPrice();
-            double itemTotalPrice = price * quantity;
+            double itemTotalPrice = item.calculateItemSubtotal();
 
             HBox itemRow = new HBox(10);
             itemRow.setPadding(new Insets(5, 0, 5, 0));
@@ -136,6 +162,10 @@ public class Receipt_Controller {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/MainMenu_View.fxml"));
             Parent root = loader.load();
+
+            MainMenu_Controller mainMenuController = loader.getController();
+            mainMenuController.setInventory(inventory);
+            mainMenuController.setEmployees(employees);
 
             Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);

@@ -17,60 +17,60 @@
 
 <BorderPane styleClass="light-background" stylesheets="@Design.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="StoreApp.Controllers.Cart_Controller">
     <left>
-        <VBox alignment="TOP_LEFT" prefHeight="299.0" prefWidth="411.0" spacing="10" BorderPane.alignment="TOP_LEFT">
+        <VBox alignment="TOP_LEFT" spacing="15" BorderPane.alignment="TOP_LEFT" VBox.vgrow="ALWAYS">
             <padding>
                 <Insets bottom="20" left="20" right="20" top="20" />
             </padding>
-            <Label text="My Cart" textFill="#006937">
+            <Label text="My Cart" textFill="#006937" maxWidth="Infinity">
                 <font>
-                    <Font name="Helvetica Neue Bold" size="24.0" />
+                    <Font name="Helvetica Neue Bold" size="32.0" />
                 </font>
                 <VBox.margin>
                     <Insets bottom="10" />
                 </VBox.margin>
             </Label>
-            <VBox fx:id="productsBox" spacing="10">
+            <VBox fx:id="productsBox" spacing="10" VBox.vgrow="ALWAYS">
             </VBox>
-         <TableView fx:id="cartTable" prefHeight="200.0" prefWidth="366.0">
+         <TableView fx:id="cartTable" VBox.vgrow="ALWAYS">
            <columns>
-             <TableColumn fx:id="ProductName" prefWidth="87.32689476013184" text="Product Name" />
-             <TableColumn fx:id="qty" prefWidth="124.8717269897461" text="Quantity" />
-               <TableColumn fx:id="total" prefWidth="79.19064331054688" text="Total" />
-               <TableColumn fx:id="Remove" prefWidth="76.809326171875" text="Remove" />
+             <TableColumn fx:id="ProductName" text="Product Name" />
+             <TableColumn fx:id="qty" text="Quantity" />
+               <TableColumn fx:id="total" text="Total" />
+               <TableColumn fx:id="Remove" text="Remove" />
            </columns>
          </TableView>
         </VBox>
     </left>
     <right>
-        <VBox alignment="TOP_RIGHT" spacing="15" styleClass="info-box" BorderPane.alignment="TOP_RIGHT">
+        <VBox alignment="TOP_RIGHT" spacing="15" styleClass="info-box" BorderPane.alignment="TOP_RIGHT" minWidth="280" VBox.vgrow="ALWAYS">
             <padding>
                 <Insets bottom="20" left="20" right="20" top="20" />
             </padding>
             <HBox alignment="CENTER_LEFT" spacing="10">
-                <Label text="Sub Total" />
+                <Label text="Sub Total" style="-fx-font-size: 14;" />
                 <Region HBox.hgrow="ALWAYS" />
-                <Label fx:id="subtotalLabel" text="₱ 0.00" />
+                <Label fx:id="subtotalLabel" text="₱ 0.00" style="-fx-font-size: 14;" />
             </HBox>
             <HBox alignment="CENTER_LEFT" spacing="10">
-                <Label text="VAT 10%" />
+                <Label text="VAT 10%" style="-fx-font-size: 14;" />
                 <Region HBox.hgrow="ALWAYS" />
-                <Label fx:id="vatLabel" text="₱ 0.00" />
+                <Label fx:id="vatLabel" text="₱ 0.00" style="-fx-font-size: 14;" />
             </HBox>
             <Separator prefWidth="200.0" />
             <HBox alignment="CENTER_LEFT" spacing="10">
-                <Label text="Total">
+                <Label text="Total" style="-fx-font-size: 16;">
                     <font>
                         <Font name="System Bold" size="16.0" />
                     </font>
                 </Label>
                 <Region HBox.hgrow="ALWAYS" />
-                <Label fx:id="totalLabel" text="₱ 0.00">
+                <Label fx:id="totalLabel" text="₱ 0.00" style="-fx-font-size: 16;">
                     <font>
                         <Font name="System Bold" size="16.0" />
                     </font>
                 </Label>
             </HBox>
-            <Button onAction="#goToCheckout" prefHeight="25.0" prefWidth="197.0" styleClass="checkoutBtn" text="Checkout">
+            <Button onAction="#goToCheckout" maxWidth="Infinity" minHeight="40" styleClass="checkoutBtn" text="Checkout" style="-fx-font-size: 14;">
                 <VBox.margin>
                     <Insets top="10" />
                 </VBox.margin>
@@ -78,8 +78,8 @@
         </VBox>
     </right>
     <top>
-        <AnchorPane prefHeight="50.0" BorderPane.alignment="CENTER">
-            <Button onAction="#returnToProducts" prefHeight="25.0" prefWidth="64.0" styleClass="primary-btn" text="&lt; Back" AnchorPane.rightAnchor="29.0" AnchorPane.topAnchor="15.0">
+        <AnchorPane minHeight="60" BorderPane.alignment="CENTER">
+            <Button onAction="#returnToProducts" minHeight="40" minWidth="100" styleClass="primary-btn" text="&lt; Back" AnchorPane.rightAnchor="20" AnchorPane.topAnchor="10" style="-fx-font-size: 14;">
                 <graphic>
                     <ImageView fitHeight="15" fitWidth="1.0" pickOnBounds="true" preserveRatio="true">
                         <image>

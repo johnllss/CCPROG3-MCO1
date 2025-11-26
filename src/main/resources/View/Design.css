@@ -96,3 +96,21 @@
 .black-border {
     -fx-border-color: black;
 }
+
+/* Product Status Badges */
+.status-badge {
+    -fx-padding: 2 6 2 6;
+    -fx-background-radius: 3;
+    -fx-font-size: 9px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+.badge-low-stock {
+    -fx-background-color: #f57c00;
+}
+
+.badge-perishable {
+    -fx-background-color: #fbc02d;
+    -fx-text-fill: #333333;
+}
