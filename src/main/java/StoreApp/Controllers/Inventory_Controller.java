@@ -42,11 +42,14 @@ public class Inventory_Controller implements Initializable {
     @FXML private AnchorPane rightPane;
     @FXML private AnchorPane details;
     @FXML private TextField ID_txtbox;
+    @FXML private Button viewExpiredBtn;
+    @FXML private Label expiredProductsLabel;
 
 
     private Inventory_Model inventory;
     private Stage stage;
     private Employee_Model[] employees;
+    private Employee_Model loggedInEmployee;
 
     private String[] categories = {"Food", "Beverage", "Toiletries", "Cleaning Products", "Medications"};
     private String[] filterCategories = {"All","Food", "Beverage", "Toiletries", "Cleaning Products", "Medications"};
@@ -66,7 +69,11 @@ public class Inventory_Controller implements Initializable {
      */
     public void displayEmployeeName(String employee)
     {
-        employeeName.setText(employee);
+        if (loggedInEmployee != null) {
+            employeeName.setText(employee + " (" + loggedInEmployee.getRole() + ")");
+        } else {
+            employeeName.setText(employee);
+        }
     }
 
     /**
@@ -114,45 +121,20 @@ public class Inventory_Controller implements Initializable {
         productTable.refresh();
     }
 
-
-    /**
-     * This method is delegated the task of finding a product by ID in the Inventory.
-     * @param productID is the ID of the product to find.
-     * @return Product_Model if found, null otherwise.
-     */
-    public Product_Model findProduct(int productID)
-    {
-        return inventory.findProduct(productID);
-    }
-
-    /**
-     * This method is delegated the task of finding a product by name and brand in the Inventory.
-     * @param productName is the name of the product to find.
-     * @param productBrand is the brand of the product to find.
-     * @return Product_Model if found, null otherwise.
-     */
-    public Product_Model findProduct(String productName, String productBrand)
-    {
-        return inventory.findProduct(productName, productBrand);
-    }
-
-    /**
-     * This method is delegated the task of adding a product to the Inventory.
-     * @param product is the product to add.
-     * @return boolean for success/failure.
-     */
-
-    public boolean addProduct(Product_Model product)
-    {
-        return inventory.addProduct(product);
-    }
-
     /**
      * This method handles the add product action from the UI.
      * @param event is the action event triggered by the add product button.
      */
     @FXML
     private void addProduct(ActionEvent event) {
+        if (!hasPermission("Manager")) {
+            Alert alert = new Alert(Alert.AlertType.ERROR,
+                "Access Denied: Only Managers can add products",
+                ButtonType.OK);
+            alert.showAndWait();
+            return;
+        }
+
         // For now, just debug
         System.out.println("Add Product button clicked!");
         try{
@@ -191,6 +173,7 @@ public class Inventory_Controller implements Initializable {
                 category_choiceBox.setValue(null);
                 expirationDate_picker.setValue(null);
                 productObservableList.setAll(inventory.getAllProducts());
+                updateExpiredProductsLabel();
             }
             else{
                Alert alert =  new Alert(Alert.AlertType.WARNING, "Product already exists", ButtonType.OK);
@@ -254,6 +237,13 @@ public class Inventory_Controller implements Initializable {
      */
     @FXML
     private void updateProduct(ActionEvent event) {
+        if (!hasPermission("Manager")) {
+            new Alert(Alert.AlertType.ERROR,
+                "Access Denied: Only Managers can update products",
+                ButtonType.OK).showAndWait();
+            return;
+        }
+
         String name = name_txtbox.getText().trim();
         String category = category_choiceBox.getValue();
         String brand = brand_txtbox.getText().trim();
@@ -316,6 +306,13 @@ public class Inventory_Controller implements Initializable {
     @FXML
     private void removeProduct(ActionEvent event)
     {
+        if (!hasPermission("Manager")) {
+            new Alert(Alert.AlertType.ERROR,
+                "Access Denied: Only Managers can remove products",
+                ButtonType.OK).showAndWait();
+            return;
+        }
+
         System.out.println("Delete Product button clicked!");
         Stage popup = new  Stage();
         popup.setTitle("Remove item");
@@ -339,6 +336,7 @@ public class Inventory_Controller implements Initializable {
                         boolean success = inventory.removeProduct(product_ID);
                         if(success){
                             productObservableList.setAll(inventory.getAllProducts());
+                            updateExpiredProductsLabel();
                             Alert alert1 = new Alert(Alert.AlertType.INFORMATION, "Product removed", ButtonType.OK);
                             alert1.showAndWait();
                             popup.close();
@@ -410,99 +408,195 @@ public class Inventory_Controller implements Initializable {
     }
 
     /**
-     * This method is delegated the task of restocking a product in the Inventory.
-     * @param productID is the ID of the product to restock.
-     * @param amount is the amount to add to the product's quantity.
-     * @return boolean for success/failure.
+     * This method displays only expired products in the product table.
+     * @param event is the action event triggered by the button.
      */
-    public boolean restockProduct(int productID, int amount)
-    {
-        return inventory.restockProduct(productID, amount);
+    @FXML
+    private void viewExpiredProducts(ActionEvent event) {
+        details.setVisible(false);
+        ObservableList<Product_Model> allProducts = FXCollections.observableArrayList(productObservableList);
+
+        // show only expired products
+        productTable.setItems(FXCollections.observableArrayList(inventory.getExpiredProducts()));
+
+        // create another returning button below for specifically going back to the default product table
+        Button back = new Button("Back");
+        back.getStyleClass().add("primary-btn");
+
+        // position the button relative to the table
+        back.setLayoutX(10);
+        back.setLayoutY(productTable.getLayoutY() + productTable.getHeight() + 10);
+
+        // when 
+        back.setOnAction(e -> {
+            // restore full product list
+            productTable.setItems(allProducts);
+
+            // remove the back button from the pane
+            rightPane.getChildren().remove(back);
+
+            // show details again
+            details.setVisible(true);
+        });
+
+        // add the back button to the pane
+        if (!rightPane.getChildren().contains(back)) {
+            rightPane.getChildren().add(back);
+        }
     }
 
     /**
-     * This method is delegated the task of removing a product from the Inventory.
-     * @param productID is the ID of the product to remove.
-     * @return boolean for success/failure.
+     * This method applies red font color to all expired products.
      */
-    public boolean removeProduct(int productID)
-    {
-        return inventory.removeProduct(productID);
+    private void colorizeRedFontToExpiredProducts() {
+        // apply to Product ID column
+        productID.setCellFactory(column -> new TableCell<Product_Model, Integer>() {
+            @Override
+            protected void updateItem(Integer item, boolean empty) {
+                super.updateItem(item, empty);
+
+                if (empty || item == null) {
+                    setText(null);
+                    setStyle("");
+                } else {
+                    setText(String.valueOf(item));
+
+                    Product_Model product = getTableView().getItems().get(getIndex());
+                    if (product.isExpired()) {
+                        setStyle("-fx-text-fill: #d32f2f; -fx-font-weight: bold;");
+                    } else {
+                        setStyle("");
+                    }
+                }
+            }
+        });
+
+        // apply to Product Name column
+        productName.setCellFactory(column -> new TableCell<Product_Model, String>() {
+            @Override
+            protected void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty);
+
+                if (empty || item == null) {
+                    setText(null);
+                    setStyle("");
+                } else {
+                    setText(item);
+
+                    Product_Model product = getTableView().getItems().get(getIndex());
+                    if (product.isExpired()) {
+                        setStyle("-fx-text-fill: #d32f2f; -fx-font-weight: bold;");
+                    } else {
+                        setStyle("");
+                    }
+                }
+            }
+        });
+
+        // apply to Brand column
+        productBrand.setCellFactory(column -> new TableCell<Product_Model, String>() {
+            @Override
+            protected void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty);
+
+                if (empty || item == null) {
+                    setText(null);
+                    setStyle("");
+                } else {
+                    setText(item);
+
+                    Product_Model product = getTableView().getItems().get(getIndex());
+                    if (product.isExpired()) {
+                        setStyle("-fx-text-fill: #d32f2f; -fx-font-weight: bold;");
+                    } else {
+                        setStyle("");
+                    }
+                }
+            }
+        });
+
+        // apply to Price column
+        productPrice.setCellFactory(column -> new TableCell<Product_Model, Double>() {
+            @Override
+            protected void updateItem(Double item, boolean empty) {
+                super.updateItem(item, empty);
+
+                if (empty || item == null) {
+                    setText(null);
+                    setStyle("");
+                } else {
+                    setText(String.format("%.2f", item));
+
+                    Product_Model product = getTableView().getItems().get(getIndex());
+                    if (product.isExpired()) {
+                        setStyle("-fx-text-fill: #d32f2f; -fx-font-weight: bold;");
+                    } else {
+                        setStyle("");
+                    }
+                }
+            }
+        });
+
+        // apply to Stock column
+        productStock.setCellFactory(column -> new TableCell<Product_Model, Integer>() {
+            @Override
+            protected void updateItem(Integer item, boolean empty) {
+                super.updateItem(item, empty);
+
+                if (empty || item == null) {
+                    setText(null);
+                    setStyle("");
+                } else {
+                    setText(String.valueOf(item));
+
+                    Product_Model product = getTableView().getItems().get(getIndex());
+                    if (product.isExpired()) {
+                        setStyle("-fx-text-fill: #d32f2f; -fx-font-weight: bold;");
+                    } else {
+                        setStyle("");
+                    }
+                }
+            }
+        });
     }
 
     /**
-     * This method is delegated the task of updating product name.
-     * @param productID is the ID of the product to update.
-     * @param newName is the new name for the product.
-     * @return boolean for success/failure.
+     * This method applies a light red background for all expired products.
      */
-    public boolean updateProductName(int productID, String newName)
-    {
-        return inventory.updateProductName(productID, newName);
+    private void colorizeLightRedBGToExpiredProduccts() {
+        productTable.setRowFactory(tv -> new TableRow<Product_Model>() {
+            @Override
+            protected void updateItem(Product_Model product, boolean empty) {
+                super.updateItem(product, empty);
+
+                if (empty || product == null) {
+                    setStyle("");
+                } else if (product.isExpired()) {
+                    // light red background for expired products
+                    setStyle("-fx-background-color: #ffebee;");
+                } else {
+                    setStyle("");
+                }
+            }
+        });
     }
 
     /**
-     * This method is delegated the task of updating product price.
-     * @param productID is the ID of the product to update.
-     * @param newPrice is the new price for the product.
-     * @return boolean for success/failure.
+     * This method updates the expired products statistics label.
      */
-    public boolean updateProductPrice(int productID, double newPrice)
-    {
-        return inventory.updateProductPrice(productID, newPrice);
-    }
+    private void updateExpiredProductsLabel() {
+        if (inventory != null) {
+            int expiredCount = inventory.getExpiredProducts().size();
 
-    /**
-     * This method is delegated the task of updating product brand.
-     * @param productID is the ID of the product to update.
-     * @param newBrand is the new brand for the product.
-     * @return boolean for success/failure.
-     */
-    public boolean updateProductBrand(int productID, String newBrand)
-    {
-        return inventory.updateProductBrand(productID, newBrand);
-    }
+            if (expiredCount > 0) {
+                expiredProductsLabel.setText(String.format("%d expired product%s", expiredCount, expiredCount == 1 ? "" : "s"));
 
-    /**
-     * This method is delegated the task of updating product variant.
-     * @param productID is the ID of the product to update.
-     * @param newVariant is the new variant for the product.
-     * @return boolean for success/failure.
-     */
-    public boolean updateProductVariant(int productID, String newVariant)
-    {
-        return inventory.updateProductVariant(productID, newVariant);
-    }
-
-    /**
-     * This method is delegated the task of updating product expiration date.
-     * @param productID is the ID of the product to update.
-     * @param newExpirationDate is the new expiration date for the product.
-     * @return boolean for success/failure.
-     */
-    public boolean updateProductExpirationDate(int productID, LocalDate newExpirationDate)
-    {
-        return inventory.updateProductExpirationDate(productID, newExpirationDate);
-    }
-
-    /**
-     * This method is delegated the task of verifying cart stock.
-     * @param cart is the cart to verify.
-     * @return boolean for success/failure.
-     */
-    public boolean verifyCartStock(Cart_Model cart)
-    {
-        return inventory.verifyCartStock(cart);
-    }
-
-    /**
-     * This method is delegated the task of processing cart purchase.
-     * @param cart is the cart to process.
-     * @return boolean for success/failure.
-     */
-    public boolean operateCartPurchase(Cart_Model cart)
-    {
-        return inventory.operateCartPurchase(cart);
+                expiredProductsLabel.setVisible(true);
+            } else {
+                expiredProductsLabel.setText("");
+                expiredProductsLabel.setVisible(false);
+            }
+        }
     }
 
     /**
@@ -536,8 +630,18 @@ public class Inventory_Controller implements Initializable {
         productBrand.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(cellData.getValue().getProductBrand()));
         productPrice.setCellValueFactory(cellData -> new javafx.beans.property.ReadOnlyObjectWrapper<>(cellData.getValue().getProductPrice()));
         productStock.setCellValueFactory(cellData -> new javafx.beans.property.ReadOnlyObjectWrapper<>(cellData.getValue().getProductQuantity()));
+
+        // apply cell factory for red text on expired products
+        colorizeRedFontToExpiredProducts();
+
+        // apply row factory for color-coded rows
+        colorizeLightRedBGToExpiredProduccts();
+
         productTable.setItems(productObservableList);
         productObservableList.setAll(inventory.getAllProducts());
+
+        // update expired products statistics label
+        updateExpiredProductsLabel();
 
     }
 
@@ -547,5 +651,38 @@ public class Inventory_Controller implements Initializable {
      */
     public void setEmployees(Employee_Model[] employees){
         this.employees = employees;
+    }
+
+    /**
+     * This sets the current logged-in employee.
+     * @param employee is the Employee_Model who logged in.
+     */
+    public void setLoggedInEmployee(Employee_Model employee) {
+        this.loggedInEmployee = employee;
+    }
+
+    /**
+     * This method checks if the current logged in employee has permission for an action.
+     * @param requiredRole is the minimum role required ("Manager" or "Restocker").
+     * @return boolean indicating if employee has permission.
+     */
+    private boolean hasPermission(String requiredRole) {
+        if (loggedInEmployee == null) {
+            return false;
+        }
+
+        String role = loggedInEmployee.getRole();
+
+        // managers have all permissions
+        if (role.equalsIgnoreCase("Manager")) {
+            return true;
+        }
+
+        // restockers only have restock permission
+        if (role.equalsIgnoreCase("Restocker") && requiredRole.equalsIgnoreCase("Restocker")) {
+            return true;
+        }
+
+        return false;
     }
 }

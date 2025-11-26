@@ -47,12 +47,4 @@ public class Employee_Model extends User_Model {
     public String getRole() {
         return role;
     }
-
-    /**
-     * This sets Employee's role.
-     * @param role is the role to be assigned.
-     */
-    public void setRole(String role) {
-        this.role = role;
-    }
 }

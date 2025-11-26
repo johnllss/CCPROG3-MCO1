@@ -30,12 +30,8 @@
          <children>
             <TextField fx:id="fullNameText" layoutX="25.0" layoutY="22.0" prefHeight="26.0" prefWidth="192.0" promptText="Full Name" />
             <TextField fx:id="emailText" layoutX="25.0" layoutY="60.0" prefHeight="26.0" prefWidth="191.0" promptText="Email" />
-            <CheckBox fx:id="membershipCheckBox" layoutX="25.0" layoutY="98.0" mnemonicParsing="false" onAction="#toggleMembership" text="Membership" />
-            <ToggleGroup fx:id="membershipTypeGroup" />
-            <RadioButton fx:id="existingMemberRadio" layoutX="120.0" layoutY="98.0" mnemonicParsing="false" onAction="#selectExistingMember" text="Existing" toggleGroup="$membershipTypeGroup" visible="false" />
-            <RadioButton fx:id="newMemberRadio" layoutX="200.0" layoutY="98.0" mnemonicParsing="false" onAction="#selectNewMember" text="New Member" toggleGroup="$membershipTypeGroup" visible="false" />
-            <TextField fx:id="membershipNumberText" layoutX="25.0" layoutY="119.0" prefHeight="26.0" prefWidth="169.0" promptText="Membership Number" />
-            <Button fx:id="registerMemberBtn" layoutX="25.0" layoutY="119.0" mnemonicParsing="false" onAction="#openMembershipRegistration" prefHeight="26.0" prefWidth="169.0" text="Register for Membership" visible="false" />
+            <CheckBox fx:id="membershipCheckBox" layoutX="25.0" layoutY="98.0" mnemonicParsing="false" onAction="#toggleMembership" text="Existing Member" />
+            <CheckBox fx:id="newMemberCheckBox" layoutX="125.0" layoutY="98.0" mnemonicParsing="false" onAction="#toggleNewMember" text="New Member" />
             <CheckBox fx:id="seniorCheckBox" layoutX="25.0" layoutY="150.0" mnemonicParsing="false" onAction="#toggleSenior" text="Senior Citizen" />
             <TextField fx:id="ageText" layoutX="25.0" layoutY="171.0" prefHeight="26.0" prefWidth="60.0" promptText="Age" />
             <Label layoutX="14.0" layoutY="201.0" prefHeight="22.0" prefWidth="68.0" text="PAYMENT">

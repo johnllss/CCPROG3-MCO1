@@ -53,11 +53,17 @@
     -fx-background-color: #005830;
 }
 
-/* PRODUCT CARD styleClass */
+/* PRODUCT CARD styleClasses */
 .product-card {
     -fx-background-color: #ffff;
     -fx-background-radius: 8;
     -fx-border-radius: 8;
+}
+
+.product-image {
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0, 0, 0);
+    -fx-background-color: white;
+    -fx-background-radius: 4;
 }
 
 /* INFO/SUMMARY BOXES styleClass */
@@ -95,4 +101,22 @@
 /* BORDER styleClass */
 .black-border {
     -fx-border-color: black;
+}
+
+/* Product Status Badges */
+.status-badge {
+    -fx-padding: 2 6 2 6;
+    -fx-background-radius: 3;
+    -fx-font-size: 9px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+.badge-low-stock {
+    -fx-background-color: #f57c00;
+}
+
+.badge-perishable {
+    -fx-background-color: #fbc02d;
+    -fx-text-fill: #333333;
 }

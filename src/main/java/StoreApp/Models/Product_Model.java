@@ -74,11 +74,17 @@ public class Product_Model {
     /**
      * This method updates the stock of this Product.
      * @param restockQuantity is the amount of stock to update the stock of this Product.
-     *
+     * @return boolean for success/failure.
      */
-    public void updateStock(int restockQuantity)
+    public boolean updateStock(int restockQuantity)
     {
+        if (restockQuantity < 0)
+        {
+            return false;
+        }
+
         this.productQuantity = productQuantity + restockQuantity;
+        return true;
     }
 
     /**
@@ -136,22 +142,6 @@ public class Product_Model {
      */
     public int getProductID() {
         return productID;
-    }
-
-    /**
-     * This method sets the product's productID.
-     * @param productID is the new productID.
-     */
-    public void setProductID(int productID) {
-        this.productID = productID;
-    }
-
-    /**
-     * This methods returns the product ID of the Product_Model
-     * @return int is the ID number of the Product_Model.
-     */
-    public int getProductIDCounter() {
-        return productIDCounter;
     }
 
     /**

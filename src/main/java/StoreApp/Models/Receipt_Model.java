@@ -45,26 +45,10 @@ public class Receipt_Model {
     }
 
     /**
-     * This method sets the current receipt's transaction details to a new given transaction details.
-     * @param transaction is the new given transaction details
-     */
-    public void setTransaction(Transaction_Model transaction) {
-        this.transaction = transaction;
-    }
-
-    /**
      * This method returns the receipt number of the receipt.
      * @return String is the receipt number.
      */
     public String getReceiptNumber() {
         return receiptNumber;
-    }
-
-    /**
-     * This method sets the receipt number of the receipt to a new given receipt number.
-     * @param receiptNumber is the new receipt number.
-     */
-    public void setReceiptNumber(String receiptNumber) {
-        this.receiptNumber = receiptNumber;
     }
 }

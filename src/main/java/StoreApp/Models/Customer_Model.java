@@ -45,14 +45,6 @@ public class Customer_Model extends User_Model {
     }
 
     /**
-     * This is a getter method to get Customer's age.
-     * @return int for age.
-     */
-    public int getAge() {
-        return age;
-    }
-
-    /**
      * This is a getter method to get Customer's membership card.
      * @return MembershipCard_Model for membershipCard.
      */
@@ -66,14 +58,6 @@ public class Customer_Model extends User_Model {
      */
     public Cart_Model getCart() {
         return cart;
-    }
-
-    /**
-     * This sets Customer's age.
-     * @param age is the age provided by the customer.
-     */
-    public void setAge(int age) {
-        this.age = age;
     }
 
     /**

@@ -71,39 +71,64 @@ public class Main extends Application {
 
         // INITIALIZATION OF INVENTORY'S PRODUCTS
         // Food
-        inventory.addProduct(new Product_Model("Sandwich", 30.0, 10, "Food", "Subway", "Cheese", LocalDate.parse("2025-10-27"), "/redbull.png"));
-        inventory.addProduct(new Product_Model("Pastries", 45.0, 10, "Food", "Subway", "Cheese", LocalDate.parse("2025-10-26"), "/redbull.png"));
-        inventory.addProduct(new Product_Model("Fried Chicken", 50.0, 10, "Food", "Subway", "Cheese", LocalDate.parse("2026-01-15"), "/redbull.png"));
-        inventory.addProduct(new Product_Model("Sushi", 120.0, 10, "Food", "Makimura Ramen Bar", "Raw", LocalDate.parse("2027-03-10"), "/redbull.png"));
-        inventory.addProduct(new Product_Model("Yogurt", 215.0, 10, "Food", "Chobani", "Vanilla", LocalDate.parse("2025-10-27"), "/redbull.png"));
+        inventory.addProduct(new Product_Model("Sandwich", 30.0, 10, "Food", "Subway", "Egg and Cheese Ciabatta Breakfast Sandwich", LocalDate.parse("2027-10-27"), "/images/sandwich.jpg"));
+        inventory.addProduct(new Product_Model("Pastries", 45.0, 10, "Food", "Starbucks", "Ham & Cheese Croissant", LocalDate.parse("2028-10-26"), "/images/pastries.jpg"));
+        inventory.addProduct(new Product_Model("Chicken Nuggets", 50.0, 10, "Food", "Tyson", "Frozen", LocalDate.parse("2026-01-15"), "/images/chickennuggets.jpg"));
+        inventory.addProduct(new Product_Model("Sushi", 120.0, 10, "Food", "Maki Mono", "8s", LocalDate.parse("2027-03-10"), "/images/sushi.jpg"));
+        inventory.addProduct(new Product_Model("Yogurt", 215.0, 10, "Food", "Chobani", "Greek Yogurt Blueberry", LocalDate.parse("2023-10-27"), "/images/yogurt.jpg"));
+        inventory.addProduct(new Product_Model("Pancit Canton", 15.0, 10, "Food", "Lucky Me!", "Kalamansi", LocalDate.parse("2026-08-20"), "/images/pancitcanton.jpg"));
+        inventory.addProduct(new Product_Model("Cup Noodles", 12.0, 10, "Food", "Nissin", "Very Veggie Chicken Flavor", LocalDate.parse("2026-11-15"), "/images/cupnoodles.jpg"));
+        inventory.addProduct(new Product_Model("Pan de Sal", 25.0, 10, "Food", "Gardenia", "Classic", LocalDate.parse("2025-12-05"), "/images/pandesal.jpg"));
+        inventory.addProduct(new Product_Model("Tuyo", 85.0, 10, "Food", "Ligo", "Spanish Style", LocalDate.parse("2027-04-12"), "/images/tuyo.jpg"));
+        inventory.addProduct(new Product_Model("Corned Beef", 65.0, 10, "Food", "Purefoods", "Original", LocalDate.parse("2026-09-30"), "/images/cornedbeef.jpg"));
 
         // Beverages
-        inventory.addProduct(new Product_Model("Dairy", 100.0, 10, "Beverages", "Selecta", "Milk", LocalDate.parse("2025-11-30"), "/redbull.png"));
-        inventory.addProduct(new Product_Model("Coffee", 220.0, 10, "Beverages", "Starbucks", "Iced", LocalDate.parse("2025-02-02"), "/redbull.png"));
-        inventory.addProduct(new Product_Model("Tea", 115.0, 10, "Beverages", "Honest Tea", "Green Tea", LocalDate.parse("2026-02-14"), "/redbull.png"));
-        inventory.addProduct(new Product_Model("Energy Drink", 159.0, 10, "Beverages", "Red Bull", "The Summer Edition", LocalDate.parse("2027-10-11"), "/redbull.png"));
-        inventory.addProduct(new Product_Model("Beer", 90.0, 10, "Beverages", "Stella Artois", "Stella 0.0", LocalDate.parse("2028-08-15"), "/redbull.png"));
+        inventory.addProduct(new Product_Model("Dairy", 100.0, 10, "Beverages", "Selecta", "Milk", LocalDate.parse("2024-11-30"), "/images/dairy.jpg"));
+        inventory.addProduct(new Product_Model("Coffee", 220.0, 10, "Beverages", "Starbucks", "Iced", LocalDate.parse("2025-02-02"), "/images/coffee.jpg"));
+        inventory.addProduct(new Product_Model("Tea", 115.0, 10, "Beverages", "Honest Tea", "Green Tea", LocalDate.parse("2026-02-14"), "/images/tea.png"));
+        inventory.addProduct(new Product_Model("Energy Drink", 159.0, 10, "Beverages", "Red Bull", "The Summer Edition", LocalDate.parse("2027-10-11"), "/images/redbull.png"));
+        inventory.addProduct(new Product_Model("Beer", 90.0, 10, "Beverages", "Stella Artois", "Stella 0.0", LocalDate.parse("2028-08-15"), "/images/beer.png"));
+        inventory.addProduct(new Product_Model("Calamansi Juice", 35.0, 10, "Beverages", "Zest-O", "Dalandan", LocalDate.parse("2026-06-18"), "/images/calamansi.jpg"));
+        inventory.addProduct(new Product_Model("Soda", 45.0, 10, "Beverages", "Fanta", "330ml", LocalDate.parse("2025-12-25"), "/images/soda.jpg"));
+        inventory.addProduct(new Product_Model("Iced Tea", 28.0, 10, "Beverages", "Nestea", "Lemon", LocalDate.parse("2026-03-08"), "/images/icedtea.jpg"));
+        inventory.addProduct(new Product_Model("Chocolate Drink", 55.0, 10, "Beverages", "Milo", "Ready to Drink", LocalDate.parse("2025-11-30"), "/images/chocolatedrink.jpg"));
+        inventory.addProduct(new Product_Model("Coconut Water", 40.0, 10, "Beverages", "C2O", "Cool & Clean", LocalDate.parse("2026-07-22"), "/images/coconutwater.jpg"));
 
         // Toiletries
-        inventory.addProduct(new Product_Model("Soap", 50.0, 1, "Toiletries", "Safeguard", "Pink", null, "/redbull.png"));
-        inventory.addProduct(new Product_Model("Shampoo", 99.0, 10, "Toiletries", "Head & Shoulders", "Classic Clean", null, "/redbull.png"));
-        inventory.addProduct(new Product_Model("Airy Matte Tint", 30.0, 10, "Toiletries", "BLK Cosmetics", "Dearest Rose Pink", null, "/redbull.png"));
-        inventory.addProduct(new Product_Model("Toothbrush", 135.0, 10, "Toiletries", "Oral-B", "Electric Toothbrush", null, "/redbull.png"));
-        inventory.addProduct(new Product_Model("Deodorant", 199.0, 10, "Toiletries", "Old Spice", "Wolfthorne", null, "/redbull.png"));
+        inventory.addProduct(new Product_Model("Soap", 50.0, 1, "Toiletries", "Safeguard", "Pink", null, "/images/soap.jpg"));
+        inventory.addProduct(new Product_Model("Shampoo", 99.0, 10, "Toiletries", "Head & Shoulders", "Cool Menthol", null, "/images/shampoo.jpg"));
+        inventory.addProduct(new Product_Model("Airy Matte Tint", 30.0, 10, "Toiletries", "BLK Cosmetics", "Dearest Rose Pink", null, "/images/airymattetint.jpg"));
+        inventory.addProduct(new Product_Model("Toothbrush", 135.0, 10, "Toiletries", "Oral-B", "Electric Toothbrush", null, "/images/toothbrush.jpg"));
+        inventory.addProduct(new Product_Model("Deodorant", 199.0, 10, "Toiletries", "Old Spice", "Wolfthorne", null, "/images/deodorant.jpg"));
+        inventory.addProduct(new Product_Model("Toothpaste", 75.0, 10, "Toiletries", "Colgate", "Total Clean", null, "/images/toothpaste.jpg"));
+        inventory.addProduct(new Product_Model("Conditioner", 120.0, 10, "Toiletries", "Palmolive", "Naturals Aloe Vera", null, "/images/conditioner.png"));
+        inventory.addProduct(new Product_Model("Facial Wash", 95.0, 10, "Toiletries", "Cetaphil", "Gentle Skin Cleanser", null, "/images/facialwash.jpg"));
+        inventory.addProduct(new Product_Model("Baby Powder", 68.0, 10, "Toiletries", "Johnson's", "Classic", null, "/images/babypowder.jpeg"));
+        inventory.addProduct(new Product_Model("Petroleum Jelly", 45.0, 10, "Toiletries", "Vaseline", "Original", null, "/images/petroleumjelly.png"));
 
         // Cleaning Products
-        inventory.addProduct(new Product_Model("Detergent", 55.0, 3, "Cleaning Products", "Tide", "Powder", LocalDate.parse("2027-01-02"), "/redbull.png"));
-        inventory.addProduct(new Product_Model("Tissue", 69.0, 10, "Cleaning Products", "Femme", "Interfolded Paper Towel", LocalDate.parse("2027-03-25"), "/redbull.png"));
-        inventory.addProduct(new Product_Model("Hand Sanitizer", 95.0, 10, "Cleaning Products", "Purell", "Bottled", LocalDate.parse("2029-09-23"), "/redbull.png"));
-        inventory.addProduct(new Product_Model("Degreaser", 215.0, 10, "Cleaning Products", "Lysol", "Multi-Purpose", LocalDate.parse("2028-11-11"), "/redbull.png"));
-        inventory.addProduct(new Product_Model("Bleach", 150.0, 10, "Cleaning Products", "Zonrox", "Original", LocalDate.parse("2023-11-05"), "/redbull.png"));
+        inventory.addProduct(new Product_Model("Detergent", 55.0, 3, "Cleaning Products", "Tide", "Original Fresh", LocalDate.parse("2027-01-02"), "/images/detergent.jpg"));
+        inventory.addProduct(new Product_Model("Tissue", 69.0, 10, "Cleaning Products", "Femme", "Interfolded Paper Towel", LocalDate.parse("2027-03-25"), "/images/tissue.png"));
+        inventory.addProduct(new Product_Model("Hand Sanitizer", 95.0, 10, "Cleaning Products", "Purell", "Bottled", LocalDate.parse("2029-09-23"), "/images/handsanitizer.jpg"));
+        inventory.addProduct(new Product_Model("Degreaser", 215.0, 10, "Cleaning Products", "Lysol", "Multi-Purpose", LocalDate.parse("2028-11-11"), "/images/degreaser.jpg"));
+        inventory.addProduct(new Product_Model("Bleach", 150.0, 10, "Cleaning Products", "Zonrox", "Original", LocalDate.parse("2023-11-05"), "/images/bleach.jpg"));
+        inventory.addProduct(new Product_Model("Dishwashing Liquid", 42.0, 10, "Cleaning Products", "Joy", "Lemon", LocalDate.parse("2027-05-10"), "/images/dishwashingliquid.jpg"));
+        inventory.addProduct(new Product_Model("Fabric Conditioner", 85.0, 10, "Cleaning Products", "Downy", "Sunrise Fresh", LocalDate.parse("2026-12-20"), "/images/fabricconditioner.jpg"));
+        inventory.addProduct(new Product_Model("Floor Wax", 180.0, 10, "Cleaning Products", "Johnson", "Paste Wax", LocalDate.parse("2028-02-14"), "/images/floorwax.jpg"));
+        inventory.addProduct(new Product_Model("Glass Cleaner", 110.0, 10, "Cleaning Products", "Windex", "Original", LocalDate.parse("2027-08-05"), "/images/glasscleaner.jpg"));
+        inventory.addProduct(new Product_Model("Air Freshener", 125.0, 10, "Cleaning Products", "Glade", "Lavender", LocalDate.parse("2026-10-18"), "/images/airfreshener.png"));
 
         // Medications
-        inventory.addProduct(new Product_Model("Adhesive Bandage", 25.0, 10, "Medications", "Band-Aid", "Waterproof", LocalDate.parse("2026-05-17"), "/redbull.png"));
-        inventory.addProduct(new Product_Model("Antibiotic", 30.0, 10, "Medications", "Amoxil", "Amoxicillin", LocalDate.parse("2026-01-23"), "/redbull.png"));
-        inventory.addProduct(new Product_Model("Antihistamine", 80.0, 10, "Medications", "Claritin", "Standard Tablet", null, "/redbull.png"));
-        inventory.addProduct(new Product_Model("Anesthetics", 125.0, 10, "Medications", "Diprivan", "Propofol", null, "/redbull.png"));
-        inventory.addProduct(new Product_Model("Paracetamol", 55.0, 10, "Medications", "Biogesic", "500mg", LocalDate.parse("2028-08-15"), "/redbull.png"));
+        inventory.addProduct(new Product_Model("Adhesive Bandage", 25.0, 10, "Medications", "Band-Aid", "Waterproof", LocalDate.parse("2026-05-17"), "/images/adhesivebandage.jpg"));
+        inventory.addProduct(new Product_Model("Antibiotic", 30.0, 10, "Medications", "Amoxil", "Amoxicillin", LocalDate.parse("2026-01-23"), "/images/antibiotic.jpg"));
+        inventory.addProduct(new Product_Model("Antihistamine", 80.0, 10, "Medications", "Claritin", "Standard Tablet", null, "/images/antihistamine.png"));
+        inventory.addProduct(new Product_Model("Anesthetics", 125.0, 10, "Medications", "Diprivan", "Propofol", null, "/images/anesthetics.jpg"));
+        inventory.addProduct(new Product_Model("Paracetamol", 55.0, 10, "Medications", "Biogesic", "500mg", LocalDate.parse("2028-08-15"), "/images/paracetamol.png"));
+        inventory.addProduct(new Product_Model("Cough Syrup", 95.0, 10, "Medications", "Robitussin", "Multi-Symptom", LocalDate.parse("2027-02-28"), "/images/coughsyrup.jpg"));
+        inventory.addProduct(new Product_Model("Antacid", 48.0, 10, "Medications", "Kremil-S", "Original", LocalDate.parse("2026-09-12"), "/images/antacid.jpg"));
+        inventory.addProduct(new Product_Model( "Vitamin C", 150.0, 10, "Medications", "Enervon-C", "500mg", LocalDate.parse("2028-03-20"), "/images/vitamincc.jpg"));
+        inventory.addProduct(new Product_Model("Pain Reliever", 65.0, 10, "Medications", "Alaxan", "FR", LocalDate.parse("2027-11-08"), "/images/painreliever.png"));
+        inventory.addProduct(new Product_Model("Antiseptic", 88.0, 10, "Medications", "Betadine", "Solution", LocalDate.parse("2029-01-15"), "/images/antiseptic.png"));
 
         // debugger
         System.out.println("Inventory is successfully initialized.");

@@ -2,9 +2,9 @@ package StoreApp.Controllers;
 
 import StoreApp.Models.Cart_Model;
 import StoreApp.Models.Customer_Model;
+import StoreApp.Models.Employee_Model;
 import StoreApp.Models.Inventory_Model;
 import StoreApp.Models.Item_Model;
-import StoreApp.Models.Product_Model;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -25,10 +25,12 @@ public class Cart_Controller {
     @FXML private TableColumn<Item_Model, Integer> qty;
     @FXML private TableColumn<Item_Model, String> ProductName;
     @FXML private TableColumn<Item_Model, String> total;
+    @FXML private TableColumn<Item_Model, Void> Remove;
 
     private Customer_Model customer;
     private Cart_Model cart;
     private Inventory_Model inventory;
+    private Employee_Model[] employees;
 
     /**
      * This sets the inventory for the controller.
@@ -52,6 +54,14 @@ public class Cart_Controller {
     }
 
     /**
+     * This sets the employees array for the controller.
+     * @param employees is the array of Employee_Model to be set.
+     */
+    public void setEmployees(Employee_Model[] employees) {
+        this.employees = employees;
+    }
+
+    /**
      * This method updates the product table display with cart items.
      */
     private void updateProductTableDisplay() {
@@ -67,7 +77,7 @@ public class Cart_Controller {
 
         total.setCellValueFactory(cellData ->
                 new javafx.beans.property.SimpleStringProperty(
-                        String.format("₱ %.2f", cellData.getValue().getProduct().getProductPrice() * cellData.getValue().getQuantity())
+                        String.format("₱ %.2f", cellData.getValue().calculateItemSubtotal())
                 )
         );
         qty.setCellValueFactory(cellData ->
@@ -114,7 +124,40 @@ public class Cart_Controller {
             }
         });
 
+        Remove.setCellFactory(column -> new TableCell<Item_Model, Void>() {
+            private Button removeBtn = new Button("Remove");
 
+            {
+                removeBtn.getStyleClass().add("danger-btn");
+                removeBtn.setStyle("-fx-min-width: 70;");
+
+                removeBtn.setOnAction(event -> {
+                    Item_Model item = getTableView().getItems().get(getIndex());
+                    removeItemFromCart(item);
+                });
+            }
+
+            @Override
+            protected void updateItem(Void item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty) {
+                    setGraphic(null);
+                } else {
+                    setGraphic(removeBtn);
+                }
+            }
+        });
+
+    }
+
+    /**
+     * This method removes an item completely from the cart.
+     * @param item is the item to remove from the cart.
+     */
+    private void removeItemFromCart(Item_Model item) {
+        cart.removeItem(item.getProduct().getProductID());
+        cartTable.refresh();
+        updateAllTotals();
     }
 
     /**
@@ -183,10 +226,12 @@ public class Cart_Controller {
 
             Transaction_Controller transactionController = loader.getController();
             transactionController.setData(customer, inventory);
+            transactionController.setEmployees(employees);
 
             Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
             stage.setScene(scene);
+            stage.setMaximized(true);
             stage.show();
         } catch (Exception e) {
             e.printStackTrace();
@@ -206,8 +251,8 @@ public class Cart_Controller {
 
             // state management so the next scene knows which customer is shopping and what the inventory's state is
             Shopping_Controller shoppingController = loader.getController();
-            shoppingController.setInventory(inventory);
             shoppingController.setCustomer(customer);
+            shoppingController.setInventory(inventory);
 
             Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
@@ -216,43 +261,5 @@ public class Cart_Controller {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    /**
-     * This method is delegated the task of adding an item to the cart model.
-     * @param product is the product that is to be added to the cart.
-     * @param quantity is the number of products desired to be added to cart.
-     * @return boolean to signify success/failure.
-     */
-    public boolean addItem(Product_Model product, int quantity) {
-        return customer.getCart().addItem(product, quantity);
-    }
-
-    /**
-     * This method is delegated the task of removing an item to the cart model.
-     * @param productID is the ID of the product being removed.
-     * @return boolean indicating success/failure of search.
-     */
-    public boolean removeItem(int productID) {
-        return cart.removeItem(productID);
-    }
-
-    /**
-     * This method is delegated the task of finding an item in the cart.
-     * @param productID is the id of the product that needs to be found.
-     * @return Item_Model that is searched.
-     */
-    public Item_Model findItem(int productID) {
-        return cart.findItem(productID);
-    }
-
-    /**
-     * This method is delegated the task of updating quantity of the item in the cart.
-     * @param product id of the product that needs to be updated.
-     * @param amount quantity of the product.
-     * @return boolean, shows success or failure of the process.
-     */
-    public boolean updateQuantity(Product_Model product, int amount) {
-        return cart.updateQuantity(product, amount);
     }
 }

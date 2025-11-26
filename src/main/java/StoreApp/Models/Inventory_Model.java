@@ -127,29 +127,6 @@ public class Inventory_Model {
     }
 
     /**
-     * This method finds a product by its name and brand across all shelves.
-     * @param productName is the name of the product to find.
-     * @param productBrand is the brand of the product to find.
-     * @return Product_Model if found, null otherwise.
-     */
-    public Product_Model findProduct(String productName, String productBrand)
-    {
-        for (Shelf_Model shelf: shelves)
-        {
-            for (Product_Model product: shelf.getProductsOnShelf())
-            {
-                if (product.getProductName().equalsIgnoreCase(productName) &&
-                    product.getProductBrand().equalsIgnoreCase(productBrand))
-                {
-                    return product;
-                }
-            }
-        }
-
-        return null;
-    }
-
-    /**
      * This method adds a product to the appropriate shelf based on its category.
      * @param product is the product to add.
      * @return boolean for success/failure.
@@ -190,8 +167,7 @@ public class Inventory_Model {
 
         if (product != null)
         {
-            product.setProductQuantity(product.getProductQuantity() + amount);
-            return true;
+            return product.updateStock(amount);
         }
 
         return false;
@@ -372,14 +348,10 @@ public class Inventory_Model {
                 return false;
             }
 
-            int newQuantity = itemInInventory.getProductQuantity() - item.getQuantity();
-
-            if (newQuantity < 0)
+            if (!itemInInventory.reduceStock(item.getQuantity()))
             {
                 return false;
             }
-
-            itemInInventory.setProductQuantity(newQuantity);
         }
 
         return true;

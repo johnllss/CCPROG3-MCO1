@@ -34,7 +34,7 @@
                   <Insets top="10.0" />
                </VBox.margin>
                <font>
-                  <Font size="34.0" />
+                  <Font size="28.0" />
                </font>
             </Label>
             <Button fx:id="addBtn" alignment="TOP_CENTER" mnemonicParsing="false" onAction="#addProduct" prefHeight="26.0" prefWidth="107.0" styleClass="primary-btn" text="Add Product" textFill="WHITE">
@@ -77,6 +77,14 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
+            <Button fx:id="viewExpiredBtn" layoutX="49.0" layoutY="310.0" mnemonicParsing="false" onAction="#viewExpiredProducts" styleClass="primary-btn" text="View Expired Products" textFill="WHITE">
+               <VBox.margin>
+                  <Insets top="15.0" />
+               </VBox.margin>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
          </children>
       </VBox>
       <AnchorPane fx:id="rightPane" layoutX="159.0" layoutY="-1.0" prefHeight="406.0" prefWidth="440.0">
@@ -95,6 +103,11 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ComboBox>
+            <Label fx:id="expiredProductsLabel" layoutX="250.0" layoutY="85.0" text="" textFill="#d32f2f">
+               <font>
+                  <javafx.scene.text.Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
             <AnchorPane fx:id="details" layoutX="9.0" layoutY="273.0" prefHeight="121.0" prefWidth="406.0">
                <children>
                   <TextField fx:id="name_txtbox" layoutX="47.0" layoutY="5.0" prefHeight="7.0" prefWidth="84.0" />

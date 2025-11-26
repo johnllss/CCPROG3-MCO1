@@ -171,27 +171,11 @@ public class Transaction_Model {
     }
 
     /**
-     * This method sets the Transaction's cart to a given cart.
-     * @param cart is the new given cart that will be assigned to this Transaction's cart.
-     */
-    public void setCart(Cart_Model cart) {
-        this.cart = cart;
-    }
-
-    /**
      * This is a getter method to get Transaction's associated Customer.
      * @return Customer that did the transaction
      */
     public Customer_Model getCustomer() {
         return customer;
-    }
-
-    /**
-     * This method sets the Transaction's customer to a given customer.
-     * @param customer is the new given customer that will be assigned to this Transaction's customer.
-     */
-    public void setCustomer(Customer_Model customer) {
-        this.customer = customer;
     }
 
     /**
@@ -203,27 +187,11 @@ public class Transaction_Model {
     }
 
     /**
-     * This method sets the Transaction's subtotal to a new given subtotal.
-     * @param discount is the new passed subtotal that will be assigned to this Transaction's subtotal.
-     */
-    public void setSubtotal(double subtotal) {
-        this.subtotal = subtotal;
-    }
-
-    /**
      * This is a getter method to get Transaction's discount.
      * @return double for discount.
      */
     public double getDiscount() {
         return discount;
-    }
-
-    /**
-     * This method sets the Transaction's discount to a new given discount.
-     * @param discount is the passed-in new discount that will be assigned to this Transaction's discount.
-     */
-    public void setDiscount(double discount) {
-        this.discount = discount;
     }
 
     /**
@@ -235,27 +203,11 @@ public class Transaction_Model {
     }
 
     /**
-     * This method sets the Transaction's tax to a new given tax.
-     * @param tax is the passed-in new tax that will be assigned to this Transaction's tax.
-     */
-    public void setTax(double tax) {
-        this.tax = tax;
-    }
-
-    /**
      * This is a getter method to get Transaction's total.
      * @return double for total.
      */
     public double getTotal() {
         return total;
-    }
-
-    /**
-     * This method sets the Transaction's total to a new given total.
-     * @param total is the passed-in new total that will be assigned to this Transaction's total.
-     */
-    public void setTotal(double total) {
-        this.total = total;
     }
 
     /**
@@ -281,14 +233,6 @@ public class Transaction_Model {
      */
     public double getChange() {
         return change;
-    }
-    
-    /**
-     * This method sets the Transaction's change to a new given change.
-     * @param change is the passed-in new change that will be assigned to this Transaction's change.
-     */
-    public void setChange(double change) {
-        this.change = change;
     }
     
     /**

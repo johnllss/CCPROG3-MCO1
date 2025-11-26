@@ -4,27 +4,49 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox id="product-card" fx:id="cardRoot" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="130" prefWidth="140.0" styleClass="product-card" stylesheets="@Design.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="StoreApp.Controllers.Product_Controller">
+<VBox id="product-card" fx:id="cardRoot" maxHeight="270.0" maxWidth="270.0" prefHeight="200.0" prefWidth="300.0" styleClass="product-card" stylesheets="@Design.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="StoreApp.Controllers.Product_Controller">
    <children>
-      <AnchorPane prefHeight="80.0" prefWidth="140.0">
+      <AnchorPane minHeight="110" prefHeight="155.0" prefWidth="289.0" VBox.vgrow="ALWAYS">
          <children>
-            <ImageView fx:id="productImage" fitHeight="60.0" fitWidth="80.0" layoutX="34.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true" />
-            <AnchorPane layoutY="57.0" prefHeight="74.0" prefWidth="147.0">
+            <HBox fx:id="badgeContainer" layoutX="4.0" layoutY="2.0" spacing="6.0" />
+            <ImageView fx:id="productImage" fitHeight="117.0" fitWidth="165.0" layoutX="53.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true" styleClass="product-image" AnchorPane.topAnchor="30.0" />
+            <AnchorPane layoutY="100.0" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" VBox.vgrow="ALWAYS">
                <children>
-                  <Label fx:id="productName" layoutX="4.0" layoutY="28.0" text="ProductName" />
-                  <Label fx:id="productPrice" layoutX="4.0" layoutY="49.0" stylesheets="@Design.css" text="ProductPrice" />
-                  <AnchorPane fx:id="buttonPane" layoutX="56.0" layoutY="30.0" prefHeight="26.0" prefWidth="32.0">
+                  <VBox spacing="5" AnchorPane.leftAnchor="4" AnchorPane.topAnchor="5">
                      <children>
-                        <Button fx:id="addToCartBtn" layoutX="36.0" layoutY="8.0" mnemonicParsing="false" onAction="#onAddToCartBtnClicked" prefHeight="26.0" prefWidth="29.0" styleClass="circular-btn" stylesheets="@Design.css" text="+" textFill="WHITE">
+                        <Label fx:id="productName" maxWidth="150" style="-fx-font-size: 12;" text="ProductName" wrapText="true" />
+                        <Label fx:id="productPrice" style="-fx-font-size: 13; -fx-font-weight: bold;" stylesheets="@Design.css" text="ProductPrice" />
+                     </children>
+                  </VBox>
+                  <HBox fx:id="quantityControls" managed="false" spacing="5" visible="false" AnchorPane.bottomAnchor="5" AnchorPane.rightAnchor="5">
+                     <children>
+                        <Button fx:id="decrementBtn" minHeight="25" minWidth="25" mnemonicParsing="false" style="-fx-font-size: 12;" styleClass="circular-btn" stylesheets="@Design.css" text="-" textFill="WHITE">
                            <font>
-                              <Font name="Helvetica Neue Bold" size="13.0" />
+                              <Font name="Helvetica Neue Bold" size="12.0" />
+                           </font>
+                        </Button>
+                        <Label fx:id="quantityLabel" minWidth="20" style="-fx-font-size: 11; -fx-alignment: center;" text="0" />
+                        <Button fx:id="incrementBtn" minHeight="25" minWidth="25" mnemonicParsing="false" style="-fx-font-size: 12;" styleClass="circular-btn" stylesheets="@Design.css" text="+" textFill="WHITE">
+                           <font>
+                              <Font name="Helvetica Neue Bold" size="12.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="addToCartBtn" minHeight="30" minWidth="30" mnemonicParsing="false" onAction="#onAddToCartBtnClicked" styleClass="circular-btn" stylesheets="@Design.css" text="✓" textFill="WHITE">
+                           <font>
+                              <Font name="Helvetica Neue Bold" size="14.0" />
                            </font>
                         </Button>
                      </children>
-                  </AnchorPane>
+                  </HBox>
+                  <Button fx:id="initialAddBtn" minHeight="35" minWidth="35" mnemonicParsing="false" styleClass="circular-btn" stylesheets="@Design.css" text="+" textFill="WHITE" AnchorPane.bottomAnchor="5" AnchorPane.rightAnchor="5">
+                     <font>
+                        <Font name="Helvetica Neue Bold" size="16.0" />
+                     </font>
+                  </Button>
                </children>
             </AnchorPane>
          </children>
