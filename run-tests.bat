@@ -21,7 +21,7 @@ if not exist "%BIN_MAIN%" mkdir "%BIN_MAIN%"
 if not exist "%BIN_TEST%" mkdir "%BIN_TEST%"
 
 echo Step 1: Compiling main source files...
-javac -cp "%LIB%\*" -d "%BIN_MAIN%" "%SRC_MAIN%\StoreApp\Models\*.java" "%SRC_MAIN%\StoreApp\Controllers\*.java"
+javac -cp "%LIB%\*" -d "%BIN_MAIN%" %SRC_MAIN%\StoreApp\Models\*.java %SRC_MAIN%\StoreApp\Controllers\*.java %SRC_MAIN%\StoreApp\*.java
 if %ERRORLEVEL% NEQ 0 (
     echo ERROR: Failed to compile main source files
     pause
@@ -31,7 +31,7 @@ echo Main source compiled successfully!
 echo.
 
 echo Step 2: Compiling test files...
-javac -cp "%LIB%\*;%BIN_MAIN%" -d "%BIN_TEST%" "%SRC_TEST%\StoreApp\Models\*Test.java" "%SRC_TEST%\StoreApp\Models\*.java" "%SRC_TEST%\StoreApp\Controllers\*Test.java" "%SRC_TEST%\StoreApp\*.java"
+javac -cp "%LIB%\*;%BIN_MAIN%" -d "%BIN_TEST%" %SRC_TEST%\StoreApp\Models\*Test.java %SRC_TEST%\StoreApp\Models\*.java %SRC_TEST%\StoreApp\Controllers\*Test.java %SRC_TEST%\StoreApp\*.java
 if %ERRORLEVEL% NEQ 0 (
     echo ERROR: Failed to compile test files
     pause
@@ -43,7 +43,7 @@ echo.
 echo Step 3: Running tests...
 echo.
 java -jar "%LIB%\junit-platform-console-standalone-1.10.0.jar" ^
-    --class-path "%BIN_MAIN%;%BIN_TEST%;%LIB%\*" ^
+    --class-path "%BIN_MAIN%;%BIN_TEST%;%LIB%\javafx.base.jar;%LIB%\javafx.controls.jar;%LIB%\javafx.fxml.jar;%LIB%\javafx.graphics.jar;%LIB%\javafx.media.jar;%LIB%\javafx.swing.jar;%LIB%\javafx.web.jar;%LIB%\javafx-swt.jar;%LIB%\jdk.jsobject.jar;%LIB%\jfx.incubator.input.jar;%LIB%\jfx.incubator.richtext.jar" ^
     --scan-class-path ^
     --reports-dir="%PROJECT_ROOT%test-reports"
 
