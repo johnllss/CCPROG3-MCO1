@@ -21,7 +21,7 @@ public class Employee_Model extends User_Model {
     public Employee_Model(String name, String email, String password, String role)
     {
         super(name, email, password);
-        this.role = "N/A";
+        this.role = role;
     }
 
     /**
