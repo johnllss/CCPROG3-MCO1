@@ -258,6 +258,45 @@ public class Inventory_Model {
     }
 
     /**
+     * This method updates a product's category.
+     * @param productID is the ID of the product to update.
+     * @param newCategory is the new category for the product.
+     * @return boolean for success/failure.
+     */
+    public boolean updateProductCategory(int productID, String newCategory)
+    {
+        Product_Model product = findProduct(productID);
+
+        if (product != null && newCategory != null)
+        {
+            // remove from old shelf
+            for (Shelf_Model shelf: shelves)
+            {
+                if (shelf.getProductsOnShelf().contains(product))
+                {
+                    shelf.removeProductFromShelf(product);
+                    break;
+                }
+            }
+
+            // update category
+            product.setProductCategory(newCategory);
+
+            // add to new shelf
+            for (Shelf_Model shelf: shelves)
+            {
+                if (shelf.getShelfCategory().equals(newCategory))
+                {
+                    shelf.addProductToShelf(product);
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    /**
      * This method updates a product's variant.
      * @param productID is the ID of the product to update.
      * @param newVariant is the new variant for the product.
