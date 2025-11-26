@@ -9,6 +9,13 @@
             "name": "Main",
             "request": "launch",
             "mainClass": "StoreApp.Main",
+            "projectName": "CCPROG3-MCO1_4a5cf56"
+        },
+        {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "StoreApp.Main",
             "projectName": "CCPROG3-MCO1_ea20115"
         },
         {
