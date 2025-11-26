@@ -72,7 +72,7 @@
                 <Button fx:id="beverageBtn" minHeight="35" minWidth="100" style="-fx-font-size: 14;" styleClass="nav-btn" text="Beverages" textFill="#006937" />
                 <Button fx:id="toiletriesBtn" minHeight="35" minWidth="100" style="-fx-font-size: 14;" styleClass="nav-btn" text="Toiletries" textFill="#006937" />
                 <Button fx:id="cleaningProductsBtn" minHeight="35" minWidth="120" style="-fx-font-size: 14;" styleClass="nav-btn" text="Cleaning Products" textFill="#006937" />
-                <Button fx:id="medicineBtn" minHeight="35" minWidth="100" style="-fx-font-size: 14;" styleClass="nav-btn" text="Medicine" textFill="#006937" />
+                <Button fx:id="medicineBtn" minHeight="35" minWidth="100" style="-fx-font-size: 14;" styleClass="nav-btn" text="Medications" textFill="#006937" />
                 <Region HBox.hgrow="ALWAYS" />
                 <Button fx:id="nextCategoryBtn" minHeight="40" minWidth="40" style="-fx-font-size: 16;" styleClass="circular-btn" text="&gt;" textFill="WHITE">
                     <font>
