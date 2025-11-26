@@ -71,7 +71,7 @@ public class Main extends Application {
 
         // INITIALIZATION OF INVENTORY'S PRODUCTS
         // Food
-        inventory.addProduct(new Product_Model("Sandwich", 30.0, 10, "Food", "Subway", "Egg and Cheese Ciabatta Breakfast Sandwich", LocalDate.parse("2027-10-27"), "/images/sandwich.jpg"));
+        inventory.addProduct(new Product_Model("Sandwich", 30.0, 10, "Food", "Subway", "Egg and Cheese Ciabatta Breakfast Sandwich", LocalDate.parse("2025-11-26"), "/images/sandwich.jpg"));
         inventory.addProduct(new Product_Model("Pastries", 45.0, 10, "Food", "Starbucks", "Ham & Cheese Croissant", LocalDate.parse("2028-10-26"), "/images/pastries.jpg"));
         inventory.addProduct(new Product_Model("Chicken Nuggets", 50.0, 10, "Food", "Tyson", "Frozen", LocalDate.parse("2026-01-15"), "/images/chickennuggets.jpg"));
         inventory.addProduct(new Product_Model("Sushi", 120.0, 10, "Food", "Maki Mono", "8s", LocalDate.parse("2027-03-10"), "/images/sushi.jpg"));

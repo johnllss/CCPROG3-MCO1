@@ -87,9 +87,9 @@
             </Button>
          </children>
       </VBox>
-      <AnchorPane fx:id="rightPane" layoutX="159.0" layoutY="-1.0" prefHeight="406.0" prefWidth="440.0">
+      <AnchorPane fx:id="rightPane" layoutX="159.0" layoutY="-1.0" prefHeight="406.0" prefWidth="503.0">
          <children>
-            <TableView fx:id="productTable" layoutX="10.0" layoutY="118.0" prefHeight="149.0" prefWidth="406.0">
+            <TableView fx:id="productTable" layoutX="10.0" layoutY="118.0" prefHeight="149.0" prefWidth="480.0">
               <columns>
                 <TableColumn fx:id="productID" prefWidth="83.0" text="Product ID" />
                 <TableColumn fx:id="productName" prefWidth="101.0" text="Name" />
@@ -126,7 +126,7 @@
                   <DatePicker fx:id="expirationDate_picker" layoutX="90.0" layoutY="75.0" prefHeight="26.0" prefWidth="120.0" promptText="Optional" />
                </children>
             </AnchorPane>
-            <Button fx:id="logout_btn" layoutX="359.0" layoutY="36.0" mnemonicParsing="false" onAction="#onLogOut" styleClass="secondary-btn" text="Logout" />
+            <Button fx:id="logout_btn" layoutX="426.0" layoutY="20.0" mnemonicParsing="false" onAction="#onLogOut" styleClass="secondary-btn" text="Logout" />
             <Label fx:id="welcomeNameText" layoutX="5.0" layoutY="20.0" prefHeight="57.0" prefWidth="127.0" text="Welcome," textFill="#006937">
                <font>
                   <Font size="28.0" />

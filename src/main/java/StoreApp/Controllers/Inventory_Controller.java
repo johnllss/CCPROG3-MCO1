@@ -70,7 +70,7 @@ public class Inventory_Controller implements Initializable {
     public void displayEmployeeName(String employee)
     {
         if (loggedInEmployee != null) {
-            employeeName.setText(employee + " (" + loggedInEmployee.getRole() + ")");
+            employeeName.setText(employee + " (" + loggedInEmployee.getRole() + ")!");
         } else {
             employeeName.setText(employee);
         }
