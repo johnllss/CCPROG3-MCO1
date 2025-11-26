@@ -51,38 +51,29 @@ public class Product_Model_Test {
     // ========== updateStock Tests ==========
 
     @Test
-    public void testUpdateStock_ValidPositive_ReturnsTrue() {
+    public void testUpdateStock_ValidPositive_UpdatesQuantity() {
         // Test 1: Successfully updates stock with valid positive quantity
         Product_Model product = new Product_Model("Chips", 50.0, 10, "Food", "Brand A");
 
-        assertTrue(product.updateStock(5), "Should successfully update stock");
+        product.updateStock(5);
         assertEquals(15, product.getProductQuantity(), "Quantity should be 15 after update");
     }
 
     @Test
-    public void testUpdateStock_Zero_ReturnsTrue() {
+    public void testUpdateStock_Zero_KeepsQuantityUnchanged() {
         // Test 2: Successfully updates stock with zero quantity
         Product_Model product = new Product_Model("Chips", 50.0, 10, "Food", "Brand A");
 
-        assertTrue(product.updateStock(0), "Should successfully update with 0");
+        product.updateStock(0);
         assertEquals(10, product.getProductQuantity(), "Quantity should remain 10");
     }
 
     @Test
-    public void testUpdateStock_Negative_ReturnsFalse() {
-        // Test 3: Fails to update stock with negative quantity
-        Product_Model product = new Product_Model("Chips", 50.0, 10, "Food", "Brand A");
-
-        assertFalse(product.updateStock(-5), "Should fail to update with negative value");
-        assertEquals(10, product.getProductQuantity(), "Quantity should remain unchanged");
-    }
-
-    @Test
-    public void testUpdateStock_FromZero_ReturnsTrue() {
-        // Test 4: Successfully updates stock from zero to positive quantity
+    public void testUpdateStock_FromZero_UpdatesQuantity() {
+        // Test 3: Successfully updates stock from zero to positive quantity
         Product_Model product = new Product_Model("Chips", 50.0, 0, "Food", "Brand A");
 
-        assertTrue(product.updateStock(20), "Should successfully restock from 0 to 20");
+        product.updateStock(20);
         assertEquals(20, product.getProductQuantity(), "Quantity should be 20");
     }
 

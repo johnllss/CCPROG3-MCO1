@@ -1,0 +1,1193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="JUnit Jupiter" tests="188" skipped="0" failures="0" errors="0" time="1.163" hostname="SungaFamily" timestamp="2025-11-26T17:10:39">
+<properties>
+<property name="file.encoding" value="UTF-8"/>
+<property name="file.separator" value="\"/>
+<property name="java.class.path" value="lib/junit-platform-console-standalone-1.10.0.jar"/>
+<property name="java.class.version" value="69.0"/>
+<property name="java.home" value="C:\Program Files\Eclipse Adoptium\jdk-25.0.1.8-hotspot"/>
+<property name="java.io.tmpdir" value="C:\Users\johna\AppData\Local\Temp\"/>
+<property name="java.library.path" value="C:\Program Files\Eclipse Adoptium\jdk-25.0.1.8-hotspot\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Users\johna\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\local\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\johna\bin;C:\Program Files\Eclipse Adoptium\jdk-25.0.1.8-hotspot\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\WINDOWS\System32\OpenSSH;C:\MinGW\bin;C:\Program Files\Spotfire\Statistica;C:\Program Files\Git\cmd;C:\Program Files\MySQL\MySQL Shell 8.0\bin;C:\Users\johna\AppData\Local\Programs\Python\Python313\Scripts;C:\Users\johna\AppData\Local\Programs\Python\Python313;C:\Users\johna\AppData\Local\Programs\Python\Launcher;C:\Users\johna\AppData\Local\Microsoft\WindowsApps;C:\Users\johna\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\johna\AppData\Local\GitHubDesktop\bin;C:\Users\johna\AppData\Local\Programs\Git\cmd;C:\Users\johna\AppData\Local\JetBrains\Toolbox\scripts;C:\Program Files\Git\usr\bin\vendor_perl;C:\Program Files\Git\usr\bin\core_perl;."/>
+<property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+<property name="java.runtime.version" value="25.0.1+8-LTS"/>
+<property name="java.specification.name" value="Java Platform API Specification"/>
+<property name="java.specification.vendor" value="Oracle Corporation"/>
+<property name="java.specification.version" value="25"/>
+<property name="java.vendor" value="Eclipse Adoptium"/>
+<property name="java.vendor.url" value="https://adoptium.net/"/>
+<property name="java.vendor.url.bug" value="https://github.com/adoptium/adoptium-support/issues"/>
+<property name="java.vendor.version" value="Temurin-25.0.1+8"/>
+<property name="java.version" value="25.0.1"/>
+<property name="java.version.date" value="2025-10-21"/>
+<property name="java.vm.compressedOopsMode" value="Zero based"/>
+<property name="java.vm.info" value="mixed mode, sharing"/>
+<property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+<property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+<property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+<property name="java.vm.specification.version" value="25"/>
+<property name="java.vm.vendor" value="Eclipse Adoptium"/>
+<property name="java.vm.version" value="25.0.1+8-LTS"/>
+<property name="jdk.debug" value="release"/>
+<property name="jdk.module.path" value="lib"/>
+<property name="line.separator" value="
+"/>
+<property name="native.encoding" value="Cp1252"/>
+<property name="os.arch" value="amd64"/>
+<property name="os.name" value="Windows 11"/>
+<property name="os.version" value="10.0"/>
+<property name="path.separator" value=";"/>
+<property name="stderr.encoding" value="Cp1252"/>
+<property name="stdin.encoding" value="cp437"/>
+<property name="stdout.encoding" value="Cp1252"/>
+<property name="sun.arch.data.model" value="64"/>
+<property name="sun.boot.library.path" value="C:\Program Files\Eclipse Adoptium\jdk-25.0.1.8-hotspot\bin"/>
+<property name="sun.cpu.endian" value="little"/>
+<property name="sun.cpu.isalist" value="amd64"/>
+<property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+<property name="sun.java.command" value="lib/junit-platform-console-standalone-1.10.0.jar --class-path bin/main;bin/test;lib/javafx-base-17.0.2-win.jar;lib/javafx-controls-17.0.2-win.jar;lib/javafx-fxml-17.0.2-win.jar;lib/javafx-graphics-17.0.2-win.jar --scan-class-path --reports-dir=test-reports --details=summary"/>
+<property name="sun.java.launcher" value="SUN_STANDARD"/>
+<property name="sun.jnu.encoding" value="Cp1252"/>
+<property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+<property name="sun.os.patch.level" value=""/>
+<property name="user.country" value="US"/>
+<property name="user.dir" value="E:\PERSONAL-Jigs\DLSU_BSCS-ST\4th_Term_1\CCPROG3\CCPROG3-MCO1"/>
+<property name="user.home" value="C:\Users\johna"/>
+<property name="user.language" value="en"/>
+<property name="user.name" value="johna"/>
+<property name="user.script" value=""/>
+<property name="user.timezone" value="Asia/Manila"/>
+<property name="user.variant" value=""/>
+</properties>
+<testcase name="testCalculateChange_PaymentLessThanTotal()" classname="StoreApp.Models.Transaction_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Transaction_Model_Test]/[method:testCalculateChange_PaymentLessThanTotal()]
+display-name: testCalculateChange_PaymentLessThanTotal()
+]]></system-out>
+</testcase>
+<testcase name="testNavigateToNextCategory_FromToiletries_GoesToCleaningProducts()" classname="StoreApp.Controllers.Shopping_Controller_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Controllers.Shopping_Controller_Test]/[method:testNavigateToNextCategory_FromToiletries_GoesToCleaningProducts()]
+display-name: testNavigateToNextCategory_FromToiletries_GoesToCleaningProducts()
+]]></system-out>
+</testcase>
+<testcase name="testCalculateTax_NonSenior_Returns12Percent()" classname="StoreApp.Models.Transaction_Model_Test" time="0.001">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Transaction_Model_Test]/[method:testCalculateTax_NonSenior_Returns12Percent()]
+display-name: testCalculateTax_NonSenior_Returns12Percent()
+]]></system-out>
+</testcase>
+<testcase name="testCalculateTotal_NoDiscount_NoSenior()" classname="StoreApp.Models.Transaction_Model_Test" time="0.001">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Transaction_Model_Test]/[method:testCalculateTotal_NoDiscount_NoSenior()]
+display-name: testCalculateTotal_NoDiscount_NoSenior()
+]]></system-out>
+</testcase>
+<testcase name="testValidatePaymentMethod_CashSelected_ReturnsTrue()" classname="StoreApp.Controllers.Transaction_Controller_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Controllers.Transaction_Controller_Test]/[method:testValidatePaymentMethod_CashSelected_ReturnsTrue()]
+display-name: testValidatePaymentMethod_CashSelected_ReturnsTrue()
+]]></system-out>
+</testcase>
+<testcase name="testRemoveProduct_ExistingProduct_ReturnsTrue()" classname="StoreApp.Models.Inventory_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Inventory_Model_Test]/[method:testRemoveProduct_ExistingProduct_ReturnsTrue()]
+display-name: testRemoveProduct_ExistingProduct_ReturnsTrue()
+]]></system-out>
+</testcase>
+<testcase name="testUpdateProductName_ValidName_ReturnsTrue()" classname="StoreApp.Models.Inventory_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Inventory_Model_Test]/[method:testUpdateProductName_ValidName_ReturnsTrue()]
+display-name: testUpdateProductName_ValidName_ReturnsTrue()
+]]></system-out>
+</testcase>
+<testcase name="testReduceStock_LessThanQuantity_ReturnsTrue()" classname="StoreApp.Models.Product_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Product_Model_Test]/[method:testReduceStock_LessThanQuantity_ReturnsTrue()]
+display-name: testReduceStock_LessThanQuantity_ReturnsTrue()
+]]></system-out>
+</testcase>
+<testcase name="testRestockProduct_NonExistent_ReturnsFalse()" classname="StoreApp.Models.Inventory_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Inventory_Model_Test]/[method:testRestockProduct_NonExistent_ReturnsFalse()]
+display-name: testRestockProduct_NonExistent_ReturnsFalse()
+]]></system-out>
+</testcase>
+<testcase name="testIsDiscountable_Neither()" classname="StoreApp.Models.Transaction_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Transaction_Model_Test]/[method:testIsDiscountable_Neither()]
+display-name: testIsDiscountable_Neither()
+]]></system-out>
+</testcase>
+<testcase name="testCalculateMembershipPoints_LessThan50()" classname="StoreApp.Models.Transaction_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Transaction_Model_Test]/[method:testCalculateMembershipPoints_LessThan50()]
+display-name: testCalculateMembershipPoints_LessThan50()
+]]></system-out>
+</testcase>
+<testcase name="testHasPermission_Restocker_RestockerAction_ReturnsTrue()" classname="StoreApp.Controllers.Inventory_Controller_Test" time="0.001">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Controllers.Inventory_Controller_Test]/[method:testHasPermission_Restocker_RestockerAction_ReturnsTrue()]
+display-name: testHasPermission_Restocker_RestockerAction_ReturnsTrue()
+]]></system-out>
+</testcase>
+<testcase name="testVerifyCartStock_EmptyCart_ReturnsFalse()" classname="StoreApp.Models.Inventory_Model_Test" time="0.005">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Inventory_Model_Test]/[method:testVerifyCartStock_EmptyCart_ReturnsFalse()]
+display-name: testVerifyCartStock_EmptyCart_ReturnsFalse()
+]]></system-out>
+</testcase>
+<testcase name="testUpdateProductPrice_ValidPrice_ReturnsTrue()" classname="StoreApp.Models.Inventory_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Inventory_Model_Test]/[method:testUpdateProductPrice_ValidPrice_ReturnsTrue()]
+display-name: testUpdateProductPrice_ValidPrice_ReturnsTrue()
+]]></system-out>
+</testcase>
+<testcase name="testRedeemPoints_EqualsAvailable_ReturnsFalse()" classname="StoreApp.Models.MembershipCard_Model_Test" time="0.001">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.MembershipCard_Model_Test]/[method:testRedeemPoints_EqualsAvailable_ReturnsFalse()]
+display-name: testRedeemPoints_EqualsAvailable_ReturnsFalse()
+]]></system-out>
+</testcase>
+<testcase name="testUpdateAllTotals_MultipleItems_NonSenior()" classname="StoreApp.Controllers.Cart_Controller_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Controllers.Cart_Controller_Test]/[method:testUpdateAllTotals_MultipleItems_NonSenior()]
+display-name: testUpdateAllTotals_MultipleItems_NonSenior()
+]]></system-out>
+</testcase>
+<testcase name="testRestockProduct_NegativeAmount_ReturnsFalse()" classname="StoreApp.Models.Inventory_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Inventory_Model_Test]/[method:testRestockProduct_NegativeAmount_ReturnsFalse()]
+display-name: testRestockProduct_NegativeAmount_ReturnsFalse()
+]]></system-out>
+</testcase>
+<testcase name="testAddItem_NewProductValidQuantity_ReturnsTrue()" classname="StoreApp.Models.Cart_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Cart_Model_Test]/[method:testAddItem_NewProductValidQuantity_ReturnsTrue()]
+display-name: testAddItem_NewProductValidQuantity_ReturnsTrue()
+]]></system-out>
+</testcase>
+<testcase name="testAddPoints_ZeroInitialPoints_ReturnsTrue()" classname="StoreApp.Models.MembershipCard_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.MembershipCard_Model_Test]/[method:testAddPoints_ZeroInitialPoints_ReturnsTrue()]
+display-name: testAddPoints_ZeroInitialPoints_ReturnsTrue()
+]]></system-out>
+</testcase>
+<testcase name="testProductQuantity_ExceedsStock_ReturnsFalse()" classname="StoreApp.Models.Product_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Product_Model_Test]/[method:testProductQuantity_ExceedsStock_ReturnsFalse()]
+display-name: testProductQuantity_ExceedsStock_ReturnsFalse()
+]]></system-out>
+</testcase>
+<testcase name="testAddItem_ExceedsStock_ReturnsFalse()" classname="StoreApp.Models.Cart_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Cart_Model_Test]/[method:testAddItem_ExceedsStock_ReturnsFalse()]
+display-name: testAddItem_ExceedsStock_ReturnsFalse()
+]]></system-out>
+</testcase>
+<testcase name="testNavigateToNextCategory_FromFood_GoesToBeverages()" classname="StoreApp.Controllers.Shopping_Controller_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Controllers.Shopping_Controller_Test]/[method:testNavigateToNextCategory_FromFood_GoesToBeverages()]
+display-name: testNavigateToNextCategory_FromFood_GoesToBeverages()
+]]></system-out>
+</testcase>
+<testcase name="testUpdateStock_ValidPositive_UpdatesQuantity()" classname="StoreApp.Models.Product_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Product_Model_Test]/[method:testUpdateStock_ValidPositive_UpdatesQuantity()]
+display-name: testUpdateStock_ValidPositive_UpdatesQuantity()
+]]></system-out>
+</testcase>
+<testcase name="testHasPermission_Manager_RestockerAction_ReturnsTrue()" classname="StoreApp.Controllers.Inventory_Controller_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Controllers.Inventory_Controller_Test]/[method:testHasPermission_Manager_RestockerAction_ReturnsTrue()]
+display-name: testHasPermission_Manager_RestockerAction_ReturnsTrue()
+]]></system-out>
+</testcase>
+<testcase name="testUpdateAllTotals_MultipleItems_Senior()" classname="StoreApp.Controllers.Cart_Controller_Test" time="0.001">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Controllers.Cart_Controller_Test]/[method:testUpdateAllTotals_MultipleItems_Senior()]
+display-name: testUpdateAllTotals_MultipleItems_Senior()
+]]></system-out>
+</testcase>
+<testcase name="testUpdateProductPrice_NonExistent_ReturnsFalse()" classname="StoreApp.Models.Inventory_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Inventory_Model_Test]/[method:testUpdateProductPrice_NonExistent_ReturnsFalse()]
+display-name: testUpdateProductPrice_NonExistent_ReturnsFalse()
+]]></system-out>
+</testcase>
+<testcase name="testSwitchCategory_ToBeverages_UpdatesIndex()" classname="StoreApp.Controllers.Shopping_Controller_Test" time="0.001">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Controllers.Shopping_Controller_Test]/[method:testSwitchCategory_ToBeverages_UpdatesIndex()]
+display-name: testSwitchCategory_ToBeverages_UpdatesIndex()
+]]></system-out>
+</testcase>
+<testcase name="testUpdateAllTotals_Senior_ZeroVAT()" classname="StoreApp.Controllers.Cart_Controller_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Controllers.Cart_Controller_Test]/[method:testUpdateAllTotals_Senior_ZeroVAT()]
+display-name: testUpdateAllTotals_Senior_ZeroVAT()
+]]></system-out>
+</testcase>
+<testcase name="testGetLowStockProducts_HighThreshold_ReturnsMultipleProducts()" classname="StoreApp.Models.Inventory_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Inventory_Model_Test]/[method:testGetLowStockProducts_HighThreshold_ReturnsMultipleProducts()]
+display-name: testGetLowStockProducts_HighThreshold_ReturnsMultipleProducts()
+]]></system-out>
+</testcase>
+<testcase name="testRemoveItem_MultipleItems_ReturnsTrue()" classname="StoreApp.Models.Cart_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Cart_Model_Test]/[method:testRemoveItem_MultipleItems_ReturnsTrue()]
+display-name: testRemoveItem_MultipleItems_ReturnsTrue()
+]]></system-out>
+</testcase>
+<testcase name="testCalculateTax_WithDiscount()" classname="StoreApp.Models.Transaction_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Transaction_Model_Test]/[method:testCalculateTax_WithDiscount()]
+display-name: testCalculateTax_WithDiscount()
+]]></system-out>
+</testcase>
+<testcase name="testIsProductLowStock_LessThan3_ReturnsTrue()" classname="StoreApp.Models.Product_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Product_Model_Test]/[method:testIsProductLowStock_LessThan3_ReturnsTrue()]
+display-name: testIsProductLowStock_LessThan3_ReturnsTrue()
+]]></system-out>
+</testcase>
+<testcase name="testHasMembership_WithNewlyCreatedCard_ReturnsTrue()" classname="StoreApp.Models.Customer_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Customer_Model_Test]/[method:testHasMembership_WithNewlyCreatedCard_ReturnsTrue()]
+display-name: testHasMembership_WithNewlyCreatedCard_ReturnsTrue()
+]]></system-out>
+</testcase>
+<testcase name="testOperateCartPurchase_EmptyCart_ReturnsFalse()" classname="StoreApp.Models.Inventory_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Inventory_Model_Test]/[method:testOperateCartPurchase_EmptyCart_ReturnsFalse()]
+display-name: testOperateCartPurchase_EmptyCart_ReturnsFalse()
+]]></system-out>
+</testcase>
+<testcase name="testCalculateItemSubtotal_ZeroQuantity_ReturnsZero()" classname="StoreApp.Models.Item_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Item_Model_Test]/[method:testCalculateItemSubtotal_ZeroQuantity_ReturnsZero()]
+display-name: testCalculateItemSubtotal_ZeroQuantity_ReturnsZero()
+]]></system-out>
+</testcase>
+<testcase name="testUpdateAllTotals_DecimalAmounts_NonSenior()" classname="StoreApp.Controllers.Cart_Controller_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Controllers.Cart_Controller_Test]/[method:testUpdateAllTotals_DecimalAmounts_NonSenior()]
+display-name: testUpdateAllTotals_DecimalAmounts_NonSenior()
+]]></system-out>
+</testcase>
+<testcase name="testAddPoints_ExistingPoints_ReturnsTrue()" classname="StoreApp.Models.MembershipCard_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.MembershipCard_Model_Test]/[method:testAddPoints_ExistingPoints_ReturnsTrue()]
+display-name: testAddPoints_ExistingPoints_ReturnsTrue()
+]]></system-out>
+</testcase>
+<testcase name="testSwitchCategory_ToMedications_UpdatesIndex()" classname="StoreApp.Controllers.Shopping_Controller_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Controllers.Shopping_Controller_Test]/[method:testSwitchCategory_ToMedications_UpdatesIndex()]
+display-name: testSwitchCategory_ToMedications_UpdatesIndex()
+]]></system-out>
+</testcase>
+<testcase name="testLogin_WithBothIncorrect_ReturnsFalse()" classname="StoreApp.Models.Employee_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Employee_Model_Test]/[method:testLogin_WithBothIncorrect_ReturnsFalse()]
+display-name: testLogin_WithBothIncorrect_ReturnsFalse()
+]]></system-out>
+</testcase>
+<testcase name="testRestockProduct_ValidAmount_ReturnsTrue()" classname="StoreApp.Models.Inventory_Model_Test" time="0.001">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Inventory_Model_Test]/[method:testRestockProduct_ValidAmount_ReturnsTrue()]
+display-name: testRestockProduct_ValidAmount_ReturnsTrue()
+]]></system-out>
+</testcase>
+<testcase name="testAddProduct_InvalidCategory_ReturnsFalse()" classname="StoreApp.Models.Inventory_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Inventory_Model_Test]/[method:testAddProduct_InvalidCategory_ReturnsFalse()]
+display-name: testAddProduct_InvalidCategory_ReturnsFalse()
+]]></system-out>
+</testcase>
+<testcase name="testGetProductsByCategory_Beverages_ReturnsMultipleItems()" classname="StoreApp.Models.Inventory_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Inventory_Model_Test]/[method:testGetProductsByCategory_Beverages_ReturnsMultipleItems()]
+display-name: testGetProductsByCategory_Beverages_ReturnsMultipleItems()
+]]></system-out>
+</testcase>
+<testcase name="testCalculateSubtotal_MultipleItems_ReturnsCorrectValue()" classname="StoreApp.Models.Transaction_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Transaction_Model_Test]/[method:testCalculateSubtotal_MultipleItems_ReturnsCorrectValue()]
+display-name: testCalculateSubtotal_MultipleItems_ReturnsCorrectValue()
+]]></system-out>
+</testcase>
+<testcase name="testValidateAmount_ExactPayment_ReturnsTrue()" classname="StoreApp.Controllers.Transaction_Controller_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Controllers.Transaction_Controller_Test]/[method:testValidateAmount_ExactPayment_ReturnsTrue()]
+display-name: testValidateAmount_ExactPayment_ReturnsTrue()
+]]></system-out>
+</testcase>
+<testcase name="testCalculateDiscount_SeniorOnly_Returns20Percent()" classname="StoreApp.Models.Transaction_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Transaction_Model_Test]/[method:testCalculateDiscount_SeniorOnly_Returns20Percent()]
+display-name: testCalculateDiscount_SeniorOnly_Returns20Percent()
+]]></system-out>
+</testcase>
+<testcase name="testAddProduct_ValidProduct_ReturnsTrue()" classname="StoreApp.Models.Inventory_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Inventory_Model_Test]/[method:testAddProduct_ValidProduct_ReturnsTrue()]
+display-name: testAddProduct_ValidProduct_ReturnsTrue()
+]]></system-out>
+</testcase>
+<testcase name="testLogin_WithIncorrectPassword_ReturnsFalse()" classname="StoreApp.Models.Employee_Model_Test" time="0.001">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Employee_Model_Test]/[method:testLogin_WithIncorrectPassword_ReturnsFalse()]
+display-name: testLogin_WithIncorrectPassword_ReturnsFalse()
+]]></system-out>
+</testcase>
+<testcase name="testLogin_WithIncorrectEmail_ReturnsFalse()" classname="StoreApp.Models.Employee_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Employee_Model_Test]/[method:testLogin_WithIncorrectEmail_ReturnsFalse()]
+display-name: testLogin_WithIncorrectEmail_ReturnsFalse()
+]]></system-out>
+</testcase>
+<testcase name="testIsDiscountable_WithSeniorStatus()" classname="StoreApp.Models.Transaction_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Transaction_Model_Test]/[method:testIsDiscountable_WithSeniorStatus()]
+display-name: testIsDiscountable_WithSeniorStatus()
+]]></system-out>
+</testcase>
+<testcase name="testAddItem_ExactlyAvailableStock_ReturnsTrue()" classname="StoreApp.Models.Cart_Model_Test" time="0.001">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Cart_Model_Test]/[method:testAddItem_ExactlyAvailableStock_ReturnsTrue()]
+display-name: testAddItem_ExactlyAvailableStock_ReturnsTrue()
+]]></system-out>
+</testcase>
+<testcase name="testIsProductLowStock_HighQuantity_ReturnsFalse()" classname="StoreApp.Models.Product_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Product_Model_Test]/[method:testIsProductLowStock_HighQuantity_ReturnsFalse()]
+display-name: testIsProductLowStock_HighQuantity_ReturnsFalse()
+]]></system-out>
+</testcase>
+<testcase name="testRestockProduct_ZeroAmount_ReturnsFalse()" classname="StoreApp.Models.Inventory_Model_Test" time="0.001">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Inventory_Model_Test]/[method:testRestockProduct_ZeroAmount_ReturnsFalse()]
+display-name: testRestockProduct_ZeroAmount_ReturnsFalse()
+]]></system-out>
+</testcase>
+<testcase name="testRemoveProduct_NonExistent_ReturnsFalse()" classname="StoreApp.Models.Inventory_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Inventory_Model_Test]/[method:testRemoveProduct_NonExistent_ReturnsFalse()]
+display-name: testRemoveProduct_NonExistent_ReturnsFalse()
+]]></system-out>
+</testcase>
+<testcase name="testCalculateMembershipPoints_NoMembership()" classname="StoreApp.Models.Transaction_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Transaction_Model_Test]/[method:testCalculateMembershipPoints_NoMembership()]
+display-name: testCalculateMembershipPoints_NoMembership()
+]]></system-out>
+</testcase>
+<testcase name="testGetProductsByCategory_NonExistent_ReturnsEmptyList()" classname="StoreApp.Models.Inventory_Model_Test" time="0.018">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Inventory_Model_Test]/[method:testGetProductsByCategory_NonExistent_ReturnsEmptyList()]
+display-name: testGetProductsByCategory_NonExistent_ReturnsEmptyList()
+]]></system-out>
+</testcase>
+<testcase name="testValidateCardDetails_AllFilled_ReturnsTrue()" classname="StoreApp.Controllers.Transaction_Controller_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Controllers.Transaction_Controller_Test]/[method:testValidateCardDetails_AllFilled_ReturnsTrue()]
+display-name: testValidateCardDetails_AllFilled_ReturnsTrue()
+]]></system-out>
+</testcase>
+<testcase name="testLoginLogic_ValidCredentials_ManagerFound()" classname="StoreApp.Controllers.Employee_Login_Controller_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Controllers.Employee_Login_Controller_Test]/[method:testLoginLogic_ValidCredentials_ManagerFound()]
+display-name: testLoginLogic_ValidCredentials_ManagerFound()
+]]></system-out>
+</testcase>
+<testcase name="testUpdateProductPrice_Negative_ReturnsFalse()" classname="StoreApp.Models.Inventory_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Inventory_Model_Test]/[method:testUpdateProductPrice_Negative_ReturnsFalse()]
+display-name: testUpdateProductPrice_Negative_ReturnsFalse()
+]]></system-out>
+</testcase>
+<testcase name="testCalculateTotal_WithMembershipDiscount()" classname="StoreApp.Models.Transaction_Model_Test" time="0.001">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Transaction_Model_Test]/[method:testCalculateTotal_WithMembershipDiscount()]
+display-name: testCalculateTotal_WithMembershipDiscount()
+]]></system-out>
+</testcase>
+<testcase name="testCalculateItemSubtotal_FractionalPrice_ReturnsCorrectSubtotal()" classname="StoreApp.Models.Item_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Item_Model_Test]/[method:testCalculateItemSubtotal_FractionalPrice_ReturnsCorrectSubtotal()]
+display-name: testCalculateItemSubtotal_FractionalPrice_ReturnsCorrectSubtotal()
+]]></system-out>
+</testcase>
+<testcase name="testLoginLogic_CorrectEmailWrongPassword_NotFound()" classname="StoreApp.Controllers.Employee_Login_Controller_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Controllers.Employee_Login_Controller_Test]/[method:testLoginLogic_CorrectEmailWrongPassword_NotFound()]
+display-name: testLoginLogic_CorrectEmailWrongPassword_NotFound()
+]]></system-out>
+</testcase>
+<testcase name="testGenerateReceiptNumber_CorrectFormat()" classname="StoreApp.Models.Receipt_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Receipt_Model_Test]/[method:testGenerateReceiptNumber_CorrectFormat()]
+display-name: testGenerateReceiptNumber_CorrectFormat()
+]]></system-out>
+</testcase>
+<testcase name="testHandleAddToCart_ExistingProduct_IncrementsQuantity()" classname="StoreApp.Controllers.Shopping_Controller_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Controllers.Shopping_Controller_Test]/[method:testHandleAddToCart_ExistingProduct_IncrementsQuantity()]
+display-name: testHandleAddToCart_ExistingProduct_IncrementsQuantity()
+]]></system-out>
+</testcase>
+<testcase name="testGenerateCardNumber_CorrectFormat()" classname="StoreApp.Models.MembershipCard_Model_Test" time="0.001">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.MembershipCard_Model_Test]/[method:testGenerateCardNumber_CorrectFormat()]
+display-name: testGenerateCardNumber_CorrectFormat()
+]]></system-out>
+</testcase>
+<testcase name="testSwitchCategory_ToFood_UpdatesIndex()" classname="StoreApp.Controllers.Shopping_Controller_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Controllers.Shopping_Controller_Test]/[method:testSwitchCategory_ToFood_UpdatesIndex()]
+display-name: testSwitchCategory_ToFood_UpdatesIndex()
+]]></system-out>
+</testcase>
+<testcase name="testOperateCartPurchase_ValidCart_ReturnsTrue()" classname="StoreApp.Models.Inventory_Model_Test" time="0.001">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Inventory_Model_Test]/[method:testOperateCartPurchase_ValidCart_ReturnsTrue()]
+display-name: testOperateCartPurchase_ValidCart_ReturnsTrue()
+]]></system-out>
+</testcase>
+<testcase name="testValidateFullName_ValidName_ReturnsTrue()" classname="StoreApp.Controllers.Transaction_Controller_Test" time="0.001">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Controllers.Transaction_Controller_Test]/[method:testValidateFullName_ValidName_ReturnsTrue()]
+display-name: testValidateFullName_ValidName_ReturnsTrue()
+]]></system-out>
+</testcase>
+<testcase name="testIsPerishable_WithPastDate_ReturnsTrue()" classname="StoreApp.Models.Product_Model_Test" time="0.001">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Product_Model_Test]/[method:testIsPerishable_WithPastDate_ReturnsTrue()]
+display-name: testIsPerishable_WithPastDate_ReturnsTrue()
+]]></system-out>
+</testcase>
+<testcase name="testUpdateQuantity_ValidAmount_ReturnsTrue()" classname="StoreApp.Models.Cart_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Cart_Model_Test]/[method:testUpdateQuantity_ValidAmount_ReturnsTrue()]
+display-name: testUpdateQuantity_ValidAmount_ReturnsTrue()
+]]></system-out>
+</testcase>
+<testcase name="testUpdateQuantity_NonExistentProduct_ReturnsFalse()" classname="StoreApp.Models.Cart_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Cart_Model_Test]/[method:testUpdateQuantity_NonExistentProduct_ReturnsFalse()]
+display-name: testUpdateQuantity_NonExistentProduct_ReturnsFalse()
+]]></system-out>
+</testcase>
+<testcase name="testLoginLogic_EmptyPassword_NotFound()" classname="StoreApp.Controllers.Employee_Login_Controller_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Controllers.Employee_Login_Controller_Test]/[method:testLoginLogic_EmptyPassword_NotFound()]
+display-name: testLoginLogic_EmptyPassword_NotFound()
+]]></system-out>
+</testcase>
+<testcase name="testFindProduct_NonExistent_ReturnsNull()" classname="StoreApp.Models.Inventory_Model_Test" time="0.001">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Inventory_Model_Test]/[method:testFindProduct_NonExistent_ReturnsNull()]
+display-name: testFindProduct_NonExistent_ReturnsNull()
+]]></system-out>
+</testcase>
+<testcase name="testVerifyCartStock_SufficientStock_ReturnsTrue()" classname="StoreApp.Models.Inventory_Model_Test" time="0.003">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Inventory_Model_Test]/[method:testVerifyCartStock_SufficientStock_ReturnsTrue()]
+display-name: testVerifyCartStock_SufficientStock_ReturnsTrue()
+]]></system-out>
+</testcase>
+<testcase name="testValidateEmail_ValidEmail_ReturnsTrue()" classname="StoreApp.Controllers.Transaction_Controller_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Controllers.Transaction_Controller_Test]/[method:testValidateEmail_ValidEmail_ReturnsTrue()]
+display-name: testValidateEmail_ValidEmail_ReturnsTrue()
+]]></system-out>
+</testcase>
+<testcase name="testCalculateTotal_WithSeniorDiscount()" classname="StoreApp.Models.Transaction_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Transaction_Model_Test]/[method:testCalculateTotal_WithSeniorDiscount()]
+display-name: testCalculateTotal_WithSeniorDiscount()
+]]></system-out>
+</testcase>
+<testcase name="testIsProductLowStock_One_ReturnsTrue()" classname="StoreApp.Models.Product_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Product_Model_Test]/[method:testIsProductLowStock_One_ReturnsTrue()]
+display-name: testIsProductLowStock_One_ReturnsTrue()
+]]></system-out>
+</testcase>
+<testcase name="testRemoveItem_NonExistentItem_ReturnsFalse()" classname="StoreApp.Models.Cart_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Cart_Model_Test]/[method:testRemoveItem_NonExistentItem_ReturnsFalse()]
+display-name: testRemoveItem_NonExistentItem_ReturnsFalse()
+]]></system-out>
+</testcase>
+<testcase name="testValidateMembershipCard_SelectedButEmpty_ReturnsFalse()" classname="StoreApp.Controllers.Transaction_Controller_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Controllers.Transaction_Controller_Test]/[method:testValidateMembershipCard_SelectedButEmpty_ReturnsFalse()]
+display-name: testValidateMembershipCard_SelectedButEmpty_ReturnsFalse()
+]]></system-out>
+</testcase>
+<testcase name="testGetProductsByCategory_Null_ReturnsEmptyList()" classname="StoreApp.Models.Inventory_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Inventory_Model_Test]/[method:testGetProductsByCategory_Null_ReturnsEmptyList()]
+display-name: testGetProductsByCategory_Null_ReturnsEmptyList()
+]]></system-out>
+</testcase>
+<testcase name="testRedeemPoints_ZeroPoints_ReturnsFalse()" classname="StoreApp.Models.MembershipCard_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.MembershipCard_Model_Test]/[method:testRedeemPoints_ZeroPoints_ReturnsFalse()]
+display-name: testRedeemPoints_ZeroPoints_ReturnsFalse()
+]]></system-out>
+</testcase>
+<testcase name="testValidateCardDetails_MissingExpiryDate_ReturnsFalse()" classname="StoreApp.Controllers.Transaction_Controller_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Controllers.Transaction_Controller_Test]/[method:testValidateCardDetails_MissingExpiryDate_ReturnsFalse()]
+display-name: testValidateCardDetails_MissingExpiryDate_ReturnsFalse()
+]]></system-out>
+</testcase>
+<testcase name="testHasMembership_WithMembershipCard_ReturnsTrue()" classname="StoreApp.Models.Customer_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Customer_Model_Test]/[method:testHasMembership_WithMembershipCard_ReturnsTrue()]
+display-name: testHasMembership_WithMembershipCard_ReturnsTrue()
+]]></system-out>
+</testcase>
+<testcase name="testValidateEmail_EmptyEmail_ReturnsFalse()" classname="StoreApp.Controllers.Transaction_Controller_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Controllers.Transaction_Controller_Test]/[method:testValidateEmail_EmptyEmail_ReturnsFalse()]
+display-name: testValidateEmail_EmptyEmail_ReturnsFalse()
+]]></system-out>
+</testcase>
+<testcase name="testValidateAge_SeniorAge65_ReturnsTrue()" classname="StoreApp.Controllers.Transaction_Controller_Test" time="0.001">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Controllers.Transaction_Controller_Test]/[method:testValidateAge_SeniorAge65_ReturnsTrue()]
+display-name: testValidateAge_SeniorAge65_ReturnsTrue()
+]]></system-out>
+</testcase>
+<testcase name="testIsDiscountable_Both()" classname="StoreApp.Models.Transaction_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Transaction_Model_Test]/[method:testIsDiscountable_Both()]
+display-name: testIsDiscountable_Both()
+]]></system-out>
+</testcase>
+<testcase name="testIsDiscountable_EmptyCardNumber()" classname="StoreApp.Models.Transaction_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Transaction_Model_Test]/[method:testIsDiscountable_EmptyCardNumber()]
+display-name: testIsDiscountable_EmptyCardNumber()
+]]></system-out>
+</testcase>
+<testcase name="testGenerateCardNumber_Uniqueness()" classname="StoreApp.Models.MembershipCard_Model_Test" time="1.001">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.MembershipCard_Model_Test]/[method:testGenerateCardNumber_Uniqueness()]
+display-name: testGenerateCardNumber_Uniqueness()
+]]></system-out>
+</testcase>
+<testcase name="testCalculateCartSubTotal_EmptyCart_ReturnsZero()" classname="StoreApp.Models.Cart_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Cart_Model_Test]/[method:testCalculateCartSubTotal_EmptyCart_ReturnsZero()]
+display-name: testCalculateCartSubTotal_EmptyCart_ReturnsZero()
+]]></system-out>
+</testcase>
+<testcase name="testLoginLogic_InvalidCredentials_NotFound()" classname="StoreApp.Controllers.Employee_Login_Controller_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Controllers.Employee_Login_Controller_Test]/[method:testLoginLogic_InvalidCredentials_NotFound()]
+display-name: testLoginLogic_InvalidCredentials_NotFound()
+]]></system-out>
+</testcase>
+<testcase name="testCalculateCartSubTotal_DecimalPrices_ReturnsCorrectTotal()" classname="StoreApp.Models.Cart_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Cart_Model_Test]/[method:testCalculateCartSubTotal_DecimalPrices_ReturnsCorrectTotal()]
+display-name: testCalculateCartSubTotal_DecimalPrices_ReturnsCorrectTotal()
+]]></system-out>
+</testcase>
+<testcase name="testLoginLogic_EmptyEmail_NotFound()" classname="StoreApp.Controllers.Employee_Login_Controller_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Controllers.Employee_Login_Controller_Test]/[method:testLoginLogic_EmptyEmail_NotFound()]
+display-name: testLoginLogic_EmptyEmail_NotFound()
+]]></system-out>
+</testcase>
+<testcase name="testLoginLogic_ValidCredentials_RestockerFound()" classname="StoreApp.Controllers.Employee_Login_Controller_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Controllers.Employee_Login_Controller_Test]/[method:testLoginLogic_ValidCredentials_RestockerFound()]
+display-name: testLoginLogic_ValidCredentials_RestockerFound()
+]]></system-out>
+</testcase>
+<testcase name="testReduceStock_EdgeCaseOneToZero_ReturnsTrue()" classname="StoreApp.Models.Product_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Product_Model_Test]/[method:testReduceStock_EdgeCaseOneToZero_ReturnsTrue()]
+display-name: testReduceStock_EdgeCaseOneToZero_ReturnsTrue()
+]]></system-out>
+</testcase>
+<testcase name="testIsEmpty_AfterClearing_ReturnsTrue()" classname="StoreApp.Models.Cart_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Cart_Model_Test]/[method:testIsEmpty_AfterClearing_ReturnsTrue()]
+display-name: testIsEmpty_AfterClearing_ReturnsTrue()
+]]></system-out>
+</testcase>
+<testcase name="testOperateCartPurchase_NullCart_ReturnsFalse()" classname="StoreApp.Models.Inventory_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Inventory_Model_Test]/[method:testOperateCartPurchase_NullCart_ReturnsFalse()]
+display-name: testOperateCartPurchase_NullCart_ReturnsFalse()
+]]></system-out>
+</testcase>
+<testcase name="testCalculateItemSubtotal_WholeNumberPrice_ReturnsCorrectSubtotal()" classname="StoreApp.Models.Item_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Item_Model_Test]/[method:testCalculateItemSubtotal_WholeNumberPrice_ReturnsCorrectSubtotal()]
+display-name: testCalculateItemSubtotal_WholeNumberPrice_ReturnsCorrectSubtotal()
+]]></system-out>
+</testcase>
+<testcase name="testValidateAge_SeniorAge60_ReturnsTrue()" classname="StoreApp.Controllers.Transaction_Controller_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Controllers.Transaction_Controller_Test]/[method:testValidateAge_SeniorAge60_ReturnsTrue()]
+display-name: testValidateAge_SeniorAge60_ReturnsTrue()
+]]></system-out>
+</testcase>
+<testcase name="testUpdateProductPrice_Zero_ReturnsTrue()" classname="StoreApp.Models.Inventory_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Inventory_Model_Test]/[method:testUpdateProductPrice_Zero_ReturnsTrue()]
+display-name: testUpdateProductPrice_Zero_ReturnsTrue()
+]]></system-out>
+</testcase>
+<testcase name="testValidateFullName_EmptyName_ReturnsFalse()" classname="StoreApp.Controllers.Transaction_Controller_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Controllers.Transaction_Controller_Test]/[method:testValidateFullName_EmptyName_ReturnsFalse()]
+display-name: testValidateFullName_EmptyName_ReturnsFalse()
+]]></system-out>
+</testcase>
+<testcase name="testCalculateCartSubTotal_SingleItem_ReturnsCorrectTotal()" classname="StoreApp.Models.Cart_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Cart_Model_Test]/[method:testCalculateCartSubTotal_SingleItem_ReturnsCorrectTotal()]
+display-name: testCalculateCartSubTotal_SingleItem_ReturnsCorrectTotal()
+]]></system-out>
+</testcase>
+<testcase name="testValidateAge_Negative_ReturnsFalse()" classname="StoreApp.Controllers.Transaction_Controller_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Controllers.Transaction_Controller_Test]/[method:testValidateAge_Negative_ReturnsFalse()]
+display-name: testValidateAge_Negative_ReturnsFalse()
+]]></system-out>
+</testcase>
+<testcase name="testIsExpired_Today_ReturnsFalse()" classname="StoreApp.Models.Product_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Product_Model_Test]/[method:testIsExpired_Today_ReturnsFalse()]
+display-name: testIsExpired_Today_ReturnsFalse()
+]]></system-out>
+</testcase>
+<testcase name="testHasPermission_UnknownRole_ReturnsFalse()" classname="StoreApp.Controllers.Inventory_Controller_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Controllers.Inventory_Controller_Test]/[method:testHasPermission_UnknownRole_ReturnsFalse()]
+display-name: testHasPermission_UnknownRole_ReturnsFalse()
+]]></system-out>
+</testcase>
+<testcase name="testAddPoints_LargeNumber_ReturnsTrue()" classname="StoreApp.Models.MembershipCard_Model_Test" time="0.001">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.MembershipCard_Model_Test]/[method:testAddPoints_LargeNumber_ReturnsTrue()]
+display-name: testAddPoints_LargeNumber_ReturnsTrue()
+]]></system-out>
+</testcase>
+<testcase name="testCalculateTax_Senior_ReturnsZero()" classname="StoreApp.Models.Transaction_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Transaction_Model_Test]/[method:testCalculateTax_Senior_ReturnsZero()]
+display-name: testCalculateTax_Senior_ReturnsZero()
+]]></system-out>
+</testcase>
+<testcase name="testGetProductsByCategory_ExistingCategory_ReturnsProducts()" classname="StoreApp.Models.Inventory_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Inventory_Model_Test]/[method:testGetProductsByCategory_ExistingCategory_ReturnsProducts()]
+display-name: testGetProductsByCategory_ExistingCategory_ReturnsProducts()
+]]></system-out>
+</testcase>
+<testcase name="testCalculateDiscount_MembershipPointsOnly()" classname="StoreApp.Models.Transaction_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Transaction_Model_Test]/[method:testCalculateDiscount_MembershipPointsOnly()]
+display-name: testCalculateDiscount_MembershipPointsOnly()
+]]></system-out>
+</testcase>
+<testcase name="testGenerateReceiptNumber_Uniqueness()" classname="StoreApp.Models.Receipt_Model_Test" time="0.001">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Receipt_Model_Test]/[method:testGenerateReceiptNumber_Uniqueness()]
+display-name: testGenerateReceiptNumber_Uniqueness()
+]]></system-out>
+</testcase>
+<testcase name="testHasPermission_EmptyRole_ReturnsFalse()" classname="StoreApp.Controllers.Inventory_Controller_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Controllers.Inventory_Controller_Test]/[method:testHasPermission_EmptyRole_ReturnsFalse()]
+display-name: testHasPermission_EmptyRole_ReturnsFalse()
+]]></system-out>
+</testcase>
+<testcase name="testUpdateAllTotals_NonSenior_CalculatesCorrectly()" classname="StoreApp.Controllers.Cart_Controller_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Controllers.Cart_Controller_Test]/[method:testUpdateAllTotals_NonSenior_CalculatesCorrectly()]
+display-name: testUpdateAllTotals_NonSenior_CalculatesCorrectly()
+]]></system-out>
+</testcase>
+<testcase name="testLogin_WithCorrectCredentials_ReturnsTrue()" classname="StoreApp.Models.Employee_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Employee_Model_Test]/[method:testLogin_WithCorrectCredentials_ReturnsTrue()]
+display-name: testLogin_WithCorrectCredentials_ReturnsTrue()
+]]></system-out>
+</testcase>
+<testcase name="testIsProductLowStock_Equals3_ReturnsFalse()" classname="StoreApp.Models.Product_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Product_Model_Test]/[method:testIsProductLowStock_Equals3_ReturnsFalse()]
+display-name: testIsProductLowStock_Equals3_ReturnsFalse()
+]]></system-out>
+</testcase>
+<testcase name="testGetLowStockProducts_ZeroThreshold_ReturnsEmptyList()" classname="StoreApp.Models.Inventory_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Inventory_Model_Test]/[method:testGetLowStockProducts_ZeroThreshold_ReturnsEmptyList()]
+display-name: testGetLowStockProducts_ZeroThreshold_ReturnsEmptyList()
+]]></system-out>
+</testcase>
+<testcase name="testValidateCardDetails_MissingAccountNumber_ReturnsFalse()" classname="StoreApp.Controllers.Transaction_Controller_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Controllers.Transaction_Controller_Test]/[method:testValidateCardDetails_MissingAccountNumber_ReturnsFalse()]
+display-name: testValidateCardDetails_MissingAccountNumber_ReturnsFalse()
+]]></system-out>
+</testcase>
+<testcase name="testNavigateToNextCategory_FromMedications_WrapsToFood()" classname="StoreApp.Controllers.Shopping_Controller_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Controllers.Shopping_Controller_Test]/[method:testNavigateToNextCategory_FromMedications_WrapsToFood()]
+display-name: testNavigateToNextCategory_FromMedications_WrapsToFood()
+]]></system-out>
+</testcase>
+<testcase name="testUpdateProductName_NonExistent_ReturnsFalse()" classname="StoreApp.Models.Inventory_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Inventory_Model_Test]/[method:testUpdateProductName_NonExistent_ReturnsFalse()]
+display-name: testUpdateProductName_NonExistent_ReturnsFalse()
+]]></system-out>
+</testcase>
+<testcase name="testFindProduct_ExistingID_ReturnsProduct()" classname="StoreApp.Models.Inventory_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Inventory_Model_Test]/[method:testFindProduct_ExistingID_ReturnsProduct()]
+display-name: testFindProduct_ExistingID_ReturnsProduct()
+]]></system-out>
+</testcase>
+<testcase name="testIsExpired_FutureDate_ReturnsFalse()" classname="StoreApp.Models.Product_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Product_Model_Test]/[method:testIsExpired_FutureDate_ReturnsFalse()]
+display-name: testIsExpired_FutureDate_ReturnsFalse()
+]]></system-out>
+</testcase>
+<testcase name="testAddItem_ProductAlreadyExists_UpdatesQuantity()" classname="StoreApp.Models.Cart_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Cart_Model_Test]/[method:testAddItem_ProductAlreadyExists_UpdatesQuantity()]
+display-name: testAddItem_ProductAlreadyExists_UpdatesQuantity()
+]]></system-out>
+</testcase>
+<testcase name="testFindProduct_AcrossDifferentShelves()" classname="StoreApp.Models.Inventory_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Inventory_Model_Test]/[method:testFindProduct_AcrossDifferentShelves()]
+display-name: testFindProduct_AcrossDifferentShelves()
+]]></system-out>
+</testcase>
+<testcase name="testCalculateItemSubtotal_SingleQuantity_ReturnsPrice()" classname="StoreApp.Models.Item_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Item_Model_Test]/[method:testCalculateItemSubtotal_SingleQuantity_ReturnsPrice()]
+display-name: testCalculateItemSubtotal_SingleQuantity_ReturnsPrice()
+]]></system-out>
+</testcase>
+<testcase name="testCalculateItemSubtotal_DecimalPrice_ReturnsCorrectSubtotal()" classname="StoreApp.Models.Item_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Item_Model_Test]/[method:testCalculateItemSubtotal_DecimalPrice_ReturnsCorrectSubtotal()]
+display-name: testCalculateItemSubtotal_DecimalPrice_ReturnsCorrectSubtotal()
+]]></system-out>
+</testcase>
+<testcase name="testUpdateQuantity_ExceedsStock_ReturnsFalse()" classname="StoreApp.Models.Cart_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Cart_Model_Test]/[method:testUpdateQuantity_ExceedsStock_ReturnsFalse()]
+display-name: testUpdateQuantity_ExceedsStock_ReturnsFalse()
+]]></system-out>
+</testcase>
+<testcase name="testRedeemPoints_LessThanAvailable_ReturnsTrue()" classname="StoreApp.Models.MembershipCard_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.MembershipCard_Model_Test]/[method:testRedeemPoints_LessThanAvailable_ReturnsTrue()]
+display-name: testRedeemPoints_LessThanAvailable_ReturnsTrue()
+]]></system-out>
+</testcase>
+<testcase name="testGenerateReceiptNumber_CurrentDate()" classname="StoreApp.Models.Receipt_Model_Test" time="0.018">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Receipt_Model_Test]/[method:testGenerateReceiptNumber_CurrentDate()]
+display-name: testGenerateReceiptNumber_CurrentDate()
+]]></system-out>
+</testcase>
+<testcase name="testUpdateStock_Zero_KeepsQuantityUnchanged()" classname="StoreApp.Models.Product_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Product_Model_Test]/[method:testUpdateStock_Zero_KeepsQuantityUnchanged()]
+display-name: testUpdateStock_Zero_KeepsQuantityUnchanged()
+]]></system-out>
+</testcase>
+<testcase name="testRemoveItem_ExistingItem_ReturnsTrue()" classname="StoreApp.Models.Cart_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Cart_Model_Test]/[method:testRemoveItem_ExistingItem_ReturnsTrue()]
+display-name: testRemoveItem_ExistingItem_ReturnsTrue()
+]]></system-out>
+</testcase>
+<testcase name="testGetMaxUsablePoints_NoMembership_ReturnsZero()" classname="StoreApp.Models.Transaction_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Transaction_Model_Test]/[method:testGetMaxUsablePoints_NoMembership_ReturnsZero()]
+display-name: testGetMaxUsablePoints_NoMembership_ReturnsZero()
+]]></system-out>
+</testcase>
+<testcase name="testHasPermission_Manager_ManagerAction_ReturnsTrue()" classname="StoreApp.Controllers.Inventory_Controller_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Controllers.Inventory_Controller_Test]/[method:testHasPermission_Manager_ManagerAction_ReturnsTrue()]
+display-name: testHasPermission_Manager_ManagerAction_ReturnsTrue()
+]]></system-out>
+</testcase>
+<testcase name="testIsExpired_NonPerishable_ReturnsFalse()" classname="StoreApp.Models.Product_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Product_Model_Test]/[method:testIsExpired_NonPerishable_ReturnsFalse()]
+display-name: testIsExpired_NonPerishable_ReturnsFalse()
+]]></system-out>
+</testcase>
+<testcase name="testGetMaxUsablePoints_PointsLessThanCap()" classname="StoreApp.Models.Transaction_Model_Test" time="0.001">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Transaction_Model_Test]/[method:testGetMaxUsablePoints_PointsLessThanCap()]
+display-name: testGetMaxUsablePoints_PointsLessThanCap()
+]]></system-out>
+</testcase>
+<testcase name="testUpdateProductName_NullName_ReturnsFalse()" classname="StoreApp.Models.Inventory_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Inventory_Model_Test]/[method:testUpdateProductName_NullName_ReturnsFalse()]
+display-name: testUpdateProductName_NullName_ReturnsFalse()
+]]></system-out>
+</testcase>
+<testcase name="testValidateMembershipCard_NoMembership_ReturnsTrue()" classname="StoreApp.Controllers.Transaction_Controller_Test" time="0.001">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Controllers.Transaction_Controller_Test]/[method:testValidateMembershipCard_NoMembership_ReturnsTrue()]
+display-name: testValidateMembershipCard_NoMembership_ReturnsTrue()
+]]></system-out>
+</testcase>
+<testcase name="testHasPermission_Restocker_ManagerAction_ReturnsFalse()" classname="StoreApp.Controllers.Inventory_Controller_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Controllers.Inventory_Controller_Test]/[method:testHasPermission_Restocker_ManagerAction_ReturnsFalse()]
+display-name: testHasPermission_Restocker_ManagerAction_ReturnsFalse()
+]]></system-out>
+</testcase>
+<testcase name="testNavigateToPreviousCategory_FromFood_WrapsToMedications()" classname="StoreApp.Controllers.Shopping_Controller_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Controllers.Shopping_Controller_Test]/[method:testNavigateToPreviousCategory_FromFood_WrapsToMedications()]
+display-name: testNavigateToPreviousCategory_FromFood_WrapsToMedications()
+]]></system-out>
+</testcase>
+<testcase name="testFindItem_NonExistentItem_ReturnsNull()" classname="StoreApp.Models.Cart_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Cart_Model_Test]/[method:testFindItem_NonExistentItem_ReturnsNull()]
+display-name: testFindItem_NonExistentItem_ReturnsNull()
+]]></system-out>
+</testcase>
+<testcase name="testIsExpired_PastDate_ReturnsTrue()" classname="StoreApp.Models.Product_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Product_Model_Test]/[method:testIsExpired_PastDate_ReturnsTrue()]
+display-name: testIsExpired_PastDate_ReturnsTrue()
+]]></system-out>
+</testcase>
+<testcase name="testRedeemPoints_ExceedsAvailable_ReturnsFalse()" classname="StoreApp.Models.MembershipCard_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.MembershipCard_Model_Test]/[method:testRedeemPoints_ExceedsAvailable_ReturnsFalse()]
+display-name: testRedeemPoints_ExceedsAvailable_ReturnsFalse()
+]]></system-out>
+</testcase>
+<testcase name="testGetExpiredProducts_OnlyPerishable()" classname="StoreApp.Models.Inventory_Model_Test" time="0.001">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Inventory_Model_Test]/[method:testGetExpiredProducts_OnlyPerishable()]
+display-name: testGetExpiredProducts_OnlyPerishable()
+]]></system-out>
+</testcase>
+<testcase name="testGenerateCardNumber_ValidDateComponents()" classname="StoreApp.Models.MembershipCard_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.MembershipCard_Model_Test]/[method:testGenerateCardNumber_ValidDateComponents()]
+display-name: testGenerateCardNumber_ValidDateComponents()
+]]></system-out>
+</testcase>
+<testcase name="testValidateCardDetails_CardNotSelected_ReturnsTrue()" classname="StoreApp.Controllers.Transaction_Controller_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Controllers.Transaction_Controller_Test]/[method:testValidateCardDetails_CardNotSelected_ReturnsTrue()]
+display-name: testValidateCardDetails_CardNotSelected_ReturnsTrue()
+]]></system-out>
+</testcase>
+<testcase name="testValidateCardDetails_MissingCVV_ReturnsFalse()" classname="StoreApp.Controllers.Transaction_Controller_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Controllers.Transaction_Controller_Test]/[method:testValidateCardDetails_MissingCVV_ReturnsFalse()]
+display-name: testValidateCardDetails_MissingCVV_ReturnsFalse()
+]]></system-out>
+</testcase>
+<testcase name="testNavigateToPreviousCategory_FromMedications_GoesToCleaningProducts()" classname="StoreApp.Controllers.Shopping_Controller_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Controllers.Shopping_Controller_Test]/[method:testNavigateToPreviousCategory_FromMedications_GoesToCleaningProducts()]
+display-name: testNavigateToPreviousCategory_FromMedications_GoesToCleaningProducts()
+]]></system-out>
+</testcase>
+<testcase name="testCalculateMembershipPoints_WithMembership()" classname="StoreApp.Models.Transaction_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Transaction_Model_Test]/[method:testCalculateMembershipPoints_WithMembership()]
+display-name: testCalculateMembershipPoints_WithMembership()
+]]></system-out>
+</testcase>
+<testcase name="testCalculateSubtotal_EmptyCart_ReturnsZero()" classname="StoreApp.Models.Transaction_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Transaction_Model_Test]/[method:testCalculateSubtotal_EmptyCart_ReturnsZero()]
+display-name: testCalculateSubtotal_EmptyCart_ReturnsZero()
+]]></system-out>
+</testcase>
+<testcase name="testUpdateQuantity_MaximumStock_ReturnsTrue()" classname="StoreApp.Models.Cart_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Cart_Model_Test]/[method:testUpdateQuantity_MaximumStock_ReturnsTrue()]
+display-name: testUpdateQuantity_MaximumStock_ReturnsTrue()
+]]></system-out>
+</testcase>
+<testcase name="testHasMembership_WithoutMembershipCard_ReturnsFalse()" classname="StoreApp.Models.Customer_Model_Test" time="0.001">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Customer_Model_Test]/[method:testHasMembership_WithoutMembershipCard_ReturnsFalse()]
+display-name: testHasMembership_WithoutMembershipCard_ReturnsFalse()
+]]></system-out>
+</testcase>
+<testcase name="testHandleAddToCart_NewProduct_AddsSuccessfully()" classname="StoreApp.Controllers.Shopping_Controller_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Controllers.Shopping_Controller_Test]/[method:testHandleAddToCart_NewProduct_AddsSuccessfully()]
+display-name: testHandleAddToCart_NewProduct_AddsSuccessfully()
+]]></system-out>
+</testcase>
+<testcase name="testAddProduct_Null_ReturnsFalse()" classname="StoreApp.Models.Inventory_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Inventory_Model_Test]/[method:testAddProduct_Null_ReturnsFalse()]
+display-name: testAddProduct_Null_ReturnsFalse()
+]]></system-out>
+</testcase>
+<testcase name="testCalculateChange_PaymentExceedsTotal()" classname="StoreApp.Models.Transaction_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Transaction_Model_Test]/[method:testCalculateChange_PaymentExceedsTotal()]
+display-name: testCalculateChange_PaymentExceedsTotal()
+]]></system-out>
+</testcase>
+<testcase name="testHasPermission_NullEmployee_ReturnsFalse()" classname="StoreApp.Controllers.Inventory_Controller_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Controllers.Inventory_Controller_Test]/[method:testHasPermission_NullEmployee_ReturnsFalse()]
+display-name: testHasPermission_NullEmployee_ReturnsFalse()
+]]></system-out>
+</testcase>
+<testcase name="testIsPerishable_WithExpirationDate_ReturnsTrue()" classname="StoreApp.Models.Product_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Product_Model_Test]/[method:testIsPerishable_WithExpirationDate_ReturnsTrue()]
+display-name: testIsPerishable_WithExpirationDate_ReturnsTrue()
+]]></system-out>
+</testcase>
+<testcase name="testValidatePaymentMethod_NoneSelected_ReturnsFalse()" classname="StoreApp.Controllers.Transaction_Controller_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Controllers.Transaction_Controller_Test]/[method:testValidatePaymentMethod_NoneSelected_ReturnsFalse()]
+display-name: testValidatePaymentMethod_NoneSelected_ReturnsFalse()
+]]></system-out>
+</testcase>
+<testcase name="testReduceStock_ExceedsQuantity_ReturnsFalse()" classname="StoreApp.Models.Product_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Product_Model_Test]/[method:testReduceStock_ExceedsQuantity_ReturnsFalse()]
+display-name: testReduceStock_ExceedsQuantity_ReturnsFalse()
+]]></system-out>
+</testcase>
+<testcase name="testFindItem_ExistingItem_ReturnsItem()" classname="StoreApp.Models.Cart_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Cart_Model_Test]/[method:testFindItem_ExistingItem_ReturnsItem()]
+display-name: testFindItem_ExistingItem_ReturnsItem()
+]]></system-out>
+</testcase>
+<testcase name="testProductQuantity_LessThanStock_ReturnsTrue()" classname="StoreApp.Models.Product_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Product_Model_Test]/[method:testProductQuantity_LessThanStock_ReturnsTrue()]
+display-name: testProductQuantity_LessThanStock_ReturnsTrue()
+]]></system-out>
+</testcase>
+<testcase name="testVerifyCartStock_NullCart_ReturnsFalse()" classname="StoreApp.Models.Inventory_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Inventory_Model_Test]/[method:testVerifyCartStock_NullCart_ReturnsFalse()]
+display-name: testVerifyCartStock_NullCart_ReturnsFalse()
+]]></system-out>
+</testcase>
+<testcase name="testValidateAmount_InsufficientPayment_ReturnsFalse()" classname="StoreApp.Controllers.Transaction_Controller_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Controllers.Transaction_Controller_Test]/[method:testValidateAmount_InsufficientPayment_ReturnsFalse()]
+display-name: testValidateAmount_InsufficientPayment_ReturnsFalse()
+]]></system-out>
+</testcase>
+<testcase name="testCalculateChange_PaymentEqualsTotal()" classname="StoreApp.Models.Transaction_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Transaction_Model_Test]/[method:testCalculateChange_PaymentEqualsTotal()]
+display-name: testCalculateChange_PaymentEqualsTotal()
+]]></system-out>
+</testcase>
+<testcase name="testCalculateSubtotal_SingleItem_ReturnsCorrectValue()" classname="StoreApp.Models.Transaction_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Transaction_Model_Test]/[method:testCalculateSubtotal_SingleItem_ReturnsCorrectValue()]
+display-name: testCalculateSubtotal_SingleItem_ReturnsCorrectValue()
+]]></system-out>
+</testcase>
+<testcase name="testProductQuantity_EqualsStock_ReturnsTrue()" classname="StoreApp.Models.Product_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Product_Model_Test]/[method:testProductQuantity_EqualsStock_ReturnsTrue()]
+display-name: testProductQuantity_EqualsStock_ReturnsTrue()
+]]></system-out>
+</testcase>
+<testcase name="testUpdateStock_FromZero_UpdatesQuantity()" classname="StoreApp.Models.Product_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Product_Model_Test]/[method:testUpdateStock_FromZero_UpdatesQuantity()]
+display-name: testUpdateStock_FromZero_UpdatesQuantity()
+]]></system-out>
+</testcase>
+<testcase name="testHandleAddToCart_ExceedsStock_Fails()" classname="StoreApp.Controllers.Shopping_Controller_Test" time="0.001">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Controllers.Shopping_Controller_Test]/[method:testHandleAddToCart_ExceedsStock_Fails()]
+display-name: testHandleAddToCart_ExceedsStock_Fails()
+]]></system-out>
+</testcase>
+<testcase name="testIsDiscountable_WithMembershipCard()" classname="StoreApp.Models.Transaction_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Transaction_Model_Test]/[method:testIsDiscountable_WithMembershipCard()]
+display-name: testIsDiscountable_WithMembershipCard()
+]]></system-out>
+</testcase>
+<testcase name="testValidateAmount_SufficientPayment_ReturnsTrue()" classname="StoreApp.Controllers.Transaction_Controller_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Controllers.Transaction_Controller_Test]/[method:testValidateAmount_SufficientPayment_ReturnsTrue()]
+display-name: testValidateAmount_SufficientPayment_ReturnsTrue()
+]]></system-out>
+</testcase>
+<testcase name="testCalculateDiscount_Combined()" classname="StoreApp.Models.Transaction_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Transaction_Model_Test]/[method:testCalculateDiscount_Combined()]
+display-name: testCalculateDiscount_Combined()
+]]></system-out>
+</testcase>
+<testcase name="testGetMaxUsablePoints_PointsExceedCap()" classname="StoreApp.Models.Transaction_Model_Test" time="0.002">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Transaction_Model_Test]/[method:testGetMaxUsablePoints_PointsExceedCap()]
+display-name: testGetMaxUsablePoints_PointsExceedCap()
+]]></system-out>
+</testcase>
+<testcase name="testIsEmpty_WithItems_ReturnsFalse()" classname="StoreApp.Models.Cart_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Cart_Model_Test]/[method:testIsEmpty_WithItems_ReturnsFalse()]
+display-name: testIsEmpty_WithItems_ReturnsFalse()
+]]></system-out>
+</testcase>
+<testcase name="testHasPermission_CaseInsensitive_Manager_ReturnsTrue()" classname="StoreApp.Controllers.Inventory_Controller_Test" time="0.001">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Controllers.Inventory_Controller_Test]/[method:testHasPermission_CaseInsensitive_Manager_ReturnsTrue()]
+display-name: testHasPermission_CaseInsensitive_Manager_ReturnsTrue()
+]]></system-out>
+</testcase>
+<testcase name="testValidatePaymentMethod_CardSelected_ReturnsTrue()" classname="StoreApp.Controllers.Transaction_Controller_Test" time="0.001">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Controllers.Transaction_Controller_Test]/[method:testValidatePaymentMethod_CardSelected_ReturnsTrue()]
+display-name: testValidatePaymentMethod_CardSelected_ReturnsTrue()
+]]></system-out>
+</testcase>
+<testcase name="testCalculateCartSubTotal_MultipleItems_ReturnsCorrectTotal()" classname="StoreApp.Models.Cart_Model_Test" time="0.001">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Cart_Model_Test]/[method:testCalculateCartSubTotal_MultipleItems_ReturnsCorrectTotal()]
+display-name: testCalculateCartSubTotal_MultipleItems_ReturnsCorrectTotal()
+]]></system-out>
+</testcase>
+<testcase name="testValidateMembershipCard_WithCardNumber_ReturnsTrue()" classname="StoreApp.Controllers.Transaction_Controller_Test" time="0.001">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Controllers.Transaction_Controller_Test]/[method:testValidateMembershipCard_WithCardNumber_ReturnsTrue()]
+display-name: testValidateMembershipCard_WithCardNumber_ReturnsTrue()
+]]></system-out>
+</testcase>
+<testcase name="testReduceStock_EqualsQuantity_ReturnsTrue()" classname="StoreApp.Models.Product_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Product_Model_Test]/[method:testReduceStock_EqualsQuantity_ReturnsTrue()]
+display-name: testReduceStock_EqualsQuantity_ReturnsTrue()
+]]></system-out>
+</testcase>
+<testcase name="testGetLowStockProducts_VeryLowThreshold_ReturnsEmptyOrFew()" classname="StoreApp.Models.Inventory_Model_Test" time="0.001">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Inventory_Model_Test]/[method:testGetLowStockProducts_VeryLowThreshold_ReturnsEmptyOrFew()]
+display-name: testGetLowStockProducts_VeryLowThreshold_ReturnsEmptyOrFew()
+]]></system-out>
+</testcase>
+<testcase name="testLoginLogic_NullEmployeesArray_HandlesGracefully()" classname="StoreApp.Controllers.Employee_Login_Controller_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Controllers.Employee_Login_Controller_Test]/[method:testLoginLogic_NullEmployeesArray_HandlesGracefully()]
+display-name: testLoginLogic_NullEmployeesArray_HandlesGracefully()
+]]></system-out>
+</testcase>
+<testcase name="testGenerateReceiptNumber_FourDigitRandom()" classname="StoreApp.Models.Receipt_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Receipt_Model_Test]/[method:testGenerateReceiptNumber_FourDigitRandom()]
+display-name: testGenerateReceiptNumber_FourDigitRandom()
+]]></system-out>
+</testcase>
+<testcase name="testGetLowStockProducts_BelowThreshold_ReturnsProducts()" classname="StoreApp.Models.Inventory_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Inventory_Model_Test]/[method:testGetLowStockProducts_BelowThreshold_ReturnsProducts()]
+display-name: testGetLowStockProducts_BelowThreshold_ReturnsProducts()
+]]></system-out>
+</testcase>
+<testcase name="testNavigateToPreviousCategory_FromBeverages_GoesToFood()" classname="StoreApp.Controllers.Shopping_Controller_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Controllers.Shopping_Controller_Test]/[method:testNavigateToPreviousCategory_FromBeverages_GoesToFood()]
+display-name: testNavigateToPreviousCategory_FromBeverages_GoesToFood()
+]]></system-out>
+</testcase>
+<testcase name="testIsProductLowStock_Zero_ReturnsTrue()" classname="StoreApp.Models.Product_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Product_Model_Test]/[method:testIsProductLowStock_Zero_ReturnsTrue()]
+display-name: testIsProductLowStock_Zero_ReturnsTrue()
+]]></system-out>
+</testcase>
+<testcase name="testValidateAge_Below60_ReturnsFalse()" classname="StoreApp.Controllers.Transaction_Controller_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Controllers.Transaction_Controller_Test]/[method:testValidateAge_Below60_ReturnsFalse()]
+display-name: testValidateAge_Below60_ReturnsFalse()
+]]></system-out>
+</testcase>
+<testcase name="testIsEmpty_NewCart_ReturnsTrue()" classname="StoreApp.Models.Cart_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Cart_Model_Test]/[method:testIsEmpty_NewCart_ReturnsTrue()]
+display-name: testIsEmpty_NewCart_ReturnsTrue()
+]]></system-out>
+</testcase>
+<testcase name="testFindItem_MultipleItems_ReturnsCorrectItem()" classname="StoreApp.Models.Cart_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Cart_Model_Test]/[method:testFindItem_MultipleItems_ReturnsCorrectItem()]
+display-name: testFindItem_MultipleItems_ReturnsCorrectItem()
+]]></system-out>
+</testcase>
+<testcase name="testLogin_WithEmptyEmail_ReturnsFalse()" classname="StoreApp.Models.Employee_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Employee_Model_Test]/[method:testLogin_WithEmptyEmail_ReturnsFalse()]
+display-name: testLogin_WithEmptyEmail_ReturnsFalse()
+]]></system-out>
+</testcase>
+<testcase name="testGetExpiredProducts_HasExpired_ReturnsProducts()" classname="StoreApp.Models.Inventory_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Inventory_Model_Test]/[method:testGetExpiredProducts_HasExpired_ReturnsProducts()]
+display-name: testGetExpiredProducts_HasExpired_ReturnsProducts()
+]]></system-out>
+</testcase>
+<testcase name="testIsPerishable_WithoutExpirationDate_ReturnsFalse()" classname="StoreApp.Models.Product_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Product_Model_Test]/[method:testIsPerishable_WithoutExpirationDate_ReturnsFalse()]
+display-name: testIsPerishable_WithoutExpirationDate_ReturnsFalse()
+]]></system-out>
+</testcase>
+<testcase name="testProductQuantity_Zero_ReturnsTrue()" classname="StoreApp.Models.Product_Model_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Models.Product_Model_Test]/[method:testProductQuantity_Zero_ReturnsTrue()]
+display-name: testProductQuantity_Zero_ReturnsTrue()
+]]></system-out>
+</testcase>
+<testcase name="testHasPermission_CaseInsensitive_Restocker_ReturnsTrue()" classname="StoreApp.Controllers.Inventory_Controller_Test" time="0.001">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Controllers.Inventory_Controller_Test]/[method:testHasPermission_CaseInsensitive_Restocker_ReturnsTrue()]
+display-name: testHasPermission_CaseInsensitive_Restocker_ReturnsTrue()
+]]></system-out>
+</testcase>
+<testcase name="testUpdateAllTotals_EmptyCart_AllZero()" classname="StoreApp.Controllers.Cart_Controller_Test" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:StoreApp.Controllers.Cart_Controller_Test]/[method:testUpdateAllTotals_EmptyCart_AllZero()]
+display-name: testUpdateAllTotals_EmptyCart_AllZero()
+]]></system-out>
+</testcase>
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]
+display-name: JUnit Jupiter
+]]></system-out>
+</testsuite>

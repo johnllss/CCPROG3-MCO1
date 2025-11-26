@@ -165,7 +165,8 @@ public class Shopping_Controller_Test {
         boolean success;
 
         if (existingItem != null) {
-            success = cart.incrementQuantity(product, quantity);
+            int newQuantity = existingItem.getQuantity() + quantity;
+            success = cart.updateQuantity(product, newQuantity);
         } else {
             success = cart.addItem(product, quantity);
         }
@@ -191,7 +192,8 @@ public class Shopping_Controller_Test {
         boolean success;
 
         if (existingItem != null) {
-            success = cart.incrementQuantity(product, addQuantity);
+            int newQuantity = existingItem.getQuantity() + addQuantity;
+            success = cart.updateQuantity(product, newQuantity);
         } else {
             success = cart.addItem(product, addQuantity);
         }
@@ -218,7 +220,8 @@ public class Shopping_Controller_Test {
         boolean success;
 
         if (existingItem != null) {
-            success = cart.incrementQuantity(product, addQuantity);
+            int newQuantity = existingItem.getQuantity() + addQuantity;
+            success = cart.updateQuantity(product, newQuantity);
         } else {
             success = cart.addItem(product, addQuantity);
         }

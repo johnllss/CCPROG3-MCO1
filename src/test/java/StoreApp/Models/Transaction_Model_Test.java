@@ -232,6 +232,7 @@ public class Transaction_Model_Test {
 
         Customer_Model customer = new Customer_Model("Senior", "senior@email.com", "pass", null, true, cart);
         Transaction_Model transaction = new Transaction_Model(customer, cart);
+        transaction.calculateSubtotal();  // Must calculate subtotal before discount
         transaction.calculateDiscount(0);
 
         assertEquals(80.0, transaction.calculateTotal(), 0.01,
@@ -249,6 +250,7 @@ public class Transaction_Model_Test {
         card.addPoints(100);
         Customer_Model customer = new Customer_Model("Member", "member@email.com", "pass", card, false, cart);
         Transaction_Model transaction = new Transaction_Model(customer, cart);
+        transaction.calculateSubtotal();  // Must calculate subtotal before discount
         transaction.calculateDiscount(50);
 
         double total = transaction.calculateTotal();

@@ -205,53 +205,6 @@ public class Cart_Model_Test {
                      "Quantity should be 10");
     }
 
-    // ========== incrementQuantity Tests ==========
-
-    @Test
-    public void testIncrementQuantity_ValidAmount_ReturnsTrue() {
-        // Test 1: Successfully increments quantity of existing item
-        Cart_Model cart = new Cart_Model();
-        Product_Model product = new Product_Model("Item", 50.0, 10, "Food", "Brand N");
-        cart.addItem(product, 2);
-
-        assertTrue(cart.incrementQuantity(product, 3), "Should increment quantity by 3");
-        assertEquals(5, cart.findItem(product.getProductID()).getQuantity(),
-                     "Quantity should be 5 (2 + 3)");
-    }
-
-    @Test
-    public void testIncrementQuantity_ExceedsStock_ReturnsFalse() {
-        // Test 2: Fails to increment when new total would exceed stock
-        Cart_Model cart = new Cart_Model();
-        Product_Model product = new Product_Model("Item", 50.0, 10, "Food", "Brand O");
-        cart.addItem(product, 8);
-
-        assertFalse(cart.incrementQuantity(product, 5), "Should fail when increment exceeds stock");
-        assertEquals(8, cart.findItem(product.getProductID()).getQuantity(),
-                     "Quantity should remain 8");
-    }
-
-    @Test
-    public void testIncrementQuantity_NonExistentProduct_ReturnsFalse() {
-        // Test 3: Fails to increment for non-existent product
-        Cart_Model cart = new Cart_Model();
-        Product_Model product = new Product_Model("Item", 50.0, 10, "Food", "Brand P");
-
-        assertFalse(cart.incrementQuantity(product, 3), "Should fail for non-existent product");
-    }
-
-    @Test
-    public void testIncrementQuantity_ToMaxStock_ReturnsTrue() {
-        // Test 4: Successfully increments to exactly available stock
-        Cart_Model cart = new Cart_Model();
-        Product_Model product = new Product_Model("Item", 50.0, 10, "Food", "Brand Q");
-        cart.addItem(product, 5);
-
-        assertTrue(cart.incrementQuantity(product, 5), "Should increment to max stock");
-        assertEquals(10, cart.findItem(product.getProductID()).getQuantity(),
-                     "Quantity should be 10 (5 + 5)");
-    }
-
     // ========== calculateCartSubTotal Tests ==========
 
     @Test
