@@ -86,4 +86,4 @@ This is the repository for CCPROG3's MCO1.
 - **Restocker**: leon@gmail.com / lmn098
 
 ## License
-This project is developed for academic purposes as part of CCPROG3 coursework.
+This project is developed for academic purposes as part of CCPROG3 coursework at De La Salle University.
