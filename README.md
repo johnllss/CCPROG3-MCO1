@@ -26,7 +26,7 @@ This is the repository for CCPROG3's MCO1.
 - **Architecture**: MVC (Model-View-Controller) pattern
 - **IDE**: IntelliJ IDEA
 - **Build System**: Standard Java compilation
-- **Unit Tests**: JUnit Juniper5
+- **Unit Tests**: JUnit 5 (Jupiter)
 
 ## Current Known Issues
 1. **Email Validation Lacks Comprehensive Checks**: Email validation uses basic regex that may not catch all invalid formats
