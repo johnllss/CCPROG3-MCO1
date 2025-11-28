@@ -6,8 +6,6 @@ public class Shelf_Model {
     private int shelfID;
     private static int shelfIDCounter = 0;
     private String category;
-    private int currentCapacity;
-    private int maxCapacity;
     private ArrayList<Product_Model> products;
 
     /**
@@ -18,7 +16,6 @@ public class Shelf_Model {
     public Shelf_Model(String category, int maxCapacity) {
         this.shelfID = ++shelfIDCounter;
         this.category = category;
-        this.maxCapacity = maxCapacity;
         this.products = new ArrayList<Product_Model>();
     }
 

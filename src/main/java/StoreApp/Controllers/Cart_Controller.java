@@ -220,6 +220,16 @@ public class Cart_Controller {
     {
         System.out.println("Checkout");
 
+        // validate cart is not empty
+        if (cart == null || cart.isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Empty Cart");
+            alert.setHeaderText(null);
+            alert.setContentText("Your cart is empty. Please add items before checking out.");
+            alert.showAndWait();
+            return;
+        }
+
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/Transaction_View.fxml"));
             Parent root = loader.load();
@@ -231,7 +241,6 @@ public class Cart_Controller {
             Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
             stage.setScene(scene);
-            stage.setMaximized(true);
             stage.show();
         } catch (Exception e) {
             e.printStackTrace();
@@ -253,9 +262,10 @@ public class Cart_Controller {
             Shopping_Controller shoppingController = loader.getController();
             shoppingController.setCustomer(customer);
             shoppingController.setInventory(inventory);
+            shoppingController.setEmployees(employees);
 
             Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            Scene scene = new Scene(root);
+            Scene scene = new Scene(root, stage.getScene().getWidth(), stage.getScene().getHeight());
             stage.setScene(scene);
             stage.show();
         } catch (Exception e) {

@@ -3,6 +3,7 @@ package StoreApp.Controllers;
 import StoreApp.Models.Product_Model;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -26,7 +27,7 @@ public class Product_Controller {
     private int quantity = 1;
 
     private Product_Model product;
-    private AddToCartCallback addToCartCallback;
+    private AddToCartCallback addToCartCallback; // not instantiating the interface, but creates reference variable to later assign 
 
     /**
      * Initializes the controller and sets up button handlers.
@@ -152,11 +153,20 @@ public class Product_Controller {
      * This method increments the quantity in the quantity controls by 1 (up to available stock).
      */
     private void incrementQuantity() {
-        if (product != null && quantity < product.getProductQuantity()) {
-            quantity++;
+        if (product != null) {
+            if (quantity < product.getProductQuantity()) {
+                quantity++;
 
-            if (quantityLabel != null) {
-                quantityLabel.setText(String.valueOf(quantity));
+                if (quantityLabel != null) {
+                    quantityLabel.setText(String.valueOf(quantity));
+                }
+            } else {
+                // show alert when max quantity reached
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Maximum Quantity Reached");
+                alert.setHeaderText(null);
+                alert.setContentText("Cannot add more. Only " + product.getProductQuantity() + " items available in stock.");
+                alert.showAndWait();
             }
         }
     }
@@ -168,36 +178,9 @@ public class Product_Controller {
     {
         if (addToCartCallback != null && product != null)
         {
-            // calls the method assigned to addToCartCallback and sends the product and quantity data
+            // calls the method assigned/referenced to addToCartCallback and sends the product and quantity data
             addToCartCallback.onAddToCart(product, quantity);
         }
-    }
-
-    /**
-     * This method is delegated the task of checking if product is expired to the product model.
-     * @return boolean for success/failure
-     */
-    public boolean isExpired()
-    {
-        return product.isExpired();
-    }
-
-    /**
-     * This method is delegated the task of checking if product is perishable to the product model.
-     * @return boolean for success/failure.
-     */
-    public boolean isPerishable()
-    {
-        return product.isPerishable();
-    }
-
-    /**
-     * This method is delegated the task of checking if product is low on stock to the product model.
-     * @return boolean if success/failure.
-     */
-    public boolean isProductLowStock()
-    {
-        return product.isProductLowStock();
     }
 
     /**
@@ -225,12 +208,12 @@ public class Product_Controller {
         badgeContainer.getChildren().clear();
 
         // show LOW STOCK badge
-        if (isProductLowStock()) {
+        if (product.isProductLowStock()) {
             Label lowStockBadge = createBadge("LOW STOCK", "badge-low-stock");
             badgeContainer.getChildren().add(lowStockBadge);
         }
         // show PERISHABLE badge only if not low stock
-        else if (isPerishable()) {
+        else if (product.isPerishable()) {
             Label perishableBadge = createBadge("PERISHABLE", "badge-perishable");
             badgeContainer.getChildren().add(perishableBadge);
         }

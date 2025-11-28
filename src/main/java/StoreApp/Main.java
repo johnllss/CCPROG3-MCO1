@@ -45,6 +45,7 @@ public class Main extends Application {
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.setTitle("StoreApp");
+            stage.setMaximized(true); // Start maximized
             stage.show();
 
             stage.setOnCloseRequest(event -> {

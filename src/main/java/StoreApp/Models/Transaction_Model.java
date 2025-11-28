@@ -220,7 +220,7 @@ public class Transaction_Model {
     
     /**
      * This method sets the Transaction's amountReceived.
-     * @param amount is the amount to be used to assign to amountRecieved.
+     * @param amountReceived is the amount to be used to assign to amountReceived.
      *
      */
     public void setAmountReceived(double amountReceived) {
