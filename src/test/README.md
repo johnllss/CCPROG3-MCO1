@@ -61,7 +61,7 @@ Download and add to your classpath:
 
 ```bash
 # Navigate to project root
-cd "e:\PERSONAL-Jigs\DLSU BSCS-ST\4th Term 1\CCPROG3\CCPROG3-MCO1"
+cd "YOUR-PROJECT-ROOT"
 
 # Compile tests (adjust classpath as needed)
 javac -cp "lib/*;src/main/java" -d bin/test src/test/java/StoreApp/Models/*Test.java
@@ -77,18 +77,28 @@ java -cp "lib/*;bin/main;bin/test" org.junit.platform.console.ConsoleLauncher --
 java -cp "lib/*;bin/main;bin/test" org.junit.platform.console.ConsoleLauncher --select-class StoreApp.Models.Product_Model_Test
 ```
 
-### Option 3: Using VS Code
+### Option 3: Run The .bat files
+
+```bash
+# Run all tests
+run-single-test.bat
+
+# Run a specific test class
+run-single-test.bat YOUR-TEST-CLASS
+```
+
+### Option 4: Using VS Code
 
 1. Install the "Test Runner for Java" extension
 2. Open the test file
 3. Click the "Run Test" or "Debug Test" button above each test method
 
-### Option 4: Using IntelliJ IDEA
+### Option 5: Using IntelliJ IDEA
 
 1. Right-click on the test file or test package
 2. Select "Run 'ClassName'" or "Run 'PackageName'"
 
-### Option 5: Using Eclipse
+### Option 6: Using Eclipse
 
 1. Right-click on the test file
 2. Select "Run As" > "JUnit Test"
@@ -210,8 +220,4 @@ public void testMethodName_Condition_ExpectedResult() {
 ### JavaFX errors in Controller tests
 - Add JavaFX JARs to classpath
 - Use TestFX library for UI component testing
-- Or run tests with JavaFX runtime enabled
-
-## Contact
-
-For issues or questions about the tests, refer to the project documentation or course instructor.
+- Or run tests with JavaFX runtime enabled.
