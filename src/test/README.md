@@ -8,19 +8,24 @@ This directory contains comprehensive JUnit 5 test cases for the Convenience Sto
 test/
 └── java/
     └── StoreApp/
-        ├── Models/
-        │   ├── Customer_Model_Test.java
-        │   ├── Employee_Model_Test.java
-        │   ├── Product_Model_Test.java
-        │   ├── Item_Model_Test.java
-        │   ├── Cart_Model_Test.java
-        │   ├── MembershipCard_Model_Test.java
-        │   ├── Inventory_Model_Test.java
-        │   ├── Transaction_Model_Test.java
-        │   ├── Receipt_Model_Test.java
-        │   └── AllModelsTestSuite.java
-        └── Controllers/
-            (Controller tests if applicable)
+        ├── Controllers/
+        │   ├── AllControllersTestSuite.java
+        │   ├── Cart_Controller_Test.java
+        │   ├── Employee_Login_Controller_Test.java
+        │   ├── Inventory_Controller_Test.java
+        │   ├── Shopping_Controller_Test.java
+        │   ├── Transaction_Controller_Test.java
+        └── Models/
+            ├── Customer_Model_Test.java
+            ├── Employee_Model_Test.java
+            ├── Product_Model_Test.java
+            ├── Item_Model_Test.java
+            ├── Cart_Model_Test.java
+            ├── MembershipCard_Model_Test.java
+            ├── Inventory_Model_Test.java
+            ├── Transaction_Model_Test.java
+            ├── Receipt_Model_Test.java
+            └── AllModelsTestSuite.java
 ```
 
 ## Prerequisites
