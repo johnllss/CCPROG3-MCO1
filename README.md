@@ -26,6 +26,7 @@ This is the repository for CCPROG3's MCO1.
 - **Architecture**: MVC (Model-View-Controller) pattern
 - **IDE**: IntelliJ IDEA
 - **Build System**: Standard Java compilation
+- **Unit Tests**: JUnit Juniper5
 
 ## Current Known Issues
 1. **Email Validation Lacks Comprehensive Checks**: Email validation uses basic regex that may not catch all invalid formats
@@ -81,7 +82,7 @@ This is the repository for CCPROG3's MCO1.
 4. Run `Main.java` located in `src/main/java/StoreApp/`
 
 ### Default Employee Credentials
-- **Manager**: john lloyd@gmail.com / abc123
+- **Manager**: johnlloyd@gmail.com / abc123
 - **Manager**: kristin@gmail.com / xyz456
 - **Restocker**: leon@gmail.com / lmn098
 
