@@ -58,6 +58,10 @@ public class Transaction_Controller {
         accountNumberText.setDisable(true);
         cvvText.setDisable(true);
         expiryDateText.setDisable(true);
+
+        ageText.textProperty().addListener((observable, oldValue, newValue) -> {
+            updateTransactionSummary();
+        });
     }
 
     /**
