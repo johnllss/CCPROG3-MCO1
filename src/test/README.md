@@ -77,7 +77,7 @@ java -cp "lib/*;bin/main;bin/test" org.junit.platform.console.ConsoleLauncher --
 java -cp "lib/*;bin/main;bin/test" org.junit.platform.console.ConsoleLauncher --select-class StoreApp.Models.Product_Model_Test
 ```
 
-### Option 3: Run The .bat files
+### Option 3: Run The .bat Files
 
 ```bash
 # Run all tests
