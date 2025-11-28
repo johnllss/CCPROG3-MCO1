@@ -27,11 +27,6 @@ This is the repository for CCPROG3's MCO1.
 - **IDE**: IntelliJ IDEA
 - **Build System**: Standard Java compilation
 
-## Contributors
-
-- **John Lloyd Sunga** - Developer
-- **Kristin Palacio** - Developer
-
 ## Current Known Issues
 1. **Email Validation Lacks Comprehensive Checks**: Email validation uses basic regex that may not catch all invalid formats
    - Impact: Could allow invalid email formats through
