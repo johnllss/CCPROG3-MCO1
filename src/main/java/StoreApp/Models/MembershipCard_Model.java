@@ -13,6 +13,7 @@ public class MembershipCard_Model {
     /**
      * Class MembershipCard parameterized constructor
      * @param cardNumber is the membership card number of the Customer
+     * @param registrationDate is the date the membership was created
      */
     public MembershipCard_Model(String cardNumber) {
         this.cardNumber = cardNumber;
@@ -62,7 +63,7 @@ public class MembershipCard_Model {
         DateTimeFormatter formattedDate = DateTimeFormatter.ofPattern("yyyyMMdd-HHmmss");
         return dateNow.format(formattedDate);
     }
-    
+
     /**
      * This is a getter method to get the cardNumber.
      * @return String for the cardNumber.

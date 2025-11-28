@@ -1,0 +1,2 @@
+1234|John Doe|john@email.com|150|2025-11-25
+5678|Jane Smith|jane@email.com|0|2025-11-25
